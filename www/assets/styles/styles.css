@@ -108,6 +108,7 @@ img.banner {
     position: fixed;
     top: 100px;
     left: 0;
+    height: calc(100vh - 160px);
 }
 
 .t_selectLine {

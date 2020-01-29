@@ -1560,25 +1560,26 @@
     var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
 
     function openURL(href) {
-        $.ajax({
-            url: href,
-            type: 'POST',
-            cache: false,
-            success: function (result) {
-                $('#app').html(result);
-                window.history.pushState({href: href}, '', href);
-                if (href === "StationInformation.html") {
-                    let a = $("#stationlist a");
-                    for (let i = 0; i < a.length; i++) {
-                        let e = a[i];
-                        e.onclick = function () {
-                            let d = e.childNodes[1];
-                            choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
-                        }
-                    }
-                }
-            }
-        });
+    	window.location.href = href;
+        // $.ajax({
+        //     url: href,
+        //     type: 'POST',
+        //     cache: false,
+        //     success: function (result) {
+        //         $('#app').html(result);
+        //         window.history.pushState({href: href}, '', href);
+        //         if (href === "StationInformation.html") {
+        //             let a = $("#stationlist a");
+        //             for (let i = 0; i < a.length; i++) {
+        //                 let e = a[i];
+        //                 e.onclick = function () {
+        //                     let d = e.childNodes[1];
+        //                     choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
     }
 
     function openINF(num, platnum) {

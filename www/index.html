@@ -48,25 +48,26 @@
 <script src="assets/scripts/lib.min.js"></script>
 <script>
     function openURL(href) {
-        $.ajax({
-            url: href,
-            type: 'POST',
-            cache: false,
-            success: function (result) {
-                $('#app').html(result);
-                window.history.pushState({href: href}, '', href);
-                if (href === "StationInformation.html") {
-                    let a = $("#stationlist a");
-                    for (let i = 0; i < a.length; i++) {
-                        let e = a[i];
-                        e.onclick = function () {
-                            let d = e.childNodes[1];
-                            choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
-                        }
-                    }
-                }
-            }
-        });
+    	window.location.href = href;
+        // $.ajax({
+        //     url: href,
+        //     type: 'POST',
+        //     cache: false,
+        //     success: function (result) {
+        //         $('#app').html(result);
+        //         window.history.pushState({href: href}, '', href);
+        //         if (href === "StationInformation.html") {
+        //             let a = $("#stationlist a");
+        //             for (let i = 0; i < a.length; i++) {
+        //                 let e = a[i];
+        //                 e.onclick = function () {
+        //                     let d = e.childNodes[1];
+        //                     choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
     }
 </script>
 </html>
