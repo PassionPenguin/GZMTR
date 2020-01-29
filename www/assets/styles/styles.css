@@ -246,5 +246,8 @@ h3:not(:nth-child(2)) {
     position: absolute;
     top: 0;
     right: 0;
-    font: 900 24px/0 Anodina, sans-serif;
+    font: 900 36px/0 Anodina, sans-serif;
+    width: 48px;
+    height: 48px;
+    text-align: right;
 }
