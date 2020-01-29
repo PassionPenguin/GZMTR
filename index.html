@@ -1,1710 +1,785 @@
-<!-- Made by Penguin -->
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>出站指南</title>
-    <link href="styles/Bootstrap.min.css" rel="stylesheet">
-    <link href="styles/PenguinUI.css" rel="stylesheet">
-    <style>
-        .p_header {
-            position: fixed;
-            top: -1px;
-            bottom: -1px;
-            right: -1px;
-            left: -1px;
-            height: 72px;
-            background: #fff;
-            border-bottom: 5px solid #5e5e5e80;
-            padding: 7px 14px;
-            z-index: 1000;
-        }
-
-        .p_header_leftbutton {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .p_header_leftbutton svg {
-            width: 24px;
-            height: 24px;
-            margin: 12px;
-        }
-
-        .p_header_leftbutton:hover {
-            background: #5e5e5e20;
-        }
-
-        .p_header_leftbutton:focus {
-            background: #5e5e5e40;
-        }
-
-        .p_header_content {
-            display: inline-block;
-            vertical-align: middle;
-            width: calc(100% - 54px);
-        }
-
-        .p_content {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: calc(100vh - 66px);
-            width: 100%;
-            overflow-y: scroll;
-        }
-
-        .p_header-title {
-            font: 600 20px/1 sans-serif;
-            margin: 0;
-        }
-
-        body.showinf #stationinfWrap {
-            position: fixed;
-            top: 60vw;
-            bottom: 0;
-            height: calc(100% - 60vw);
-        }
-
-        #stationlist h2 {
-            font: 600 24px/1.5 sans-serif;
-            border-bottom: 1px solid #aaa;
-            width: fit-content;
-        }
-
-        #stationlist a {
-            margin: 2px;
-            color: #006487;
-            cursor: pointer;
-            font: 16px/2 Montserrat, Helvetica, Arial, sans-serif
-        }
-
-        #stationlist div > div {
-            padding: 2px;
-        }
-
-        #stationlist div > div > span {
-            background: #ececec;
-            display: inline-block;
-            width: 40px;
-            text-align: center;
-            height: 25px;
-            font: 14px/25px sans-serif;
-        }
-
-        #stationlist button {
-            padding: 4px 10px;
-            border-bottom: 0;
-            background: transparent;
-        }
-
-        #stationlist button:focus, button:hover {
-            background: transparent;
-            outline: none;
-        }
-
-        .bg-image {
-            position: absolute;
-            top: 0;
-            width: 500px;
-            height: 800px;
-            left: calc(50vw - 250px);
-            z-index: 0;
-        }
-
-        .data-color {
-            background: #28351c;
-            bottom: -1px;
-            left: -1px;
-            height: calc(100vh - 800px + 2px);
-            position: fixed;
-            width: calc(100vw + 2px);
-        }
-
-        html, body, .bodywrap {
-            background: #fff;
-            margin: 0;
-            max-width: 100vw;
-            max-height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-        }
-
-        .bodywrap {
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            position: fixed;
-            overflow: hidden;
-        }
-
-        .navi.card {
-            position: absolute;
-            top: calc(66.6vh - 70px);
-            left: 50%;
-            transform: translate(-50%);
-            width: fit-content;
-        }
-
-        .icongroup {
-            margin: 5px auto;
-            width: 150px;
-            display: inline-block;
-            background: #fff;
-            border-radius: 4px;
-        }
-
-        .icongroup > * > :first-child {
-            width: 32px;
-            height: 32px;
-            border-radius: 7px;
-            border: 2px solid #5e5e5e;
-            background-size: 28px;
-            display: inline-block;
-        }
-
-        .icongroup:nth-child(5) {
-            margin-top: 10px;
-            width: 300px;
-        }
-
-        .text {
-            display: inline-block;
-            width: fit-content;
-        }
-
-        .text span:first-child {
-            font: 800 16px/20px sans-serif;
-            display: block;
-        }
-
-        .text span:nth-child(2) {
-            font: 700 14px/12px sans-serif;
-            display: block;
-        }
-
-        .icongroup .exit {
-            background-image: url("Images/Exit.png");
-        }
-
-        .icongroup .navi {
-            background-image: url("Images/Navigation.png");
-        }
-
-        .icongroup .wiki {
-            background-image: url("Images/Wiki.png");
-        }
-
-        .icongroup .copyright {
-            background-image: url("Images/Copyright.png");
-        }
-
-        .icongroup .help {
-            background-image: url("Images/question.png");
-        }
-
-        .escalator {
-            background: url("Images/escalator@Light.png") no-repeat transparent;
-        }
-
-        .staircase {
-            background: url("Images/staircase@Light.png") no-repeat transparent;
-        }
-
-        .elevator {
-            background: url("Images/elevator@Light.png") no-repeat transparent;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-            }
-
-            .escalator {
-                background: url("Images/escalator@Dark.png") no-repeat transparent;
-            }
-
-            .staircase {
-                background: url("Images/staircase@Dark.png") no-repeat transparent;
-            }
-
-            .elevator {
-                background: url("Images/elevator@Dark.png") no-repeat transparent;
-            }
-
-            body, .card, .icongroup {
-                background: #5e5e5e;
-                color: #fff;
-            }
-        }
-
-        /* Fallback for older browsers or manual mode */
-        body.dark, body.dark .card, body.dark .icongroup {
-            background: #5e5e5e;
-            color: #fff;
-        }
-
-        body.dark .card {
-            background: #5e5e5e;
-        }
-
-        body.dark .escalator {
-            background: url("Images/escalator@Dark.png") no-repeat transparent;
-        }
-
-        body.dark .staircase {
-            background: url("Images/staircase@Dark.png") no-repeat transparent;
-        }
-
-        body.dark .elevator {
-            background: url("Images/elevator@Dark.png") no-repeat transparent;
-        }
-        .card-body {
-            width: 350px;
-            margin: 0 auto;
-        }
-
-        .copyright-info {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffffffee;
-            padding: 20px;
-            z-index: 999;
-        }
-
-        .copyright-info p {
-            font: 500 14px/20px Montserrat, Helvetica, Arial, sans-serif;
-            width: 80%;
-            text-align: center;
-        }
-
-        [data-target='#copyrightPage']:hover, [data-target='#copyrightPage']:focus {
-            background: #333
-        }
-
-        #copyrightPage .display-group {
-            position: absolute;
-            top: 33%;
-            left: 50%;
-            transform: translate(-50%, -33%);
-            width: 360px;
-        }
-
-        #stationlistWrap, #stationinfWrap, #platformChoserWrap, #SearchStation {
-            position: absolute;
-            background: #ffffff;
-            padding: 20px;
-            z-index: 999;
-            overflow-y: scroll;
-            border: 5px solid #5e5e5e;
-        }
-
-        #stationlistWrap.show, #stationinfWrap.show, #platformChoserWrap.show, #legendWrap.show {
-            display: block;
-        }
-
-        #stationlistWrap .inner, #stationinfWrap .inner, #platformChoserWrap .inner, #SearchStation .inner {
-            width: 100%;
-            height: 100%;
-        }
-
-
-        span[data-toggle="collapse"][data-target="#stationlistWrap"] {
-            position: fixed;
-        }
-
-        [data-action="close"][data-toggle="collapse"] {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1001;
-            border: solid #5e5e5e80;
-            border-width: 0 0 5px 5px;
-            border-radius: 0 0 0 10px;
-            padding: 2px;
-            font-size: 20px;
-        }
-
-        #stationlistWrap, #stationinfWrap, #SearchStation {
-            top: -1px;
-            bottom: -1px;
-            right: -1px;
-            left: -1px;
-        }
-
-        #platformChoserWrap {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 350px;
-            height: fit-content;
-            min-height: 225px;
-        }
-
-        #stationinfWrap {
-            z-index: 1000;
-        }
-
-        #SearchStation {
-            z-index: 998;
-            border: 0;
-            box-shadow: 3px 2px 20px black;
-            width: 100vw;
-        }
-
-        #SearchStation label {
-            display: none;
-        }
-
-        #SearchStation input {
-            border: 0;
-            outline: 0;
-            color: #000;
-            width: 100%;
-            font: 16px/2 sans-serif;
-        }
-
-        #platformChoserWrap {
-            z-index: 999;
-        }
-
-        #stationlistWrap .selectLine {
-            width: fit-content;
-            height: 100%;
-            position: relative;
-            display: inline-block;
-        }
-
-        .selectLine > span {
-            margin: 10px 5px 5px -5px;
-            font: 800 20px/1 Montserrat, Helvetica, Arial, sans-serif;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .selectLine > span {
-            padding: 2px 2px 2px 20px;
-        }
-
-        .selectLine .display-group {
-            border: 2px solid #e3e3e3;
-            padding: 3px 6px;
-        }
-
-        .stationlistcontent {
-            width: 100%;
-            position: absolute;
-            left: 0;
-            background: #ffffff;
-            padding: 0 20px;
-            z-index: 0;
-            border: solid #5e5e5e;
-            border-width: 0 4px;
-        }
-
-        [id^="content_"] a {
-            display: block;
-            width: 100%;
-            padding: 2px;
-            border-bottom: 1px solid #f3f2ee;
-        }
-
-        #inftable {
-            width: fit-content;
-            margin: 20px auto;
-
-        }
-
-        #inftable > div {
-            display: block;
-            font: 16px/2 sans-serif;
-        }
-
-        #inftable > div > div {
-            display: inline-block;
-        }
-
-        #inftable > div > div:first-child {
-            border: 0;
-            text-align: right;
-            margin-right: 20px;
-            width: 250px;
-        }
-
-        #inftable > div > div:nth-child(2) {
-            width: 40px;
-            font: 800 18px/36px sans-serif;
-            border: 3px solid #5e5e5e99;
-            text-align: center;
-        }
-
-        #inftable > div:not(.last-door) > div:nth-child(2) {
-            border-width: 3px 3px 0 3px;
-        }
-
-        #inftable > div:last-child > div:nth-child(2) {
-            border: 3px solid #5e5e5e99;
-        }
-
-        [class^="escalator"], [class^="staircase"], .elevator {
-            width: 30px;
-            height: 30px;
-            background-size: 30px;
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 5px;
-        }
-
-        .first-door > div:nth-child(2) {
-            border-radius: 5px 5px 0 0;
-        }
-
-        .last-door > div:nth-child(2) {
-            border-radius: 0 0 5px 5px;
-            margin-bottom: 5px;
-        }
-
-        .first-cabin > div:nth-child(2) {
-            border-radius: 20px 20px 0 0;
-        }
-
-        .last-cabin > div:nth-child(2) {
-            border-radius: 0 0 20px 20px;
-        }
-
-        .interchange {
-            border-radius: 10px;
-            width: fit-content;
-            height: 33px;
-            display: inline-block;
-            font: 600 16px/25px Raleway;
-            padding: 0;
-            border-width: 4px;
-            border-style: solid;
-        }
-
-        .exitnum {
-            font: 700 18px/2 Raleway;
-            vertical-align: middle;
-            margin: 0 5px;
-        }
-
-        #legendWrap.legend {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            padding: 5px;
-            width: 100%;
-            height: 60vw;
-            background: #ffffff;
-            border: 5px solid #000;
-            overflow: hidden;
-        }
-
-        .insideborder {
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            padding: 0 2px;
-        }
-
-        [data-target="#legendWrap"] {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            border: 3px solid #53535380;
-            border-radius: 50%;
-            height: 30px;
-            width: 30px;
-            background: #5e5e5e;
-            color: #fff;
-            font: 900 18px/1 "Raleway", "Source Han Sans", sans-serif;
-        }
-
-        #legendWrap, #platformChoserWrap {
-            position: fixed;
-        }
-
-        #legendWrap .inf {
-            background: url("Images/information.png") #fff no-repeat;
-            width: 100vw;
-            height: 60vw;
-            background-size: 100vw 60vw;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        #legendWrap.collapsing [data-target='#legendWrap'], #legendWrap.show [data-target='#legendWrap'] {
-            left: initial;
-            background: #000;
-            border-color: #5e5e5e80;
-            border-style: solid;
-            border-width: 0 0 5px 5px;
-            font: 700 16px/8px sans-serif;
-            padding: 6px;
-        }
-
-        .legend {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1003;
-        }
-
-        .legend .inner, #legendWrap {
-            position: relative;
-        }
-
-        .navbar.bottombar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1010;
-            height: 54px;
-        }
-
-        .navs_content {
-            display: inline-block;
-            width: 32vw;
-            height: 100%;
-            padding: 5px
-        }
-
-        .StationNumber span {
-            background: #fff;
-            color: #5e5e5e;
-        }
-
-        .glacier_search input, .glacier_search .input_group div {
-            width: 100%;
-            font: 16px/48px sans-serif;
-            opacity: 50%;
-            height: 48px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 1;
-            display: inline-block;
-            color: #5e5e5e;
-            border: 0;
-            padding: 0 10px;
-        }
-
-
-        .glacier_search .input_group {
-            display: inline-block;
-            position: relative;
-        }
-
-        .glacier_search input:focus {
-            outline: none;
-        }
-
-        .glacier_search .input_group div {
-            z-index: -1;
-        }
-
-        .glacier_search .input_group div:focus {
-            color: #000;
-        }
-
-        .glacier_search .text, .glacier_search .input_group {
-            display: inline-block;
-            vertical-align: middle;
-            height: 36px;
-            padding: 6px;
-
-        }
-
-        .glacier_search .input_group {
-            width: calc(100% - 150px);
-        }
-
-        .glacier_search .text {
-            font: 16px/36px sans-serif;
-            width: 80px;
-            margin: 0 12px;
-            text-align: center;
-        }
-
-        .glacier_search .searchGroup {
-            width: 100%;
-            height: 48px;
-        }
-
-        .glacier_search .glacier_search {
-            border: 1px solid #ececec;
-            border-radius: 20px;
-        }
-
-        .glacier_search ul {
-            color: #8e8e8e;
-            margin: 0;
-            list-style: none;
-            padding: 0;
-            overflow-y: scroll;
-        }
-
-        .glacier_search ul li {
-            padding: 15px 20px 15px 40px;
-            list-style: none;
-            font: 500 14px/1 sans-serif;
-            cursor: pointer;
-        }
-
-        .glacier_search ul li:last-child {
-            padding-bottom: 20px;
-            border-radius: 0 0 20px 20px
-        }
-
-        .glacier_search ul li:hover, .glacier_search ul li:focus {
-            background: rgba(0, 176, 176, 0.2);
-        }
-
-        .glacier_search .Highlight {
-            color: #000;
-        }
-
-        .glacier_search span.English {
-            font: 600 12px/1.2 "Raleway", sans-serif;
-        }
-
-        .glacier_search span.Chinese {
-            font: 400 16px/1 "SHS", sans-serif;
-        }
-
-        .glacier_search .Chinese, .glacier_search .English {
-            display: block;
-        }
-
-        .searchtoggle {
-            width: 40px;
-            height: 40px;
-            padding: 8px;
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            border-radius: 50%;
-            background: #efefef;
-            z-index: 999;
-            cursor: pointer
-        }
-
-        .searchtoggle:hover, .searchtoggle:focus {
-            background: #5e5e5e;
-        }
-
-        .searchtoggle img {
-            width: 24px;
-        }
-    </style>
-    <style>
-
-        body, .card, .icongroup, #stationlistWrap .selectLine, .stationlistcontent, #copyrightPage, #platformChoserWrap, #legendWrap#contactPage, #selectLineButton, #stationinfWrap, #platformChoserWrap, .p_header, .p_content, #SearchStation {
-            background: #fff;
-            color: #5e5e5e;
-        }
-
-        * {
-            color: #5e5e5e;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-            }
-
-            .glacier_search .English, .glaicer_search .Chinese {
-                color: #dedede;
-            }
-
-            .glacier_search .Highlight {
-                color: #fff;
-            }
-
-            .escalator {
-                background: url("Images/escalator@Dark.png") no-repeat transparent;
-            }
-
-            .staircase {
-                background: url("Images/staircase@Dark.png") no-repeat transparent;
-            }
-
-            .elevator {
-                background: url("Images/elevator@Dark.png") no-repeat transparent;
-            }
-
-            body, .card, .icongroup, #stationlistWrap .selectLine, .stationlistcontent, #copyrightPage, #platformChoserWrap, #legendWrap#contactPage, #selectLineButton, #stationinfWrap, #platformChoserWrap, .p_header, .p_content, #SearchStation {
-                background: #5e5e5e;
-                color: #fff;
-            }
-
-            #inftable > div > div:nth-child(2) {
-                border-color: #fff !important;
-            }
-        }
-
-        body.dark #inftable > div > div:nth-child(2) {
-            border-color: #fff !important;
-        }
-    </style>
-    <style>
-        @media screen and (max-width: 425px) {
-            .selectLine > span {
-                padding: 1px 1px 1px 10px;
-                margin: 5px 2px 2px -2px;
-                font-size: 18px;
-            }
-
-            #selectLineButton {
-                font-size: 14px;
-            }
-
-            .p_header {
-                padding: 7px 10px;
-            }
-        }
-
-        @media screen and (min-width: 425px) {
-
-        }
-    </style>
-    <script data-ad-client="ca-pub-2275811890061218" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
-<body>
-<div class="bodywrap">
-    <div class="mainscreen show" id="mainScreen">
-        <img class="bg-image" src="Images/Banner.png" alt="background">
-        <div class="data-color"></div>
-        <div class="navi card">
-            <div class="card-body">
-                <div class="icongroup" data-target="#stationlistWrap" data-toggle="collapse" role="button">
-                    <div class="wrap-center">
-                        <div class="exit"></div>
-                        <div class="text">
-                            <span>出入口指南</span><span>Exit Guide</span></div>
-                    </div>
-                </div>
-                <div class="icongroup" data-toggle="collapse" role="button" data-target="?routemapWrap">
-                    <div class="wrap-center">
-                        <div class="navi"></div>
-                        <div class="text"><span>运行地图</span><span>Routemap</span></div>
-                    </div>
-                </div>
-                <div class="icongroup" data-toggle="collapse" role="button" data-target="#copyrightPage">
-                    <div class="wrap-center">
-                        <div class="copyright"></div>
-                        <div class="text"><span>版权信息</span><span>Copyright</span></div>
-                    </div>
-                </div>
-                <div class="icongroup" data-toggle="collapse" role="button" data-target="#contactPage">
-                    <div class="wrap-center">
-                        <div class="help"></div>
-                        <div class="text"><span>反馈联系</span><span>Contact Us</span></div>
-                    </div>
-                </div>
-                <div class="icongroup" data-toggle="collapse" role="button" data-target="?wiki">
-                    <div class="wrap-center">
-                        <div class="wiki"></div>
-                        <div class="text"><span>全线网维基（设计中）</span><span>Wiki（Under Design）</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-info collapse" id="copyrightPage">
-        <div class="inner">
-            <div class="display-group">
-                <p>CC BY-NC-SA 3.0 共享，转载请注明协议<br>开源协议见Creative Common官网</p>
-                <p>版本号 v0.54(alpha) 内部专用</p>
-                <p>编辑开发者：霜羽<br>联络方式：GitHub @PassionPenguin<br>地铁族@霜羽 Bilibili@霜中寒翎</p>
-                <p>数据采集感谢:@ke1997 @HumanBeing @Neveadun @wchx1234567 @Nampou<br>您可在地铁族论坛找到他们</p>
-                <h6>由衷感谢<b><a href="https://www.jetbrains.com/">JetBrains</a></b>在我们代码编写过程中提供的支持</h6>
-            </div>
-            <button class="btn" data-toggle="collapse" data-target="#copyrightPage">× CLOSE ×</button>
-        </div>
-    </div>
-    <div id="stationlistWrap" class="collapse">
-        <div class="inner">
-            <div class="p_header">
-                <div class="p_header_leftbutton" data-toggle="collapse" data-target="#stationlistWrap">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="s-ion-icon">
-                        <path d="M427 234.625H167.296l119.702-119.702L256 85 85 256l171 171 29.922-29.924-118.626-119.701H427v-42.75z"></path>
-                    </svg>
-                </div>
-                <div class="p_header_content">
-                    <div class="selectLine"><span>选择线路：</span>
-                        <button class="display-group dropdown-toggle" type="button" id="selectLineButton"
-                                data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><span class="icon-Line1-GZ">  </span> <span
-                                class="name">广州地铁1号线 Line 1</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-line" aria-labelledby="selectLineButton">
-                            <a class="dropdown-item" href="#content_0" role="button" data-toggle="collapse"><span
-                                    class="icon-Line1-GZ">  </span> <span class="name">广州地铁1号线 Line 1</span></a>
-                            <a class="dropdown-item" href="#content_1" role="button" data-toggle="collapse"><span
-                                    class="icon-Line2-GZ">  </span> <span class="name">广州地铁2号线 Line 2</span></a>
-                            <a class="dropdown-item" href="#content_2" role="button" data-toggle="collapse"><span
-                                    class="icon-Line3-GZ">  </span> <span class="name">广州地铁3号线 Line 3</span></a>
-                            <a class="dropdown-item" href="#content_3" role="button" data-toggle="collapse"><span
-                                    class="icon-Line4-GZ">  </span> <span class="name">广州地铁4号线 Line 4</span></a>
-                            <a class="dropdown-item" href="#content_4" role="button" data-toggle="collapse"><span
-                                    class="icon-Line5-GZ">  </span> <span class="name">广州地铁5号线 Line 5</span></a>
-                            <a class="dropdown-item" href="#content_5" role="button" data-toggle="collapse"><span
-                                    class="icon-Line6-GZ">  </span> <span class="name">广州地铁6号线 Line 6</span></a>
-                            <a class="dropdown-item" href="#content_6" role="button" data-toggle="collapse"><span
-                                    class="icon-Line7-GZ">  </span> <span class="name">广州地铁7号线 Line 7</span></a>
-                            <a class="dropdown-item" href="#content_7" role="button" data-toggle="collapse"><span
-                                    class="icon-Line8-GZ">  </span> <span class="name">广州地铁8号线 Line 8</span></a>
-                            <a class="dropdown-item" href="#content_8" role="button" data-toggle="collapse"><span
-                                    class="icon-Line9-GZ">  </span> <span class="name">广州地铁9号线 Line 9</span></a>
-                            <a class="dropdown-item" href="#content_9" role="button" data-toggle="collapse"><span
-                                    class="icon-Line13-GZ">  </span> <span class="name">广州地铁13号线 Line 13</span></a>
-                            <a class="dropdown-item" href="#content_10" role="button" data-toggle="collapse"><span
-                                    class="icon-Line14-GZ">  </span> <span class="name">广州地铁14号线 Line 14</span></a>
-                            <a class="dropdown-item" href="#content_11" role="button" data-toggle="collapse"><span
-                                    class="icon-Line21-GZ">  </span> <span class="name">广州地铁21号线 Line 21</span></a>
-                            <a class="dropdown-item" href="#content_12" role="button" data-toggle="collapse"><span
-                                    class="icon-Line-GF">  </span> <span class="name">广州地铁广佛线 Line GF</span></a>
-                            <a class="dropdown-item" href="#content_13" role="button" data-toggle="collapse"><span
-                                    class="icon-LineAPM-GZ">  </span> <span class="name">珠新旅送系统 Line APM</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p_content">
-                <div class="innerData">
-                    <div id="stationlist">
-                        <div id="content_0" class="collapse stationlistcontent show" data-parent="#stationlist"><h2
-                                class="line-title">一号线 Line1</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>01</span></div>
-                                    <span>西塱</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>02</span></div>
-                                    <span>坑口</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>03</span></div>
-                                    <span>花地湾</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>04</span></div>
-                                    <span>芳村</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>05</span></div>
-                                    <span>黄沙</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>06</span></div>
-                                    <span>长寿路</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>07</span></div>
-                                    <span>陈家祠</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>08</span></div>
-                                    <span>西门口</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>09</span></div>
-                                    <span>公园前</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>10</span></div>
-                                    <span>农讲所</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>11</span></div>
-                                    <span>烈士陵园</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>12</span></div>
-                                    <span>东山口</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>13</span></div>
-                                    <span>杨箕</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>14</span></div>
-                                    <span>体育西路</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>15</span></div>
-                                    <span>体育中心</span></a><a>
-                                    <div class="StationNumber border-Line1-GZ"><span>1</span><span>16</span></div>
-                                    <span>广州东站</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_1" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">二号线 Line2</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>01</span></div>
-                                    <span>广州南站</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>02</span></div>
-                                    <span>石壁</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>03</span></div>
-                                    <span>会江</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>04</span></div>
-                                    <span>南浦</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>05</span></div>
-                                    <span>洛溪</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>06</span></div>
-                                    <span>南洲</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>07</span></div>
-                                    <span>东晓南</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>08</span></div>
-                                    <span>江泰路</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>09</span></div>
-                                    <span>昌岗</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>10</span></div>
-                                    <span>江南西</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>11</span></div>
-                                    <span>市二宫</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>12</span></div>
-                                    <span>海珠广场</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>13</span></div>
-                                    <span>公园前</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>14</span></div>
-                                    <span>纪念塔</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>15</span></div>
-                                    <span>越秀公园</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>16</span></div>
-                                    <span>广州火车站</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>17</span></div>
-                                    <span>三元里</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>18</span></div>
-                                    <span>飞翔公园</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>19</span></div>
-                                    <span>白云公园</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>20</span></div>
-                                    <span>白云文化广场</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>21</span></div>
-                                    <span>萧岗</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>22</span></div>
-                                    <span>江夏</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>23</span></div>
-                                    <span>黄边</span></a><a>
-                                    <div class="StationNumber border-Line2-GZ"><span>2</span><span>24</span></div>
-                                    <span>嘉禾望岗</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_2" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">三号线 Line3</h2>
-                            <div>
-                                <div><span>主线</span><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>01</span></div>
-                                    <span>番禺广场</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>02</span></div>
-                                    <span>市桥</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>03</span></div>
-                                    <span>汉溪长隆</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>04</span></div>
-                                    <span>大石</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>05</span></div>
-                                    <span>厦滘</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>06</span></div>
-                                    <span>沥滘</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>07</span></div>
-                                    <span>大塘</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>08</span></div>
-                                    <span>客村</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>09</span></div>
-                                    <span>广州塔</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>10</span></div>
-                                    <span>珠江新城</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>11</span></div>
-                                    <span>体育西路</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>12</span></div>
-                                    <span>石牌桥</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>13</span></div>
-                                    <span>岗顶</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>14</span></div>
-                                    <span>华师</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>15</span></div>
-                                    <span>五山</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>16</span></div>
-                                    <span>天河客运站</span></a></div>
-                                <div><span>支线</span><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>11</span></div>
-                                    <span>体育西路</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>17</span></div>
-                                    <span>林和西</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>18</span></div>
-                                    <span>广州东站</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>19</span></div>
-                                    <span>燕塘</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>20</span></div>
-                                    <span>梅花园</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>21</span></div>
-                                    <span>京溪南方医院</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>22</span></div>
-                                    <span>同和</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>23</span></div>
-                                    <span>永泰</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>24</span></div>
-                                    <span>白云大道北</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>25</span></div>
-                                    <span>嘉禾望岗</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>26</span></div>
-                                    <span>龙归</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>27</span></div>
-                                    <span>人和</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>28</span></div>
-                                    <span>高增</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>29</span></div>
-                                    <span>机场南 - 1号航站楼</span></a><a>
-                                    <div class="StationNumber border-Line3-GZ"><span>3</span><span>30</span></div>
-                                    <span>机场北 - 2号航站楼</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_3" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">四号线 Line4</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>01</span></div>
-                                    <span>南沙客运港</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>02</span></div>
-                                    <span>南横</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>03</span></div>
-                                    <span>塘坑</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>04</span></div>
-                                    <span>大涌</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>05</span></div>
-                                    <span>广隆</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>06</span></div>
-                                    <span>飞沙角</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>07</span></div>
-                                    <span>金洲</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>08</span></div>
-                                    <span>蕉门</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>09</span></div>
-                                    <span>黄阁</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>10</span></div>
-                                    <span>黄阁汽车城</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>11</span></div>
-                                    <span>庆盛</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>12</span></div>
-                                    <span>东涌</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>13</span></div>
-                                    <span>低涌</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>14</span></div>
-                                    <span>海傍</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>15</span></div>
-                                    <span>石碁</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>16</span></div>
-                                    <span>官桥</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>17</span></div>
-                                    <span>新造</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>18</span></div>
-                                    <span>大学城南</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>19</span></div>
-                                    <span>大学城北</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>20</span></div>
-                                    <span>官洲</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>21</span></div>
-                                    <span>万胜围</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>22</span></div>
-                                    <span>车陂南</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>23</span></div>
-                                    <span>车陂</span></a><a>
-                                    <div class="StationNumber border-Line4-GZ"><span>4</span><span>24</span></div>
-                                    <span>黄村</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_4" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">五号线 Line5</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>01</span></div>
-                                    <span>滘口</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>02</span></div>
-                                    <span>坦尾</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>03</span></div>
-                                    <span>中山八</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>04</span></div>
-                                    <span>西场</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>05</span></div>
-                                    <span>西村</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>06</span></div>
-                                    <span>广州火车站</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>07</span></div>
-                                    <span>小北</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>08</span></div>
-                                    <span>淘金</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>09</span></div>
-                                    <span>区庄</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>10</span></div>
-                                    <span>动物园</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>11</span></div>
-                                    <span>杨箕</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>12</span></div>
-                                    <span>五羊邨</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>13</span></div>
-                                    <span>珠江新城</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>14</span></div>
-                                    <span>猎德</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>15</span></div>
-                                    <span>潭村</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>16</span></div>
-                                    <span>员村</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>17</span></div>
-                                    <span>科韵路</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>18</span></div>
-                                    <span>车陂南</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>19</span></div>
-                                    <span>东圃</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>20</span></div>
-                                    <span>三溪</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>21</span></div>
-                                    <span>鱼珠</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>22</span></div>
-                                    <span>大沙地</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>23</span></div>
-                                    <span>大沙东</span></a><a>
-                                    <div class="StationNumber border-Line5-GZ"><span>5</span><span>24</span></div>
-                                    <span>文冲</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_5" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">六号线 Line6</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>01</span></div>
-                                    <span>浔峰岗</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>02</span></div>
-                                    <span>横沙</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>03</span></div>
-                                    <span>沙贝</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>04</span></div>
-                                    <span>河沙</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>05</span></div>
-                                    <span>坦尾</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>06</span></div>
-                                    <span>如意坊</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>07</span></div>
-                                    <span>黄沙</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>08</span></div>
-                                    <span>文化公园</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>09</span></div>
-                                    <span>一德路</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>10</span></div>
-                                    <span>海珠广场</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>11</span></div>
-                                    <span>北京路</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>12</span></div>
-                                    <span>团一大广场</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>13</span></div>
-                                    <span>东湖</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>14</span></div>
-                                    <span>东山口</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>15</span></div>
-                                    <span>区庄</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>16</span></div>
-                                    <span>黄花岗</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>17</span></div>
-                                    <span>沙河顶</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>18</span></div>
-                                    <span>沙河</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>19</span></div>
-                                    <span>天平架</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>20</span></div>
-                                    <span>燕塘</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>21</span></div>
-                                    <span>天河客运站</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>22</span></div>
-                                    <span>长湴</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>23</span></div>
-                                    <span>植物园</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>24</span></div>
-                                    <span>龙洞</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>25</span></div>
-                                    <span>柯木塱</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>26</span></div>
-                                    <span>高塘石</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>27</span></div>
-                                    <span>黄陂</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>28</span></div>
-                                    <span>金峰</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>29</span></div>
-                                    <span>暹岗</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>30</span></div>
-                                    <span>苏元</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>31</span></div>
-                                    <span>萝岗</span></a><a>
-                                    <div class="StationNumber border-Line6-GZ"><span>6</span><span>32</span></div>
-                                    <span>香雪</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_6" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">七号线 Line7</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>01</span></div>
-                                    <span>广州南站</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>02</span></div>
-                                    <span>石壁</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>03</span></div>
-                                    <span>谢村</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>04</span></div>
-                                    <span>钟村</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>05</span></div>
-                                    <span>汉溪长隆</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>06</span></div>
-                                    <span>南村万博</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>07</span></div>
-                                    <span>员岗</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>08</span></div>
-                                    <span>板桥</span></a><a>
-                                    <div class="StationNumber border-Line7-GZ"><span>7</span><span>09</span></div>
-                                    <span>大学城南</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_7" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">八号线 Line8</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>01</span></div>
-                                    <span>文化公园</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>02</span></div>
-                                    <span>同福西</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>03</span></div>
-                                    <span>凤凰新村</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>04</span></div>
-                                    <span>沙园</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>05</span></div>
-                                    <span>宝岗大道</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>06</span></div>
-                                    <span>昌岗</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>07</span></div>
-                                    <span>晓港</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>08</span></div>
-                                    <span>中大</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>09</span></div>
-                                    <span>鹭江</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>10</span></div>
-                                    <span>客村</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>11</span></div>
-                                    <span>赤岗</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>12</span></div>
-                                    <span>磨碟沙</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>13</span></div>
-                                    <span>新港东</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>14</span></div>
-                                    <span>琶洲</span></a><a>
-                                    <div class="StationNumber border-Line8-GZ"><span>8</span><span>15</span></div>
-                                    <span>万胜围</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_8" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">九号线 Line9</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>01</span></div>
-                                    <span>飞鹅岭</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>02</span></div>
-                                    <span>花都汽车城</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>03</span></div>
-                                    <span>广州北站</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>04</span></div>
-                                    <span>花城路</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>05</span></div>
-                                    <span>花果山公园</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>06</span></div>
-                                    <span>花都广场</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>07</span></div>
-                                    <span>马鞍山公园</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>08</span></div>
-                                    <span>莲塘</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>09</span></div>
-                                    <span>清㘵</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>10</span></div>
-                                    <span>清塘</span></a><a>
-                                    <div class="StationNumber border-Line9-GZ"><span>9</span><span>11</span></div>
-                                    <span>高增</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_9" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">十三号线 Line13</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>01</span></div>
-                                    <span>鱼珠</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>02</span></div>
-                                    <span>裕丰围</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>03</span></div>
-                                    <span>双岗</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>04</span></div>
-                                    <span>南海神庙</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>05</span></div>
-                                    <span>夏园</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>06</span></div>
-                                    <span>南岗</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>07</span></div>
-                                    <span>沙村</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>08</span></div>
-                                    <span>白江</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>09</span></div>
-                                    <span>新塘</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>10</span></div>
-                                    <span>官湖</span></a><a>
-                                    <div class="StationNumber border-Line13-GZ"><span>13</span><span>11</span></div>
-                                    <span>新沙</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_10" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">十四号线 Line14</h2>
-                            <div>
-                                <div><span>主线</span><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>01</span></div>
-                                    <span>嘉禾望岗</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>02</span></div>
-                                    <span>白云东平</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>03</span></div>
-                                    <span>夏良</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>04</span></div>
-                                    <span>太和</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>05</span></div>
-                                    <span>竹料</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>06</span></div>
-                                    <span>钟落潭</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>07</span></div>
-                                    <span>马沥</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>08</span></div>
-                                    <span>新和</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>09</span></div>
-                                    <span>太平</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>10</span></div>
-                                    <span>神岗</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>11</span></div>
-                                    <span>赤草</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>12</span></div>
-                                    <span>从化客运站</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>13</span></div>
-                                    <span>东风</span></a></div>
-                                <div><span>支线</span><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>8</span></div>
-                                    <span>新和</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>14</span></div>
-                                    <span>红卫</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>15</span></div>
-                                    <span>新南</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>16</span></div>
-                                    <span>枫下</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>17</span></div>
-                                    <span>知识城</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>18</span></div>
-                                    <span>何棠下</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>19</span></div>
-                                    <span>旺村</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>20</span></div>
-                                    <span>汤村</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>21</span></div>
-                                    <span>镇龙北</span></a><a>
-                                    <div class="StationNumber border-Line14-GZ"><span>14</span><span>22</span></div>
-                                    <span>镇龙</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_11" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">二十一号线 Line21</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>01</span></div>
-                                    <span>员村</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>02</span></div>
-                                    <span>天河公园</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>03</span></div>
-                                    <span>棠东</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>04</span></div>
-                                    <span>黄村</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>05</span></div>
-                                    <span>大观南路</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>06</span></div>
-                                    <span>天河智慧城</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>07</span></div>
-                                    <span>神舟路</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>08</span></div>
-                                    <span>科学城</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>09</span></div>
-                                    <span>苏元</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>10</span></div>
-                                    <span>水西</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>11</span></div>
-                                    <span>长平</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>12</span></div>
-                                    <span>金坑</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>13</span></div>
-                                    <span>镇龙西</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>14</span></div>
-                                    <span>镇龙</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>15</span></div>
-                                    <span>中新</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>16</span></div>
-                                    <span>坑贝</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>17</span></div>
-                                    <span>凤岗</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>18</span></div>
-                                    <span>朱村</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>19</span></div>
-                                    <span>山田</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>20</span></div>
-                                    <span>钟岗</span></a><a>
-                                    <div class="StationNumber border-Line21-GZ"><span>21</span><span>21</span></div>
-                                    <span>增城广场</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_12" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">广佛线 LineGF</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>01</span></div>
-                                    <span>新城东</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>02</span></div>
-                                    <span>东平</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>03</span></div>
-                                    <span>世纪莲</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>04</span></div>
-                                    <span>澜石</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>05</span></div>
-                                    <span>魁奇路</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>06</span></div>
-                                    <span>季华园</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>07</span></div>
-                                    <span>同济路</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>08</span></div>
-                                    <span>祖庙</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>09</span></div>
-                                    <span>普君北路</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>10</span></div>
-                                    <span>朝安</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>11</span></div>
-                                    <span>桂城</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>12</span></div>
-                                    <span>南桂路</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>13</span></div>
-                                    <span>𧒽岗</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>14</span></div>
-                                    <span>千灯湖</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>15</span></div>
-                                    <span>金融高新区</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>16</span></div>
-                                    <span>龙溪</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>17</span></div>
-                                    <span>菊树</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>18</span></div>
-                                    <span>西塱</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>19</span></div>
-                                    <span>鹤洞</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>20</span></div>
-                                    <span>沙涌</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>21</span></div>
-                                    <span>燕岗</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>22</span></div>
-                                    <span>石溪</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>23</span></div>
-                                    <span>南洲</span></a><a>
-                                    <div class="StationNumber border-Line-GF"><span>GF</span><span>24</span></div>
-                                    <span>沥滘</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_13" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">APM线 LineAPM</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>01</span></div>
-                                    <span>广州塔</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>02</span></div>
-                                    <span>海心沙</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>03</span></div>
-                                    <span>大剧院</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>04</span></div>
-                                    <span>花城大道</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>05</span></div>
-                                    <span>妇儿中心</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>06</span></div>
-                                    <span>黄埔大道</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>07</span></div>
-                                    <span>天河南</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>08</span></div>
-                                    <span>体育中心南</span></a><a>
-                                    <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>09</span></div>
-                                    <span>林和西</span></a></div>
-                            </div>
-                        </div>
-                        <div id="content_14" class="collapse stationlistcontent" data-parent="#stationlist"><h2
-                                class="line-title">海珠有轨试验线线 THZ1</h2>
-                            <div>
-                                <div><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>01</span></div>
-                                    <span>广州塔</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>02</span></div>
-                                    <span>广州塔东</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>03</span></div>
-                                    <span>猎德大桥南</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>04</span></div>
-                                    <span>琶醍</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>05</span></div>
-                                    <span>南风</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>06</span></div>
-                                    <span>会展西</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>07</span></div>
-                                    <span>会展中</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>08</span></div>
-                                    <span>会展东</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>09</span></div>
-                                    <span>琶洲大桥南</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>10</span></div>
-                                    <span>琶洲塔</span></a><a>
-                                    <div class="StationNumber border-THZ1-GZ"><span>THZ1</span><span>11</span></div>
-                                    <span>万胜围</span></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="SearchStation" class="collapse">
-        <div class="inner">
-            <div class="p_header">
-                <div class="p_header_leftbutton" data-toggle="collapse" data-target="#SearchStation">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="s-ion-icon">
-                        <path d="M427 234.625H167.296l119.702-119.702L256 85 85 256l171 171 29.922-29.924-118.626-119.701H427v-42.75z"></path>
-                    </svg>
-                </div>
-                <div class="p_header_content">
-                    <div class="glacier_search">
-                        <div class="searchGroup">
-                            <div class="text">站点搜索</div>
-                            <div class="input_group">
-                                <label for="inputElement"></label><input type="text" id="inputElement">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p_content">
-                <div class="glacier_search">
-                    <ul id="dropdown">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="stationinfWrap" class="collapse">
-        <div class="inner">
-            <div class="p_header">
-                <div class="p_header_leftbutton" data-toggle="collapse" data-target="#stationinfWrap">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="s-ion-icon">
-                        <path d="M427 234.625H167.296l119.702-119.702L256 85 85 256l171 171 29.922-29.924-118.626-119.701H427v-42.75z"></path>
-                    </svg>
-                </div>
-                <div class="p_header_content">
-                    <h2 class="p_header-title" id="stationinfTitle"></h2>
-                </div>
-            </div>
-            <div class="p_content">
-                <div class="innerData"></div>
-                <div class="legend">
-                    <div class="collapse" id="legendWrap">
-                        <div class="bg-dark p-4">
-                            <span data-toggle="collapse" data-target="#legendWrap" data-action="close">×</span>
-                            <div class="inf"></div>
-                        </div>
-                    </div>
-                </div>
-                <button class="legendbutton" data-toggle="collapse" data-target="#legendWrap">?</button>
-            </div>
-        </div>
-    </div>
-    <div class="card card-body collapse" id="platformChoserWrap">
-        <div class="inner">
-            <div class="selectLine"><span>请选择您的乘车方向</span>
-                <div class="innerData">
-                </div>
-            </div>
-            <span data-toggle="collapse" data-target="#platformChoserWrap" data-action="close">×</span>
-        </div>
-    </div>
-    <div class="card card-body collapse" id="contactPage">
-        <div class="inner">
-            <span data-toggle="collapse" data-target="#contactPage" data-action="close">×</span>
-            <p>GitHub issues Report: <a href="https://github.com/PassionPenguin/PassionPenguin.github.io/issues">Issues
-                -
-                GitHub</a></p>
-            <p>Contact Us: <a href="mailto:penguin.zhang@qq.com">via Mail</a></p>
-        </div>
-    </div>
-    <div class="bottombar navbar">
-        <div class="navs_content"></div>
-        <div class="navs_content"></div>
-        <div class="navs_content"></div>
-    </div>
-</div>
-<div class="searchtoggle" data-role="button" data-toggle="collapse" data-target="#SearchStation">
-    <img src="Images/search.svg" alt="SearchButton">
-</div>
-</body>
-</html>
-<script src="Scripts/lib.js"></script>
-<script src="Data/stationinf.js"></script>
-<script src="Data/stationlist.js"></script>
-<script src="Data/stationnum.js"></script>
-<script src="Data/stationplat.js"></script>
-<script>
-    $(function () {
-        $(function () {
-            let res;
-            let d = document.getElementById("inputElement");
-            let o = document.getElementById("dropdown");
-            d.oninput = function () {
-                o.innerHTML = ""; // Clear Dropdown Data 清空下拉数据
-                res = []; // Clear Data 清空数据
-                let k = d.value;
-                f_s_list.forEach(element => {
-                    console.log(element);
-                    element[0].search(new RegExp(k, "ig")) !== -1 || element[1].search(new RegExp(k, "ig")) !== -1 ? res.push(f_s_list.indexOf(element)) : void (0);
-                });
-                res.forEach(element => {
-                    let li = document.createElement("li");
-                    let a = document.createElement("span");
-                    let b = document.createElement("span");
-                    a.classList.add("Chinese");
-                    b.classList.add("English");
-                    a.innerHTML = f_s_list[element][0].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
-                    b.innerHTML = f_s_list[element][1].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
-                    li.appendChild(a);
-                    li.appendChild(b);
-                    li.onclick = () => choosePlatform(element);
-                    o.appendChild(li);
-                });
-            }
-        });
-    });
 
-    $(function () {
-        $("[data-target='#legendWrap']").click(function () {
-            if (doce.classList.contains("showinf")) {
-                doce.classList.remove("showinf");
-                body.classList.remove("showinf");
-            } else {
-                doce.classList.add("showinf");
-                body.classList.add("showinf");
-            }
-        });
-        $(".dropdown-line a").click(function () {
-            $("#selectLineButton")[0].innerHTML = this.innerHTML;
-        });
-        $("#content_0")[0].classList.add("show");
-        let d = $("#stationlist a");
-        for (let i = 0; i < d.length; i++) {
-            d[i].onclick = function () {
-                let a = this.children[0].children;
-                choosePlatform(s_num[linedata.indexOf(a[0].innerText)][parseInt(a[1].innerText) - 1]);
+<body>
+<div class="app" id="app">
+    <div class="mask collapse" id="mask"></div>
+    <!-- TOP NAV -->
+    <nav class="fixed-top nav search">
+        <div class="content">
+            <h1>广州地铁车站信息
+                <small>Station INFO</small></h1>
+        </div>
+        <div class="wrap_search">
+            <i class="icon icon_search">
+                <img src="assets/media/vectors/ic_search.svg" alt="search"></i>
+            <label for="searchStation"></label>
+            <input type="text" id="searchStation" placeholder="您想要前往...">
+            <button class="btn bg_primary">搜索</button>
+        </div>
+    </nav>
+    <!-- MAIN CONTENT -->
+    <div class="main-content container stationinfo">
+        <div class="selectline">
+            <div class="leftpane">
+                <a class="t_selectLine" href="#content_0" data-toggle="collapse" data-role="button"
+                   data-target="#content_0">
+                    <span class="icon-Line1-GZ"></span>
+                    <span class="lineName">Line 1</span>
+                </a>
+                <a class="t_selectLine" href="#content_1" data-toggle="collapse" data-role="button"
+                   data-target="#content_1">
+                    <span class="icon-Line2-GZ"></span>
+                    <span class="lineName">Line 2</span>
+                </a>
+                <a class="t_selectLine" href="#content_2" data-toggle="collapse" data-role="button"
+                   data-target="#content_2">
+                    <span class="icon-Line3-GZ"></span>
+                    <span class="lineName">Line 3</span>
+                </a>
+                <a class="t_selectLine" href="#content_3" data-toggle="collapse" data-role="button"
+                   data-target="#content_3">
+                    <span class="icon-Line4-GZ"></span>
+                    <span class="lineName">Line 4</span>
+                </a>
+                <a class="t_selectLine" href="#content_4" data-toggle="collapse" data-role="button"
+                   data-target="#content_4">
+                    <span class="icon-Line5-GZ"></span>
+                    <span class="lineName">Line 5</span>
+                </a>
+                <a class="t_selectLine" href="#content_5" data-toggle="collapse" data-role="button"
+                   data-target="#content_5">
+                    <span class="icon-Line6-GZ"></span>
+                    <span class="lineName">Line 6</span>
+                </a>
+                <a class="t_selectLine" href="#content_6" data-toggle="collapse" data-role="button"
+                   data-target="#content_6">
+                    <span class="icon-Line7-GZ"></span>
+                    <span class="lineName">Line 7</span>
+                </a>
+                <a class="t_selectLine" href="#content_7" data-toggle="collapse" data-role="button"
+                   data-target="#content_7">
+                    <span class="icon-Line8-GZ"></span>
+                    <span class="lineName">Line 8</span>
+                </a>
+                <a class="t_selectLine" href="#content_8" data-toggle="collapse" data-role="button"
+                   data-target="#content_8">
+                    <span class="icon-Line9-GZ"></span>
+                    <span class="lineName">Line 9</span>
+                </a>
+                <a class="t_selectLine" href="#content_9" data-toggle="collapse" data-role="button"
+                   data-target="#content_9">
+                    <span class="icon-Line13-GZ"></span>
+                    <span class="lineName">Line 13</span>
+                </a>
+                <a class="t_selectLine" href="#content_10" data-toggle="collapse" data-role="button"
+                   data-target="#content_10">
+                    <span class="icon-Line14-GZ"></span>
+                    <span class="lineName">Line 14</span>
+                </a>
+                <a class="t_selectLine" href="#content_11" data-toggle="collapse" data-role="button"
+                   data-target="#content_11">
+                    <span class="icon-Line21-GZ"></span>
+                    <span class="lineName">Line 21</span>
+                </a>
+                <a class="t_selectLine" href="#content_12" data-toggle="collapse" data-role="button"
+                   data-target="#content_12">
+                    <span class="icon-Line-GF"></span>
+                    <span class="lineName">Line GF</span>
+                </a>
+                <a class="t_selectLine" href="#content_13" data-toggle="collapse" data-role="button"
+                   data-target="#content_13">
+                    <span class="icon-LineAPM-GZ"></span>
+                    <span class="lineName">Line APM</span>
+                </a>
+            </div>
+            <div class="rightpane">
+                <div id="stationlist">
+                    <div id="content_0" class="stationlistcontent show" data-parent="#stationlist"><h2
+                            class="line-title">一号线 Line1</h2><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>01</span></div>
+                        <span>西塱</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>02</span></div>
+                        <span>坑口</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>03</span></div>
+                        <span>花地湾</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>04</span></div>
+                        <span>芳村</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>05</span></div>
+                        <span>黄沙</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>06</span></div>
+                        <span>长寿路</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>07</span></div>
+                        <span>陈家祠</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>08</span></div>
+                        <span>西门口</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>09</span></div>
+                        <span>公园前</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>10</span></div>
+                        <span>农讲所</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>11</span></div>
+                        <span>烈士陵园</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>12</span></div>
+                        <span>东山口</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>13</span></div>
+                        <span>杨箕</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>14</span></div>
+                        <span>体育西路</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>15</span></div>
+                        <span>体育中心</span></a><a>
+                        <div class="StationNumber border-Line1-GZ"><span>1</span><span>16</span></div>
+                        <span>广州东站</span></a></div>
+                    <div id="content_1" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">二号线 Line2</h2><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>01</span></div>
+                        <span>广州南站</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>02</span></div>
+                        <span>石壁</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>03</span></div>
+                        <span>会江</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>04</span></div>
+                        <span>南浦</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>05</span></div>
+                        <span>洛溪</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>06</span></div>
+                        <span>南洲</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>07</span></div>
+                        <span>东晓南</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>08</span></div>
+                        <span>江泰路</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>09</span></div>
+                        <span>昌岗</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>10</span></div>
+                        <span>江南西</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>11</span></div>
+                        <span>市二宫</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>12</span></div>
+                        <span>海珠广场</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>13</span></div>
+                        <span>公园前</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>14</span></div>
+                        <span>纪念塔</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>15</span></div>
+                        <span>越秀公园</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>16</span></div>
+                        <span>广州火车站</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>17</span></div>
+                        <span>三元里</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>18</span></div>
+                        <span>飞翔公园</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>19</span></div>
+                        <span>白云公园</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>20</span></div>
+                        <span>白云文化广场</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>21</span></div>
+                        <span>萧岗</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>22</span></div>
+                        <span>江夏</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>23</span></div>
+                        <span>黄边</span></a><a>
+                        <div class="StationNumber border-Line2-GZ"><span>2</span><span>24</span></div>
+                        <span>嘉禾望岗</span></a></div>
+                    <div id="content_2" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">三号线 Line3</h2><span>主线</span><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>01</span></div>
+                        <span>番禺广场</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>02</span></div>
+                        <span>市桥</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>03</span></div>
+                        <span>汉溪长隆</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>04</span></div>
+                        <span>大石</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>05</span></div>
+                        <span>厦滘</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>06</span></div>
+                        <span>沥滘</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>07</span></div>
+                        <span>大塘</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>08</span></div>
+                        <span>客村</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>09</span></div>
+                        <span>广州塔</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>10</span></div>
+                        <span>珠江新城</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>11</span></div>
+                        <span>体育西路</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>12</span></div>
+                        <span>石牌桥</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>13</span></div>
+                        <span>岗顶</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>14</span></div>
+                        <span>华师</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>15</span></div>
+                        <span>五山</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>16</span></div>
+                        <span>天河客运站</span></a><span>支线</span><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>11</span></div>
+                        <span>体育西路</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>17</span></div>
+                        <span>林和西</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>18</span></div>
+                        <span>广州东站</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>19</span></div>
+                        <span>燕塘</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>20</span></div>
+                        <span>梅花园</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>21</span></div>
+                        <span>京溪南方医院</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>22</span></div>
+                        <span>同和</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>23</span></div>
+                        <span>永泰</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>24</span></div>
+                        <span>白云大道北</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>25</span></div>
+                        <span>嘉禾望岗</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>26</span></div>
+                        <span>龙归</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>27</span></div>
+                        <span>人和</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>28</span></div>
+                        <span>高增</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>29</span></div>
+                        <span>机场南 - 1号航站楼</span></a><a>
+                        <div class="StationNumber border-Line3-GZ"><span>3</span><span>30</span></div>
+                        <span>机场北 - 2号航站楼</span></a></div>
+                    <div id="content_3" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">四号线 Line4</h2><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>01</span></div>
+                        <span>南沙客运港</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>02</span></div>
+                        <span>南横</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>03</span></div>
+                        <span>塘坑</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>04</span></div>
+                        <span>大涌</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>05</span></div>
+                        <span>广隆</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>06</span></div>
+                        <span>飞沙角</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>07</span></div>
+                        <span>金洲</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>08</span></div>
+                        <span>蕉门</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>09</span></div>
+                        <span>黄阁</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>10</span></div>
+                        <span>黄阁汽车城</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>11</span></div>
+                        <span>庆盛</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>12</span></div>
+                        <span>东涌</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>13</span></div>
+                        <span>低涌</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>14</span></div>
+                        <span>海傍</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>15</span></div>
+                        <span>石碁</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>16</span></div>
+                        <span>官桥</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>17</span></div>
+                        <span>新造</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>18</span></div>
+                        <span>大学城南</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>19</span></div>
+                        <span>大学城北</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>20</span></div>
+                        <span>官洲</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>21</span></div>
+                        <span>万胜围</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>22</span></div>
+                        <span>车陂南</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>23</span></div>
+                        <span>车陂</span></a><a>
+                        <div class="StationNumber border-Line4-GZ"><span>4</span><span>24</span></div>
+                        <span>黄村</span></a></div>
+                    <div id="content_4" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">五号线 Line5</h2><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>01</span></div>
+                        <span>滘口</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>02</span></div>
+                        <span>坦尾</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>03</span></div>
+                        <span>中山八</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>04</span></div>
+                        <span>西场</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>05</span></div>
+                        <span>西村</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>06</span></div>
+                        <span>广州火车站</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>07</span></div>
+                        <span>小北</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>08</span></div>
+                        <span>淘金</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>09</span></div>
+                        <span>区庄</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>10</span></div>
+                        <span>动物园</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>11</span></div>
+                        <span>杨箕</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>12</span></div>
+                        <span>五羊邨</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>13</span></div>
+                        <span>珠江新城</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>14</span></div>
+                        <span>猎德</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>15</span></div>
+                        <span>潭村</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>16</span></div>
+                        <span>员村</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>17</span></div>
+                        <span>科韵路</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>18</span></div>
+                        <span>车陂南</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>19</span></div>
+                        <span>东圃</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>20</span></div>
+                        <span>三溪</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>21</span></div>
+                        <span>鱼珠</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>22</span></div>
+                        <span>大沙地</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>23</span></div>
+                        <span>大沙东</span></a><a>
+                        <div class="StationNumber border-Line5-GZ"><span>5</span><span>24</span></div>
+                        <span>文冲</span></a></div>
+                    <div id="content_5" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">六号线 Line6</h2><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>01</span></div>
+                        <span>浔峰岗</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>02</span></div>
+                        <span>横沙</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>03</span></div>
+                        <span>沙贝</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>04</span></div>
+                        <span>河沙</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>05</span></div>
+                        <span>坦尾</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>06</span></div>
+                        <span>如意坊</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>07</span></div>
+                        <span>黄沙</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>08</span></div>
+                        <span>文化公园</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>09</span></div>
+                        <span>一德路</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>10</span></div>
+                        <span>海珠广场</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>11</span></div>
+                        <span>北京路</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>12</span></div>
+                        <span>团一大广场</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>13</span></div>
+                        <span>东湖</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>14</span></div>
+                        <span>东山口</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>15</span></div>
+                        <span>区庄</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>16</span></div>
+                        <span>黄花岗</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>17</span></div>
+                        <span>沙河顶</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>18</span></div>
+                        <span>沙河</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>19</span></div>
+                        <span>天平架</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>20</span></div>
+                        <span>燕塘</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>21</span></div>
+                        <span>天河客运站</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>22</span></div>
+                        <span>长湴</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>23</span></div>
+                        <span>植物园</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>24</span></div>
+                        <span>龙洞</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>25</span></div>
+                        <span>柯木塱</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>26</span></div>
+                        <span>高塘石</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>27</span></div>
+                        <span>黄陂</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>28</span></div>
+                        <span>金峰</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>29</span></div>
+                        <span>暹岗</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>30</span></div>
+                        <span>苏元</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>31</span></div>
+                        <span>萝岗</span></a><a>
+                        <div class="StationNumber border-Line6-GZ"><span>6</span><span>32</span></div>
+                        <span>香雪</span></a></div>
+                    <div id="content_6" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">七号线 Line7</h2><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>01</span></div>
+                        <span>广州南站</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>02</span></div>
+                        <span>石壁</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>03</span></div>
+                        <span>谢村</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>04</span></div>
+                        <span>钟村</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>05</span></div>
+                        <span>汉溪长隆</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>06</span></div>
+                        <span>南村万博</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>07</span></div>
+                        <span>员岗</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>08</span></div>
+                        <span>板桥</span></a><a>
+                        <div class="StationNumber border-Line7-GZ"><span>7</span><span>09</span></div>
+                        <span>大学城南</span></a></div>
+                    <div id="content_7" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">八号线 Line8</h2><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>14</span></div>
+                        <span>文化公园</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>15</span></div>
+                        <span>同福西</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>16</span></div>
+                        <span>凤凰新村</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>17</span></div>
+                        <span>沙园</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>18</span></div>
+                        <span>宝岗大道</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>19</span></div>
+                        <span>昌岗</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>20</span></div>
+                        <span>晓港</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>21</span></div>
+                        <span>中大</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>22</span></div>
+                        <span>鹭江</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>23</span></div>
+                        <span>客村</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>24</span></div>
+                        <span>赤岗</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>25</span></div>
+                        <span>磨碟沙</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>26</span></div>
+                        <span>新港东</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>27</span></div>
+                        <span>琶洲</span></a><a>
+                        <div class="StationNumber border-Line8-GZ"><span>8</span><span>28</span></div>
+                        <span>万胜围</span></a></div>
+                    <div id="content_8" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">九号线 Line9</h2><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>01</span></div>
+                        <span>飞鹅岭</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>02</span></div>
+                        <span>花都汽车城</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>03</span></div>
+                        <span>广州北站</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>04</span></div>
+                        <span>花城路</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>05</span></div>
+                        <span>花果山公园</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>06</span></div>
+                        <span>花都广场</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>07</span></div>
+                        <span>马鞍山公园</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>08</span></div>
+                        <span>莲塘</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>09</span></div>
+                        <span>清㘵</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>10</span></div>
+                        <span>清塘</span></a><a>
+                        <div class="StationNumber border-Line9-GZ"><span>9</span><span>11</span></div>
+                        <span>高增</span></a></div>
+                    <div id="content_9" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">十三号线 Line13</h2><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>01</span></div>
+                        <span>鱼珠</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>02</span></div>
+                        <span>裕丰围</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>03</span></div>
+                        <span>双岗</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>04</span></div>
+                        <span>南海神庙</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>05</span></div>
+                        <span>夏园</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>06</span></div>
+                        <span>南岗</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>07</span></div>
+                        <span>沙村</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>08</span></div>
+                        <span>白江</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>09</span></div>
+                        <span>新塘</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>10</span></div>
+                        <span>官湖</span></a><a>
+                        <div class="StationNumber border-Line13-GZ"><span>13</span><span>11</span></div>
+                        <span>新沙</span></a></div>
+                    <div id="content_10" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">十四号线 Line14</h2><span>主线</span><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>01</span></div>
+                        <span>嘉禾望岗</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>02</span></div>
+                        <span>白云东平</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>03</span></div>
+                        <span>夏良</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>04</span></div>
+                        <span>太和</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>05</span></div>
+                        <span>竹料</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>06</span></div>
+                        <span>钟落潭</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>07</span></div>
+                        <span>马沥</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>08</span></div>
+                        <span>新和</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>09</span></div>
+                        <span>太平</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>10</span></div>
+                        <span>神岗</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>11</span></div>
+                        <span>赤草</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>12</span></div>
+                        <span>从化客运站</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>13</span></div>
+                        <span>东风</span></a><span>支线</span><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>08</span></div>
+                        <span>新和</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>14</span></div>
+                        <span>红卫</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>15</span></div>
+                        <span>新南</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>16</span></div>
+                        <span>枫下</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>17</span></div>
+                        <span>知识城</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>18</span></div>
+                        <span>何棠下</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>19</span></div>
+                        <span>旺村</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>20</span></div>
+                        <span>汤村</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>21</span></div>
+                        <span>镇龙北</span></a><a>
+                        <div class="StationNumber border-Line14-GZ"><span>14</span><span>22</span></div>
+                        <span>镇龙</span></a></div>
+                    <div id="content_11" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">二十一号线 Line21</h2><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>01</span></div>
+                        <span>员村</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>02</span></div>
+                        <span>天河公园</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>03</span></div>
+                        <span>棠东</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>04</span></div>
+                        <span>黄村</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>05</span></div>
+                        <span>大观南路</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>06</span></div>
+                        <span>天河智慧城</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>07</span></div>
+                        <span>神舟路</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>08</span></div>
+                        <span>科学城</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>09</span></div>
+                        <span>苏元</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>10</span></div>
+                        <span>水西</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>11</span></div>
+                        <span>长平</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>12</span></div>
+                        <span>金坑</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>13</span></div>
+                        <span>镇龙西</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>14</span></div>
+                        <span>镇龙</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>15</span></div>
+                        <span>中新</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>16</span></div>
+                        <span>坑贝</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>17</span></div>
+                        <span>凤岗</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>18</span></div>
+                        <span>朱村</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>19</span></div>
+                        <span>山田</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>20</span></div>
+                        <span>钟岗</span></a><a>
+                        <div class="StationNumber border-Line21-GZ"><span>21</span><span>21</span></div>
+                        <span>增城广场</span></a></div>
+                    <div id="content_12" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">广佛线 LineGF</h2><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>01</span></div>
+                        <span>新城东</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>02</span></div>
+                        <span>东平</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>03</span></div>
+                        <span>世纪莲</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>04</span></div>
+                        <span>澜石</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>05</span></div>
+                        <span>魁奇路</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>06</span></div>
+                        <span>季华园</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>07</span></div>
+                        <span>同济路</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>08</span></div>
+                        <span>祖庙</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>09</span></div>
+                        <span>普君北路</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>10</span></div>
+                        <span>朝安</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>11</span></div>
+                        <span>桂城</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>12</span></div>
+                        <span>南桂路</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>13</span></div>
+                        <span>𧒽岗</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>14</span></div>
+                        <span>千灯湖</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>15</span></div>
+                        <span>金融高新区</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>16</span></div>
+                        <span>龙溪</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>17</span></div>
+                        <span>菊树</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>18</span></div>
+                        <span>西塱</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>19</span></div>
+                        <span>鹤洞</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>20</span></div>
+                        <span>沙涌</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>21</span></div>
+                        <span>燕岗</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>22</span></div>
+                        <span>石溪</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>23</span></div>
+                        <span>南洲</span></a><a>
+                        <div class="StationNumber border-Line-GF"><span>GF</span><span>24</span></div>
+                        <span>沥滘</span></a></div>
+                    <div id="content_13" class="collapse stationlistcontent" data-parent="#stationlist"><h2
+                            class="line-title">APM线 LineAPM</h2><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>01</span></div>
+                        <span>广州塔</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>02</span></div>
+                        <span>海心沙</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>03</span></div>
+                        <span>大剧院</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>04</span></div>
+                        <span>花城大道</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>05</span></div>
+                        <span>妇儿中心</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>06</span></div>
+                        <span>黄埔大道</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>07</span></div>
+                        <span>天河南</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>08</span></div>
+                        <span>体育中心南</span></a><a>
+                        <div class="StationNumber border-LineAPM-GZ"><span>APM</span><span>09</span></div>
+                        <span>林和西</span></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-body collapse" id="platformChoserWrap">
+            <div class="inner">
+                <div class="selectLine">
+                    <h1>请选择您的乘车方向
+                        <small>Select Your Platform</small></h1>
+                    <div class="innerData">
+                    </div>
+                </div>
+                <span data-toggle="collapse" data-target="#platformChoserWrap" data-action="close"><span
+                        data-toggle="collapse" data-target="#mask" data-action="close">×</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BOTTOM NAV -->
+<nav class="fixed-bottom nav navigation">
+    <a href="index.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/home_black.svg" alt="">
+            <span>主页</span></div>
+    </a>
+    <a href="StationInformation.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/info_coloured.svg" alt="">
+            <span>车站信息</span></div>
+    </a>
+    <a href="RouteMap.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/map_black.svg" alt="">
+            <span>运营线网图</span></div>
+    </a>
+    <a href="Account.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/person_black.svg" alt="">
+            <span>账号</span></div>
+    </a>
+</nav>
+</body>
+<script src="./assets/scripts/lib.min.js"></script>
+<script src="./assets/database/stationinf.js"></script>
+<script src="./assets/database/stationlist.js"></script>
+<script src="./assets/database/stationnum.js"></script>
+<script src="./assets/database/stationplat.js"></script>
+<script>
+    window.onload = function () {
+        let a = $("#stationlist a");
+        for (let i = 0; i < a.length; i++) {
+            let e = a[i];
+            e.onclick = function () {
+                let d = e.childNodes[1];
+                choosePlatform(s_num[linedata.indexOf(d.childNodes[0].innerText)][parseInt(d.childNodes[1].innerText) - 1])
             }
         }
-    });
+    };
+    var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
+    var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
+    var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
 
-    let linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
-    let routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
-    let globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
+    function openURL(href) {
+        window.location.href = href;
+        // $.ajax({
+        //     url: href,
+        //     type: 'POST',
+        //     cache: false,
+        //     success: function (result) {
+        //         $('#app').html(result);
+        //         window.history.pushState({href: href}, '', href);
+        //         if (href === "StationInformation.html") {
+        //             let a = $("#stationlist a");
+        //             for (let i = 0; i < a.length; i++) {
+        //                 let e = a[i];
+        //                 e.onclick = function () {
+        //                     let d = e.childNodes[1];
+        //                     choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+    }
+
+    function openINF(num, platnum) {
+        // window.location.href=""
+    }
 
     function choosePlatform(num) {
+        let c = $(".mask")[0];
+        c.classList.add("show");
+        c.onclick = function () {
+            c.classList.remove("show");
+            $("#platformChoserWrap")[0].classList.remove("show");
+        };
         $("#platformChoserWrap")[0].classList.add("show");
         let a = "";
         let p_num = s_plat[num];
         for (let i = 0; i < p_num.length; i++) {
-            a += "<a class='dropdown-item' href='javascript:void(0)' onclick='showstationinf(" + num + "," + i + ")'>";
+            a += "<a class='dropdown-item' href='javascript:void(0)' onclick='openINF(" + num + "," + i + ")'>";
             let b = p_num[i][0];
             let rd;
             if (b === "7")
@@ -1721,77 +796,5 @@
         }
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
     }
-
-    function showstationinf(num, platformnum) {
-        $("#stationinfWrap")[0].classList.add("show");
-        let json = s_inf.inf;
-        let table = cE("div");
-        table.id = "inftable";
-        let p_num = s_plat[num][platformnum][1];
-        let door = [["GF", "4", "6"].includes(p_num) ? 4 :p_num==="13"?8:p_num==="APM"?2: 6, ["1", "2", "8"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 :p_num==="APM"?2: 4];
-        for (let i = 1, k = 1; i <= door[0]; i++) {
-            for (let j = 1; j <= door[1]; j++, k++) {
-                let res = "";
-                if (j === 1)
-                    if (i === 1)
-                        res += "<div class='first-cabin first-door'>";
-                    else res += "<div class='first-door'>";
-                else if (j === door[1])
-                    if (i === door[0])
-                        res += "<div class='last-cabin last-door'>";
-                    else res += "<div class='last-door'>";
-                else res += "<div>";
-                res += "<div id='door_" + k + "'></div><div>" + k + "</div></div>";
-                table.innerHTML += res;
-            }
-        }
-        let d = $("#stationinfWrap .innerData")[0];
-        d.innerHTML = "";
-        d.appendChild(table);
-        let data = s_inf[num].inf[platformnum];
-        let f = data.facilities;
-        for (let i = 0; i < f.length; i++) {
-            let res1 = "<span class='facilitiesgroup'>";
-            if (f[i][1].indexOf(1) !== -1)
-                res1 += "<span class='escalator'></span>";
-            else if (f[i][1].indexOf(2) !== -1)
-                res1 += "<span class='staircase'></span>";
-            else if (f[i][1].indexOf(3) !== -1)
-                res1 += "<span class='elevator'></span>";
-            res1 += "</span><span class='exitnum'>" + f[i][2] + "</span>";
-            let res2 = typeof (f[i][3]) !== "undefined" ? "<span class=\"font-" + f[i][3] + " border-" + f[i][3] + " interchange\"><span class=\"insideborder\">" + linedata[globallist.indexOf(f[i][3])] + "</span></span>" : "";
-            $("#door_" + f[i][0])[0].innerHTML += "<span>" + res1 + res2 + "</span>";
-        }
-        $("#stationinfTitle")[0].innerText = f_s_list[num][0];
-    }
-
-    // Unused Code For Mobile Usage.
-    // function loadList() {
-    //     $.getJSON("Data/stationlist.js", function (json) {
-    //         var text = "<div id='stationlist'>";
-    //         for (let i = 0; i < json.length; i++) {
-    //             let linename = json[i].globalname === "Line-GF" ? "GF" : json[i].globalname.search("Line") !== -1 ? json[i].globalname.substring(4, json[i].globalname.search("-")) : json[i].globalname.substring(0, json[i].globalname.search("-"));
-    //
-    //             text += "<div id='content_" + i + "' class='collapse stationlistcontent' data-parent='#stationlist'><h2 class='line-title'>" + json[i].name + "</h2><div>";
-    //             if (json[i].branch) {
-    //                 text += "<div><span>主线</span>";
-    //                 for (let j = 0; j < json[i].station[0].length; j++)
-    //                     text += "<a><div class=\"StationNumber border-" + json[i].globalname + "\"><span>" + linename + "</span><span>" + (j < 9 ? "0" + (j + 1) : (j + 1)) + "</span></div><span>" + json[i].station[0][j][0] + "</span></a>";
-    //                 text += "</div><div><span>支线</span><a><div class=\"StationNumber border-" + json[i].globalname + "\"><span>" + linename + "</span><span>" + Number(json[i].branch) + "</span></div><span>" + json[i].station[1][0][0] + "</span></a>";
-    //                 for (let j = 1; j < json[i].station[1].length; j++)
-    //                     text += "<a><div class=\"StationNumber border-" + json[i].globalname + "\"><span>" + linename + "</span><span>" + (json[i].station[0].length + j) + "</span></div><span>" + json[i].station[1][j][0] + "</span></a>";
-    //                 text += "</div>";
-    //             } else {
-    //                 text += "<div>";
-    //                 for (let j = 0; j < json[i].station.length; j++) {
-    //                     text += "<a><div class=\"StationNumber border-" + json[i].globalname + "\"><span>" + linename + "</span><span>" + (j < 9 ? "0" + (j + 1) : (j + 1)) + "</span></div><span>" + json[i].station[j][0] + "</span></a>";
-    //                 }
-    //                 text += "</div>";
-    //             }
-    //             text += "</div></div>";
-    //         }
-    //         $(".innerData")[0].innerHTML = text + "</div>";
-    //         window.listtext = text + "</div>";
-    //     });
-    // }
 </script>
+</html>
