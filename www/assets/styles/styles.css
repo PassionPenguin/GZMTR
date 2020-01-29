@@ -71,7 +71,7 @@
     margin: 0 auto;
 }
 
-.nav.navigation div {
+.nav.navigation a {
     display: inline-block;
     width: 25%;
     height: 56px;
@@ -127,10 +127,13 @@ img.banner {
 }
 
 .rightpane {
-    display: block;
-    width: calc(100% - 120px);
-    margin-left: 120px;
-    margin-bottom: 10px;
+    width: calc(100vw - 100px);
+    display: inline-block;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    height: calc(100vh - 160px);
+    overflow: scroll;
 }
 
 .selectline {
@@ -186,6 +189,10 @@ img.banner {
 h2.line-title {
     font: 700 18px/24px Anodina, sans-serif;
     margin: 20px 15px 10px 15px;
+}
+
+#stationlist :first-child h2.line-title {
+    margin-top: 5px;
 }
 
 h3 {
