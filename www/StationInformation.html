@@ -1545,7 +1545,7 @@
         let e = a[i];
         e.onclick = function() {
             let d = e.childNodes[1];
-            choosePlatform(s_num[linedata.indexOf(d.childNodes[0].innerText)][parseInt(d.childNodes[1].innerText) - 1])
+            choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
         }
     }
 };
