@@ -151,8 +151,8 @@ img.banner {
     display: inline-block;
     margin: 5px 10px;
     height: 24px;
-    min-width: 52px;
-    text-align: center;
+    width: 60px;
+    text-align: left;
     vertical-align: middle;
 }
 
