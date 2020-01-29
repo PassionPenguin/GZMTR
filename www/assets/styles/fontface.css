@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* fontface.css */
+@font-face {
+    font-family: Anodina;
+    src: url("../media/font/Anodina-Regular.otf");
+}
+
+@font-face {
+    font-family: AnodinaLight;
+    src: url("../media/font/Anodina-Light.otf");
+}
+
+@font-face {
+    font-family: AnodinaBold;
+    src: url("../media/font/Anodina-Bold.otf");
+}
+
+html, body {
+    margin: 0;
+    font-family: Anodina, sans-serif;
+    background-color:#fff;
+}

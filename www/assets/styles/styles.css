@@ -1,0 +1,250 @@
+@charset "UTF-8";
+@import "./bootstrap.min.css";
+@import "./globalstyle.css";
+@import "./fontface.css";
+
+:root {
+    --var-dark: #222;
+    --var-light: #ddd;
+    --var-grey: #888;
+    --var-lightgrey: #aaa;
+    --var-lightdark: #555;
+    --var-black: #000;
+    --var-white: #fff;
+    --var-accent: #c51835;
+}
+
+.nav.search {
+    padding: 6px 24px;
+    height: 48px;
+}
+
+.nav.search .content {
+    padding: 9px 6px 6px 6px;
+}
+
+.nav.search h1, #platformChoserWrap h1 {
+    font: 500 16px/1 Anodina, sans-serif;
+}
+
+.nav.search h1 small, #platformChoserWrap h1 small {
+    font: 500 12px/1 Anodina, sans-serif;
+}
+
+.wrap_search {
+    border: 1px solid var(--var-lightdark);
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+}
+
+#searchStation {
+    display: inline-block;
+    width: calc(100% - 72px);
+    height: 100%;
+    font: 15px/24px Anodina, sans-serif;
+    padding: 6px;
+    outline: none;
+    border: 0;
+    color: var(--var-grey);
+}
+
+#searchStation:focus {
+    outline: none;
+}
+
+.icon {
+    display: inline-block;
+    margin: 6px 6px 6px 15px;
+    width: 30px;
+    height: 28px;
+    vertical-align: top;
+}
+
+.nav.search .btn {
+    display: none;
+}
+
+.nav.navigation {
+    height: 48px;
+    bottom: 6px;
+    margin: 0 auto;
+}
+
+.nav.navigation div {
+    display: inline-block;
+    width: 25%;
+    height: 56px;
+    padding: 6px;
+}
+
+.nav.navigation div img {
+    width: 24px;
+    margin: 0 auto;
+    display: block;
+}
+
+.nav.navigation div span {
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+
+.main-content {
+    width: 100%;
+    margin: 100px 0 60px 0
+}
+
+img.banner {
+    width: 80%;
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+.leftpane {
+    width: 100px;
+    display: inline-block;
+    position: fixed;
+    top: 100px;
+    left: 0;
+}
+
+.t_selectLine {
+    padding: 6px 4px 6px 10px;
+    display: block;
+    color: var(--var-dark);
+}
+
+.t_selectLine:active {
+    background: var(--var-light);
+}
+
+.t_selectLine:not(:last-child) {
+    width: fit-content;
+}
+
+.rightpane {
+    display: block;
+    width: calc(100% - 120px);
+    margin-left: 120px;
+    margin-bottom: 10px;
+}
+
+.selectline {
+    height: calc(100vh - 160px);
+    overflow: scroll;
+}
+
+.StationNumber span {
+    color: var(--var-dark);
+}
+
+
+.StationNumber {
+    font-size: 0;
+    display: inline-block;
+    margin: 5px 10px;
+    height: 24px;
+    min-width: 52px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.StationNumber span {
+    width: min-content;
+    height: 24px;
+    margin: 1px 0;
+    border: 2px solid;
+    border-color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    font: 900 14px/18px Anodina, sans-serif;
+}
+
+.StationNumber span:first-child {
+    border-radius: 15px 0 0 15px;
+    border-right: 0;
+    padding: 0 5px;
+}
+
+.StationNumber span:nth-child(2) {
+    border-radius: 0 15px 15px 0;
+    padding: 0 5px 0 2px;
+}
+
+#stationlist > div > a {
+    display: block;
+}
+
+#stationlist > div > a span {
+    vertical-align: middle;
+}
+
+h2.line-title {
+    font: 700 18px/24px Anodina, sans-serif;
+    margin: 20px 15px 10px 15px;
+}
+
+h3 {
+    font: 700 16px/24px Anodina, sans-serif;
+    margin: 0 15px 10px 15px;
+}
+
+h3:not(:nth-child(2)) {
+    margin: 15px 15px 10px 15px;
+}
+
+#platformChoserWrap {
+    background: var(--white);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1032;
+    width: 80%;
+    min-width: 350px;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+}
+
+#platformChoserWrap .inner {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+
+.platformnum {
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    font-style: normal;
+    line-height: 20px;
+    margin: 5px 3px;
+}
+
+.platformnum {
+    border: 3px solid;
+    border-radius: 50%;
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+#platformChoserWrap .innerData {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#platformChoserWrap span.vertical-middle {
+    font: 400 14px/21px Anodina, sans-serif;
+}
+
+[data-target="#platformChoserWrap"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font: 900 24px/0 Anodina, sans-serif;
+}
