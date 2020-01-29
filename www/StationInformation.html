@@ -1603,7 +1603,7 @@ function animateIt(selector, name, type) {
             $(e)[0].classList.add(name);
             setTimeout(function () {
                 $(e)[0].classList.remove(name);
-            }, 500);
+            }, 750);
         });
         return 0;
     }
@@ -1611,7 +1611,7 @@ function animateIt(selector, name, type) {
     $(selector)[0].classList.add(name);
     setTimeout(function () {
         $(selector)[0].classList.remove(name);
-    }, 500);
+    }, 750);
 }
 
 function bounceInLeft(selector) {
@@ -1621,7 +1621,7 @@ function bounceInLeft(selector) {
             $(e)[0].classList.add("animation_bil");
             setTimeout(function () {
                 $(e)[0].classList.remove("animation_bil");
-            }, 1000);
+            }, 750);
         });
         return 0;
     }
@@ -1629,7 +1629,7 @@ function bounceInLeft(selector) {
     $(selector)[0].classList.add("animation_bil");
     setTimeout(function () {
         $(selector)[0].classList.remove("animation_bil");
-    }, 900);
+    }, 750);
 }
 
 function bounceOutRight(selector) {
@@ -1639,7 +1639,7 @@ function bounceOutRight(selector) {
             setTimeout(function () {
                 $(e)[0].style.display = "none";
                 $(e)[0].classList.remove("animation_bor");
-            }, 900);
+            }, 750);
         });
         return 0;
     }
@@ -1647,7 +1647,7 @@ function bounceOutRight(selector) {
     setTimeout(function () {
         $(selector)[0].style.display = "none";
         $(selector)[0].classList.remove("animation_bor");
-    }, 900);
+    }, 750);
 }
 
 function choosePlatform(num) {
