@@ -214,6 +214,7 @@ h3:not(:nth-child(2)) {
     min-width: 350px;
     height: fit-content;
     transform: translate(-50%, -50%);
+    display: none;
 }
 
 #platformChoserWrap .inner {
