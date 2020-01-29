@@ -109,6 +109,7 @@ img.banner {
     top: 100px;
     left: 0;
     height: calc(100vh - 160px);
+    overflow: scroll;
 }
 
 .t_selectLine {
