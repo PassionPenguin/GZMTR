@@ -151,7 +151,7 @@ img.banner {
     display: inline-block;
     margin: 5px 10px;
     height: 24px;
-    width: 60px;
+    width: 70px;
     text-align: left;
     vertical-align: middle;
 }
@@ -259,4 +259,9 @@ h3:not(:nth-child(2)) {
     width: 48px;
     height: 48px;
     text-align: right;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: var(--var-white);
+    color: var(--var-dark)
 }
