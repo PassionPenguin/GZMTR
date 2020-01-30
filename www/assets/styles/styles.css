@@ -266,3 +266,108 @@ h3:not(:nth-child(2)) {
     background-color: var(--var-white);
     color: var(--var-dark)
 }
+
+#CurrentStation {
+    display: inline;
+    font: 600 18px/40px Anodina, sans-serif;
+}
+
+#stationinfWrap {
+    white-space: nowrap;
+    position: fixed;
+    bottom: 120px;
+    overflow: scroll;
+    height: calc(100vh - 200px);
+    width: 100vw;
+}
+
+#stationinfWrap .inner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+}
+
+#stationinfWrap .p_content {
+    position: relative;
+    overflow: scroll;
+    width: 100vw;
+    height: 100%;
+}
+
+#stationinfWrap .innerData {
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#inftable > div {
+    display: inline-block;
+}
+
+#inftable > div > :nth-child(2) {
+    width: 50px;
+    height: 50px;
+    border-radius: 0;
+    border: 3px solid #aaa;
+    border-right-width: 0;
+    text-align: center;
+    font: 900 24px/42px Anodina;
+    color: #aaa;
+}
+
+#inftable > div.last-door > :nth-child(2) {
+    border-radius: 0 25px 25px 0;
+    width: 60px;
+    border-right-width: 3px;
+}
+
+#inftable > div.first-door > :nth-child(2) {
+    border-radius: 25px 0 0 25px;
+    margin-left: 10px;
+    width: 60px;
+}
+
+[id^="door_"] {
+    width: 50px;
+    height: fit-content;
+    padding: 20px 0;
+    text-align: center;
+    font: 900 28px/2 Anodina, sans-serif;
+    white-space: normal;
+}
+
+.escalator {
+    background-image: url("../media/vectors/ic_esc_black.svg")
+}
+
+.elevator {
+    background-image: url("../media/vectors/ic_ele_black.svg")
+}
+
+.staircase {
+    background-image: url("../media/vectors/ic_staircase_black.svg")
+}
+
+.escalator, .elevator, .staircase {
+    width: 36px;
+    height: 36px;
+    background-size: 36px;
+    display: block;
+}
+
+.facilitiesgroup {
+    display: block;
+    width: 54px;
+    height: fit-content;
+    padding: 12px 6px;
+    border: 3px solid var(--var-dark);
+    border-radius: 10px;
+}
+
+.selectType.position-fixed {
+    position:fixed;
+    top:
+}
