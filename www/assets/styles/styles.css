@@ -11,6 +11,10 @@
     --var-black: #000;
     --var-white: #fff;
     --var-accent: #c51835;
+    --var-light-a05: #dddddd88;
+    --var-dark-a05: #22222288;
+    --var-light-a08: #ddddddbb;
+    --var-dark-a08: #222222bb;
 }
 
 * {
@@ -24,7 +28,8 @@ html {
 .nav.search {
     padding: 6px 24px;
     height: 48px;
-    background-color: var(--var-light)
+    background-color: var(--var-light);
+    z-index: 1033;
 }
 
 .nav.search .content {
@@ -44,6 +49,7 @@ html {
     border-radius: 10px;
     position: relative;
     width: 100%;
+    z-index: 1032;
 }
 
 #searchStation {
@@ -220,12 +226,12 @@ h3:not(:nth-child(2)) {
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 1032;
     width: 80%;
     min-width: 350px;
     height: fit-content;
     transform: translate(-50%, -50%);
     display: none;
+    z-index: 1035;
 }
 
 #platformChoserWrap .inner {
@@ -448,4 +454,57 @@ var(--var-light) position: fixed;
 
 #controls {
     background: var(--var-light);
+}
+
+.p_content#SearchRes {
+    display: none;
+    width: 100%;
+    height: calc(100vh - 80px);
+    z-index: 1032;
+    overflow: scroll;
+}
+
+#Searchmask {
+    background: linear-gradient(var(--var-light), var(--var-light-a08));
+    opacity: 1;
+}
+
+.glacier_search ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+}
+
+.glacier_search ul li {
+    padding: 10px 20px 10px 40px;
+    list-style: none;
+    font: 500 14px/1 sans-serif;
+    cursor: pointer;
+}
+
+.glacier_search ul li:last-child {
+    padding-bottom: 20px;
+    border-radius: 0 0 20px 20px
+}
+
+.glacier_search ul li:hover, .glacier_search ul li:focus {
+    background: var(--var-dark-a05);
+    color: var(--var-light)
+}
+
+.glacier_search .Highlight {
+    color: var(--var-accent);
+}
+
+.glacier_search span.English {
+    font: 600 12px/1.2 Anodina, sans-serif;
+}
+
+.glacier_search span.Chinese {
+    font: 400 16px/1 Anodina, sans-serif;
+}
+
+.glacier_search .Chinese, .glacier_search .English {
+    display: block;
 }
