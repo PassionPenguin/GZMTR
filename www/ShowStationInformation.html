@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SHOW STATION INFO</title>
     <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="./assets/styles/globalstyle.css">
 </head>
 
 <body>
@@ -20,17 +21,56 @@
                 <small>Station INFO</small></h1>
         </div>
         <div class="wrap_search">
-            <i class="icon icon_search" onclick="system.back()">
+            <i class="icon icon_search" onclick="history.back()">
                 <img src="assets/media/vectors/ic_back.svg" alt="back">
             </i>
             <h2 id="CurrentStation"></h2>
+            <i class="icon platformnum" id="CurrentPlatform">
+            </i>
         </div>
     </nav>
     <nav class="position-fixed selectType">
-        <div class="active"><span>设备与出入口</span></div>
-        <div>车站地图</div>
-        <div>维基百科</div>
+        <div class="inner" id="selectPanel">
+            <div class="active" onclick="tabChange('#stationinfWrap')"><span>设备与出入口</span></div>
+            <div onclick="tabChange('#StationMap')">车站地图</div>
+            <div onclick="tabChange('#Wiki')">维基百科</div>
+        </div>
     </nav>
+    <div id="controls">
+        <div id="stationinfWrap" data-parent="#controls" class="collapse">
+            <div class="inner">
+                <div class="p_content">
+                    <div class="innerData"></div>
+                </div>
+            </div>
+        </div>
+        <div id="StationMap" data-parent="#controls" class="collapse">
+            <div class="map" id="MapContatiner"></div>
+        </div>
+        <div id="Wiki" data-parent="#controls" class="collapse">
+            <div class="wiki" id="WIKIContainer">
+                <div class="alert alert-warning alert-dismissible fade show" style="top:200px;" role="alert">
+                    <h4 class="alert-heading">目前维基板块尚未完工</h4>
+                    <p>抱歉，由于时间不足，本板块尚未完工，不便之处，敬请谅解</p>
+                    <hr>
+                    <p class="mb-0">开发组 霜羽。 诚挚的向您道歉</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-body" id="platformChoserWrap">
+        <div class="inner">
+            <div class="selectLine">
+                <h1>请选择您的乘车方向
+                    <small>Select Your Platform</small></h1>
+                <div class="innerData"></div>
+            </div>
+            <span data-target="#platformChoserWrap" id="closePlatformChoser">×</span>
+        </div>
+    </div>
 </div>
 <!-- BOTTOM NAV -->
 <nav class="fixed-bottom nav navigation">
@@ -55,19 +95,14 @@
             <span>账号</span></div>
     </a>
 </nav>
-<div id="stationinfWrap" class="collapse">
-    <div class="inner">
-        <div class="p_content">
-            <div class="innerData"></div>
-        </div>
-    </div>
-</div>
 </body>
 <script src="./assets/scripts/lib.min.js"></script>
 <script src="./assets/database/stationinf.js"></script>
 <script src="./assets/database/stationlist.js"></script>
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
+<script src="./assets/database/stationlocation.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"></script>
 <script>
     var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
     var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
@@ -75,33 +110,6 @@
 
     function cE(type) {
         return document.createElement(type);
-    }
-
-    function openURL(href) {
-        window.location.href = href;
-        // $.ajax({
-        //     url: href,
-        //     type: 'POST',
-        //     cache: false,
-        //     success: function (result) {
-        //         $('#app').html(result);
-        //         window.history.pushState({href: href}, '', href);
-        //         if (href === "StationInformation.html") {
-        //             let a = $("#stationlist a");
-        //             for (let i = 0; i < a.length; i++) {
-        //                 let e = a[i];
-        //                 e.onclick = function () {
-        //                     let d = e.childNodes[1];
-        //                     choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
-    }
-
-    function openINF(num, platnum) {
-        // window.location.href=""
     }
 
     function animateIt(selector, name, type) {
@@ -198,7 +206,24 @@
             let res2 = typeof (f[i][3]) !== "undefined" ? "<span class=\"font-" + f[i][3] + " border-" + f[i][3] + " interchange\"><span class=\"insideborder\">" + linedata[globallist.indexOf(f[i][3])] + "</span></span>" : "";
             $("#door_" + f[i][0])[0].innerHTML += "<span>" + res2 + res1 + "</span>";
         }
-        $("#CurrentStation")[0].innerHTML = f_s_list[num][0] + " <small>" + f_s_list[num][1] + "</small>";
+        let cs = $("#CurrentStation")[0];
+        cs.innerHTML = f_s_list[num][0] + " <small>" + f_s_list[num][1] + "</small>";
+        cs.onclick = function () {
+            window.history.back();
+        };
+        let cp = $("#CurrentPlatform")[0];
+        cp.innerHTML = parseInt(platformnum) + 1;
+        cp.onclick = function () {
+            choosePlatform(num)
+        };
+        cp.setAttribute("class", "platformnum icon");
+        cp.classList.add("border-" + globallist[linedata.indexOf(s_plat[num][platformnum][1])]);
+
+        let map = new AMap.Map('MapContatiner', {
+            center: f_s_location[num],
+            zoom: 10,
+            mapStyle: "amap://styles/fa8296862961dbb06ff972ff82e04813"
+        });
     }
 
     /**
@@ -216,5 +241,50 @@
 
     showstationinf(GET_("num"), GET_("platnum"));
 
+    function choosePlatform(num) {
+        $("#platformChoserWrap .innerData")[0].innerHTML = "";
+        animateIt(".mask", "fadeIn", "block");
+        bounceInLeft("#platformChoserWrap");
+        $(".mask")[0].onclick = function () {
+            animateIt(".mask", "fadeOut", "none");
+            bounceOutRight("#platformChoserWrap");
+        };
+        $("#closePlatformChoser")[0].onclick = function () {
+            animateIt(".mask", "fadeOut", "none");
+            bounceOutRight("#platformChoserWrap");
+        };
+
+        let p_num = s_plat[num];
+        for (let i = 0; i < p_num.length; i++) {
+            let res = cE("a");
+            res.onclick = function () {
+                animateIt(".mask", "fadeOut", "none");
+                bounceOutRight("#platformChoserWrap");
+                showstationinf(num, i);
+            };
+            res.classList.add("dropdown-item");
+            let b = p_num[i][0];
+            let rd;
+            if (b === "7") rd = "仅供下车";
+            else if (b === "8") rd = "仅供上车";
+            else if (b === "9") rd = "终点站台";
+            else if (b === "10") rd = "不启用（快车越行或备用）";
+            else rd = routedirection[linedata.indexOf(p_num[i][1])][b - 1];
+            let globalname = globallist[linedata.indexOf(p_num[i][1])];
+            res.innerHTML = "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> 站台 " + rd + "</span></a>";
+            $("#platformChoserWrap .innerData")[0].appendChild(res);
+        }
+    }
+
+    function tabChange(value) {
+        for (let i = 0; i < 3; i++)
+            if ($("#selectPanel>div")[i].classList.contains("active") !== -1)
+                $("#selectPanel>div")[i].classList.remove("active");
+        for (let i = 0; i < 3; i++)
+            if ($("#controls>div")[i].classList.contains("show") !== -1)
+                $("#controls>div")[i].classList.remove("show");
+        $("[onclick=\"tabChange('" + value + "')\"]")[0].classList.add("active");
+        $(value)[0].classList.contains("show") ? $(value)[0].classList.remove("show") : $(value)[0].classList.add("show");
+    }
 </script>
 </html>

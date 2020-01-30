@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import "./bootstrap.min.css";
-@import "./globalstyle.css";
 @import "./fontface.css";
 
 :root {
@@ -277,7 +276,7 @@ h3:not(:nth-child(2)) {
     position: fixed;
     bottom: 120px;
     overflow: scroll;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 260px);
     width: 100vw;
 }
 
@@ -308,7 +307,7 @@ h3:not(:nth-child(2)) {
 }
 
 #inftable > div > :nth-child(2) {
-    width: 50px;
+    width: 60px;
     height: 50px;
     border-radius: 0;
     border: 3px solid #aaa;
@@ -320,14 +319,14 @@ h3:not(:nth-child(2)) {
 
 #inftable > div.last-door > :nth-child(2) {
     border-radius: 0 25px 25px 0;
-    width: 60px;
+    width: 75px;
     border-right-width: 3px;
 }
 
 #inftable > div.first-door > :nth-child(2) {
     border-radius: 25px 0 0 25px;
     margin-left: 10px;
-    width: 60px;
+    width: 75px;
 }
 
 [id^="door_"] {
@@ -335,8 +334,9 @@ h3:not(:nth-child(2)) {
     height: fit-content;
     padding: 20px 0;
     text-align: center;
-    font: 900 28px/2 Anodina, sans-serif;
+    font: 900 20px/28px Anodina, sans-serif;
     white-space: normal;
+    margin: 0 auto;
 }
 
 .escalator {
@@ -368,6 +368,53 @@ h3:not(:nth-child(2)) {
 }
 
 .selectType.position-fixed {
-    position:fixed;
-    top:
+    position: fixed;
+    top: 100px;
+    width: 100%;
+}
+
+.selectType > div > div.active {
+    color: var(--var-accent);
+}
+
+.selectType > div > div:not(:last-child) {
+    border-right: 1px solid #666;
+}
+
+.selectType > div > div {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    font: 14px/1 Anodina, sans-serif;
+    padding: 6px 0;
+}
+
+.selectType > .inner {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+.interchange {
+    border: 2px solid;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    font: 900 20px/26px Anodina;
+}
+
+.icon.platformnum {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+}
+
+.map#MapContatiner {
+    width: 100%;
+    height: calc(100vh - 200px);
+    top: 140px;
+    position: fixed;
+    left: 0;
 }

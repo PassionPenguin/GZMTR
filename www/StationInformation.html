@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Main Page</title>
     <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="./assets/styles/globalstyle.css">
 </head>
 
 <body>
@@ -1593,7 +1594,7 @@ function openURL(href) {
 }
 
 function openINF(num, platnum) {
-    window.location.href = "./ShowStationInformation?num=" + num + "&platnum=" + platnum;
+    window.location.href = "./ShowStationInformation.html?num=" + num + "&platnum=" + platnum;
 }
 
 function animateIt(selector, name, type) {
@@ -1676,6 +1677,7 @@ function choosePlatform(num) {
         a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> 站台 " + rd + "</span></a>";
     }
     $("#platformChoserWrap .innerData")[0].innerHTML = a;
-}</script>
+}
+</script>
 
 </html>
