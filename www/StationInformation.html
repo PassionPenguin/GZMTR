@@ -1557,8 +1557,8 @@
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
 <script>
-    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0)
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.body.classList.contains("dark-theme")) {
+    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0);
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) {
         let r = $("img");
         for (let i = 0; i < r.length; i++) {
             r[i].src.indexOf("white") !== -1 ? r[i].src = r[i].src.replace(/white/, "black") : r[i].src = r[i].src.replace(/black/, "white");
