@@ -385,7 +385,7 @@ var(--var-light) position: fixed;
     width: 100%;
 }
 
-.selectType > div > div.active {
+.selectType > div > div.active > span {
     color: var(--var-accent);
 }
 
