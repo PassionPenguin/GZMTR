@@ -116,7 +116,7 @@
 <script src="./assets/database/stationplat.js"></script>
 <script src="./assets/database/stationlocation.js"></script>
 <script>
-    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0);
+    GET_('dark') === "true" ? document.documentElement.classList.add('dark-theme') : void (0);
     if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) {
         let r = $("img");
         for (let i = 0; i < r.length; i++) {
@@ -303,7 +303,7 @@
                 let map = new AMap.Map('MapContatiner', {
                     center: f_s_location[stationnum],
                     zoom: 18,
-                    mapStyle: "amap://styles/fa8296862961dbb06ff972ff82e04813"
+                    mapStyle: (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
                 });
             };
         }
