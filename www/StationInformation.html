@@ -1556,128 +1556,121 @@
 <script src="./assets/database/stationlist.js"></script>
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
-<script>window.onload = function () {
-    let a = $("#stationlist a");
-    for (let i = 0; i < a.length; i++) {
-        let e = a[i];
-        e.onclick = function () {
-            let d = e.childNodes[1];
-            choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1]);
+<script>
+    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0)
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.body.classList.contains("dark-theme")) {
+        let r = $("img");
+        for (let i = 0; i < r.length; i++) {
+            r[i].src.indexOf("white") !== -1 ? r[i].src = r[i].src.replace(/white/, "black") : r[i].src = r[i].src.replace(/black/, "white");
         }
     }
-};
-var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
-var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
-var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
 
-function openURL(href) {
-    window.location.href = href;
-    // $.ajax({
-    //     url: href,
-    //     type: 'POST',
-    //     cache: false,
-    //     success: function (result) {
-    //         $('#app').html(result);
-    //         window.history.pushState({href: href}, '', href);
-    //         if (href === "StationInformation.html") {
-    //             let a = $("#stationlist a");
-    //             for (let i = 0; i < a.length; i++) {
-    //                 let e = a[i];
-    //                 e.onclick = function () {
-    //                     let d = e.childNodes[1];
-    //                     choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1])
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-}
-
-function openINF(num, platnum) {
-    window.location.href = "./ShowStationInformation.html?num=" + num + "&platnum=" + platnum;
-}
-
-function animateIt(selector, name, type) {
-    if (typeof (selector) === "object" && selector.length !== 1) {
-        selector.forEach((e) => {
-            $(e)[0].style.display = type;
-            $(e)[0].classList.add(name);
-            setTimeout(function () {
-                $(e)[0].classList.remove(name);
-            }, 750);
-        });
-        return 0;
-    }
-    $(selector)[0].style.display = type;
-    $(selector)[0].classList.add(name);
-    setTimeout(function () {
-        $(selector)[0].classList.remove(name);
-    }, 750);
-}
-
-function bounceInLeft(selector) {
-    if (typeof (selector) === "object" && selector.length !== 1) {
-        selector.forEach((e) => {
-            $(e)[0].style.display = "block";
-            $(e)[0].classList.add("animation_bil");
-            setTimeout(function () {
-                $(e)[0].classList.remove("animation_bil");
-            }, 750);
-        });
-        return 0;
-    }
-    $(selector)[0].style.display = "block";
-    $(selector)[0].classList.add("animation_bil");
-    setTimeout(function () {
-        $(selector)[0].classList.remove("animation_bil");
-    }, 750);
-}
-
-function bounceOutRight(selector) {
-    if (typeof (selector) === "object" && selector.length !== 1) {
-        selector.forEach((e) => {
-            $(e)[0].classList.add("animation_bor");
-            setTimeout(function () {
-                $(e)[0].style.display = "none";
-                $(e)[0].classList.remove("animation_bor");
-            }, 750);
-        });
-        return 0;
-    }
-    $(selector)[0].classList.add("animation_bor");
-    setTimeout(function () {
-        $(selector)[0].style.display = "none";
-        $(selector)[0].classList.remove("animation_bor");
-    }, 750);
-}
-
-function choosePlatform(num) {
-    animateIt(".mask", "fadeIn", "block");
-    bounceInLeft("#platformChoserWrap");
-    $(".mask")[0].onclick = function () {
-        animateIt(".mask", "fadeOut", "none");
-        bounceOutRight("#platformChoserWrap");
+    window.onload = function () {
+        let a = $("#stationlist a");
+        for (let i = 0; i < a.length; i++) {
+            let e = a[i];
+            e.onclick = function () {
+                let d = e.childNodes[1];
+                choosePlatform(s_num[linedata.indexOf(d.childNodes[1].innerText)][parseInt(d.childNodes[3].innerText) - 1]);
+            }
+        }
     };
-    $("#closePlatformChoser")[0].onclick = function () {
-        animateIt(".mask", "fadeOut", "none");
-        bounceOutRight("#platformChoserWrap");
-    };
-    let a = "";
-    let p_num = s_plat[num];
-    for (let i = 0; i < p_num.length; i++) {
-        a += "<a class='dropdown-item' href='javascript:void(0)' onclick='openINF(" + num + "," + i + ")'>";
-        let b = p_num[i][0];
-        let rd;
-        if (b === "7") rd = "仅供下车";
-        else if (b === "8") rd = "仅供上车";
-        else if (b === "9") rd = "终点站台";
-        else if (b === "10") rd = "不启用（快车越行或备用）";
-        else rd = routedirection[linedata.indexOf(p_num[i][1])][b - 1];
-        let globalname = globallist[linedata.indexOf(p_num[i][1])];
-        a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> 站台 " + rd + "</span></a>";
+    var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
+    var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
+    var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
+
+
+    function openINF(num, platnum) {
+        window.location.href = "./ShowStationInformation.html?num=" + num + "&platnum=" + platnum;
     }
-    $("#platformChoserWrap .innerData")[0].innerHTML = a;
-}
+
+    function animateIt(selector, name, type) {
+        if (typeof (selector) === "object" && selector.length !== 1) {
+            selector.forEach((e) => {
+                $(e)[0].style.display = type;
+                $(e)[0].classList.add(name);
+                setTimeout(function () {
+                    $(e)[0].classList.remove(name);
+                }, 750);
+            });
+            return 0;
+        }
+        $(selector)[0].style.display = type;
+        $(selector)[0].classList.add(name);
+        setTimeout(function () {
+            $(selector)[0].classList.remove(name);
+        }, 750);
+    }
+
+    function bounceInLeft(selector) {
+        if (typeof (selector) === "object" && selector.length !== 1) {
+            selector.forEach((e) => {
+                $(e)[0].style.display = "block";
+                $(e)[0].classList.add("animation_bil");
+                setTimeout(function () {
+                    $(selector)[0].style.display = "block";
+                    $(e)[0].classList.remove("animation_bil");
+                }, 1250);
+            });
+            return 0;
+        }
+        $(selector)[0].style.display = "block";
+        $(selector)[0].classList.add("animation_bil");
+        setTimeout(function () {
+            $(selector)[0].style.display = "block";
+            $(selector)[0].classList.remove("animation_bil");
+        }, 1250);
+    }
+
+    function bounceOutRight(selector) {
+        if (typeof (selector) === "object" && selector.length !== 1) {
+            selector.forEach((e) => {
+                $(e)[0].classList.add("animation_bor");
+                setTimeout(function () {
+                    $(e)[0].style.display = "none";
+                    $(e)[0].classList.remove("animation_bor");
+                }, 750);
+            });
+            return 0;
+        }
+        $(selector)[0].classList.add("animation_bor");
+        setTimeout(function () {
+            $(selector)[0].style.display = "none";
+            $(selector)[0].classList.remove("animation_bor");
+        }, 750);
+    }
+
+    function choosePlatform(num) {
+        animateIt(".mask", "fadeIn", "block");
+        bounceInLeft("#platformChoserWrap");
+        $(".mask")[0].onclick = function () {
+            setTimeout(function () {
+                animateIt(".mask", "fadeOut", "none")
+            }, 500);
+            bounceOutRight("#platformChoserWrap");
+        };
+        $("#closePlatformChoser")[0].onclick = function () {
+            setTimeout(function () {
+                animateIt(".mask", "fadeOut", "none")
+            }, 500);
+            bounceOutRight("#platformChoserWrap");
+        };
+        let a = "";
+        let p_num = s_plat[num];
+        for (let i = 0; i < p_num.length; i++) {
+            a += "<a class='dropdown-item' href='javascript:void(0)' onclick='openINF(" + num + "," + i + ")'>";
+            let b = p_num[i][0];
+            let rd;
+            if (b === "7") rd = "仅供下车";
+            else if (b === "8") rd = "仅供上车";
+            else if (b === "9") rd = "终点站台";
+            else if (b === "10") rd = "不启用（快车越行或备用）";
+            else rd = routedirection[linedata.indexOf(p_num[i][1])][b - 1];
+            let globalname = globallist[linedata.indexOf(p_num[i][1])];
+            a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> 站台 " + rd + "</span></a>";
+        }
+        $("#platformChoserWrap .innerData")[0].innerHTML = a;
+    }
 </script>
 
 </html>

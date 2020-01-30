@@ -467,7 +467,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     top: 0;
     z-index: 1031;
     opacity: 0.9;
-    background: var(--var-dark);
+    background: var(--var-grey);
 }
 
 @-webkit-keyframes bounceInLeft {
@@ -568,8 +568,8 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     opacity: 1;
     -webkit-animation-name: bounceInLeft;
     animation-name: bounceInLeft;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: 750ms;
+    animation-duration: 750ms;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -578,8 +578,8 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     opacity: 0;
     -webkit-animation-name: bounceOutRight;
     animation-name: bounceOutRight;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: 750ms;
+    animation-duration: 750ms;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -608,8 +608,8 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: 750ms;
+    animation-duration: 750ms;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     opacity: 1;
@@ -638,9 +638,69 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 .fadeOut {
     -webkit-animation-name: fadeOut;
     animation-name: fadeOut;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: 750ms;
+    animation-duration: 750ms;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     opacity: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --var-dark: #ddd;
+        --var-light: #222;
+        --var-lightgrey: #555;
+        --var-lightdark: #aaa;
+        --var-black: #fff;
+        --var-white: #000;
+    }
+
+    .alert-warning {
+        background: var(--var-light);
+    }
+
+    .alert-warning * {
+        color: var(--var-dark) !important;
+    }
+
+    .escalator {
+        background-image: url("../media/vectors/ic_esc_white.svg")
+    }
+
+    .elevator {
+        background-image: url("../media/vectors/ic_ele_white.svg")
+    }
+
+    .staircase {
+        background-image: url("../media/vectors/ic_staircase_white.svg")
+    }
+}
+
+.dark-theme {
+    --var-dark: #ddd;
+    --var-light: #222;
+    --var-lightgrey: #555;
+    --var-lightdark: #aaa;
+    --var-black: #fff;
+    --var-white: #000;
+}
+
+.dark-theme .alert-warning {
+    background: var(--var-light);
+}
+
+.dark-theme .alert-warning * {
+    color: var(--var-dark) !important;
+}
+
+.dark-theme .escalator {
+    background-image: url("../media/vectors/ic_esc_white.svg")
+}
+
+.dark-theme .elevator {
+    background-image: url("../media/vectors/ic_ele_white.svg")
+}
+
+.dark-theme .staircase {
+    background-image: url("../media/vectors/ic_staircase_white.svg")
 }

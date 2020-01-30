@@ -13,9 +13,18 @@
     --var-accent: #c51835;
 }
 
+* {
+    color: var(--var-dark);
+}
+
+html {
+    background: var(--var-light);
+}
+
 .nav.search {
     padding: 6px 24px;
     height: 48px;
+    background-color: var(--var-light)
 }
 
 .nav.search .content {
@@ -46,10 +55,12 @@
     outline: none;
     border: 0;
     color: var(--var-grey);
+    background: var(--var-light);
 }
 
 #searchStation:focus {
     outline: none;
+    color: var(--var-dark);
 }
 
 .icon {
@@ -91,7 +102,8 @@
 
 .main-content {
     width: 100%;
-    margin: 100px 0 60px 0
+    margin: 100px 0 60px 0;
+    background: var(--var-light);
 }
 
 img.banner {
@@ -204,7 +216,7 @@ h3:not(:nth-child(2)) {
 }
 
 #platformChoserWrap {
-    background: var(--white);
+    background: var(--var-white);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -310,11 +322,11 @@ h3:not(:nth-child(2)) {
     width: 60px;
     height: 50px;
     border-radius: 0;
-    border: 3px solid #aaa;
+    border: 3px solid var(--var-dark);
     border-right-width: 0;
     text-align: center;
     font: 900 24px/42px Anodina;
-    color: #aaa;
+    color: var(--var-dark);
 }
 
 #inftable > div.last-door > :nth-child(2) {
@@ -368,7 +380,7 @@ h3:not(:nth-child(2)) {
 }
 
 .selectType.position-fixed {
-    position: fixed;
+var(--var-light) position: fixed;
     top: 100px;
     width: 100%;
 }
@@ -378,7 +390,7 @@ h3:not(:nth-child(2)) {
 }
 
 .selectType > div > div:not(:last-child) {
-    border-right: 1px solid #666;
+    border-right: 1px solid var(--var-grey);
 }
 
 .selectType > div > div {
@@ -417,4 +429,23 @@ h3:not(:nth-child(2)) {
     top: 140px;
     position: fixed;
     left: 0;
+}
+
+#toast {
+    opacity: 0;
+    position: fixed;
+    top: 30px;
+    right: 10px;
+    display: none;
+    width: calc(100% - 20px);
+    z-index: 1050;
+    background: var(--var-light);
+}
+
+#toast .toast-header {
+    background: var(--var-light);
+}
+
+#controls {
+    background: var(--var-light);
 }
