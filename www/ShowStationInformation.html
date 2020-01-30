@@ -31,9 +31,9 @@
     </nav>
     <nav class="position-fixed selectType">
         <div class="inner" id="selectPanel">
-            <div class="active" onclick="tabChange('#stationinfWrap')"><span>设备与出入口</span></div>
-            <div onclick="tabChange('#StationMap')">车站地图</div>
-            <div onclick="tabChange('#Wiki')">维基百科</div>
+            <div class="active" onclick="tabChange('#stationinfWrap')" id="t_stationinfWrap"><span>设备与出入口</span></div>
+            <div onclick="tabChange('#StationMap')" id="t_StationMap"><span>车站地图</span></div>
+            <div onclick="tabChange('#Wiki')" id="t_Wiki"><span>维基百科</span></div>
         </div>
     </nav>
     <div id="controls">
@@ -279,12 +279,12 @@
 
     function tabChange(value) {
         for (let i = 0; i < 3; i++)
-            if (!$("#selectPanel>div")[i].classList.contains("active"))
+            if ($("#selectPanel>div")[i].classList.contains("active"))
                 $("#selectPanel>div")[i].classList.remove("active");
         for (let i = 0; i < 3; i++)
-            if (!$("#controls>div")[i].classList.contains("show"))
+            if ($("#controls>div")[i].classList.contains("show"))
                 $("#controls>div")[i].classList.remove("show");
-        $("[onclick=\"tabChange('" + value + "')\"]")[0].classList.add("active");
+        $("#t_" + value.replace("#", ""))[0].classList.add("active");
         $(value)[0].classList.contains("show") ? $(value)[0].classList.remove("show") : $(value)[0].classList.add("show");
         if (value === "#StationMap") {
             if (typeof (AMap) === "undefined") {
