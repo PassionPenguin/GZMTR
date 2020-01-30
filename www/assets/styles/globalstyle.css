@@ -467,7 +467,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     top: 0;
     z-index: 1031;
     opacity: 0.9;
-    background: var(--var-grey);
+    background: var(--var-light);
 }
 
 @-webkit-keyframes bounceInLeft {
@@ -653,6 +653,10 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
         --var-lightdark: #aaa;
         --var-black: #fff;
         --var-white: #000;
+        --var-light-a05: #22222288;
+        --var-dark-a05: #dddddd88;
+        --var-light-a08: #222222bb;
+        --var-dark-a08: #ddddddbb;
     }
 
     .alert-warning {
@@ -683,6 +687,10 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     --var-lightdark: #aaa;
     --var-black: #fff;
     --var-white: #000;
+    --var-light-a05: #22222288;
+    --var-dark-a05: #dddddd88;
+    --var-light-a08: #222222bb;
+    --var-dark-a08: #ddddddbb;
 }
 
 .dark-theme .alert-warning {
