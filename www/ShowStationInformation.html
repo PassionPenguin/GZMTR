@@ -279,10 +279,10 @@
 
     function tabChange(value) {
         for (let i = 0; i < 3; i++)
-            if ($("#selectPanel>div")[i].classList.contains("active") !== -1)
+            if (!$("#selectPanel>div")[i].classList.contains("active"))
                 $("#selectPanel>div")[i].classList.remove("active");
         for (let i = 0; i < 3; i++)
-            if ($("#controls>div")[i].classList.contains("show") !== -1)
+            if (!$("#controls>div")[i].classList.contains("show"))
                 $("#controls>div")[i].classList.remove("show");
         $("[onclick=\"tabChange('" + value + "')\"]")[0].classList.add("active");
         $(value)[0].classList.contains("show") ? $(value)[0].classList.remove("show") : $(value)[0].classList.add("show");
