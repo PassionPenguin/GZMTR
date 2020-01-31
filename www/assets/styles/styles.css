@@ -4,7 +4,7 @@
 
 :root {
     --var-dark: #222;
-    --var-light: #ddd;
+    --var-light: #fff;
     --var-grey: #888;
     --var-lightgrey: #aaa;
     --var-lightdark: #555;
@@ -465,7 +465,7 @@ var(--var-light) position: fixed;
 }
 
 #Searchmask {
-    background: linear-gradient(var(--var-light), var(--var-grey));
+    background: var(--var-light);
     opacity: 1;
 }
 

@@ -647,7 +647,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --var-dark: #ddd;
+        --var-dark: #fff;
         --var-light: #222;
         --var-lightgrey: #555;
         --var-lightdark: #aaa;
@@ -681,7 +681,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 }
 
 .dark-theme {
-    --var-dark: #ddd;
+    --var-dark: #fff;
     --var-light: #222;
     --var-lightgrey: #555;
     --var-lightdark: #aaa;
