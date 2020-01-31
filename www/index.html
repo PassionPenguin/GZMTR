@@ -145,12 +145,12 @@
         });
     }
 
-    window.onload = function () {
-        fuckNeveadun();
-    };
     $("#searchStation")[0].oninput = function () {
         fuckNeveadun();
     };
+    window.onload = function () {
+        fuckNeveadun();
+    }
 
     function animateIt(selector, name, type) {
         if (typeof (selector) === "object" && selector.length !== 1) {
