@@ -4,7 +4,7 @@
 
 :root {
     --var-dark: #222;
-    --var-light: #ddd;
+    --var-light: #fff;
     --var-grey: #888;
     --var-lightgrey: #aaa;
     --var-lightdark: #555;
@@ -465,7 +465,7 @@ var(--var-light) position: fixed;
 }
 
 #Searchmask {
-    background: linear-gradient(var(--var-light), var(--var-light-a08));
+    background: var(--var-light);
     opacity: 1;
 }
 
@@ -500,16 +500,17 @@ var(--var-light) position: fixed;
     text-transform: uppercase;
 }
 
-.glacier_search span.English {
+.glacier_search span.Secondary {
     font: 600 12px/1.2 Anodina, sans-serif;
     text-transform: uppercase;
 }
 
-.glacier_search span.Chinese {
+.glacier_search span.Main {
     font: 400 16px/1 Anodina, sans-serif;
+    text-transform: uppercase;
 }
 
-.glacier_search .Chinese, .glacier_search .English {
+.glacier_search .Main, .glacier_search .Secondary {
     display: block;
 }
 
