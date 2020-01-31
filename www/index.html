@@ -79,7 +79,25 @@
 <script src="./assets/database/stationlist.js"></script>
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
+<script src="assets/database/@string.js"></script>
 <script>
+    if (typeof (android) === "undefined")
+        window.android = {
+            getLanguage: function () {
+                return "CHT"
+            },
+            storeLanguage: function (string) {
+                curLanguage = string;
+            }
+        };
+
+    let curLanguage = typeof (android.getLanguage()) !== "undefined" ? android.getLanguage() : "CHT";
+    let languages = ["CHT", "CHS", "JP", "EN"];
+    let languagesName = ["繁體中文", "简体中文", "日本語", "English"];
+    let r = $("string[data-require='loadString']");
+    for (let i = 0; i < r.length; i++)
+        r[i].innerText = r[i].getAttribute("data-stringid") === "cur" ? languagesName[languages.indexOf(curLanguage)] :
+            f_name[parseInt(r[i].getAttribute("data-stringid"))][languages.indexOf(curLanguage)];
     GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0);
     if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) {
         let r = $("img");
@@ -95,11 +113,9 @@
             let o = document.getElementById("dropdown");
             d.oninput = function () {
                 if (d.value !== "") {
-                    $("#SearchRes")[0].style.display = "block";
-                    $("#Searchmask")[0].style.display = "block";
+                    animateIt([$("#SearchRes")[0],$("#Searchmask")[0]],"fadeIn","block")
                 } else {
-                    $("#SearchRes")[0].style.display = "none";
-                    $("#Searchmask")[0].style.display = "none";
+                    animateIt([$("#SearchRes")[0],$("#Searchmask")[0]],"fadeOut","none")
                 }
 
                 o.innerHTML = ""; // Clear Dropdown Data 清空下拉数据

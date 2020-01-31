@@ -495,10 +495,14 @@ var(--var-light) position: fixed;
 
 .glacier_search .Highlight {
     color: var(--var-accent);
+    display: inline-block;
+    margin: 0 -1px;
+    text-transform: uppercase;
 }
 
 .glacier_search span.English {
     font: 600 12px/1.2 Anodina, sans-serif;
+    text-transform: uppercase;
 }
 
 .glacier_search span.Chinese {
@@ -507,4 +511,50 @@ var(--var-light) position: fixed;
 
 .glacier_search .Chinese, .glacier_search .English {
     display: block;
+}
+
+.prefName {
+    margin: 20px 10px;
+}
+
+.prefName string {
+    font: 500 20px/36px Anodina, sans-serif;
+}
+
+.btn.setLanguageToggle {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--var-dark);
+    border-radius: 10px;
+    outline: none;
+}
+
+.setLanguageToggle:focus {
+    outline: none;
+    box-shadow: none;
+    background: var(--var-dark);
+}
+
+.setLanguageToggle:focus string {
+    color: var(--var-light);
+}
+
+#LanguagesChoser {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0 20px 0;
+}
+
+#LanguagesChoser ul {
+    padding: 0;
+    list-style: none;
+}
+
+#LanguagesChoser li {
+    padding: 3px 0;
+    font: 16px/28px Anodina, sans-serif;
+}
+
+.no-topbar .main-content{
+    margin-top:48px;
 }

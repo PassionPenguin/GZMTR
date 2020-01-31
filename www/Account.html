@@ -10,13 +10,41 @@
     <link rel="stylesheet" href="./assets/styles/globalstyle.css">
 </head>
 <body>
-<div class="app" id="app">
+<div class="app no-topbar" id="app">
     <!-- TOP NAV -->
     <nav class="fixed-top nav search">
-        <div class="content"><h1>个人账号 <small>Account</small></h1></div>
+        <div class="content">
+            <h1>
+                <string data-require="loadString" data-stringid="5"></string>
+            </h1>
+        </div>
     </nav>
     <!-- MAIN CONTENT -->
     <div class="main-content">
+        <div class="container">
+            <div class="alert alert-warning">
+                <p>
+                    <string data-require="loadString" data-stringid="13"></string>
+                </p>
+            </div>
+
+            <div id="prefSettings">
+                <p class="prefName">
+                    <string data-require="loadString" data-stringid="14"></string>
+                </p>
+                <button class="setLanguageToggle btn" data-toggle="collapse" data-target="#LanguagesChoser">
+                    <string data-require="loadString" data-stringid="cur"></string>
+                </button>
+                <div id="LanguagesChoser" class="collapse">
+                    <ul>
+                        <li>繁體中文</li>
+                        <li>简体中文</li>
+                        <li>日本語</li>
+                        <li>English</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- BOTTOM NAV -->
@@ -39,18 +67,43 @@
     <a href="Account.html">
         <div class="ripple">
             <img src="./assets/media/vectors/person_coloured.svg" alt="">
-            <span>账号</span></div>
+            <span></span></div>
     </a>
 </nav>
 </body>
+<script src="assets/database/@string.js"></script>
 <script src="assets/scripts/lib.min.js"></script>
 <script>
-    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0);
+    if (typeof (android) === "undefined")
+        window.android = {
+            getLanguage: function () {
+                return "CHT"
+            },
+            storeLanguage: function (string) {
+                curLanguage = string;
+            }
+        };
+
+    let curLanguage = typeof (android.getLanguage()) !== "undefined" ? android.getLanguage() : "CHT";
+    let languages = ["CHT", "CHS", "JP", "EN"];
+    let languagesName = ["繁體中文", "简体中文", "日本語", "English"];
+    let r = $("string[data-require='loadString']");
+    for (let i = 0; i < r.length; i++)
+        r[i].innerText = r[i].getAttribute("data-stringid") === "cur" ? languagesName[languages.indexOf(curLanguage)] :
+            f_name[parseInt(r[i].getAttribute("data-stringid"))][languages.indexOf(curLanguage)];
+
+    GET_('dark') === "true" ? document.documentElement.classList.add('dark-theme') : void (0);
     if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) {
         let r = $("img");
-        for (let i = 0; i < r.length; i++) {
+        for (let i = 0; i < r.length; i++)
             r[i].src.indexOf("white") !== -1 ? r[i].src = r[i].src.replace(/white/, "black") : r[i].src = r[i].src.replace(/black/, "white");
-        }
     }
+    r = $("#LanguagesChoser li");
+    for (let i = 0; i < r.length; i++)
+        r[i].onclick = function () {
+            android.storeLanguage(languages[languagesName.indexOf(r[i].innerText)]);
+            $("#LanguagesChoser")[0].classList.remove("show");
+            window.location.href="Account.html";
+        };
 </script>
 </html>
