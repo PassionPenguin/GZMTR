@@ -17,8 +17,10 @@
     <!-- TOP NAV -->
     <nav class="fixed-top nav search">
         <div class="content">
-            <h1>广州地铁车站信息
-                <small>Station INFO</small></h1>
+            <h1>
+                <string data-require="loadString" data-stringid="3"></string>
+                <small>Staion INFO</small>
+            </h1>
         </div>
         <div class="wrap_search">
             <i class="icon icon_search" onclick="history.back()">
@@ -31,9 +33,13 @@
     </nav>
     <nav class="position-fixed selectType">
         <div class="inner" id="selectPanel">
-            <div class="active" onclick="tabChange('#stationinfWrap')" id="t_stationinfWrap"><span>设备与出入口</span></div>
-            <div onclick="tabChange('#StationMap')" id="t_StationMap"><span>车站地图</span></div>
-            <div onclick="tabChange('#Wiki')" id="t_Wiki"><span>维基百科</span></div>
+            <div class="active" onclick="tabChange('#stationinfWrap')" id="t_stationinfWrap"><span><string
+                    data-require="loadString" data-stringid="7"></string></span></div>
+            <div onclick="tabChange('#StationMap')" id="t_StationMap"><span><string data-require="loadString"
+                                                                                    data-stringid="8"></string></span>
+            </div>
+            <div onclick="tabChange('#Wiki')" id="t_Wiki"><span><string data-require="loadString"
+                                                                        data-stringid="9"></string></span></div>
         </div>
     </nav>
     <div id="controls">
@@ -64,8 +70,9 @@
     <div class="card card-body" id="platformChoserWrap">
         <div class="inner">
             <div class="selectLine">
-                <h1>请选择您的乘车方向
-                    <small>Select Your Platform</small></h1>
+                <h1>
+                    <string data-require="loadString" data-stringid="6"></string>
+                </h1>
                 <div class="innerData"></div>
             </div>
             <span data-target="#platformChoserWrap" id="closePlatformChoser">×</span>
@@ -75,14 +82,18 @@
 <div id="toast" class="toast" role="alert" data-autohide="true">
     <div class="toast-header">
         <img src="./assets/media/vectors/ic_settings_black.svg" style="width:28px;" class="rounded mr-2" alt="...">
-        <strong class="mr-auto">系统</strong>
-        <small class="text-muted">现在</small>
+        <strong class="mr-auto">
+            <string data-require="loadString" data-stringid="24"></string>
+        </strong>
+        <small class="text-muted">
+            <string data-require="loadString" data-stringid="25"></string>
+        </small>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="toast-body">
-        由于加载外部地图，可能会有稍微延迟，敬请谅解
+        <string data-require="loadString" data-stringid="23"></string>
     </div>
 </div>
 <!-- BOTTOM NAV -->
@@ -141,9 +152,24 @@
             r[i].src.indexOf("white") !== -1 ? r[i].src = r[i].src.replace(/white/, "black") : r[i].src = r[i].src.replace(/black/, "white");
         }
     }
-    var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
-    var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["新城东方向", "沥滘方向"], ["林和西方向", "广州塔方向"]];
-    var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
+    let linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
+    let routedirection = [
+        [["廣州東站方向", "西塱方向"], ["广州东站方向", "西塱方向"], ["広州東駅方面", "西塱方面"], ["Guangzhou E. Railway Station", "Xilang"]],
+        [["嘉禾望崗方向", "廣州南站方向"], ["嘉禾望岗方向", "广州南站方向"], ["嘉禾望崗方面", "広州南駅方面"], ["Jiahewanggang", "Guangzhou S. Railway Station"]],
+        [["天河客運站方向", "機場北方向", "機場北/天河客運站方向", "體育西路方向", "番禺廣場方向", "體育西路/番禺廣場方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["天河客運站方面", "空港北方面", "空港北方面/空港北方面", "體育西路方面", "番禺広場方面", "體育西路/番禺広場方面"], ["Tinahe Coach Terminal", "Airport N.", "Airport N./Tianhe Coach Terminal", "Tiyu Xilu", "Panyu Square", "Tiyu Xilu/Panyu Square"]],
+        [["黃村方向", "南沙客運港方向"], ["黄村方向", "南沙客运港方向"], ["黃村方面", "南沙客運港方面"], ["Huangcun", "Nansha Passenger Port"]],
+        [["文沖方向", "滘口方向"], ["文冲方向", "滘口方向"], ["文沖方面", "滘口方面"], ["Wenchong", "Jiaokou"]],
+        [["香雪方向", "潯峰崗方向"], ["香雪方向", "浔峰岗方向"], ["香雪方面", "潯峰崗方面"], ["Xiangxue", "Xunfenggang"]],
+        [["大學城南方向", "廣州南站方向"], ["大学城南方向", "广州南站方向"], ["大學城南方面", "広州南駅方面"], ["Higher Education Mega Center S.", "Higher Education Mega Center N."]],
+        [["文化公園方向", "萬勝圍方向"], ["文化公园方向", "万胜围方向"], ["文化公園方面", "萬勝圍方面"], ["Cultural Park", "Wanshengwei"]],
+        [["高增方向", "飛鵝嶺方向"], ["高增方向", "飞鹅岭方向"], ["高增方面", "飛鵝嶺方面"], ["Gaozeng", "Fei'eling"]],
+        [["新沙方向", "魚珠方向"], ["新沙方向", "鱼珠方向"], ["新沙方面", "魚珠方面"], ["Xinsha", "Yuzhu"]],
+        [["東風方向", "鎮龍方向", "嘉禾望崗方向", "新和方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["東風方面", "鎮龍方面", "嘉禾望崗方面", "新和方面"], ["Dongfeng", "Zhenlong", "Jiahewanggang", "Xinhe"]],
+        [["增城廣場方向", "員村方向"], ["增城广场方向", "员村方向"], ["增城広場方面", "員村方面"], ["Zengcheng Square", "Yuancun"]],
+        [["新城東方向", "瀝滘方向"], ["新城东方向", "沥滘方向"], ["新城東方面", "瀝滘方面"], ["Xincheng Dong", "Lijiao"]],
+        [["林和西方向", "廣州塔方向"], ["林和西方向", "广州塔方向"], ["林和西方面", "廣州塔方面"], ["Linhexi", "Canton Tower"]]];
+    let globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
+
 
     function cE(type) {
         return document.createElement(type);

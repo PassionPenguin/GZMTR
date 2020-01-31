@@ -15,5 +15,15 @@ let f_name = [
     ["英文", "英语", "", "ENGLISH"],
     ["警告，所有改動將會立即影響整個應用", "警告，所有改动将会立即影响整个应用", "", "WARNING, ALL CHANGES WILL EFFECT THE WHOLE APPLICATION"],
     ["用戶界面語言", "用户界面语言", "", "UI Languages"],
-    ["警告，所有改動將會立即影響整個應用", "警告，所有改动将会立即影响整个应用", "", "WARNING, ALL CHANGES WILL EFFECT THE WHOLE APPLICATION"]
+    ["應用程式信息", "应用程序信息", "", "APPLICATION INFO"],
+    ["搜索", "搜索", "", "Search"],
+    ["僅供下車", "仅供下车", "", "Get Off Only"],
+    ["僅供上車", "仅供上车", "", "Get On Only"],
+    ["終點月台", "终点站台", "", "Terminal Platform"],
+    ["不啟用（快車越行或備用）", "不启用（快车越行或备用）", "", "Not in use"],
+    ["月台", "站台", "番線", "Platform"],
+    ["小企鵝偷走了你的結果，試下換個關鍵詞", "小企鹅偷走了你的结果，试试换个关键词", "", "Your Result is Stolen by Little Penguin, Try to Enter Another Key Word(s) "],
+    ["小企鵝正在努力將地圖君拉過來", "小企鹅正在努力将地图君拉过来", "", "Loading Map Assets From Amap Service..."],
+    ["系統", "系统", "", "System"],
+    ["現在", "现在", "", "NOW"],
 ];
