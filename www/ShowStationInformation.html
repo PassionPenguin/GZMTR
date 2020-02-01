@@ -230,7 +230,7 @@
         let table = cE("div");
         table.id = "inftable";
         let p_num = s_plat[num][platformnum][1];
-        let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];
+        let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8", "13"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];
         for (let i = 1, k = 1; i <= door[0]; i++) {
             for (let j = 1; j <= door[1]; j++, k++) {
                 let res = "";
