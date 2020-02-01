@@ -229,11 +229,11 @@
         let attr = map.getAttribute("viewBox").split(" ");
         d.innerText = attr[2];
         e.innerText = attr[3];
-        map.setAttribute("viewBox", attr[0] + " " + attr[1] + " " + attr[2] * (1/size) + " " + attr[3] *(1/size))
+        map.setAttribute("viewBox", attr[0] + " " + attr[1] + " " + attr[2] * (1 / size) + " " + attr[3] * (1 / size))
     };
     window.moveMap = (x, y) => {
         let attr = map.getAttribute("viewBox").split(" ");
-        map.setAttribute("viewBox", (((x * (attr[2] / window.innerWidth))) + parseInt(attr[0])) + " " + (((y * (attr[3] / window.innerHeight))) + parseInt(attr[1])) + " " + attr[2] + " " + attr[3])
+        map.setAttribute("viewBox", (((x * (attr[2] / window.innerWidth)))*2 + parseInt(attr[0])) + " " + (((y * (attr[3] / window.innerHeight)))*2 + parseInt(attr[1])) + " " + attr[2] + " " + attr[3])
     };
     window.pinchEnd = () => {
         tc = [0, false];
