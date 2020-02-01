@@ -9,10 +9,32 @@
     <title>Title</title>
 </head>
 <body>
-<?xml version="1.0" encoding="utf-8"?>
+<style>#map {
+    width: 100vw;
+    height: 100vh;
+    transition: ease-in-out 200ms;
+}
+
+#a {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 40px;
+    background: #fff;
+}
+
+</style>
+<div id="a">
+    <div id="b"></div>
+    <div id="c"></div>
+    <div id="d"></div>
+    <div id="e"></div>
+</div>
 <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+<div id="wrap">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="map" x="0px"
+         y="0px"
+         viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve" id="map">
 <style type="text/css">
 	.st0 {
         fill: #FFFFFF;
@@ -53,23 +75,23 @@
         stroke-miterlimit: 10;
     }
 </style>
-    <symbol id="Interchange" viewBox="-5.6 -4 11.2 8">
+        <symbol id="Interchange" viewBox="-5.6 -4 11.2 8">
 	<path class="st0" d="M1.6-4c2.2,0,4,1.8,4,4s-1.8,4-4,4h-3.2c-2.2,0-4-1.8-4-4s1.8-4,4-4H1.6z"/>
-        <g>
+            <g>
 		<path class="st0"
               d="M-1.6-2.7c-1.5,0-2.7,1.2-2.7,2.7s1.2,2.7,2.7,2.7h3.2c1.5,0,2.7-1.2,2.7-2.7S3.1-2.7,1.6-2.7H-1.6z"/>
-            <path class="st1" d="M1.6,2.2c1.2,0,2.2-1,2.2-2.2s-1-2.2-2.2-2.2h-3.2c-1.2,0-2.2,1-2.2,2.2s1,2.2,2.2,2.2H1.6 M1.6,3.2h-3.2
+                <path class="st1" d="M1.6,2.2c1.2,0,2.2-1,2.2-2.2s-1-2.2-2.2-2.2h-3.2c-1.2,0-2.2,1-2.2,2.2s1,2.2,2.2,2.2H1.6 M1.6,3.2h-3.2
 			c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2h3.2c1.8,0,3.2,1.4,3.2,3.2C4.8,1.8,3.4,3.2,1.6,3.2L1.6,3.2z"/>
 	</g>
 </symbol>
-    <symbol id="Line1" viewBox="-2.5 -2.5 5 5">
+        <symbol id="Line1" viewBox="-2.5 -2.5 5 5">
 	<g>
 		<circle class="st0" cx="0" cy="0" r="2"/>
         <path class="st2" d="M0,1.5c0.8,0,1.5-0.7,1.5-1.5S0.8-1.5,0-1.5S-1.5-0.8-1.5,0S-0.8,1.5,0,1.5 M0,2.5L0,2.5
 			c-1.4,0-2.5-1.1-2.5-2.5S-1.4-2.5,0-2.5h0c1.4,0,2.5,1.1,2.5,2.5S1.4,2.5,0,2.5L0,2.5z"/>
 	</g>
 </symbol>
-    <g id="Line_1">
+        <g id="Line_1">
 	<g id="Names">
 		<text id="n0" transform="matrix(1 0 0 1 290.9998 664.9999)"><tspan x="0" y="0" class="st3 st4 st5">西塱</tspan>
             <tspan x="0.4" y="7" class="st1 st6 st7">Xilang</tspan></text>
@@ -106,62 +128,69 @@
             <tspan x="-9.1" y="7" class="st1 st6 st7">Guangzhou East</tspan>
             <tspan x="-10.3" y="14" class="st1 st6 st7"> Railway Station</tspan></text>
 	</g>
-        <g id="Line_Structure">
+            <g id="Line_Structure">
 		<path class="st8" d="M300,650v-50v-50v-50v-19.8c0-3.3,1.3-6.5,3.7-8.8l67.7-67.7c2.3-2.3,3.7-5.5,3.7-8.8v-57.3
 			c0-6.9,5.6-12.5,12.5-12.5H475h75h200h37.5c6.9,0,12.5-5.6,12.5-12.5v-125c0-6.9-5.6-12.5-12.5-12.5l0,0H775"/>
 	</g>
 </g>
-    <g id="ICONS">
+        <g id="ICONS">
 
 		<use xlink:href="#Interchange" width="11.2" height="8" id="i0" x="-5.6" y="-4"
              transform="matrix(1 0 0 -1 300 650)" style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i1" x="-2.5" y="-2.5"
-             transform="matrix(1 0 0 -1 300 600.0001)" style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i1" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 300 600.0001)" style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i2" x="-2.5" y="-2.5"
-             transform="matrix(1 0 0 -1 300 550.0001)" style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i2" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 300 550.0001)" style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i3" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 300 500)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i3" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 300 500)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i4" x="-5.6" y="-4"
-             transform="matrix(-0.7071 -0.7071 -0.7071 0.7071 337.4999 437.5001)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i4" x="-5.6" y="-4"
+                 transform="matrix(-0.7071 -0.7071 -0.7071 0.7071 337.4999 437.5001)" style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i5_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 375 375)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i5_1_" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 375 375)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i6_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 425 325)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i6_1_" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 425 325)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i7_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 475 325)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i7_1_" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 475 325)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i8" x="-5.6" y="-4"
-             transform="matrix(1 0 0 -1 525 325)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i8" x="-5.6" y="-4"
+                 transform="matrix(1 0 0 -1 525 325)" style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i9_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 575 325)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i9_2_" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 575 325)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i10" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 625 325)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i10" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 625 325)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Line1" width="5" height="5" id="i14" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 800 250)"
-             style="overflow:visible;"/>
+            <use xlink:href="#Line1" width="5" height="5" id="i14" x="-2.5" y="-2.5"
+                 transform="matrix(1 0 0 -1 800 250)"
+                 style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i11" x="-5.6" y="-4"
-             transform="matrix(1 0 0 -1 675 325)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i11" x="-5.6" y="-4"
+                 transform="matrix(1 0 0 -1 675 325)" style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i12" x="-5.6" y="-4"
-             transform="matrix(1 0 0 -1 725 325)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i12" x="-5.6" y="-4"
+                 transform="matrix(1 0 0 -1 725 325)" style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i13" x="-5.6" y="-4"
-             transform="matrix(1 0 0 -1 775 325)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i13" x="-5.6" y="-4"
+                 transform="matrix(1 0 0 -1 775 325)" style="overflow:visible;"/>
 
-        <use xlink:href="#Interchange" width="11.2" height="8" id="i15" x="-5.6" y="-4"
-             transform="matrix(1 0 0 -1 775 175)" style="overflow:visible;"/>
+            <use xlink:href="#Interchange" width="11.2" height="8" id="i15" x="-5.6" y="-4"
+                 transform="matrix(1 0 0 -1 775 175)" style="overflow:visible;"/>
 </g>
 </svg>
+</div>
 <script>
     let n = document.querySelectorAll("[id^='n']");
     let i = document.querySelectorAll("[id^='i']");
@@ -176,6 +205,63 @@
                 ].innerHTML)
         }
     }
+    let b = document.querySelector("#b");
+    let c = document.querySelector("#c");
+    let d = document.querySelector("#d");
+    let e = document.querySelector("#e");
+    let map = document.querySelector("#map");
+    window.onload = function () {
+        map.setAttribute("viewBox", "250 250 " + window.innerHeight + " " + window.innerWidth);
+    };
+    let tc = [0, false];
+    let pos = [0, 0];
+    window.pinchStart = (ev) => {
+        tc[0] = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY);
+        b.innerText = tc[0]
+    };
+    window.pinchMove = (ev) => {
+        c.innerText = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY) / tc[0];
+        scaleMap((Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY) / tc[0]));
+        tc[0] = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY);
+        b.innerText = tc[0];
+    };
+    window.scaleMap = (size) => {
+        let attr = map.getAttribute("viewBox").split(" ");
+        d.innerText = attr[2];
+        e.innerText = attr[3];
+        map.setAttribute("viewBox", attr[0] + " " + attr[1] + " " + attr[2] * (1/size) + " " + attr[3] *(1/size))
+    };
+    window.moveMap = (x, y) => {
+        let attr = map.getAttribute("viewBox").split(" ");
+        map.setAttribute("viewBox", (((x * (attr[2] / window.innerWidth))) + parseInt(attr[0])) + " " + (((y * (attr[3] / window.innerHeight))) + parseInt(attr[1])) + " " + attr[2] + " " + attr[3])
+    };
+    window.pinchEnd = () => {
+        tc = [0, false];
+    };
+    map.addEventListener("touchstart", (ev) => {
+        if (ev.touches.length === 2) {
+            tc[1] = true;
+            pinchStart(ev);
+        } else {
+            pos[0] = ev.touches[0].pageX;
+            pos[1] = ev.touches[0].pageY;
+        }
+        ev.preventDefault();
+    });
+    map.addEventListener("touchmove", (ev) => {
+        if (tc[1]) {
+            pinchMove(ev);
+        } else {
+            moveMap(pos[0] - ev.touches[0].pageX, pos[1] - ev.touches[0].pageY);
+            pos[0] = ev.touches[0].pageX;
+            pos[1] = ev.touches[0].pageY;
+        }
+        ev.preventDefault();
+    });
+    map.addEventListener("touchend", (ev) => {
+        pinchEnd();
+        ev.preventDefault();
+    });
 </script>
 </body>
 </html>
