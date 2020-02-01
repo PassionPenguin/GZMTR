@@ -192,19 +192,6 @@
 </svg>
 </div>
 <script>
-    let n = document.querySelectorAll("[id^='n']");
-    let i = document.querySelectorAll("[id^='i']");
-    for (let j = 0; j < i.length; j++) {
-        i[j].onclick = function () {
-            alert("1 | " + (j + 1))
-        }
-    }
-    for (let j = 0; j < n.length; j++) {
-        n[j].onclick = function () {
-            alert("1 | " + (j + 1) + n[j].childNodes[0].innerHTML + " " + n[j].childNodes[1
-                ].innerHTML)
-        }
-    }
     let b = document.querySelector("#b");
     let c = document.querySelector("#c");
     let d = document.querySelector("#d");
@@ -246,7 +233,6 @@
             pos[0] = ev.touches[0].pageX;
             pos[1] = ev.touches[0].pageY;
         }
-        ev.preventDefault();
     });
     map.addEventListener("touchmove", (ev) => {
         if (tc[1]) {
@@ -256,12 +242,23 @@
             pos[0] = ev.touches[0].pageX;
             pos[1] = ev.touches[0].pageY;
         }
-        ev.preventDefault();
     });
     map.addEventListener("touchend", (ev) => {
         pinchEnd();
-        ev.preventDefault();
     });
+    let n = document.querySelectorAll("[id^='n']");
+    let i = document.querySelectorAll("[id^='i']");
+    for (let j = 0; j < i.length; j++) {
+        i[j].onclick = function () {
+            alert("1 | " + (j + 1))
+        }
+    }
+    for (let j = 0; j < n.length; j++) {
+        n[j].onclick = function () {
+            alert("1 | " + (j + 1) + n[j].childNodes[0].innerHTML + " " + n[j].childNodes[1
+                ].innerHTML)
+        }
+    }
 </script>
 </body>
 </html>
