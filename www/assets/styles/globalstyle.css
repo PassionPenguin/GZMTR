@@ -466,7 +466,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     left: 0;
     top: 0;
     z-index: 1031;
-    opacity: 0.9;
+    opacity: 1;
     background: var(--var-light);
 }
 
@@ -647,7 +647,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --var-dark: #ddd;
+        --var-dark: #fff;
         --var-light: #222;
         --var-lightgrey: #555;
         --var-lightdark: #aaa;
@@ -681,7 +681,7 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 }
 
 .dark-theme {
-    --var-dark: #ddd;
+    --var-dark: #fff;
     --var-light: #222;
     --var-lightgrey: #555;
     --var-lightdark: #aaa;

@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main Page</title>
+    <title>主頁</title>
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <link rel="stylesheet" href="./assets/styles/globalstyle.css">
 </head>
@@ -13,18 +13,24 @@
 <div class="app" id="app">
     <!-- TOP NAV -->
     <div class="mask collapse" style="z-index:1032" id="Searchmask"></div>
+    <div class="mask collapse" id="mask"></div>
     <!-- TOP NAV -->
     <nav class="fixed-top nav search">
         <div class="content">
-            <h1>广州地铁车站信息
-                <small>Version 1.2 BETA</small></h1>
+            <h1>
+                <string data-require="loadString" data-stringid="2"></string>
+                <small>GZMTR Station INFO </small>
+                <small>BETA 1.4</small></h1>
         </div>
         <div class="wrap_search">
             <i class="icon icon_search">
-                <img src="assets/media/vectors/ic_search.svg" alt="search"></i>
+                <img src="assets/media/vectors/ic_search.svg" alt="search">
+            </i>
             <label for="searchStation"></label>
-            <input type="text" id="searchStation" placeholder="您想要前往...">
-            <button class="btn bg_primary">搜索</button>
+            <input type="text" id="searchStation" placeholder="...">
+            <button class="btn bg_primary">
+                <string data-require="loadString" data-stringid="16"></string>
+            </button>
         </div>
         <div class="p_content" id="SearchRes">
             <div class="glacier_search">
@@ -38,8 +44,9 @@
         <div class="card card-body" id="platformChoserWrap">
             <div class="inner">
                 <div class="selectLine">
-                    <h1>请选择您的乘车方向
-                        <small>Select Your Platform</small></h1>
+                    <h1>
+                        <string data-require="loadString" data-stringid="6"></string>
+                    </h1>
                     <div class="innerData"></div>
                 </div>
                 <span data-target="#platformChoserWrap" id="closePlatformChoser">×</span>
@@ -55,22 +62,23 @@
     <a href="index.html">
         <div class="ripple">
             <img src="./assets/media/vectors/home_coloured.svg" alt="">
-            <span>主页</span></div>
+            <span><string data-require="loadString" data-stringid="2"></string></span></div>
     </a>
     <a href="StationInformation.html">
         <div class="ripple">
             <img src="./assets/media/vectors/info_black.svg" alt="">
-            <span>车站信息</span></div>
+            <span><string data-require="loadString" data-stringid="3"></string></span></div>
     </a>
     <a href="RouteMap.html">
         <div class="ripple">
             <img src="./assets/media/vectors/map_black.svg" alt="">
-            <span>运营线网图</span></div>
+            <span><string data-require="loadString" data-stringid="4"></string></span></div>
     </a>
     <a href="Account.html">
         <div class="ripple">
             <img src="./assets/media/vectors/person_black.svg" alt="">
-            <span>账号</span></div>
+            <span><string data-require="loadString" data-stringid="5"></string></span>
+        </div>
     </a>
 </nav>
 </body>
@@ -98,7 +106,7 @@
     for (let i = 0; i < r.length; i++)
         r[i].innerText = r[i].getAttribute("data-stringid") === "cur" ? languagesName[languages.indexOf(curLanguage)] :
             f_name[parseInt(r[i].getAttribute("data-stringid"))][languages.indexOf(curLanguage)];
-    GET_('dark')==="true"?document.documentElement.classList.add('dark-theme'):void(0);
+    GET_('dark') === "true" ? document.documentElement.classList.add('dark-theme') : void (0);
     if (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) {
         let r = $("img");
         for (let i = 0; i < r.length; i++) {
@@ -106,41 +114,43 @@
         }
     }
 
-    $(function () {
-        $(function () {
-            let res;
-            let d = document.getElementById("searchStation");
-            let o = document.getElementById("dropdown");
-            d.oninput = function () {
-                if (d.value !== "") {
-                    animateIt([$("#SearchRes")[0],$("#Searchmask")[0]],"fadeIn","block")
-                } else {
-                    animateIt([$("#SearchRes")[0],$("#Searchmask")[0]],"fadeOut","none")
-                }
+    function fuckNeveadun() {
+        let res;
+        let d = $("#searchStation")[0];
+        let o = $("#dropdown")[0];
+        if (d.value !== "") {
+            animateIt([$("#SearchRes")[0], $("#Searchmask")[0]], "fadeIn", "block")
+        } else {
+            animateIt([$("#SearchRes")[0], $("#Searchmask")[0]], "fadeOut", "none")
+        }
 
-                o.innerHTML = ""; // Clear Dropdown Data 清空下拉数据
-                res = []; // Clear Data 清空数据
-                let k = d.value;
-                f_s_list.forEach(element => {
-                    element[0].search(new RegExp(k, "ig")) !== -1 || element[1].search(new RegExp(k, "ig")) !== -1 ? res.push(f_s_list.indexOf(element)) : void (0);
-                });
-                res.forEach(element => {
-                    let li = document.createElement("li");
-                    let a = document.createElement("span");
-                    let b = document.createElement("span");
-                    a.classList.add("Chinese");
-                    b.classList.add("English");
-                    a.innerHTML = f_s_list[element][0].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
-                    b.innerHTML = f_s_list[element][1].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
-                    li.appendChild(a);
-                    li.appendChild(b);
-                    li.onclick = () => choosePlatform(element);
-                    o.appendChild(li);
-                });
-            }
+        o.innerHTML = ""; // Clear Dropdown Data 清空下拉数据
+        res = []; // Clear Data 清空数据
+        let k = d.value;
+        f_s_list.forEach(element => {
+            element[0].search(new RegExp(k, "ig")) !== -1 || element[1].search(new RegExp(k, "ig")) !== -1 ? res.push(f_s_list.indexOf(element)) : void (0);
         });
-    });
+        res.length === 0 ? o.innerHTML = "<li>" + f_name[22][languages.indexOf(curLanguage)] + "</li>" : res.forEach(element => {
+            let li = cE("li");
+            let a = cE("span");
+            let b = cE("span");
+            a.classList.add("Main");
+            b.classList.add("Secondary");
+            a.innerHTML = f_s_list[element][0].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
+            b.innerHTML = f_s_list[element][1].replace(new RegExp(k, "gi"), "<b class='Highlight'>" + k + "</b>");
+            li.appendChild(a);
+            li.appendChild(b);
+            li.onclick = () => choosePlatform(element);
+            o.appendChild(li);
+        });
+    }
 
+    $("#searchStation")[0].oninput = function () {
+        fuckNeveadun();
+    };
+    window.onload = function () {
+        fuckNeveadun();
+    }
 
     function animateIt(selector, name, type) {
         if (typeof (selector) === "object" && selector.length !== 1) {
@@ -197,25 +207,41 @@
             $(selector)[0].classList.remove("animation_bor");
         }, 750);
     }
-    var linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
-    var routedirection = [["广州东站方向", "西塱方向"], ["嘉禾望岗方向", "广州南站方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["黄村方向", "南沙客运港方向"], ["文冲方向", "滘口方向"], ["香雪方向", "浔峰岗方向"], ["大学城南方向", "广州南站方向"], ["文化公园方向", "万胜围方向"], ["高增方向", "飞鹅岭方向"], ["新沙方向", "鱼珠方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["增城广场方向", "员村方向"], ["沥滘方向", "新城东方向"], ["林和西方向", "广州塔方向"]];
-    var globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
+
+    let linedata = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "13", "14", "21", "GF", "APM"];
+    let routedirection = [
+        [["廣州東站方向", "西塱方向"], ["广州东站方向", "西塱方向"], ["広州東駅方面", "西塱方面"], ["Guangzhou E. Railway Station", "Xilang"]],
+        [["嘉禾望崗方向", "廣州南站方向"], ["嘉禾望岗方向", "广州南站方向"], ["嘉禾望崗方面", "広州南駅方面"], ["Jiahewanggang", "Guangzhou S. Railway Station"]],
+        [["天河客運站方向", "機場北方向", "機場北/天河客運站方向", "體育西路方向", "番禺廣場方向", "體育西路/番禺廣場方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["天河客運站方面", "空港北方面", "空港北方面/空港北方面", "體育西路方面", "番禺広場方面", "體育西路/番禺広場方面"], ["Tinahe Coach Terminal", "Airport N.", "Airport N./Tianhe Coach Terminal", "Tiyu Xilu", "Panyu Square", "Tiyu Xilu/Panyu Square"]],
+        [["黃村方向", "南沙客運港方向"], ["黄村方向", "南沙客运港方向"], ["黃村方面", "南沙客運港方面"], ["Huangcun", "Nansha Passenger Port"]],
+        [["文沖方向", "滘口方向"], ["文冲方向", "滘口方向"], ["文沖方面", "滘口方面"], ["Wenchong", "Jiaokou"]],
+        [["香雪方向", "潯峰崗方向"], ["香雪方向", "浔峰岗方向"], ["香雪方面", "潯峰崗方面"], ["Xiangxue", "Xunfenggang"]],
+        [["大學城南方向", "廣州南站方向"], ["大学城南方向", "广州南站方向"], ["大學城南方面", "広州南駅方面"], ["Higher Education Mega Center S.", "Higher Education Mega Center N."]],
+        [["文化公園方向", "萬勝圍方向"], ["文化公园方向", "万胜围方向"], ["文化公園方面", "萬勝圍方面"], ["Cultural Park", "Wanshengwei"]],
+        [["高增方向", "飛鵝嶺方向"], ["高增方向", "飞鹅岭方向"], ["高增方面", "飛鵝嶺方面"], ["Gaozeng", "Fei'eling"]],
+        [["新沙方向", "魚珠方向"], ["新沙方向", "鱼珠方向"], ["新沙方面", "魚珠方面"], ["Xinsha", "Yuzhu"]],
+        [["東風方向", "鎮龍方向", "嘉禾望崗方向", "新和方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["東風方面", "鎮龍方面", "嘉禾望崗方面", "新和方面"], ["Dongfeng", "Zhenlong", "Jiahewanggang", "Xinhe"]],
+        [["增城廣場方向", "員村方向"], ["增城广场方向", "员村方向"], ["增城広場方面", "員村方面"], ["Zengcheng Square", "Yuancun"]],
+        [["新城東方向", "瀝滘方向"], ["新城东方向", "沥滘方向"], ["新城東方面", "瀝滘方面"], ["Xincheng Dong", "Lijiao"]],
+        [["林和西方向", "廣州塔方向"], ["林和西方向", "广州塔方向"], ["林和西方面", "廣州塔方面"], ["Linhexi", "Canton Tower"]]];
+    let globallist = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ"];
 
     function openINF(num, platnum) {
         window.location.href = "./ShowStationInformation.html?num=" + num + "&platnum=" + platnum;
     }
+
     function choosePlatform(num) {
-        animateIt(".mask", "fadeIn", "block");
+        animateIt("#mask", "fadeIn", "block");
         bounceInLeft("#platformChoserWrap");
         $(".mask")[0].onclick = function () {
             setTimeout(function () {
-                animateIt(".mask", "fadeOut", "none")
+                animateIt("#mask", "fadeOut", "none")
             }, 500);
             bounceOutRight("#platformChoserWrap");
         };
         $("#closePlatformChoser")[0].onclick = function () {
             setTimeout(function () {
-                animateIt(".mask", "fadeOut", "none")
+                animateIt("#mask", "fadeOut", "none")
             }, 500);
             bounceOutRight("#platformChoserWrap");
         };
@@ -225,13 +251,13 @@
             a += "<a class='dropdown-item' href='javascript:void(0)' onclick='openINF(" + num + "," + i + ")'>";
             let b = p_num[i][0];
             let rd;
-            if (b === "7") rd = "仅供下车";
-            else if (b === "8") rd = "仅供上车";
-            else if (b === "9") rd = "终点站台";
-            else if (b === "10") rd = "不启用（快车越行或备用）";
-            else rd = routedirection[linedata.indexOf(p_num[i][1])][b - 1];
+            if (b === "7") rd = f_name[17][languages.indexOf(curLanguage)];
+            else if (b === "8") rd = f_name[18][languages.indexOf(curLanguage)];
+            else if (b === "9") rd = f_name[19][languages.indexOf(curLanguage)];
+            else if (b === "10") rd = f_name[20][languages.indexOf(curLanguage)];
+            else rd = routedirection[linedata.indexOf(p_num[i][1])][languages.indexOf(curLanguage)][b - 1];
             let globalname = globallist[linedata.indexOf(p_num[i][1])];
-            a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> 站台 " + rd + "</span></a>";
+            a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][languages.indexOf(curLanguage)] + " " + rd + "</span></a>";
         }
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
     }
