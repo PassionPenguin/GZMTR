@@ -2618,14 +2618,16 @@
         let n = $("[id^='n']");
         let r = $("[id^='i']");
         for (let i = 0; i < r.length; i++) {
+            // let k = parseInt(r[i].id.substr(1, r[i].id.length - 1));
             r[i].onclick = function () {
-                let k = parseInt(r[i].id.substr(1, r[i].id.length - 1));
                 k >= 237 && k <= 247 ? alert("暂未开通") : choosePlatform(k)
             };
         }
         for (let i = 0; i < n.length; i++) {
+            // let k = parseInt(n[i].id.substr(2, n[i].id.length - 2));
+            // n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)];
+            // n[i].children[1].innerHTML = cL==="EN"?f_s_list[k][1]:f_s_list[k][3];
             n[i].onclick = function () {
-                let k = parseInt(n[i].id.substr(2, n[i].id.length - 2));
                 k >= 237 && k <= 247 ? alert("暂未开通") : choosePlatform(k)
             };
         }
