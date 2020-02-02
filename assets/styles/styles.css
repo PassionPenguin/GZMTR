@@ -61,7 +61,7 @@ html {
     outline: none;
     border: 0;
     color: var(--var-grey);
-    background: var(--var-light);
+    background: var(--var-white);
 }
 
 #searchStation:focus {
@@ -454,7 +454,7 @@ var(--var-light) position: fixed;
 }
 
 #controls {
-    background: var(--var-light);
+    background: var(--var-white);
 }
 
 .p_content#SearchRes {
@@ -564,7 +564,7 @@ var(--var-light) position: fixed;
 #mappage.main-content {
     width: 100%;
     margin: 100px 0 60px 0;
-    background: var(--var-light);
+    background: var(--var-white);
     height: calc(100vh - 160px);
 }
 

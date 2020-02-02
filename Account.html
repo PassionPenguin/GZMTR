@@ -53,12 +53,30 @@
                 </button>
                 <div id="ThemeChoser" class="collapse">
                     <ul>
-                        <li><string data-require="loadString" data-stringid="27"></string></li>
-                        <li><string data-require="loadString" data-stringid="28"></string></li>
-                        <li><string data-require="loadString" data-stringid="29"></string></li>
-                        <li><string data-require="loadString" data-stringid="30"></string></li>
-                        <li><string data-require="loadString" data-stringid="31"></string></li>
+                        <li>
+                            <string data-require="loadString" data-stringid="27"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="28"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="29"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="30"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="31"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="32"></string>
+                        </li>
                     </ul>
+                </div>
+                <div class="alert" style="display: none;text-align:center" id="themewarning">
+                    <p>
+                        <string data-require="loadString" data-stringid="33"></string>
+                    </p>
                 </div>
             </div>
         </div>
@@ -95,5 +113,6 @@
     initLanguage("init");
     initLanguage();
     initTheme();
+    if (typeof isDark !== "undefined") $("themewarning")[0].style.display = "block;"
 </script>
 </html>
