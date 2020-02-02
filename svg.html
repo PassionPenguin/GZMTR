@@ -7,291 +7,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
+    <style>
+        html, body, #map {
+            width: 100vw;
+            height: 100vh;
+            transition: ease-in-out 200ms;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-<style>#map {
-    width: 100vw;
-    height: 100vh;
-    transition: ease-in-out 200ms;
-}
-
-#a {
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 40px;
-    background: #fff;
-}
-
-</style>
-<div id="a">
-    <div id="b"></div>
-    <div id="c"></div>
-    <div id="d"></div>
-    <div id="e"></div>
+<div id="wrap">
 </div>
-<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<div id="wrap"><?xml version="1.0" encoding="utf-8"?>
-    <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" id="map"
-         viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;}
-    .st1{fill:#9FA0A0;}
-    .st2{fill:#075D8E;}
-    .st3{fill:#DAC263;}
-    .st4{fill:none;stroke:#075D8E;stroke-width:5;stroke-miterlimit:10;}
-    .st5{fill:#595757;}
-    .st6{font-family:'SourceHanSansSC-Medium-GBpc-EUC-H';}
-    .st7{font-size:9px;}
-    .st8{font-family:'Anodina-Light';}
-    .st9{font-size:6px;}
-    .st10{fill:none;stroke:#DAC263;stroke-width:5;stroke-miterlimit:10;}
-    .st11{fill:none;stroke:#8EBC31;stroke-width:5;stroke-miterlimit:10;}
-    .st12{fill:#FFFFFF;stroke:#FFFFFF;stroke-miterlimit:10;}
-    .st13{fill:#FFFFFF;stroke:#9FA0A0;stroke-miterlimit:10;}
-</style>
-        <symbol  id="Interchange" viewBox="-5.6 -4 11.2 8">
-	<path class="st0" d="M1.6-4c2.2,0,4,1.8,4,4s-1.8,4-4,4h-3.2c-2.2,0-4-1.8-4-4s1.8-4,4-4H1.6z"/>
-            <g>
-		<path class="st0" d="M-1.6-2.7c-1.5,0-2.7,1.2-2.7,2.7s1.2,2.7,2.7,2.7h3.2c1.5,0,2.7-1.2,2.7-2.7S3.1-2.7,1.6-2.7H-1.6z"/>
-                <path class="st1" d="M1.6,2.2c1.2,0,2.2-1,2.2-2.2c0-1.2-1-2.2-2.2-2.2h-3.2c-1.2,0-2.2,1-2.2,2.2c0,1.2,1,2.2,2.2,2.2H1.6
-			 M1.6,3.2h-3.2c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2h3.2c1.8,0,3.2,1.4,3.2,3.2C4.8,1.8,3.4,3.2,1.6,3.2L1.6,3.2z"/>
-	</g>
-</symbol>
-        <symbol  id="Line_2" viewBox="-2.5 -2.5 5 5">
-	<g>
-		<g>
-			<circle class="st0" cx="0" cy="0" r="2"/>
-            <path class="st2" d="M0,1.5c0.8,0,1.5-0.7,1.5-1.5S0.8-1.5,0-1.5S-1.5-0.8-1.5,0S-0.8,1.5,0,1.5 M0,2.5c-1.4,0-2.5-1.1-2.5-2.5
-				c0-1.4,1.1-2.5,2.5-2.5S2.5-1.4,2.5,0C2.5,1.4,1.4,2.5,0,2.5L0,2.5z"/>
-		</g>
-	</g>
-</symbol>
-        <symbol  id="Line1" viewBox="-2.5 -2.5 5 5">
-	<g>
-		<circle class="st0" cx="0" cy="0" r="2"/>
-        <path class="st3" d="M0,1.5c0.8,0,1.5-0.7,1.5-1.5S0.8-1.5,0-1.5S-1.5-0.8-1.5,0S-0.8,1.5,0,1.5 M0,2.5L0,2.5
-			c-1.4,0-2.5-1.1-2.5-2.5S-1.4-2.5,0-2.5h0c1.4,0,2.5,1.1,2.5,2.5S1.4,2.5,0,2.5L0,2.5z"/>
-	</g>
-</symbol>
-        <g id="Line2">
-	<g id="Names_1_">
-	</g>
-            <g id="Line_Structure_1_">
-		<path class="st4" d="M962.5,1337.5c12.5-12.5,25-25,37.5-37.5l5.2-5.2c4.7-4.7,7.3-11,7.3-17.7v-179.3c0-6.6-2.6-13-7.3-17.7
-			l-72.9-72.9c-4.7-4.7-7.3-11-7.3-17.7V770V575V375v-14.6c0-6.6,2.6-13,7.3-17.7L1025,250l37.5-37.5"/>
-	</g>
-            <text id="n16" transform="matrix(1 0 0 1 962.4997 1357.5)"><tspan x="0" y="0" class="st5 st6 st7">广州南站</tspan><tspan x="0" y="7" class="st1 st8 st9">Guangzhou South</tspan><tspan x="0" y="14" class="st1 st8 st9">Railway Station</tspan></text>
-            <text id="n17" transform="matrix(1 0 0 1 1012.4995 1312.4998)"><tspan x="0" y="0" class="st5 st6 st7">石壁</tspan><tspan x="0" y="7" class="st1 st8 st9">Shibi</tspan></text>
-            <text id="n18" transform="matrix(1 0 0 1 1019.9995 1262.5002)"><tspan x="0" y="0" class="st5 st6 st7">会江</tspan><tspan x="0" y="7" class="st1 st8 st9">Huijiang</tspan></text>
-            <text id="n19" transform="matrix(1 0 0 1 1020.0001 1212.4996)"><tspan x="0" y="0" class="st5 st6 st7">南浦</tspan><tspan x="0" y="7" class="st1 st8 st9">Nanpu</tspan></text>
-            <text id="n20" transform="matrix(1 0 0 1 1019.9999 1162.5001)"><tspan x="0" y="0" class="st5 st6 st7">洛溪</tspan><tspan x="0" y="7" class="st1 st8 st9">Luoxi</tspan></text>
-            <text id="n21" transform="matrix(1 0 0 1 1020.0002 1124.9998)"><tspan x="0" y="0" class="st5 st6 st7">南洲</tspan><tspan x="0" y="7" class="st1 st8 st9">Nanzhou</tspan></text>
-            <text id="n22" transform="matrix(1 0 0 1 992.4999 1050.0004)"><tspan x="0" y="0" class="st5 st6 st7">东晓南</tspan><tspan x="0" y="7" class="st1 st8 st9">Dongxiaonan</tspan></text>
-            <text id="n23" transform="matrix(1 0 0 1 955.0005 1012.5004)"><tspan x="0" y="0" class="st5 st6 st7">江泰路</tspan><tspan x="0" y="7" class="st1 st8 st9">Jiangtai Lu</tspan></text>
-            <text id="n24_1_" transform="matrix(1 0 0 1 932.4999 959.9996)"><tspan x="0" y="0" class="st5 st6 st7">昌岗</tspan><tspan x="0" y="7" class="st1 st8 st9">Changgang</tspan></text>
-            <text id="n25" transform="matrix(1 0 0 1 932.4997 924.9995)"><tspan x="0" y="0" class="st5 st6 st7">江南西</tspan><tspan x="0" y="7" class="st1 st8 st9">Jiangnanxi</tspan></text>
-            <text transform="matrix(1 0 0 1 932.5004 874.9999)" class="st5 st6 st7">市二宫</text>
-            <text transform="matrix(1 0 0 1 932.5004 881.9999)" class="st1 st8 st9">The 2</text>
-            <text transform="matrix(0.583 0 0 0.583 947.6918 880.0018)" class="st1 st8 st9">nd</text>
-            <text transform="matrix(1 0 0 1 951.6586 881.9999)" class="st1 st8 st9"> Workers’</text>
-            <text transform="matrix(1 0 0 1 932.5004 888.9999)" class="st1 st8 st9">Cultural Palace</text>
-            <text id="n27_1_" transform="matrix(1 0 0 1 932.4999 812.5004)"><tspan x="0" y="0" class="st5 st6 st7">海珠广场</tspan><tspan x="0" y="7" class="st1 st8 st9">Haizhu Square</tspan></text>
-            <text id="n28" transform="matrix(1 0 0 1 932.5001 674.9996)"><tspan x="0" y="0" class="st5 st6 st7">纪念堂</tspan><tspan x="0" y="7" class="st1 st8 st9">Sun Yat-sen</tspan><tspan x="0" y="14" class="st1 st8 st9">Memorial Hall</tspan></text>
-            <text id="n29" transform="matrix(1 0 0 1 932.5001 624.9995)"><tspan x="0" y="0" class="st5 st6 st7">越秀公园</tspan><tspan x="0" y="7" class="st1 st8 st9">Yuexiu Park</tspan></text>
-            <text id="n30" transform="matrix(1 0 0 1 932.5 559.9998)"><tspan x="0" y="0" class="st5 st6 st7">广州火车站</tspan><tspan x="0" y="7" class="st1 st8 st9">Guangzhou Railway Station</tspan></text>
-            <text id="n31" transform="matrix(1 0 0 1 932.4995 525.0004)"><tspan x="0" y="0" class="st5 st6 st7">三元里</tspan><tspan x="0" y="7" class="st1 st8 st9">Sanyuanli</tspan></text>
-            <text id="n32" transform="matrix(1 0 0 1 932.5004 475.0001)"><tspan x="0" y="0" class="st5 st6 st7">飞翔公园</tspan><tspan x="0" y="7" class="st1 st8 st9">Feixiang Park</tspan></text>
-            <text id="n33" transform="matrix(1 0 0 1 932.4997 425.0002)"><tspan x="0" y="0" class="st5 st6 st7">白云公园</tspan><tspan x="0" y="7" class="st1 st8 st9">Baiyun Park</tspan></text>
-            <text id="n34" transform="matrix(1 0 0 1 932.4997 375.0002)"><tspan x="0" y="0" class="st5 st6 st7">白云文化广场</tspan><tspan x="0" y="7" class="st1 st8 st9">Baiyun Cultural Square</tspan></text>
-            <text id="n35" transform="matrix(1 0 0 1 955.0002 335)"><tspan x="0" y="0" class="st5 st6 st7">萧岗</tspan><tspan x="0" y="7" class="st1 st8 st9">Xiaogang, Baiyun</tspan></text>
-            <text id="n36" transform="matrix(1 0 0 1 992.5003 300.0001)"><tspan x="0" y="0" class="st5 st6 st7">江夏</tspan><tspan x="0" y="7" class="st1 st8 st9">Jiangxia</tspan></text>
-            <text id="n37" transform="matrix(1 0 0 1 1029.9999 262.5002)"><tspan x="0" y="0" class="st5 st6 st7">黄边</tspan><tspan x="0" y="7" class="st1 st8 st9">Huangbian</tspan></text>
-            <text id="n38" transform="matrix(1 0 0 1 1077.4999 212.5)"><tspan x="0" y="0" class="st5 st6 st7">嘉禾望岗</tspan><tspan x="0" y="7" class="st1 st8 st9">Jiahewanggang</tspan></text>
-</g>
-        <g id="Line_1">
-	<g id="Names">
-		<text id="n0" transform="matrix(1 0 0 1 665.9998 989.9999)"><tspan x="0" y="0" class="st5 st6 st7">西塱</tspan><tspan x="0.4" y="7" class="st1 st8 st9">Xilang</tspan></text>
-        <text id="n1" transform="matrix(1 0 0 1 682.5 925)"><tspan x="0" y="0" class="st5 st6 st7">坑口</tspan><tspan x="0" y="7" class="st1 st8 st9">Kengkou</tspan></text>
-        <text id="n2" transform="matrix(1 0 0 1 682.4996 875)"><tspan x="0" y="0" class="st5 st6 st7">花地湾</tspan><tspan x="0" y="7" class="st1 st8 st9">Huadiwan</tspan></text>
-        <text id="n3" transform="matrix(1 0 0 1 705 837.5004)"><tspan x="0" y="0" class="st5 st6 st7">芳村</tspan><tspan x="0" y="7" class="st1 st8 st9">Fangcun</tspan></text>
-        <text id="n4" transform="matrix(1 0 0 1 742.5001 802.5)"><tspan x="0" y="0" class="st5 st6 st7">黄沙</tspan><tspan x="0" y="7" class="st1 st8 st9">Huangsha</tspan></text>
-        <text id="n5" transform="matrix(1 0 0 1 780 762.4996)"><tspan x="0" y="0" class="st5 st6 st7">长寿路</tspan><tspan x="0" y="7" class="st1 st8 st9">Changshou Lu</tspan></text>
-        <text id="n6" transform="matrix(1 0 0 1 811.4998 710.0002)"><tspan x="0" y="0" class="st5 st6 st7">陈家祠</tspan><tspan x="-14.3" y="7" class="st1 st8 st9">Chen Clan Academy</tspan></text>
-        <text id="n7" transform="matrix(1 0 0 1 861.4996 740.0002)"><tspan x="0" y="0" class="st5 st6 st7">西门口</tspan><tspan x="-0.3" y="7" class="st1 st8 st9">Ximenkou</tspan></text>
-        <text id="n8" transform="matrix(1 0 0 1 932.5004 709.9998)"><tspan x="0" y="0" class="st5 st6 st7">公园前</tspan><tspan x="0" y="7" class="st1 st8 st9">Gongyuanqian</tspan></text>
-        <text id="n9" transform="matrix(1 0 0 1 961.5001 740)"><tspan x="0" y="0" class="st5 st6 st7">农讲所</tspan><tspan x="-14" y="7" class="st1 st8 st9">Peasant Movement</tspan><tspan x="1.5" y="14" class="st1 st8 st9">Institute</tspan></text>
-        <text id="n10" transform="matrix(1 0 0 1 1007.0002 709.9998)"><tspan x="0" y="0" class="st5 st6 st7">烈士陵园</tspan><tspan x="-1.2" y="7" class="st1 st8 st9">Martyrs’ Park</tspan></text>
-        <text id="n11" transform="matrix(1 0 0 1 1082.5001 740.0004)"><tspan x="0" y="0" class="st5 st6 st7">东山口</tspan><tspan x="0" y="7" class="st1 st8 st9">Dongshankou</tspan></text>
-        <text id="n12" transform="matrix(1 0 0 1 1132.5002 740)"><tspan x="0" y="0" class="st5 st6 st7">杨箕</tspan><tspan x="0" y="7" class="st1 st8 st9">Yangji</tspan></text>
-        <text id="n13" transform="matrix(1 0 0 1 1185 739.9997)"><tspan x="0" y="0" class="st5 st6 st7">体育西路</tspan><tspan x="0" y="7" class="st1 st8 st9">Tiyu Xilu</tspan></text>
-        <text id="n14" transform="matrix(1 0 0 1 1207.5001 650.0002)"><tspan x="0" y="0" class="st5 st6 st7">体育中心</tspan><tspan x="0" y="7" class="st1 st8 st9">Tianhe Sports Center</tspan></text>
-        <text id="n15" transform="matrix(1 0 0 1 1129.0002 574.9998)"><tspan x="0" y="0" class="st5 st6 st7">广州东站</tspan><tspan x="-9.1" y="7" class="st1 st8 st9">Guangzhou East</tspan><tspan x="-10.3" y="14" class="st1 st8 st9"> Railway Station</tspan></text>
-	</g>
-            <g id="Line_Structure">
-		<path class="st10" d="M675,975V855.2c0-3.3,1.3-6.5,3.7-8.8L775,750l21.3-21.3c2.3-2.3,5.5-3.7,8.8-3.7H875h75h200h37.5
-			c6.9,0,12.5-5.6,12.5-12.5v-125c0-6.9-5.6-12.5-12.5-12.5l0,0H1175"/>
-	</g>
-</g>
-        <g id="ICONS">
-	<polyline class="st11" points="967.5,1340 1017.5,1290 1050,1290 	"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i0_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 675 975)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i1_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 675 925.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i2_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 675 875.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i3_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 700 825.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i4_2_" x="-5.6" y="-4" transform="matrix(-0.7071 -0.7071 -0.7071 0.7071 737.4999 787.5001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i5_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 775 750.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i6_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 825 725.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i7_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 875 725.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i8_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 925 725)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i9_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 975 725.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i10_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1025 725.0001)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line1"  width="5" height="5" id="i14_2_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1200 650)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i11_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1075 725)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i12_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1125 725)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i13_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1175 725)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i15_2_" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1175 575)" style="overflow:visible;"/>
-            <g>
-		<path class="st12" d="M1003.7,1294.3c-1.6-1.6-4.1-1.6-5.7,0c-1.6,1.6-1.6,4.1,0,5.7l6.5,6.4c1.5,1,3.6,0.8,4.9-0.6
-			c1.6-1.6,1.6-4.1,0-5.7L1003.7,1294.3z"/>
-                <path class="st13" d="M1004.4,1305.2c1.2,1.2,3.3,1.2,4.5,0c1.2-1.2,1.2-3.3,0-4.5l-5.8-5.8c-1.2-1.2-3.3-1.2-4.5,0
-			c-1.2,1.2-1.2,3.3,0,4.5L1004.4,1305.2z"/>
-	</g>
-            <g>
-		<path class="st12" d="M966.2,1331.8c-1.6-1.6-4.1-1.6-5.7,0c-1.6,1.6-1.6,4.1,0,5.7l6.5,6.4c1.5,1,3.6,0.8,4.9-0.6
-			c1.6-1.6,1.6-4.1,0-5.7L966.2,1331.8z"/>
-                <path class="st13" d="M966.9,1342.7c1.2,1.2,3.3,1.2,4.5,0c1.2-1.2,1.2-3.3,0-4.5l-5.8-5.8c-1.2-1.2-3.3-1.2-4.5,0
-			c-1.2,1.2-1.2,3.3,0,4.5L966.9,1342.7z"/>
-	</g>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i18" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1012.5 1262.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i19" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1012.5 1212.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i20" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1012.5 1162.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i21" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1012.5 1112.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i22" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 987.5 1062.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i23" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 950 1025)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i24" x="-5.6" y="-4" transform="matrix(1 0 0 -1 925 975)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i25" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 925)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i26_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 875)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i27" x="-5.6" y="-4" transform="matrix(1 0 0 -1 925 800)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i28_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 675)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i29" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 625)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i30" x="-5.6" y="-4" transform="matrix(1 0 0 -1 925 575)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i31" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 525)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i32" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 475)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i33" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 425)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i34" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 925 375)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i35" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 950 325)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i36" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 987.5 287.5)" style="overflow:visible;"/>
-
-            <use xlink:href="#Line_2"  width="5" height="5" id="i37_1_" x="-2.5" y="-2.5" transform="matrix(1 0 0 -1 1025 250)" style="overflow:visible;"/>
-
-            <use xlink:href="#Interchange"  width="11.2" height="8" id="i38" x="-5.6" y="-4" transform="matrix(1 0 0 -1 1062.5 212.5)" style="overflow:visible;"/>
-</g>
-</svg>
-
-</div>
+<script src="./assets/scripts/lib.min.js"></script>
 <script>
-    let b = document.querySelector("#b");
-    let c = document.querySelector("#c");
-    let d = document.querySelector("#d");
-    let e = document.querySelector("#e");
-    let map = document.querySelector("#map");
     window.onload = function () {
-        map.setAttribute("viewBox", "250 250 " + window.innerHeight + " " + window.innerWidth);
-    };
-    let tc = [0, false];
-    let pos = [0, 0];
-    window.pinchStart = (ev) => {
-        tc[0] = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY);
-        b.innerText = tc[0]
-    };
-    window.pinchMove = (ev) => {
-        c.innerText = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY) / tc[0];
-        scaleMap((Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY) / tc[0]));
-        tc[0] = Math.hypot(ev.touches[0].pageX - ev.touches[1].pageX, ev.touches[0].pageY - ev.touches[1].pageY);
-        b.innerText = tc[0];
-    };
-    window.scaleMap = (size) => {
-        let attr = map.getAttribute("viewBox").split(" ");
-        d.innerText = attr[2];
-        e.innerText = attr[3];
-        map.setAttribute("viewBox", attr[0] + " " + attr[1] + " " + attr[2] * (1 / size) + " " + attr[3] * (1 / size))
-    };
-    window.moveMap = (x, y) => {
-        let attr = map.getAttribute("viewBox").split(" ");
-        map.setAttribute("viewBox", (((x * (attr[2] / window.innerWidth)))*2 + parseInt(attr[0])) + " " + (((y * (attr[3] / window.innerHeight)))*2 + parseInt(attr[1])) + " " + attr[2] + " " + attr[3])
-    };
-    window.pinchEnd = () => {
-        tc = [0, false];
-    };
-    map.addEventListener("touchstart", (ev) => {
-        if (ev.touches.length === 2) {
-            tc[1] = true;
-            pinchStart(ev);
-        } else {
-            pos[0] = ev.touches[0].pageX;
-            pos[1] = ev.touches[0].pageY;
-        }
-    });
-    map.addEventListener("touchmove", (ev) => {
-        if (tc[1]) {
-            pinchMove(ev);
-        } else {
-            moveMap(pos[0] - ev.touches[0].pageX, pos[1] - ev.touches[0].pageY);
-            pos[0] = ev.touches[0].pageX;
-            pos[1] = ev.touches[0].pageY;
-        }
-    });
-    map.addEventListener("touchend", (ev) => {
-        pinchEnd();
-    });
-    let n = document.querySelectorAll("[id^='n']");
-    let i = document.querySelectorAll("[id^='i']");
-    for (let j = 0; j < i.length; j++) {
-        i[j].onclick = function () {
-            alert("1 | " + (j + 1))
-        }
-    }
-    for (let j = 0; j < n.length; j++) {
-        n[j].onclick = function () {
-            alert("1 | " + (j + 1) + n[j].childNodes[0].innerHTML + " " + n[j].childNodes[1
-                ].innerHTML)
+        panzoom($("#mapinner")[0], {
+            maxZoom: 5,
+            minZoom: 1
+        });
+        let r = $("[id^='n']");
+        let n = $("[id^='i']");
+        for (let i = 0; i < r.length; i++) {
+            r[i].onclick = function () {
+                alert(r[i].id.substr(1, r[i].id.length - 1));
+            };
+            n[i].onclick = function () {
+                alert(n[i].id.substr(1, n[i].id.length - 1));
+            };
         }
     }
 </script>
