@@ -2613,7 +2613,11 @@
     window.onload = function () {
         panzoom($("#mapinner")[0], {
             maxZoom: 5,
-            minZoom: 1
+            minZoom: 1, onTouch: function (e) {
+                // `e` - is current touch event.
+
+                return false; // tells the library to not preventDefault.
+            }
         });
         let n = $("[id^='n']");
         let r = $("[id^='i']");
