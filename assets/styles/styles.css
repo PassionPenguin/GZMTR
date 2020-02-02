@@ -22,7 +22,7 @@
 }
 
 html {
-    background: var(--var-light);
+    background: var(--var-white);
 }
 
 .nav.search {
@@ -82,9 +82,10 @@ html {
 }
 
 .nav.navigation {
-    height: 48px;
-    bottom: 6px;
+    height: 54px;
+    padding-bottom: 6px;
     margin: 0 auto;
+    background-color: var(--var-light);
 }
 
 .nav.navigation a {
@@ -109,7 +110,7 @@ html {
 .main-content {
     width: 100%;
     margin: 100px 0 60px 0;
-    background: var(--var-light);
+    background: var(--var-white);
 }
 
 img.banner {
@@ -540,18 +541,18 @@ var(--var-light) position: fixed;
     color: var(--var-light);
 }
 
-#LanguagesChoser {
+#LanguagesChoser, #ThemeChoser {
     width: 100%;
     text-align: center;
     margin: 5px 0 20px 0;
 }
 
-#LanguagesChoser ul {
+#LanguagesChoser ul, #ThemeChoser ul {
     padding: 0;
     list-style: none;
 }
 
-#LanguagesChoser li {
+#LanguagesChoser li, #ThemeChoser li {
     padding: 3px 0;
     font: 16px/28px Anodina, sans-serif;
 }

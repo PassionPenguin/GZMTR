@@ -693,6 +693,34 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
     --var-dark-a08: #ddddddbb;
 }
 
+.pink-theme {
+    --var-accent:#d35055;
+    --var-light: #fff1f0;
+    --var-light-a05: #ffe7de88;
+    --var-light-a08: #ffe7debb;
+}
+
+.yellow-theme {
+    --var-accent:#fa8a3c;
+    --var-light: #fbfada;
+    --var-light-a05: #fbfada88;
+    --var-light-a08: #fbfadabb;
+}
+
+.green-theme {
+    --var-accent: #66ae1c;
+    --var-light: #f5ffec;
+    --var-light-a05: #f5ffec88;
+    --var-light-a08: #f5ffecbb;
+}
+
+.blue-theme {
+    --var-accent: #4182d3;
+    --var-light: #e5efff;
+    --var-light-a05: #e5efff88;
+    --var-light-a08: #e5efffbb;
+}
+
 .dark-theme .alert-warning {
     background: var(--var-light);
 }
@@ -711,4 +739,8 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 
 .dark-theme .staircase {
     background-image: url("../media/vectors/ic_staircase_white.svg")
+}
+
+.alert {
+    border-radius: 0 0 .5rem .5rem;
 }
