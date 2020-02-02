@@ -1423,27 +1423,27 @@
                             <tspan x="0" y="0" class="st16 st17 st38">南风</tspan>
                             <tspan x="-.8" y="5" class="st1 st19 st30">Nanfeng</tspan>
                         </text>
-                        <text id="n_252" transform="translate(1193.0005 1077.4998)">
+                        <text transform="translate(1193.0005 1077.4998)">
                             <tspan x="0" y="0" class="st16 st17 st38">会展</tspan>
                             <tspan x="-12.3" y="5" class="st1 st19 st30">Canton Complex Fair</tspan>
                         </text>
-                        <text id="n_253" transform="translate(1171.5 1097.5001)">
+                        <text id="n_252" transform="translate(1171.5 1097.5001)">
                             <tspan x="0" y="0" class="st16 st17 st38">西</tspan>
                             <tspan x="-1.7" y="5" class="st1 st19 st30">West</tspan>
                         </text>
-                        <text id="n_254" transform="translate(1196.4998 1097.5)">
+                        <text id="n_253" transform="translate(1196.4998 1097.5)">
                             <tspan x="0" y="0" class="st16 st17 st38">中</tspan>
                             <tspan x="-2.5" y="5" class="st1 st19 st30">Middle</tspan>
                         </text>
-                        <text id="n_255" transform="translate(1221.5002 1097.4996)">
+                        <text id="n_254" transform="translate(1221.5002 1097.4996)">
                             <tspan x="0" y="0" class="st16 st17 st38">东</tspan>
                             <tspan x="-.8" y="5" class="st1 st19 st30">East</tspan>
                         </text>
-                        <text id="n_256" transform="translate(1232.5001 1077.5)">
+                        <text id="n_255" transform="translate(1232.5001 1077.5)">
                             <tspan x="0" y="0" class="st16 st17 st38">琶洲大桥南</tspan>
                             <tspan x="-1.8" y="5" class="st1 st19 st30">Pazhou Bridge South</tspan>
                         </text>
-                        <text id="n_257" transform="translate(1246.4999 1097.4996)">
+                        <text id="n_256" transform="translate(1246.4999 1097.4996)">
                             <tspan x="0" y="0" class="st16 st17 st38">琶洲塔</tspan>
                             <tspan x="-7.6" y="5" class="st1 st19 st30">Pazhou Pagoda</tspan>
                         </text>
@@ -2606,18 +2606,17 @@
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
 <script src="assets/database/@string.js"></script>
+<script src="assets/scripts/panzoom.js"></script>
 <script>
     initLanguage("init");
     initTheme();
-
     window.onload = function () {
         panzoom($("#mapinner")[0], {
             maxZoom: 5,
-            minZoom: 1, onTouch: function (e) {
+            minZoom: 0.2, onTouch: function (e) {
                 // `e` - is current touch event.
-
                 return false; // tells the library to not preventDefault.
-            }
+            }, bounds: true
         });
         let n = $("[id^='n']");
         let r = $("[id^='i']");
@@ -2631,6 +2630,10 @@
             let k = parseInt(n[i].id.substr(2, n[i].id.length - 2));
             // n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)];
             // n[i].children[1].innerHTML = cL==="EN"?f_s_list[k][1]:f_s_list[k][3];
+            if (cL !== "EN" && cL !== "CNS") {
+                console.log(i);
+                n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)].split("-")[0];
+            }
             n[i].onclick = function () {
                 k >= 237 && k <= 247 ? alert("暂未开通") : choosePlatform(k)
             };
