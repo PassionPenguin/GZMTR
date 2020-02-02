@@ -19,7 +19,6 @@
         <div class="content">
             <h1>
                 <string data-require="loadString" data-stringid="2"></string>
-                <small>GZMTR Station INFO </small>
                 <small>BETA 1.4</small></h1>
         </div>
         <div class="wrap_search">
@@ -82,7 +81,6 @@
     </a>
 </nav>
 </body>
-<script src="assets/scripts/lib.min.js"></script>
 <script src="./assets/scripts/lib.min.js"></script>
 <script src="./assets/database/stationlist.js"></script>
 <script src="./assets/database/stationnum.js"></script>
@@ -117,13 +115,13 @@
             a += "<a class='dropdown-item' href='javascript:void(0)' onclick='openINF(" + num + "," + i + ")'>";
             let b = p_num[i][0];
             let rd;
-            if (b === "7") rd = f_name[17][languages.indexOf(curLanguage)];
-            else if (b === "8") rd = f_name[18][languages.indexOf(curLanguage)];
-            else if (b === "9") rd = f_name[19][languages.indexOf(curLanguage)];
-            else if (b === "10") rd = f_name[20][languages.indexOf(curLanguage)];
-            else rd = routedirection[linedata.indexOf(p_num[i][1])][languages.indexOf(curLanguage)][b - 1];
+            if (b === "7") rd = f_name[17][l.indexOf(cL)];
+            else if (b === "8") rd = f_name[18][l.indexOf(cL)];
+            else if (b === "9") rd = f_name[19][l.indexOf(cL)];
+            else if (b === "10") rd = f_name[20][l.indexOf(cL)];
+            else rd = routedirection[linedata.indexOf(p_num[i][1])][l.indexOf(cL)][b - 1];
             let globalname = globallist[linedata.indexOf(p_num[i][1])];
-            a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][languages.indexOf(curLanguage)] + " " + rd + "</span></a>";
+            a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][l.indexOf(cL)] + " " + rd + "</span></a>";
         }
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
     }
