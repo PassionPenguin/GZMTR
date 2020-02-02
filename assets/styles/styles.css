@@ -556,6 +556,20 @@ var(--var-light) position: fixed;
     font: 16px/28px Anodina, sans-serif;
 }
 
-.no-topbar .main-content{
-    margin-top:48px;
+.no-topbar .main-content {
+    margin-top: 48px;
+}
+
+#mappage.main-content {
+    width: 100%;
+    margin: 100px 0 60px 0;
+    background: var(--var-light);
+    height: calc(100vh - 160px);
+}
+
+svg#map {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 0;
 }
