@@ -124,6 +124,8 @@
             a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][l.indexOf(cL)] + " " + rd + "</span></a>";
         }
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
+        saveRecentWatch(num);
+        loadRecentWatch();
     }
 </script>
 </html>
