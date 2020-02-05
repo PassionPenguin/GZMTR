@@ -1,0 +1,75 @@
+<!-- Made by Penguin -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>makeRoute.html</title>
+</head>
+<body>
+
+</body>
+<script src="./assets/database/map.js"></script>
+<script src="./assets/database/interchanges.js"></script>
+<script src="./assets/scripts/CalcSP.js"></script>
+<script src="assets/database/fullstatinlog.js"></script>
+<script>
+    getRoute = (start, end) => {
+        let calc = (start, end, map) => {
+            let g = new Graph(map).findShortestPath(start, end);
+            let time = 0, length = 0, booleanAPM = false, booleanTramHZ = false, priceLength = 0, price = 0;
+            for (let i = 0; i < g.length - 1; i++) {
+                g[i] = parseInt(g[i]);
+                time += map[g[i]][g[i + 1]][0];
+                length += map[g[i]][g[i + 1]][1];
+                priceLength += map[g[i]][g[i + 1]][1];
+                if (g[i] >= 266 && g[i] <= 274) {
+                    if (!booleanAPM)
+                        price += 2;
+                    priceLength -= map[g[i]][g[i + 1]][1];
+                } else if (g[i] >= 275 && g[i] <= 286) {
+                    if (!booleanTramHZ)
+                        price += 2;
+                    priceLength -= map[g[i]][g[i + 1]][1];
+                }
+            }
+            return [g, time, length, calcPrice(priceLength) + price];
+        };
+        let calcPrice = (distance) => {
+            return distance <= 4000 ? 2 : distance <= 12000 ? 2 + 4 * Math.round((distance - 4000) / 4000) : distance <= 24000 ? 5 + Math.round((distance - 12000) / 6000) : 7 + Math.round((distance - 24000) / 8000);
+        };
+        let result = calc(start, end, n_map);
+        let processSameRoute = () => {
+            let res = [result[0][0]];
+            let num = [0], k = 0;
+            for (let i = 0; i < result[0].length - 1; i++) {
+                if (result[0][i] + 1 !== result[0][i + 1]) {
+                    res.push(result[0][i + 1]);
+                    k++;
+                    num.push(0);
+                } else num[k] = num[k] + 1;
+            }
+            return [res, num];
+        };
+        return [result, processSameRoute()];
+    };
+    getBelong = (id) => {
+        let res = id >= 0 && id <= 15 ? "1" : id >= 16 && id <= 39 ? "2" : id >= 40 && id <= 55 ? "3" : id >= 56 && id <= 70 ? "3N" : id >= 71 && id <= 94 ? "4" : id >= 95 && id <= 118 ? "5" : id >= 119 && id <= 150 ? "6" : id >= 151 && id <= 159 ? "7" : id >= 160 && id <= 174 ? "8" : id >= 175 && id <= 185 ? "9" : id >= 186 && id <= 196 ? "13" : id >= 197 && id <= 209 ? "14" : id >= 210 && id <= 219 ? "KCL" : id >= 210 && id <= 240 ? "21" : id >= 241 && id <= 265 ? "GF" : id >= 266 && id <= 274 ? "APM" : "THZ1";
+        let name = [1, 2, 3, "3N", 4, 5, 6, 7, 8, 9, 13, 14, "KCL", 21, "GF", "APM", "THZ1"],
+            gn = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ", "LineTHZ1-GZ"];
+        return [res, gn[name.indexOf(res)]];
+    };
+    processResult = (start, end) => {
+        let route = getRoute(start, end);
+        let time = route[0][1], length = route[0][2], price = route[0][3], inter = route[1][0], num = route[1][1];
+        let resultTxt = "Your are now at " + n_res_2[inter[0]][4] + ", and you should take Line" + getBelong(inter[0])[0] + " for " + num[0] + " stations, then you will arrived at ";
+        for (let i = 1; i < inter.length - 1; i++) {
+            resultTxt += n_res_2[inter[i]][4] + ". You should take Line " + getBelong(inter[i])[0] + " for " + num[i] + " stations, then you will arrived at ";
+        }
+        resultTxt += n_res_2[inter[inter.length - 1]][4] + ". And finally should take Line " + getBelong(inter[inter.length - 1])[0] + " for " + num[inter.length - 1] + " stations, then you will arrived at the destination: " + n_res_2[end][4];
+        console.log(resultTxt);
+    };
+</script>
+</html>
