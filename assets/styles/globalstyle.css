@@ -70,362 +70,362 @@
 }
 
 .font-Line1-GZ {
-    color: var(--GZL1);
+    color: var(--GZL1) !important;
 }
 
 .font-Line2-GZ {
-    color: var(--GZL2);
+    color: var(--GZL2) !important;
 }
 
 .font-Line3-GZ {
-    color: var(--GZL3);
+    color: var(--GZL3) !important;
 }
 
 .font-Line4-GZ {
-    color: var(--GZL4);
+    color: var(--GZL4) !important;
 }
 
 .font-Line5-GZ {
-    color: var(--GZL5);
+    color: var(--GZL5) !important;
 }
 
 .font-Line6-GZ {
-    color: var(--GZL6);
+    color: var(--GZL6) !important;
 }
 
 .font-Line7-GZ {
-    color: var(--GZL7);
+    color: var(--GZL7) !important;
 }
 
 .font-Line8-GZ {
-    color: var(--GZL8);
+    color: var(--GZL8) !important;
 }
 
 .font-Line9-GZ {
-    color: var(--GZL9);
+    color: var(--GZL9) !important;
 }
 
 .font-Line10-GZ {
-    color: var(--GZL10);
+    color: var(--GZL10) !important;
 }
 
 .font-Line11-GZ {
-    color: var(--GZL11);
+    color: var(--GZL11) !important;
 }
 
 .font-Line12-GZ {
-    color: var(--GZL12);
+    color: var(--GZL12) !important;
 }
 
 .font-Line13-GZ {
-    color: var(--GZL13);
+    color: var(--GZL13) !important;
 }
 
 .font-Line14-GZ {
-    color: var(--GZL14);
+    color: var(--GZL14) !important;
 }
 
 .font-Line15-GZ {
-    color: var(--GZL15);
+    color: var(--GZL15) !important;
 }
 
 .font-Line16-GZ {
-    color: var(--GZL16);
+    color: var(--GZL16) !important;
 }
 
 .font-Line17-GZ {
-    color: var(--GZL17);
+    color: var(--GZL17) !important;
 }
 
 .font-Line18-GZ {
-    color: var(--GZL18);
+    color: var(--GZL18) !important;
 }
 
 .font-Line19-GZ {
-    color: var(--GZL19);
+    color: var(--GZL19) !important;
 }
 
 .font-Line20-GZ {
-    color: var(--GZL20);
+    color: var(--GZL20) !important;
 }
 
 .font-Line21-GZ {
-    color: var(--GZL21);
+    color: var(--GZL21) !important;
 }
 
 .font-Line22-GZ {
-    color: var(--GZL22);
+    color: var(--GZL22) !important;
 }
 
 .font-Line28-GZ {
-    color: var(--GZL28);
+    color: var(--GZL28) !important;
 }
 
 .font-LineAPM-GZ {
-    color: var(--GZAPM);
+    color: var(--GZAPM) !important;
 }
 
 .font-THZ1-GZ {
-    color: var(--GZTHZ1);
+    color: var(--GZTHZ1) !important;
 }
 
 .font-TGM1-FS {
-    color: var(--FSTGM1);
+    color: var(--FSTGM1) !important;
 }
 
 .font-THP1-GZ {
-    color: var(--GZTHP1);
+    color: var(--GZTHP1) !important;
 }
 
 .font-Line-GF {
-    color: var(--GFL);
+    color: var(--GFL) !important;
 }
 
 .icon-Line1-GZ {
-    background: var(--GZL1);
+    background: var(--GZL1) !important;
     color: #000;
 }
 
 .icon-Line2-GZ {
-    background: var(--GZL2);
+    background: var(--GZL2) !important;
     color: #fff;
 }
 
 .icon-Line3-GZ {
-    background: var(--GZL3);
+    background: var(--GZL3) !important;
     color: #000;
 }
 
 .icon-Line4-GZ {
-    background: var(--GZL4);
+    background: var(--GZL4) !important;
     color: #000;
 }
 
 .icon-Line5-GZ {
-    background: var(--GZL5);
+    background: var(--GZL5) !important;
     color: #000;
 }
 
 .icon-Line6-GZ {
-    background: var(--GZL6);
+    background: var(--GZL6) !important;
     color: #fff;
 }
 
 .icon-Line7-GZ {
-    background: var(--GZL7);
+    background: var(--GZL7) !important;
     color: #000;
 }
 
 .icon-Line8-GZ {
-    background: var(--GZL8);
+    background: var(--GZL8) !important;
     color: #fff;
 }
 
 .icon-Line9-GZ {
-    background: var(--GZL9);
+    background: var(--GZL9) !important;
     color: #000;
 }
 
 .icon-Line10-GZ {
-    background: var(--GZL10);
+    background: var(--GZL10) !important;
     color: #fff;
 }
 
 .icon-Line11-GZ {
-    background: var(--GZL11);
+    background: var(--GZL11) !important;
     color: #fff;
 }
 
 .icon-Line12-GZ {
-    background: var(--GZL12);
+    background: var(--GZL12) !important;
 }
 
 .icon-Line13-GZ {
-    background: var(--GZL13);
+    background: var(--GZL13) !important;
 }
 
 .icon-Line14-GZ {
-    background: var(--GZL14);
+    background: var(--GZL14) !important;
 }
 
 .icon-Line15-GZ {
-    background: var(--GZL15);
+    background: var(--GZL15) !important;
 }
 
 .icon-Line16-GZ {
-    background: var(--GZL16);
+    background: var(--GZL16) !important;
 }
 
 .icon-Line17-GZ {
-    background: var(--GZL17);
+    background: var(--GZL17) !important;
 }
 
 .icon-Line18-GZ {
-    background: var(--GZL18);
+    background: var(--GZL18) !important;
 }
 
 .icon-Line19-GZ {
-    background: var(--GZL19);
+    background: var(--GZL19) !important;
 }
 
 .icon-Line20-GZ {
-    background: var(--GZL20);
+    background: var(--GZL20) !important;
 }
 
 .icon-Line21-GZ {
-    background: var(--GZL21);
+    background: var(--GZL21) !important;
     color: #fff;
 }
 
 .icon-Line22-GZ {
-    background: var(--GZL22);
+    background: var(--GZL22) !important;
     color: #fff;
 }
 
 .icon-Line28-GZ {
-    background: var(--GZL28);
+    background: var(--GZL28) !important;
     color: #fff;
 }
 
 .icon-LineAPM-GZ {
-    background: var(--GZAPM);
+    background: var(--GZAPM) !important;
 }
 
 .icon-THZ1-GZ {
-    background: var(--GZTHZ1);
+    background: var(--GZTHZ1) !important;
 }
 
 .icon-TGM1-FS {
-    background: var(--FSTGM1);
+    background: var(--FSTGM1) !important;
 }
 
 .icon-THP1-GZ {
-    background: var(--GZTHP1);
+    background: var(--GZTHP1) !important;
 }
 
 .icon-LineUN-GZ {
-    background: var(--GZLUN);
+    background: var(--GZLUN) !important;
     color: #fff;
 }
 
 .icon-Line-GF {
-    background: var(--GFL);
+    background: var(--GFL) !important;
 }
 
 .border-Line1-GZ {
-    border-color: var(--GZL1);
+    border-color: var(--GZL1) !important;
 }
 
 .border-Line2-GZ {
-    border-color: var(--GZL2);
+    border-color: var(--GZL2) !important;
 }
 
 .border-Line3-GZ {
-    border-color: var(--GZL3);
+    border-color: var(--GZL3) !important;
 }
 
 .border-Line4-GZ {
-    border-color: var(--GZL4);
+    border-color: var(--GZL4) !important;
 }
 
 .border-Line5-GZ {
-    border-color: var(--GZL5);
+    border-color: var(--GZL5) !important;
 }
 
 .border-Line6-GZ {
-    border-color: var(--GZL6);
+    border-color: var(--GZL6) !important;
 }
 
 .border-Line7-GZ {
-    border-color: var(--GZL7);
+    border-color: var(--GZL7) !important;
 }
 
 .border-Line8-GZ {
-    border-color: var(--GZL8);
+    border-color: var(--GZL8) !important;
 }
 
 .border-Line9-GZ {
-    border-color: var(--GZL9);
+    border-color: var(--GZL9) !important;
 }
 
 .border-Line10-GZ {
-    border-color: var(--GZL10);
+    border-color: var(--GZL10) !important;
 }
 
 .border-Line11-GZ {
-    border-color: var(--GZL11);
+    border-color: var(--GZL11) !important;
 }
 
 .border-Line12-GZ {
-    border-color: var(--GZL12);
+    border-color: var(--GZL12) !important;
 }
 
 .border-Line13-GZ {
-    border-color: var(--GZL13);
+    border-color: var(--GZL13) !important;
 }
 
 .border-Line14-GZ {
-    border-color: var(--GZL14);
+    border-color: var(--GZL14) !important;
 }
 
 .border-Line15-GZ {
-    border-color: var(--GZL15);
+    border-color: var(--GZL15) !important;
 }
 
 .border-Line16-GZ {
-    border-color: var(--GZL16);
+    border-color: var(--GZL16) !important;
 }
 
 .border-Line17-GZ {
-    border-color: var(--GZL17);
+    border-color: var(--GZL17) !important;
 }
 
 .border-Line18-GZ {
-    border-color: var(--GZL18);
+    border-color: var(--GZL18) !important;
 }
 
 .border-Line19-GZ {
-    border-color: var(--GZL19);
+    border-color: var(--GZL19) !important;
 }
 
 .border-Line20-GZ {
-    border-color: var(--GZL20);
+    border-color: var(--GZL20) !important;
 }
 
 .border-Line21-GZ {
-    border-color: var(--GZL21);
+    border-color: var(--GZL21) !important;
 }
 
 .border-Line22-GZ {
-    border-color: var(--GZL22);
+    border-color: var(--GZL22) !important;
 }
 
 .border-Line28-GZ {
-    border-color: var(--GZL28);
+    border-color: var(--GZL28) !important;
 }
 
 .border-Line-GF {
-    border-color: var(--GFL);
+    border-color: var(--GFL) !important;
 }
 
 .border-LineAPM-GZ {
-    border-color: var(--GZAPM);
+    border-color: var(--GZAPM) !important;
 }
 
 .border-THZ1-GZ {
-    border-color: var(--GZTHZ1);
+    border-color: var(--GZTHZ1) !important;
 }
 
 .border-TGM1-FS {
-    border-color: var(--FSTGM1);
+    border-color: var(--FSTGM1) !important;
 }
 
 .border-THP1-GZ {
-    border-color: var(--GZTHP1);
+    border-color: var(--GZTHP1) !important;
 }
 
 .border-LineUN-GZ {
-    border-color: var(--GZLUN);
+    border-color: var(--GZLUN) !important;
 }
 
 .icon-LineType:before {
@@ -694,14 +694,14 @@ a:link, a:active, a:visited, a:focus, a:hover, a {
 }
 
 .pink-theme {
-    --var-accent:#d35055;
+    --var-accent: #d35055;
     --var-light: #fff1f0;
     --var-light-a05: #ffe7de88;
     --var-light-a08: #ffe7debb;
 }
 
 .yellow-theme {
-    --var-accent:#fa8a3c;
+    --var-accent: #fa8a3c;
     --var-light: #fbfada;
     --var-light-a05: #fbfada88;
     --var-light-a08: #fbfadabb;
