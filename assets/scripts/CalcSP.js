@@ -43,7 +43,7 @@ let Graph = (function (undefined) {
 
             for (let vertex in adjacentNodes) {
                 if (Object.prototype.hasOwnProperty.call(adjacentNodes, vertex)) {
-                    let cost = adjacentNodes[vertex],
+                    let cost = adjacentNodes[vertex][0],
                         totalCost = cost + currentCost,
                         vertexCost = costs[vertex];
 
@@ -98,7 +98,6 @@ let Graph = (function (undefined) {
             } else {
                 return null;
             }
-
             start = end;
         }
     };
