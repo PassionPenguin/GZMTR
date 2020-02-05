@@ -2630,10 +2630,12 @@
             let k = parseInt(n[i].id.substr(2, n[i].id.length - 2));
             // n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)];
             // n[i].children[1].innerHTML = cL==="EN"?f_s_list[k][1]:f_s_list[k][3];
-            if (cL !== "EN" && cL !== "CNS") {
-                console.log(i);
-                n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)].split("-")[0];
-            }
+            // if (cL !== "EN" && cL !== "CNS") {
+            //     console.log(i);
+            //     n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)].split("-")[0];
+            // }
+            if(cL!=="CNS"){n[i].children[0].innerHTML = f_s_list[k][l.indexOf(cL)].split("-")[0];
+                n[i].children[0].innerHTML = f_s_list[k][0];}
             n[i].onclick = function () {
                 k >= 237 && k <= 247 ? alert("暂未开通") : choosePlatform(k)
             };
