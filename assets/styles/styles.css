@@ -285,7 +285,7 @@ h3:not(:nth-child(2)) {
     color: var(--var-dark)
 }
 
-#CurrentStation {
+#CurrentStation, #CurrentRoute {
     display: inline;
     font: 600 18px/40px Anodina, sans-serif;
 }
@@ -573,4 +573,31 @@ svg#map {
     height: 100%;
     outline: none;
     border: 0;
+}
+
+#routeInformation h4 {
+    font: 600 18px Anodina, sans-serif;
+    padding: 10px 20px;
+    display: block;
+    margin-bottom:0;
+}
+
+#routeInformation div {
+    margin: 0 20px;
+    border-left: 3px solid;
+    padding: 20px 10px;
+}
+
+#routeInformation h4 .StationNumber {
+    width: fit-content;
+}
+
+#routeInformation h4 .StationNumber:nth-child(2) {
+    margin-left: 0;
+}
+
+#routeInformation p {
+    margin: -5px 0 20px 20px;
+    font: 12px/1 Anodina, sans-serif;
+    color: var(--var-grey);
 }
