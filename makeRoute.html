@@ -28,12 +28,32 @@
             <h3 id="CurrentRoute"></h3>
         </div>
     </nav>
-    <div class="main-content container stationinfo">
+    <div class="mask-top fixed-top"></div>
+    <div class="main-content container routeinfo">
         <div id="routeinfWrap">
             <div class="inner">
                 <div class="p_content">
                     <div class="innerData" id="routeInformation">
-
+                        <div class="leftpane" id="left-pane">
+                            <div class="tripOrigin"></div>
+                            <div class="border-Line1-GZ"></div>
+                            <div class="tripOrigin"></div>
+                        </div>
+                        <div class="rightpane" id="right-pane">
+                            <h4>西塱</h4>
+                            <div class="numbox" data-toggle="collapse" data-role="button" data-target="#showmore_0">
+                                <p>
+                                    <span class="border-Line1-GZ">1号线</span> 广州东站方向</p>
+                                <p><span class="expandIcon"></span>5站 8分钟</p>
+                                <div id="showmore_0" class="collapse">
+                                    <p>坑口</p>
+                                    <p>花地湾</p>
+                                    <p>芳村</p>
+                                    <p>Service Operated By Guangzhou Metro Corportation.</p>
+                                </div>
+                            </div>
+                            <h4>黄沙</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +64,7 @@
 <nav class="fixed-bottom nav navigation">
     <a href="index.html">
         <div class="ripple">
-            <img src="./assets/media/vectors/home_black.svg" alt="">
+            <img src="assets/media/vectors/ic_home_black.svg" alt="">
             <span><string data-require="loadString" data-stringid="2"></string></span></div>
     </a>
     <a href="StationInformation.html">
@@ -72,11 +92,40 @@
 <script src="assets/database/fullstationlog.js"></script>
 <script src="assets/database/@string.js"></script>
 <script>
+    let expand = $("[data-toggle='collapse']");
+    for (let i = 0; i < expand.length; i++) {
+        expand[i].onclick = function () {
+            if (expand[i].getAttribute("aria-expanded") !== "true")
+                $("#left-pane")[0].children[1 + 2 * i].setAttribute("style", "height:" + (100 + 30 * ($("#showmore_" + i)[0].children.length) + "px"));
+
+            else $("#left-pane")[0].children[1 + 2 * i].setAttribute("style", "");
+        }
+    }
     initLanguage("init");
     initTheme();
     getRoute = (start, end) => {
         let calc = (start, end, map) => {
-            let g = new Graph(map).findShortestPath(start, end);
+            let s = [], e = [], res = [], restime = [0], cursor = 0;
+            for (let i = 0; i < n_interchanges.length; i++) {
+                if (n_interchanges[i].indexOf(start) !== -1) s = s.concat(n_interchanges[i]);
+                if (n_interchanges[i].indexOf(end) !== -1) e = e.concat(n_interchanges[i]);
+            }
+            s.length === 0 ? s = [start] : void (0);
+            e.length === 0 ? e = [end] : void (0);
+            for (let i = 0; i < s.length; i++)
+                for (let j = 0; j < e.length; j++)
+                    res.push(new Graph(map).findShortestPath(s[i], e[j]));
+            for (let i = 0; i < res.length - 1; i++) {
+                for (let j = 0; j < res[i].length - 1; j++) {
+                    restime[cursor] += map[res[i][j]][res[i][j + 1]][0];
+                }
+                restime.push(0);
+                cursor++;
+            }
+            for (let j = 0; j < res[res.length - 1].length - 1; j++) {
+                restime[cursor] += map[res[res.length - 1][j]][res[res.length - 1][j + 1]][0];
+            }
+            let g = res[restime.indexOf(Math.min.apply(null, restime))];
             let time = 0, length = 0, booleanAPM = false, booleanTramHZ = false, priceLength = 0, price = 0;
             for (let i = 0; i < g.length - 1; i++) {
                 g[i] = parseInt(g[i]);
@@ -100,21 +149,27 @@
         };
         let result = calc(start, end, n_map);
         let processSameRoute = () => {
-            let res = [result[0][0]], partTime = [0], partDistance = [0];
-            let num = [0], k = 0, d = 0, g = 0;
+            let res = [result[0][0]], partTime = [0], partDistance = [0], routeDiretion = [], sepStation = [[]];
+            let num = [0], k = 0, d = 0, g = 0, h = 1, p = 0;
+            routeDiretion.push((result[0][0] > result[0][1] ? result[0][0] - 1 !== result[0][1] : result[0][0] + 1 !== result[0][1]) ? 0 : 1);
             for (let i = 0; i < result[0].length - 1; i++) {
-                if (result[0][i] + 1 !== result[0][i + 1]) {
-                    res.push([result[0][i], result[0][i + 1]]);
+                if (result[0][i] > result[0][i + 1] ? result[0][i] - 1 !== result[0][i + 1] : result[0][i] + 1 !== result[0][i + 1]) {
                     k++;
                     d++;
-                    g++
+                    g++;
+                    h++;
+                    p++;
                     num.push(0);
-                    partTime.push(0)
+                    partTime.push(0);
                     partDistance.push(0);
+                    routeDiretion.push(result[0][i + 1] + 1 === result[0][i + 2] ? 1 : 0);
+                    res.push([result[0][i], result[0][i + 1]]);
+                    sepStation.push([]);
                 } else {
                     num[k] = num[k] + 1;
                     partTime[k] += n_map[result[0][i]][result[0][i + 1]][0];
                     partDistance[k] += n_map[result[0][i]][result[0][i + 1]][1];
+                    sepStation[p].push(result[0][i]);
                 }
             }
             for (let i = 1; i < res.length; i++)
@@ -122,7 +177,8 @@
                     if (n_interchanges[j].indexOf(res[i]) !== -1) {
                         res[i] = [res[i][0], res[i][1]];
                     }
-            return [res, num, partTime,partDistance];
+            res.push(result[0][result[0].length - 1]);
+            return [res, num, partTime, partDistance, routeDiretion, sepStation];
         };
         return [result, processSameRoute()];
     };
@@ -142,33 +198,53 @@
         };
         let route = getRoute(start, end);
         let time = route[0][1], length = route[0][2], price = route[0][3], inter = route[1][0], num = route[1][1],
-            partTime = route[1][2],partDistance=route[1][3];
+            partTime = route[1][2], partDistance = route[1][3], routeDirection = route[1][4], sepStation = route[1][5];
         $("#CurrentRoute")[0].innerText = n_res_2[start][l.indexOf(cL)] + " -> " + n_res_2[end][l.indexOf(cL)];
-        let resBox = $("#routeInformation")[0];
         let id = [1, -15, -39, -45, -70, -94, -118, -150, -159, -174, -185, -196, -209, -219, -240, -255, -265];
-        for (let i = 0; i < inter.length; i++) {
+        let lp = $("#left-pane")[0];
+        let rp = $("#right-pane")[0];
+        lp.innerHTML = rp.innerHTML = "";
+        for (let i = 0; i < inter.length - 1; i++) {
+            let belong = i === 0 ? getBelong(inter[i]) : [getBelong(inter[i][0]), getBelong(inter[i][1])];
+            let dot = cE("div");
+            dot.classList.add("tripOrigin");
+            lp.appendChild(dot);
+            let line = cE("div");
+            line.classList.add("border-" + (i === 0 ? belong[1] : belong[1][1]));
+            if (i !== 0) line.setAttribute("style", "height:137.5px");
+            lp.appendChild(line);
             let station = cE("h4");
             station.innerText = i === 0 ? n_res_2[inter[i]][l.indexOf(cL)] : n_res_2[inter[i][0]][l.indexOf(cL)];
-            let belong = i === 0 ? getBelong(inter[i]) : [getBelong(inter[i][0]), getBelong(inter[i][1])];
             if (i !== 0) {
                 station.innerHTML += processPill(belong[0][0], processNumber((inter[i][0] + id[belong[0][3]])), belong[0][1]) + processPill(belong[1][0], processNumber((inter[i][1] + id[belong[1][3]])), belong[1][1]);
-                resBox.appendChild(station);
+                rp.appendChild(station);
                 let des = cE("p");
                 des.innerText = "换乘大概耗时 " + n_map[inter[i][0]][inter[i][1]][0] + "分钟";
-                resBox.appendChild(des);
+                rp.appendChild(des);
             } else {
                 station.innerHTML += processPill(belong[0], processNumber((inter[i] + id[belong[3]])), belong[1]);
-                resBox.appendChild(station);
+                rp.appendChild(station);
             }
             let numbox = cE("div");
-            numbox.innerHTML = num[i] + " 个站 " + partTime[i] + " 分钟" + partDistance[i]+" m";
+            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + routedirection[linedata.indexOf(i === 0 ? belong[0] : belong[1][0])][l.indexOf(cL)][routeDirection[i]] + "</p><p><span class='expandIcon'></span>" + num[i] + " 个站 " + partTime[i] + " 分钟" + partDistance[i] + " m</p><div id='showmore_" + i + "' class='collapse'>";
+            for (let t = 0; t < sepStation[i].length; t++)
+                html += "<p>" + n_res_2[sepStation[i][t]][l.indexOf(cL)] + "</p>";
+
+            numbox.innerHTML = html + "<p>" + f_name[34][l.indexOf(cL)] + "</p></div>";
             numbox.classList.add("border-" + (i === 0 ? belong[1] : belong[1][1]));
-            resBox.appendChild(numbox);
+            numbox.classList.add("numbox");
+            numbox.setAttribute("data-toggle", "collapse");
+            numbox.setAttribute("data-target", "#showmore_" + i);
+            numbox.setAttribute("data-role", "button");
+            rp.appendChild(numbox);
         }
-        let belong = getBelong(end);
+        let dot = cE("div");
+        dot.classList.add("tripOrigin");
+        lp.appendChild(dot);
+        let belong = getBelong(inter[inter.length - 1]);
         let station = cE("h4");
-        station.innerHTML = n_res_2[end][l.indexOf(cL)] + processPill(belong[0], processNumber(end + id[belong[3]]), belong[1]);
-        resBox.appendChild(station);
+        station.innerHTML = n_res_2[end][l.indexOf(cL)] + processPill(belong[0], processNumber(inter[inter.length - 1] + id[belong[3]]), belong[1]);
+        rp.appendChild(station);
     };
 </script>
 </html>
