@@ -87,6 +87,7 @@
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
 <script src="assets/database/@string.js"></script>
+<script src="assets/database/convertStoN.js"></script>
 <script>
     initLanguage("init");
     initTheme();
@@ -96,6 +97,7 @@
     };
 
     function choosePlatform(num) {
+        $("#platformChoserWrap .innerData")[0].innerHTML="";
         animateIt("#mask", "fadeIn", "block");
         bounceInLeft("#platformChoserWrap");
         $(".mask")[0].onclick = function () {
@@ -124,9 +126,20 @@
             let globalname = globallist[linedata.indexOf(p_num[i][1])];
             a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][l.indexOf(cL)] + " " + rd + "</span></a>";
         }
+        a += "<a class='dropdown-item' onclick='startNav(csn[" + num + "],0)'>作为出发点</a>";
+        a += "<a class='dropdown-item' onclick='startNav(csn[" + num + "],1)'>作为结束点</a>";
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
-        saveRecentWatch(num);
-        loadRecentWatch();
+        // saveRecentWatch(num);
+        // loadRecentWatch();
+    }
+
+    window.DirTo = window.DirFrom = null;
+
+    function startNav(num1, num2) {
+        num2 === 0 ? DirTo = num1 : DirFrom = num1;
+        if (DirFrom !== null && DirTo !== null) {
+            window.location.href = 'makeRoute.html?start=' + DirFrom + "&end=" + DirTo;
+        }
     }
 </script>
 </html>

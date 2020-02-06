@@ -35,24 +35,8 @@
                 <div class="p_content">
                     <div class="innerData" id="routeInformation">
                         <div class="leftpane" id="left-pane">
-                            <div class="tripOrigin"></div>
-                            <div class="border-Line1-GZ"></div>
-                            <div class="tripOrigin"></div>
                         </div>
                         <div class="rightpane" id="right-pane">
-                            <h4>西塱</h4>
-                            <div class="numbox" data-toggle="collapse" data-role="button" data-target="#showmore_0">
-                                <p>
-                                    <span class="border-Line1-GZ">1号线</span> 广州东站方向</p>
-                                <p><span class="expandIcon"></span>5站 8分钟</p>
-                                <div id="showmore_0" class="collapse">
-                                    <p>坑口</p>
-                                    <p>花地湾</p>
-                                    <p>芳村</p>
-                                    <p>Service Operated By Guangzhou Metro Corportation.</p>
-                                </div>
-                            </div>
-                            <h4>黄沙</h4>
                         </div>
                     </div>
                 </div>
@@ -204,7 +188,7 @@
         let lp = $("#left-pane")[0];
         let rp = $("#right-pane")[0];
         lp.innerHTML = rp.innerHTML = "";
-        for (let i = 0; i < inter.length - 1; i++) {
+        for (let i = 0; i < inter.length - 2; i++) {
             let belong = i === 0 ? getBelong(inter[i]) : [getBelong(inter[i][0]), getBelong(inter[i][1])];
             let dot = cE("div");
             dot.classList.add("tripOrigin");
@@ -226,7 +210,8 @@
                 rp.appendChild(station);
             }
             let numbox = cE("div");
-            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + routedirection[linedata.indexOf(i === 0 ? belong[0] : belong[1][0])][l.indexOf(cL)][routeDirection[i]] + "</p><p><span class='expandIcon'></span>" + num[i] + " 个站 " + partTime[i] + " 分钟" + partDistance[i] + " m</p><div id='showmore_" + i + "' class='collapse'>";
+            console.log(i,belong);
+            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][l.indexOf(cL)][routeDirection[i]] + "</p><p><span class='expandIcon'></span>" + num[i] + " 个站 " + partTime[i] + " 分钟" + partDistance[i] + " m</p><div id='showmore_" + i + "' class='collapse'>";
             for (let t = 0; t < sepStation[i].length; t++)
                 html += "<p>" + n_res_2[sepStation[i][t]][l.indexOf(cL)] + "</p>";
 
@@ -243,8 +228,11 @@
         lp.appendChild(dot);
         let belong = getBelong(inter[inter.length - 1]);
         let station = cE("h4");
-        station.innerHTML = n_res_2[end][l.indexOf(cL)] + processPill(belong[0], processNumber(inter[inter.length - 1] + id[belong[3]]), belong[1]);
+        station.innerHTML = n_res_2[end][l.indexOf(cL)] + processPill(belong[0], processNumber((parseInt(inter[inter.length - 1]) + id[belong[3]])), belong[1]);
         rp.appendChild(station);
     };
+    window.onload = function () {
+        processResult(GET_("start"), GET_("end"))
+    }
 </script>
 </html>
