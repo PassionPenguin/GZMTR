@@ -227,17 +227,23 @@ h3:not(:nth-child(2)) {
     margin: 15px 15px 10px 15px;
 }
 
+#platformChoserWrap #CurrentStation {
+    font: 20px/24px Anodina, sans-serif;
+    margin: 0 0 20px 0;
+    display: block;
+}
+
 #platformChoserWrap {
     background: var(--var-white);
     position: fixed;
-    top: 50%;
     left: 50%;
-    width: 80%;
     min-width: 350px;
     height: fit-content;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 60%);
     display: none;
     z-index: 1035;
+    bottom: 0;
+    width: 100%;
 }
 
 #platformChoserWrap .inner {
@@ -710,4 +716,19 @@ svg#map {
 .mask-top.fixed-top {
     height: 100px;
     background: var(--var-white);
+}
+
+a.dropdown-item[onclick^="startNav"] {
+    font: 14px/1 Anodina, sans-serif;
+    margin: 10px 0;
+    text-align: left;
+}
+
+#platformChoserWrap h1:nth-child(3) {
+    margin: 20px 0 10px 0;
+}
+
+#platformChoserWrap.show {
+    transform: translate(-50%, -50%);
+    top: 50%;
 }
