@@ -33,5 +33,6 @@ let f_name = [
     ["细柳綠", "细柳绿", "裏柳", "초록", "Grass"],
     ["盛夏黃", "盛夏黄", "イェロー", "노랑", "Summer Yellow"],
     ["澄空藍", "澄空蓝", "瓶覗", "블루", "Skyblue"],
-    ["暗黑模式开啦，那就..黑色养眼吧～主题功能暂时关闭啦", "暗黑模式开啦，那就..黑色养眼吧～主题功能暂时关闭啦", "ダークモードがオンになっているので、今は黒を使用してください〜テーマ機能は一時的にオフです", "어두운 모드가 켜진 후 .. 검은 눈길을 끄는 테마 ~ 테마 기능이 일시적으로 꺼져 있습니다", "Dark mode is on, so... just use black theme.. ~ The theme function is temporarily turned off."]
+    ["暗黑模式开啦，那就..黑色养眼吧～主题功能暂时关闭啦", "暗黑模式开啦，那就..黑色养眼吧～主题功能暂时关闭啦", "ダークモードがオンになっているので、今は黒を使用してください〜テーマ機能は一時的にオフです", "어두운 모드가 켜진 후 .. 검은 눈길을 끄는 테마 ~ 테마 기능이 일시적으로 꺼져 있습니다", "Dark mode is on, so... just use black theme.. ~ The theme function is temporarily turned off."],
+    ["由廣州地鐵集團運營","由广州地铁集团运营","","","Service Operated By GZMTR Co., Ltd"]
 ];
