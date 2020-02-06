@@ -1528,9 +1528,14 @@
         </div>
         <div class="card card-body" id="platformChoserWrap">
             <div class="inner">
+                <h1 id="CurrentStation"></h1>
                 <div class="selectLine">
                     <h1>
-                        <string data-require="loadString" data-stringid="6"></string>
+                        <string data-require="loadString" data-stringid="35"></string>
+                    </h1>
+                    <div class="innerData"></div>
+                    <h1>
+                        <string data-require="loadString" data-stringid="36"></string>
                     </h1>
                     <div class="innerData"></div>
                 </div>
@@ -1569,6 +1574,7 @@
 <script src="./assets/database/stationnum.js"></script>
 <script src="./assets/database/stationplat.js"></script>
 <script src="assets/database/@string.js"></script>
+<script src="assets/database/convertStoN.js"></script>
 <script>
     initLanguage("init");
     initTheme();
@@ -1590,19 +1596,18 @@
     };
 
     function choosePlatform(num) {
-        animateIt("#mask", "fadeIn", "block");
-        bounceInLeft("#platformChoserWrap");
-        $(".mask")[0].onclick = function () {
-            setTimeout(function () {
-                animateIt("#mask", "fadeOut", "none")
-            }, 500);
-            bounceOutRight("#platformChoserWrap");
-        };
+        $("#CurrentStation")[0].innerText = f_s_list[num][l.indexOf(cL)];
+        $("#platformChoserWrap")[0].setAttribute("style", "display:block");
         $("#closePlatformChoser")[0].onclick = function () {
-            setTimeout(function () {
-                animateIt("#mask", "fadeOut", "none")
-            }, 500);
-            bounceOutRight("#platformChoserWrap");
+            $("#platformChoserWrap")[0].setAttribute("style", "display:none");
+        };
+        $("#platformChoserWrap")[0].onclick = function () {
+            animateIt("#platformChoserWrap", "bounceInBottom", "block");
+            this.classList.add("show");
+            this.onclick = function () {
+                animateIt("#platformChoserWrap", "bounceOutBottom", "none");
+                this.classList.remove("show")
+            };
         };
         let a = "";
         let p_num = s_plat[num];
@@ -1619,6 +1624,27 @@
             a += "<i class='platformnum font-" + globalname + " border-" + globalname + "'><span>" + (i + 1) + "</span></i><span class='vertical-middle'> " + f_name[21][l.indexOf(cL)] + " " + rd + "</span></a>";
         }
         $("#platformChoserWrap .innerData")[0].innerHTML = a;
+        a = "<a class='dropdown-item' onclick='startNav(csn[" + num + "],0)'>作为出发点</a><a class='dropdown-item' onclick='startNav(csn[" + num + "],1)'>作为结束点</a>";
+        $("#platformChoserWrap .innerData")[1].innerHTML = a;
+
+        // saveRecentWatch(num);
+        // loadRecentWatch();
+
+        let d = $("#platformChoserWrap .dropdown-item");
+        for (let i = 0; i < d.length; i++)
+            d[i].addEventListener("click", () => {
+                animateIt("#platformChoserWrap", "bounceOutBottom", "none");
+                $("#platformChoserWrap")[0].setAttribute("class", "");
+            });
+    }
+
+    window.DirTo = window.DirFrom = null;
+
+    function startNav(num1, num2) {
+        num2 === 0 ? DirTo = num1 : DirFrom = num1;
+        if (DirFrom !== null && DirTo !== null) {
+            window.location.href = 'makeRoute.html?start=' + DirFrom + "&end=" + DirTo;
+        }
     }
 </script>
 
