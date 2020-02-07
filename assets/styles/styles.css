@@ -638,6 +638,10 @@ svg#map {
     vertical-align: top;
 }
 
+#routeInformation .leftpane > div:not(.tripOrigin).longer {
+    height: 137.5px;
+}
+
 #routeInformation .leftpane {
     width: 20px;
     margin-left: 20px;
