@@ -9,15 +9,29 @@
     <title>Index Page</title>
     <link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
-<body class="pg-app">
-<nav class="nav-head">
-    <div class="container">
-        <div class="nav-description"><span>广州地铁指南</span></div>
-        <div class="nav-inputModel">
-            <div contenteditable="true">搜索一下站点?</div>
+<body class="pg-app withoutHeader">
+<div class="pg-app-wrap">
+    <div class="headwrap-mask"></div>
+    <div class="head-wrap">
+        <h1>你失败了 我也爱你呀 <i class="fa fa-heart beating"></i></h1>
+        <div class="nearInfo">
+            <span class="mi">place </span><span id="nearestStation">天河公园 · 128米</span><span> | </span><span
+                id="moreStation">更多站点</span>
+        </div>
+        <div class="app-info"><span id="historyState">查看版本历史</span> | <span id="description">使用声明</span></div>
+        <button class="btn" id="viewCurrentFlow">查看官方客流信息</button>
+        <div class="ChoiceSelect">
+            <div>
+                <img src="" alt="">
+                <div><span>线路网图</span><span>查线路，快速到</span></div>
+            </div>
+            <div>
+                <div><span>地铁维基</span><span>看维基，涨见识</span></div>
+                <img src="" alt="">
+            </div>
         </div>
     </div>
-</nav>
+</div>
 
 <nav class="nav-bottom">
     <ul>
