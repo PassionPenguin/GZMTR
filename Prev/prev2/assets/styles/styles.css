@@ -1,0 +1,737 @@
+@charset "UTF-8";
+@import "./bootstrap.min.css";
+@import "./fontface.css";
+
+:root {
+    --var-dark: #222;
+    --var-light: #fff;
+    --var-grey: #888;
+    --var-lightgrey: #aaa;
+    --var-lightdark: #555;
+    --var-black: #000;
+    --var-white: #fff;
+    --var-accent: #c51835;
+    --var-light-a05: #dddddd88;
+    --var-dark-a05: #22222288;
+    --var-light-a08: #ddddddbb;
+    --var-dark-a08: #222222bb;
+}
+
+* {
+    color: var(--var-dark);
+    transition: .5s;
+}
+
+html {
+    background: var(--var-white);
+}
+
+.nav.search {
+    padding: 6px 24px;
+    height: 48px;
+    background-color: var(--var-light);
+    z-index: 1033;
+}
+
+.nav.search .content {
+    padding: 9px 6px 6px 6px;
+}
+
+.nav.search h1, #platformChoserWrap h1 {
+    font: 500 16px/1 Anodina, sans-serif;
+}
+
+.nav.search h1 small, #platformChoserWrap h1 small {
+    font: 500 12px/1 Anodina, sans-serif;
+}
+
+.wrap_search {
+    border: 1px solid var(--var-lightdark);
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    z-index: 1032;
+}
+
+#searchStation {
+    display: inline-block;
+    width: calc(100% - 72px);
+    height: 100%;
+    font: 15px/24px Anodina, sans-serif;
+    padding: 6px;
+    outline: none;
+    border: 0;
+    color: var(--var-grey);
+    background: var(--var-white);
+}
+
+#searchStation:focus {
+    outline: none;
+    color: var(--var-dark);
+}
+
+.icon {
+    display: inline-block;
+    margin: 6px 6px 6px 15px;
+    width: 30px;
+    height: 28px;
+    vertical-align: top;
+}
+
+.nav.search .btn {
+    display: none;
+}
+
+.nav.navigation {
+    height: 54px;
+    padding-bottom: 6px;
+    margin: 0 auto;
+    background-color: var(--var-light);
+}
+
+.nav.navigation a {
+    display: inline-block;
+    width: 25%;
+    height: 56px;
+    padding: 6px;
+}
+
+.nav.navigation div img {
+    width: 24px;
+    margin: 0 auto;
+    display: block;
+}
+
+.nav.navigation div span {
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+
+.main-content {
+    width: 100%;
+    margin: 100px 0 60px 0;
+    background: var(--var-white);
+}
+
+.main-content.routeinfo {
+    margin-top: 120px;
+}
+
+img.banner {
+    width: 80%;
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+.stationinfo .leftpane {
+    width: 100px;
+    display: inline-block;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: calc(100vh - 160px);
+    overflow: scroll;
+}
+
+.t_selectLine {
+    padding: 6px 4px 6px 10px;
+    display: block;
+    color: var(--var-dark);
+}
+
+.t_selectLine:active {
+    background: var(--var-light);
+}
+
+.t_selectLine:not(:last-child) {
+    width: fit-content;
+}
+
+.stationinfo .rightpane {
+    width: calc(100vw - 100px);
+    display: inline-block;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    height: calc(100vh - 160px);
+    overflow: scroll;
+}
+
+.selectline {
+    height: calc(100vh - 160px);
+    overflow: scroll;
+}
+
+.StationNumber span {
+    color: var(--var-dark);
+}
+
+
+.StationNumber {
+    font-size: 0;
+    display: inline-block;
+    margin: 5px 10px;
+    height: 24px;
+    width: 70px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.StationNumber span {
+    width: min-content;
+    height: 24px;
+    margin: 1px 0;
+    border: 2px solid;
+    border-color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    font: 900 14px/18px Anodina, sans-serif;
+}
+
+.StationNumber span:first-child {
+    border-radius: 15px 0 0 15px;
+    border-right: 0;
+    padding: 0 5px;
+}
+
+.StationNumber span:nth-child(2) {
+    border-radius: 0 15px 15px 0;
+    padding: 0 5px 0 2px;
+}
+
+#stationlist > div > a {
+    display: block;
+}
+
+#stationlist > div > a span {
+    vertical-align: middle;
+}
+
+h2.line-title {
+    font: 700 18px/24px Anodina, sans-serif;
+    margin: 20px 15px 10px 15px;
+}
+
+#stationlist :first-child h2.line-title {
+    margin-top: 5px;
+}
+
+h3 {
+    font: 700 16px/24px Anodina, sans-serif;
+    margin: 0 15px 10px 15px;
+}
+
+h3:not(:nth-child(2)) {
+    margin: 15px 15px 10px 15px;
+}
+
+#platformChoserWrap #CurrentStation {
+    font: 20px/24px Anodina, sans-serif;
+    margin: 0 0 20px 0;
+    display: block;
+}
+
+#platformChoserWrap {
+    background: var(--var-white);
+    position: fixed;
+    left: 50%;
+    min-width: 350px;
+    transform: translate(-50%, 30%);
+    display: none;
+    z-index: 1035;
+    width: 100%;
+    height: 100%;
+    top:50%;
+}
+
+#platformChoserWrap .inner {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+
+.platformnum {
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    font-style: normal;
+    line-height: 20px;
+    margin: 5px 3px;
+}
+
+.platformnum {
+    border: 3px solid;
+    border-radius: 50%;
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+#platformChoserWrap .innerData {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#platformChoserWrap span.vertical-middle {
+    font: 400 14px/21px Anodina, sans-serif;
+}
+
+[data-target="#platformChoserWrap"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font: 900 36px/0 Anodina, sans-serif;
+    width: 48px;
+    height: 48px;
+    text-align: right;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: var(--var-white);
+    color: var(--var-dark)
+}
+
+#CurrentStation, #CurrentRoute {
+    display: inline;
+    font: 600 18px/40px Anodina, sans-serif;
+}
+
+#stationinfWrap {
+    white-space: nowrap;
+    position: fixed;
+    bottom: 120px;
+    overflow: scroll;
+    height: calc(100vh - 260px);
+    width: 100vw;
+}
+
+#stationinfWrap .inner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+}
+
+#stationinfWrap .p_content {
+    position: relative;
+    overflow: scroll;
+    width: 100vw;
+    height: 100%;
+}
+
+#stationinfWrap .innerData {
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#inftable > div {
+    display: inline-block;
+}
+
+#inftable > div > :nth-child(2) {
+    width: 60px;
+    height: 50px;
+    border-radius: 0;
+    border: 3px solid var(--var-dark);
+    border-right-width: 0;
+    text-align: center;
+    font: 900 24px/42px Anodina;
+    color: var(--var-dark);
+}
+
+#inftable > div.last-door > :nth-child(2) {
+    border-radius: 0 25px 25px 0;
+    width: 75px;
+    border-right-width: 3px;
+}
+
+#inftable > div.first-door > :nth-child(2) {
+    border-radius: 25px 0 0 25px;
+    margin-left: 10px;
+    width: 75px;
+}
+
+[id^="door_"] {
+    width: 50px;
+    height: fit-content;
+    padding: 20px 0;
+    text-align: center;
+    font: 900 20px/28px Anodina, sans-serif;
+    white-space: normal;
+    margin: 0 auto;
+}
+
+.escalator {
+    background-image: url("../media/vectors/ic_esc_black.svg")
+}
+
+.elevator {
+    background-image: url("../media/vectors/ic_ele_black.svg")
+}
+
+.staircase {
+    background-image: url("../media/vectors/ic_staircase_black.svg")
+}
+
+.escalator, .elevator, .staircase {
+    width: 36px;
+    height: 36px;
+    background-size: 36px;
+    display: block;
+}
+
+.facilitiesgroup {
+    display: block;
+    width: 54px;
+    height: fit-content;
+    padding: 12px 6px;
+    border: 3px solid var(--var-dark);
+    border-radius: 10px;
+}
+
+.selectType.position-fixed {
+var(--var-light) position: fixed;
+    top: 100px;
+    width: 100%;
+}
+
+.selectType > div > div.active > span {
+    color: var(--var-accent);
+}
+
+.selectType > div > div:not(:last-child) {
+    border-right: 1px solid var(--var-grey);
+}
+
+.selectType > div > div {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    font: 14px/1 Anodina, sans-serif;
+    padding: 6px 0;
+}
+
+.selectType > .inner {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+.interchange {
+    border: 2px solid;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    font: 900 20px/26px Anodina;
+}
+
+.icon.platformnum {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+}
+
+.map#MapContatiner {
+    width: 100%;
+    height: calc(100vh - 200px);
+    top: 140px;
+    position: fixed;
+    left: 0;
+}
+
+#toast {
+    opacity: 0;
+    position: fixed;
+    top: 30px;
+    right: 10px;
+    display: none;
+    width: calc(100% - 20px);
+    z-index: 1050;
+    background: var(--var-light);
+}
+
+#toast .toast-header {
+    background: var(--var-light);
+}
+
+#controls {
+    background: var(--var-white);
+}
+
+.p_content#SearchRes {
+    display: none;
+    width: 100%;
+    height: calc(100vh - 80px);
+    z-index: 1032;
+    overflow: scroll;
+}
+
+#Searchmask {
+    background: var(--var-light);
+    opacity: 1;
+}
+
+.glacier_search ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+}
+
+.glacier_search ul li {
+    padding: 10px 20px 10px 40px;
+    list-style: none;
+    font: 500 14px/1 sans-serif;
+    cursor: pointer;
+}
+
+.glacier_search ul li:last-child {
+    padding-bottom: 20px;
+    border-radius: 0 0 20px 20px
+}
+
+.glacier_search ul li:hover, .glacier_search ul li:focus {
+    background: var(--var-dark-a05);
+    color: var(--var-light)
+}
+
+.glacier_search .Highlight {
+    color: var(--var-accent);
+    display: inline-block;
+    margin: 0 -1px;
+    text-transform: uppercase;
+}
+
+.glacier_search span.Secondary {
+    font: 600 12px/1.2 Anodina, sans-serif;
+    text-transform: uppercase;
+}
+
+.glacier_search span.Main {
+    font: 400 16px/1 Anodina, sans-serif;
+    text-transform: uppercase;
+}
+
+.glacier_search .Main, .glacier_search .Secondary {
+    display: block;
+}
+
+.prefName {
+    margin: 20px 10px;
+}
+
+.prefName string {
+    font: 500 20px/36px Anodina, sans-serif;
+}
+
+.btn.setLanguageToggle {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--var-dark);
+    border-radius: 10px;
+    outline: none;
+}
+
+.setLanguageToggle:focus {
+    outline: none;
+    box-shadow: none;
+    background: var(--var-dark);
+}
+
+.setLanguageToggle:focus string {
+    color: var(--var-light);
+}
+
+#LanguagesChoser, #ThemeChoser {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0 20px 0;
+}
+
+#LanguagesChoser ul, #ThemeChoser ul {
+    padding: 0;
+    list-style: none;
+}
+
+#LanguagesChoser li, #ThemeChoser li {
+    padding: 3px 0;
+    font: 16px/28px Anodina, sans-serif;
+}
+
+.no-topbar .main-content {
+    margin-top: 48px;
+}
+
+#mappage.main-content {
+    width: 100%;
+    margin: 100px 0 60px 0;
+    background: var(--var-white);
+    height: calc(100vh - 160px);
+}
+
+svg#map {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 0;
+}
+
+#routeInformation {
+    width: 100%;
+    height: 100%;
+    overflow: hidden scroll;
+    margin-top: 10px;
+}
+
+#routeInformation h4 {
+    font: 600 18px Anodina, sans-serif;
+    padding: 0 20px 10px 20px;
+    margin-top: -5px;
+    display: block;
+    margin-bottom: 0;
+}
+
+#routeInformation > div > div {
+    border-left: 5px solid;
+    padding: 20px 10px;
+}
+
+#routeInformation h4 .StationNumber {
+    width: fit-content;
+}
+
+#routeInformation h4 .StationNumber:nth-child(2) {
+    margin-left: 0;
+}
+
+#routeInformation > div > p {
+    margin: -5px 0 20px 20px;
+    font: 12px/1 Anodina, sans-serif;
+    color: var(--var-grey);
+}
+
+#routeInformation .tripOrigin {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin-left: 2px;
+    padding: 5px;
+    border: 3px solid;
+}
+
+#routeInformation .leftpane > div:not(.tripOrigin) {
+    height: 112.5px;
+    width: 5px;
+    display: block;
+    padding: 0;
+    margin-left: 7.25px;
+    vertical-align: top;
+}
+
+#routeInformation .leftpane > div:not(.tripOrigin).longer {
+    height: 137.5px;
+}
+
+#routeInformation .leftpane {
+    width: 20px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#routeInformation .rightpane {
+    vertical-align: top;
+    width: calc(100vw - 100px);
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#routeInformation .numbox {
+    width: 100% !important;
+    border: 0;
+    margin-left: 20px !important;
+    padding: 7px 0 0 0;
+}
+
+#routeInformation .numbox span[class^="border-Line"] {
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    font: 12px/1 Anodina, sans-serif;
+    vertical-align: middle;
+    border-radius: 5px;
+    border: 3px solid;
+    margin-right: 10px;
+    color: var(--var-black);
+}
+
+#routeInformation .numbox p {
+    font: 200 14px/1 Anodina, sans-serif;
+    color: var(--var-dark);
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#routeInformation .numbox .expandIcon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: -5px 10px 0 0;
+    background: url("../media/vectors/ic_expand_more-24px.svg");
+}
+
+#routeInformation [aria-expanded="true"] .expandIcon {
+    background: url("../media/vectors/ic_expand_less-24px.svg")
+}
+
+#routeInformation .numbox > p:nth-child(2) {
+    opacity: 0.6;
+}
+
+#routeInformation .numbox > p:nth-child(2):hover, #routeInformation .numbox p:nth-child(2):focus {
+    opacity: 1;
+}
+
+#routeInformation .numbox > div > p {
+    margin: 0;
+    padding: 7px 0;
+    font: 600 13px/1 Anodina, sans-serif;
+}
+
+#routeInformation [aria-expanded="true"] > p:nth-child(2) {
+    margin-bottom: 0;
+}
+
+#routeInformation .numbox > div > p:last-child {
+    color: var(--var-grey);
+    margin-bottom: 10px;
+}
+
+.mask-top.fixed-top {
+    height: 100px;
+    background: var(--var-white);
+}
+
+a.dropdown-item[onclick^="startNav"] {
+    font: 14px/1 Anodina, sans-serif;
+    margin: 10px 0;
+    text-align: left;
+}
+
+#platformChoserWrap h1:nth-child(3) {
+    margin: 20px 0 10px 0;
+}
+
+#platformChoserWrap.show {
+    transform: translate(-50%, -50%);
+}

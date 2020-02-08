@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>個人帳戶</title>
+    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="./assets/styles/globalstyle.css">
+</head>
+<body>
+<div class="app no-topbar" id="app">
+    <!-- TOP NAV -->
+    <nav class="fixed-top nav search">
+        <div class="content">
+            <h1>
+                <string data-require="loadString" data-stringid="5"></string>
+                <small>Account</small>
+            </h1>
+        </div>
+    </nav>
+    <div class="mask-top fixed-top"></div>
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <div class="alert alert-warning">
+                <p>
+                    <string data-require="loadString" data-stringid="13"></string>
+                </p>
+            </div>
+
+            <div id="prefSettings">
+                <p class="prefName">
+                    <string data-require="loadString" data-stringid="14"></string>
+                </p>
+                <button class="setLanguageToggle btn" data-toggle="collapse" data-target="#LanguagesChoser">
+                    <string data-require="loadString" data-stringid="cur"></string>
+                </button>
+                <div id="LanguagesChoser" class="collapse">
+                    <ul>
+                        <li>繁體中文</li>
+                        <li>简体中文</li>
+                        <li>日本語</li>
+                        <li>한국어</li>
+                        <li>English</li>
+                    </ul>
+                </div>
+                <p class="prefName">
+                    <string data-require="loadString" data-stringid="26"></string>
+                </p>
+                <button class="setLanguageToggle btn" data-toggle="collapse" data-target="#ThemeChoser">
+                    <string data-require="loadString" data-stringid="curTheme"></string>
+                </button>
+                <div id="ThemeChoser" class="collapse">
+                    <ul>
+                        <li>
+                            <string data-require="loadString" data-stringid="27"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="28"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="29"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="30"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="31"></string>
+                        </li>
+                        <li>
+                            <string data-require="loadString" data-stringid="32"></string>
+                        </li>
+                    </ul>
+                </div>
+                <div class="alert" style="display: none;text-align:center" id="themewarning">
+                    <p>
+                        <string data-require="loadString" data-stringid="33"></string>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BOTTOM NAV -->
+<nav class="fixed-bottom nav navigation">
+    <a href="index.html">
+        <div class="ripple">
+            <img src="assets/media/vectors/ic_home_black.svg" alt="">
+            <span><string data-require="loadString" data-stringid="2"></string></span></div>
+    </a>
+    <a href="StationInformation.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/info_black.svg" alt="">
+            <span><string data-require="loadString" data-stringid="3"></string></span></div>
+    </a>
+    <a href="RouteMap.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/map_black.svg" alt="">
+            <span><string data-require="loadString" data-stringid="4"></string></span></div>
+    </a>
+    <a href="Account.html">
+        <div class="ripple">
+            <img src="./assets/media/vectors/person_coloured.svg" alt="">
+            <span><string data-require="loadString" data-stringid="5"></string></span>
+        </div>
+    </a>
+</nav>
+</body>
+<script src="assets/database/@string.js"></script>
+<script src="assets/scripts/lib.min.js"></script>
+<script>
+    initLanguage("init");
+    initLanguage();
+    initTheme();
+    if (typeof isDark !== "undefined") $("themewarning")[0].style.display = "block;"
+</script>
+</html>
