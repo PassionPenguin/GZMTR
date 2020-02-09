@@ -63,12 +63,29 @@
     --var-white: #fff;
     --var-accent: #c51835;
     --red: #cb4042;
+    --green: #3fcd44;
 }
 
 * {
     transition: 500ms;
     font-family: Anodina, sans-serif;
     color: var(--var-black)
+}
+
+[contenteditable="true"].single-line {
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+}
+
+[contenteditable="true"].single-line br {
+    display: none;
+
+}
+
+[contenteditable="true"].single-line * {
+    display: inline;
+    white-space: nowrap;
 }
 
 .container {
@@ -215,7 +232,7 @@ nav.nav-bottom li > span:nth-child(2) {
     top: 0;
     left: 0;
     width: 100%;
-    height: 250px;
+    height: 240px;
     position: absolute;
     z-index: 0;
     content: ' ';
@@ -263,19 +280,19 @@ nav.nav-bottom li > span:nth-child(2) {
     font: 500 16px/1 Anodina, sans-serif;
     color: #fff;
     position: absolute;
-    right: 60px;
-    top: 80px;
+    right: 20px;
+    top: 90px;
     outline: none;
 }
 
 .head-wrap .ChoiceSelect {
     position: absolute;
-    bottom: -10px;
+    bottom: -1px;
     height: 90px;
     width: calc(100% - 40px);
     background: #fff;
     z-index: 9999;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }
 
 .head-wrap .ChoiceSelect * {
@@ -290,7 +307,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .head-wrap .ChoiceSelect > div > * {
-    height: 100%;
+    height: auto;
     display: inline-block;
     width: 55%;
     margin-left: -1px;
@@ -300,9 +317,27 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .head-wrap .ChoiceSelect > div > img {
-    width: 40%;
-    height: 100%;
+    width: 28px;
+    height: 28px;
+    margin: 10px;
     display: inline-block;
+    vertical-align: bottom;
+}
+
+.head-wrap .ChoiceSelect > div:first-child {
+    text-align: left;
+}
+
+.head-wrap .ChoiceSelect > div:nth-child(2) {
+    text-align: right;
+}
+
+.head-wrap .ChoiceSelect > div:first-child img {
+    margin-left: 20px;
+}
+
+.head-wrap .ChoiceSelect > div:nth-child(2) img {
+    margin-right: 20px;
 }
 
 .head-wrap .ChoiceSelect span:first-child {
@@ -318,4 +353,47 @@ nav.nav-bottom li > span:nth-child(2) {
 
 .head-wrap .ChoiceSelect > :first-child > * {
     text-align: left;
+}
+
+#InputSearch {
+    width: 300px;
+    margin: 20px auto;
+}
+
+#InputSearch h2 {
+    font: 600 18px/1 Anodina, sans-serif;
+    text-align: center;;
+}
+
+#InputSearch > div > span:first-child:before {
+    content: " ";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+#InputSearch > div:nth-child(2) {
+    border-bottom: 1px solid var(--var-grey);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+#InputSearch div:nth-child(2) span:before {
+    background: var(--green);
+}
+
+#InputSearch div:nth-child(3) span:before {
+    background: var(--red);
+}
+
+#InputSearch div > div {
+    display: inline-block;
+    width: calc(100% - 36px);
+    margin-left: 6px;
+    outline: none;
+    height: 24px;
+    padding: 3px;
+    vertical-align: middle;
 }
