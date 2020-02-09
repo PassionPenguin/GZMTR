@@ -9,11 +9,11 @@
     <title>Index Page</title>
     <link rel="stylesheet" href="/assets/styles/styles.css">
 </head>
-<body class="pg-app withoutHeader">
+<body class="pg-app withoutHeader" id="pg-app">
 <div class="pg-app-wrap">
     <div class="headwrap-mask"></div>
     <div class="head-wrap">
-        <h1 id="Sentence">你失败了 我也爱你呀 <i class="fa fa-heart beating"></i></h1>
+        <h1 id="Sentence"></h1>
         <div class="nearInfo">
             <span class="mi">place </span><span id="nearestStation">天河公园 · 128米</span><span> | </span><span
                 id="moreStation">更多站点</span>
@@ -50,18 +50,20 @@
 
 <nav class="nav-bottom">
     <ul>
-        <li><span class="active">home</span><span class="description">Home</span></li>
-        <li><span>info</span><span class="description">Info</span></li>
-        <li><span>map</span><span class="description">Routemap</span></li>
-        <li><span>settings</span><span class="description">Settings</span></li>
+        <li pg-target="home"><span class="active">home</span><span class="description">Home</span></li>
+        <li pg-target="info"><span>info</span><span class="description">Info</span></li>
+        <li pg-target="map"><span>map</span><span class="description">Routemap</span></li>
+        <li pg-target="settings"><span>settings</span><span class="description">Settings</span></li>
     </ul>
 </nav>
 </body>
 <script src="./assets/strings/string.js"></script>
 <script src="./assets/scripts/jQuery.min.js"></script>
+<script src="./assets/scripts/require.lib.js"></script>
 <script>
     window.onload = function () {
-        $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+        loadRequire();
+        $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     }
 </script>
 </html>
