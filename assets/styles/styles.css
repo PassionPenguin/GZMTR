@@ -239,7 +239,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .head-wrap h1 {
-    font: 600 20px/1 Anodina, sans-serif;
+    font: 600 18px/24px Anodina, sans-serif;
     margin: 0 0 10px 0;
     color: #fff;
 }
@@ -290,7 +290,7 @@ nav.nav-bottom li > span:nth-child(2) {
     bottom: -1px;
     height: 90px;
     width: calc(100% - 40px);
-    background: #fff;
+    background: var(--var-white);
     z-index: 9999;
     border-radius: 10px 10px 0 0;
 }
@@ -304,22 +304,22 @@ nav.nav-bottom li > span:nth-child(2) {
     height: 100%;
     display: inline-block;
     margin: -1px;
+    vertical-align: top;
 }
 
 .head-wrap .ChoiceSelect > div > * {
     height: auto;
     display: inline-block;
     width: 55%;
-    margin-left: -1px;
     vertical-align: top;
-    margin-top: 20px;
     text-align: right;
+    margin: 31px -1px;
 }
 
 .head-wrap .ChoiceSelect > div > img {
     width: 28px;
     height: 28px;
-    margin: 10px;
+    margin: 31px 10px;
     display: inline-block;
     vertical-align: bottom;
 }
@@ -341,7 +341,6 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .head-wrap .ChoiceSelect span:first-child {
-    margin-top: 10px;
     display: block;
     font: 500 16px/1 Anodina, sans-serif;
 }
@@ -357,7 +356,7 @@ nav.nav-bottom li > span:nth-child(2) {
 
 #InputSearch {
     width: 300px;
-    margin: 20px auto;
+    margin: 20px auto 80px auto;
 }
 
 #InputSearch h2 {
@@ -395,5 +394,25 @@ nav.nav-bottom li > span:nth-child(2) {
     outline: none;
     height: 24px;
     padding: 3px;
+    vertical-align: middle;
+    font: 400 14px/24px Anodina, sans-serif;
+    color: var(--var-grey);
+}
+
+#InputSearch div > div:focus {
+    color: var(--var-black);
+}
+
+#copyright {
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#copyright .fa, #copyright .mi {
+    color: var(--red);
+    font-size: 12px;
     vertical-align: middle;
 }

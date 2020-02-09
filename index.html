@@ -13,13 +13,13 @@
 <div class="pg-app-wrap">
     <div class="headwrap-mask"></div>
     <div class="head-wrap">
-        <h1>你失败了 我也爱你呀 <i class="fa fa-heart beating"></i></h1>
+        <h1 id="Sentence">你失败了 我也爱你呀 <i class="fa fa-heart beating"></i></h1>
         <div class="nearInfo">
             <span class="mi">place </span><span id="nearestStation">天河公园 · 128米</span><span> | </span><span
                 id="moreStation">更多站点</span>
         </div>
         <div class="app-info"><span id="historyState">查看版本历史</span> | <span id="description">使用声明</span></div>
-        <button class="btn" id="viewCurrentFlow">查看官方客流信息</button>
+        <button class="btn" id="viewCurrentFlow">客流情况</button>
         <div class="ChoiceSelect">
             <div>
                 <img src="./assets/media/vectors/Navigation.svg" alt="Navi">
@@ -36,12 +36,15 @@
 
         <div>
             <span></span>
-            <div contenteditable="true" class="single-line"></div>
+            <div contenteditable="true" class="single-line" id="src">起点...</div>
         </div>
         <div>
             <span></span>
-            <div contenteditable="true" class="single-line"></div>
+            <div contenteditable="true" class="single-line" id="dest">终点...</div>
         </div>
+    </div>
+    <div id="copyright">
+        Powered by Penguin. Made with <span class="fa fa-heart beating"></span> and <span class="mi">music_note</span>
     </div>
 </div>
 
@@ -54,4 +57,11 @@
     </ul>
 </nav>
 </body>
+<script src="./assets/strings/string.js"></script>
+<script src="./assets/scripts/jQuery.min.js"></script>
+<script>
+    window.onload = function () {
+        $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+    }
+</script>
 </html>
