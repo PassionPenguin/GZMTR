@@ -127,7 +127,10 @@ nav.nav-head {
     top: 0;
     left: 0;
     z-index: 1000;
-    background: var(--var-white);
+}
+
+nav.nav-head .container:not(.show) {
+    display: none;
 }
 
 body.pg-app.hasSearchBar nav.nav-head {
@@ -136,6 +139,9 @@ body.pg-app.hasSearchBar nav.nav-head {
 
 nav.nav-head .container {
     height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    background: var(--var-white);
 }
 
 .nav-description {

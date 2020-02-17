@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 <body class="pg-app withoutHeader" id="pg-app">
-<div class="pg-app-wrap">
+<nav class="nav-head">
+    <div class="container" id="pg-app-head">
+        <div class="nav-description" id="top-description"><span>广州地铁指南</span></div>
+    </div>
+</nav>
+
+<div class="pg-app-wrap" id="pg-app-wrap">
     <div class="headwrap-mask"></div>
     <div class="head-wrap">
         <h1 id="Sentence"></h1>
@@ -48,11 +54,14 @@
     </div>
 </div>
 
-<nav class="nav-bottom">
+<nav class="nav-bottom" id="pg-app-bottom">
     <ul>
-        <li pg-target="home" onclick="loadPage(0)"><span class="active">home</span><span class="description">Home</span>
+        <li pg-target="home" onclick="loadPage.require('index')"><span class="active">home</span><span
+                class="description">Home</span>
         </li>
-        <li pg-target="info" onclick="loadPage(1)"><span>info</span><span class="description">Info</span></li>
+        <li pg-target="info" onclick="loadPage.require('stationList')"><span>info</span><span
+                class="description">Info</span>
+        </li>
         <li pg-target="map" onclick="loadPage(2)"><span>map</span><span class="description">Routemap</span></li>
         <li pg-target="settings" onclick="loadPage(3)"><span>settings</span><span class="description">Settings</span>
         </li>
@@ -60,15 +69,79 @@
 </nav>
 </body>
 <script src="./assets/strings/string.js"></script>
-<script src="./assets/scripts/jQuery.min.js"></script>
 <script src="./assets/scripts/require.lib.js"></script>
+<script src="./assets/scripts/execPage.js"></script>
 <script>
     window.onload = function () {
-        loadRequire();
+        let wrap = $("#pg-app-wrap")[0];
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
-    window.loadPage = function (id) {
+    pg.index = {
+        data: {
+            topNav: false,
+            navBottom: 0
+        },
+        init: () => {
+            loadRequire();
 
+        },
     };
+    window.loadPage = {
+        init: () => {
+            loadPage.required = 0;
+        },
+        data: eval("pg.index"),
+        require: (name) => {
+            if (loadPage.required === 0) loadPage.data = eval("pg." + name);
+            if (loadPage.required === loadPage.data.requireLib.length)
+                loadPage.comp();
+            else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
+                let a = cE({
+                    type: "script",
+                    attr: [["src", "./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js"], ["id", loadPage.data.requireLib[loadPage.required]]]
+                });
+                document.body.appendChild(a);
+                a.onreadystatechange = a.onload = function () {
+                    loadPage.require();
+                };
+            }
+            loadPage.required++;
+        },
+        comp: () => {
+            let head = $("#pg-app-head")[0];
+            let inner = $("#pg-app-wrap")[0];
+            let bottom = $("#pg-app-bottom")[0];
+            let inf = loadPage.data.data;
+            if (inf.topNav) {
+                if (inf.topInput) {
+                    let inputWrap = cE({type: "div", attr: [["class", "nav-inputModel"]]});
+                    inputWrap.appendChild(cE({
+                        type: "div",
+                        attr: [["contenteditable", "true"]],
+                        innerText: inf.topInputContent
+                    }));
+                    head.appendChild(inputWrap);
+                    document.body.classList.contains("hasSearchBar") ? void (0) : document.body.classList.add("hasSearchBar");
+                } else {
+                    document.body.classList.contains("hasSearchBar") ? void (0) : document.body.classList.add("hasSearchBar");
+                    head.hasChildNodes($("nav-inputModel")[0]) ? head.removeChild($("nav-inputModel")[0]) : void (0)
+                }
+                head.classList.contains("show") ? void (0) : head.classList.add("show");
+                document.body.classList.contains("withoutHeader") ? document.body.classList.remove("withoutHeader") : void (0);
+            } else {
+                head.classList.contains("show") ? head.classList.remove("show") : void (0);
+                document.body.classList.contains("withoutHeader") ? void (0) : document.body.classList.add("withoutHeader");
+            }
+            inner.innerHTML = "";
+            loadPage.data.init();
+            $("#pg-app-bottom li>span.active").forEach(e => {
+                e.classList.remove("active")
+            });
+            bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
+        }
+    };
+
+    loadRequire();
+    loadPage.init();
 </script>
 </html>
