@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index Page</title>
-    <link rel="stylesheet" href="/assets/styles/styles.css">
+    <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 <body class="pg-app withoutHeader" id="pg-app">
 <div class="pg-app-wrap">
@@ -50,10 +50,12 @@
 
 <nav class="nav-bottom">
     <ul>
-        <li pg-target="home"><span class="active">home</span><span class="description">Home</span></li>
-        <li pg-target="info"><span>info</span><span class="description">Info</span></li>
-        <li pg-target="map"><span>map</span><span class="description">Routemap</span></li>
-        <li pg-target="settings"><span>settings</span><span class="description">Settings</span></li>
+        <li pg-target="home" onclick="loadPage(0)"><span class="active">home</span><span class="description">Home</span>
+        </li>
+        <li pg-target="info" onclick="loadPage(1)"><span>info</span><span class="description">Info</span></li>
+        <li pg-target="map" onclick="loadPage(2)"><span>map</span><span class="description">Routemap</span></li>
+        <li pg-target="settings" onclick="loadPage(3)"><span>settings</span><span class="description">Settings</span>
+        </li>
     </ul>
 </nav>
 </body>
@@ -64,6 +66,9 @@
     window.onload = function () {
         loadRequire();
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
-    }
+    };
+    window.loadPage = function (id) {
+
+    };
 </script>
 </html>

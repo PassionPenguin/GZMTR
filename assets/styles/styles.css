@@ -145,14 +145,14 @@ nav.nav-head .container {
 }
 
 .nav-inputModel {
-    height: 24px;
+    height: 18px;
     width: 100%;
     padding: 8px 0 8px 0;
     outline: 0;
     margin: 8px 0;
     border: 1px solid var(--var-grey);
-    border-radius: 5px;
-    line-height: 24px;
+    border-radius: 20px;
+    font: 500 14px/16px Anodina, sans-serif;
 }
 
 .nav-inputModel > div {
@@ -415,4 +415,124 @@ nav.nav-bottom li > span:nth-child(2) {
     color: var(--red);
     font-size: 12px;
     vertical-align: middle;
+}
+
+/* staionlist.html */
+
+.selectLine {
+    width: 100px;
+    height: calc(100vh - 150px);
+    display: inline-block;
+    vertical-align: top;
+    overflow-y: scroll;
+}
+
+.selectLine > div {
+    margin-bottom: 20px;
+}
+
+.selectLine > div > div:first-child {
+    color: var(--var-lightdark);
+    text-align: center;
+    font: 600 16px/1 Anodina, sans-serif;
+}
+
+.selectLine > div > div:not(:first-child) {
+    color: var(--var-dark);
+    font: 400 15px/1 Anodina, sans-serif;
+    margin: 18px 0 12px 9px;
+}
+
+.selectLine > div > div > span:first-child:before {
+    width: 8px;
+    height: 100%;
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.selectLine > div > div > span:not(:first-child) {
+    margin-left: 4px;
+}
+
+.selectStation {
+    width: calc(100% - 130px);
+    margin-left: 15px;
+    height: calc(100vh - 150px);
+    display: inline-block;
+    vertical-align: top;
+    overflow-y: scroll;
+}
+
+.selectStation > div {
+    transition: height 800ms ease-in-out, width 800ms ease-in-out;
+}
+
+.selectStation > div:not(.show) {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+.selectStation > div.show {
+    height: 100%;
+    overflow: scroll;
+}
+
+.selectStation h2 {
+    margin: 0 0 20px 0;
+    font: 600 20px/1 Anodina, sans-serif;
+}
+
+.selectStation h3 {
+    margin: 10px 0;
+    font: 600 18px/1 Anodina, sans-serif;
+}
+
+.StationNumber span {
+    color: var(--var-dark);
+}
+
+
+.StationNumber {
+    font-size: 0;
+    display: inline-block;
+    margin: 0 10px;
+    height: 28px;
+    width: 70px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.StationNumber span {
+    width: min-content;
+    height: 21px;
+    margin: 1px 0;
+    border: 2px solid;
+    border-color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    font: 900 14px/18px Anodina, sans-serif;
+    font-variant-numeric: lining-nums;
+}
+
+.StationNumber span:first-child {
+    border-radius: 15px 0 0 15px;
+    border-right: 0;
+    padding: 0 5px;
+}
+
+.StationNumber span:nth-child(2) {
+    border-radius: 0 15px 15px 0;
+    padding: 0 5px 0 2px;
+    width: 15px;
+    text-align: center;
+}
+
+.selectStation p {
+    margin: 6px 0;
+}
+
+.selectStation p > span:not(.StationNumber) {
+    font: 15px/21px Anodina, sans-serif;
 }

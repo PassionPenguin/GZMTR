@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index Page</title>
-    <link rel="stylesheet" href="/assets/styles/styles.css">
+    <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 <body class="pg-app hasSearchBar">
 <nav class="nav-head">
@@ -20,8 +20,11 @@
 </nav>
 
 <div class="pg-app-wrap">
+    <div id="selectLine" class="selectLine">
+    </div>
+    <div id="selectStation" class="selectStation">
+    </div>
 </div>
-
 <nav class="nav-bottom">
     <ul>
         <li><span class="active">home</span><span class="description">Home</span></li>
@@ -31,4 +34,76 @@
     </ul>
 </nav>
 </body>
+<script src="./assets/scripts/require.lib.js"></script>
+<script src="./assets/data/stationlist.js"></script>
+<script>
+    document.body.onload = function () {
+        loadRequire();
+        loadStationList();
+        document.querySelectorAll("#selectLine>div").forEach((e) => {
+            for (let i = 1; i < e.children.length; i++) {
+                e.children[i].onclick = () => {
+                    collapseSL(e.children[i].children[0].getAttribute("class"));
+                }
+            }
+        });
+    };
+
+    let collapseSL = (name) => {
+        name = name.substr(5);
+        console.log(name);
+        document.querySelectorAll("#selectStation .show").forEach((e) => {
+            e.classList.remove("show");
+        });
+        document.getElementById(name).classList.add("show");
+    };
+
+    let loadStationList = () => {
+        let processPill = (a, b, c) => {
+            return "<span class='StationNumber border-" + c + "'><span>" + a + "</span><span>" + (b < 10 ? "0" + b : b) + "</span></span>";
+        };
+        let container = document.getElementById("selectLine");
+        for (let i = 0; i < linebelong.length; i++) {
+            let subContainer = document.createElement("div");
+            let name = document.createElement("div");
+            name.innerText = linebelong[i].name[cL];
+            subContainer.appendChild(name);
+            for (let j = 0; j < linebelong[i].line.length; j++) {
+                let line = document.createElement("div");
+                let span = document.createElement("span");
+                span.classList.add("icon-" + globallist[linebelong[i].line[j]]);
+                line.appendChild(span);
+                let name = document.createElement("span");
+                name.innerText = shortLinename[linebelong[i].line[j]][cL];
+                line.appendChild(name);
+                subContainer.appendChild(line);
+            }
+            container.appendChild(subContainer);
+        }
+        container = document.getElementById("selectStation");
+        for (let i = 0; i < s_list.length; i++) {
+            let subContainer = document.createElement("div");
+            subContainer.id = globallist[i];
+            let title = document.createElement("h2");
+            title.innerText = linename[i][cL];
+            subContainer.appendChild(title);
+            for (let j = 0, num = 0; j < s_list[i].station.length; j++) {
+                let hasChild = false;
+                if (typeof s_list[i].station[j][0] === "string") {
+                    let subtitle = document.createElement("h3");
+                    subtitle.innerText = s_list[i].station[j][0];
+                    subContainer.appendChild(subtitle);
+                    hasChild = true;
+                }
+                for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
+                    let station = document.createElement("p");
+                    station.innerHTML = processPill(linedata[i], num + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
+                    subContainer.appendChild(station);
+                }
+            }
+            container.appendChild(subContainer);
+        }
+        document.getElementById("Line1-GZ").classList.add("show");
+    }
+</script>
 </html>

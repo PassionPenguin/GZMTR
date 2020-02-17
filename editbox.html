@@ -1,0 +1,173 @@
+<!-- Made by Penguin -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="dtz.css">
+</head>
+<body>
+<div id="editchoose">
+    <div id="ed_pane">
+        <div id="ed_pane_typo" class="show">
+            <div class="pane">
+                <div class="inner">
+                    <div id="fontFamily">思源黑体</div>
+                    <div id="fontSize">16pt</div>
+                    <div class="colorPane">
+                        <div><span>字体颜色</span></div>
+                        <div id="fontColor"><span> </span></div>
+                    </div>
+                    <div class="colorPane">
+                        <div><span>背景颜色</span></div>
+                        <div id="bgColor"><span> </span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pane">
+                <div class="inner">
+                    <div class="style">
+                        <span id="textBold" onclick="goStyle('b')"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+                                                                        viewBox="0 0 24 24"
+                                                                        width="24"><path
+                                d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/><path
+                                d="M0 0h24v24H0z" fill="none"/></svg></span>
+                        <span id="textItalic" onclick="goStyle('i')"><svg
+                                xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path
+                                d="M0 0h24v24H0z" fill="none"/><path
+                                d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/></svg></span>
+                        <span
+                                id="textUnderline" onclick="goStyle('u')"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                               height="24" viewBox="0 0 24 24"
+                                                                               width="24"><path d="M0 0h24v24H0z"
+                                                                                                fill="none"/><path
+                                d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg></span><span
+                            id="textDelete" onclick="goStyle('s')"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+                                                                        viewBox="0 0 24 24"
+                                                                        width="24"><path d="M0 0h24v24H0z" fill="none"/><path
+                            d="M10 19h4v-3h-4v3zM5 4v3h5v3h4V7h5V4H5zM3 14h18v-2H3v2z"/></svg></span>
+                    </div>
+                    <div class="align">
+                        <span id="alignJustify" onclick="goStyle('p','30,2,left')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                <path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z"/>
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                            </svg>
+                        </span>
+                        <span id="alignLeft" onclick="goStyle('align',',left')"><svg
+                                xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path
+                                d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/><path
+                                d="M0 0h24v24H0z" fill="none"/></svg></span><span id="alignCenter"
+                                                                                  onclick="goStyle('align',',center')"><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24" viewBox="0 0 24 24"
+                            width="24"><path
+                            d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/><path
+                            d="M0 0h24v24H0z" fill="none"/></svg></span><span id="alignRight"
+                                                                              onclick="goStyle('align',',right')"><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24" viewBox="0 0 24 24"
+                            width="24"><path
+                            d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/><path
+                            d="M0 0h24v24H0z" fill="none"/></svg></span>
+                    </div>
+                    <div class="list_special">
+                        <span id="listNum" onclick="goStyle('list',',1')"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                               height="24" viewBox="0 0 24 24"
+                                                                               width="24"><path
+                                d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"/><path
+                                d="M0 0h24v24H0z" fill="none"/></svg></span><span id="listBul"
+                                                                                  onclick="goStyle('list')"><svg
+                            xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path
+                            d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/><path
+                            d="M0 0h24v24H0V0z" fill="none"/></svg></span>
+                        <span id="code" onclick="goStyle('code')"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+                                                                       viewBox="0 0 24 24"
+                                                                       width="24"><path d="M0 0h24v24H0V0z"
+                                                                                        fill="none"/><path
+                                d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></span>
+                        <span id="quote" onclick="goStyle('quote')"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+                                                                         viewBox="0 0 24 24"
+                                                                         width="24"><path
+                                d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/><path
+                                d="M0 0h24v24H0z" fill="none"/></svg></span>
+                    </div>
+                    <div class="send">
+                        <button onclick="showExtra('extra_readperm')">阅读权限</button>
+                        <button onclick="document.querySelectorAll('#postsubmit')[0].click()">发表帖子</button>
+                        <button onclick="$('postsave').value = 1;$('postsubmit').click();">保存草稿</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ed_pane_img">
+        </div>
+        <div id="ed_pane_att">
+        </div>
+        <div id="ed_pane_emo">
+
+        </div>
+    </div>
+    <div id="ed_choose">
+        <div id="ed_c_typo">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24"
+                 width="24">
+                <g>
+                    <rect fill="none" height="24" width="24"/>
+                </g>
+                <g>
+                    <g>
+                        <g>
+                            <path d="M2.5,4v3h5v12h3V7h5V4H2.5z M21.5,9h-9v3h3v7h3v-7h3V9z"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <span>样式</span>
+        </div>
+        <div id="ed_c_img" onclick="document.getElementById('e_image').click()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+            <span>图片</span>
+        </div>
+        <div id="ed_c_att" onclick="document.getElementById('e_attach').click()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z"/>
+                <path d="M0 0h24v24H0V0z" fill="none"/>
+            </svg>
+            <span>附件</span>
+        </div>
+        <div id="ed_c_emo">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+            </svg>
+            <span>表情</span>
+        </div>
+    </div>
+</div>
+<script>
+    let tggpar = document.getElementById("ed_choose");
+    for (let i = 0; i < tggpar.children.length; i++) {
+        if (i === 1 || i === 2) continue;
+        tggpar.children[i].onclick = function () {
+            document.querySelectorAll("#ed_pane .show").forEach((e) => {
+                e.classList.remove("show")
+            });
+            document.getElementById(tggpar.children[i].id.replace(/c/, "pane")).classList.add("show");
+        }
+    }
+
+    function goStyle(para1, para2) {
+        let e = document.getElementById("e_textarea");
+        e.value = e.value.slice(0, e.selectionStart) + "[" + para1 + ((typeof (para2) !== "undefined") ? ("=" + para2) : "") + "]" + e.value.slice(e.selectionStart, e.selectionEnd) + "[" + para1 + "]" + e.value.slice(e.selectionEnd, e.length - 1);
+    }
+    
+</script>
+</body>
+</html>
