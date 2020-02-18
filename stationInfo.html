@@ -23,7 +23,19 @@
                 <span class="mi">info</span>
                 简介信息
             </div>
-            <div><span class="mi">accessible</span>车站设施</div>
+            <div>
+                <span class="mi">accessible</span>
+                车站设施
+            </div>
+        </div>
+    </div>
+    <div id="InfoTab">
+        <div id="CurrentStation" class="active">
+            <h2 id="StationName">天河公园派出所</h2>
+            <h3 id="SubStationName">Tianhe Park</h3>
+        </div>
+        <div id="facilitiesList">
+
         </div>
     </div>
 </div>
@@ -45,6 +57,71 @@
 <script src="./assets/strings/string.js"></script>
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
+<script src="./assets/data/stationinf.js"></script>
+<script src="./assets/data/stationplat.js"></script>
+<script src="./assets/data/stationlist.js"></script>
+<script src="./assets/data/stationnum.js"></script>
 <script>
+    let topTab = $(".topTab>div>div").forEach(e => {
+        e.onclick = () => {
+            if (!e.classList.contains("active")) {
+                $(".topTab .active,#InfoTab>.active").forEach(d => {
+                    d.classList.remove("active")
+                });
+                e.classList.add("active");
+                $("#InfoTab>div")[Array.prototype.indexOf.call($(".topTab>div>div"), e)].classList.add("active");
+            }
+        }
+    });
+
+    function showstationinf(num, platformnum) {
+        let table = cE({type: "div", attr: [["id", "inftable"]]});
+        let p_num = s_plat[num][platformnum][1];
+        let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8", "13"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];
+        for (let i = 1, k = 1; i <= door[0]; i++) {
+            for (let j = 1; j <= door[1]; j++, k++) {
+                let res = "";
+                if (j === 1)
+                    if (i === 1)
+                        res += "<div class='first-cabin first-door'>";
+                    else res += "<div class='first-door'>";
+                else if (j === door[1])
+                    if (i === door[0])
+                        res += "<div class='last-cabin last-door'>";
+                    else res += "<div class='last-door'>";
+                else res += "<div>";
+                res += "<div id='door_" + k + "'></div><div>" + k + "</div></div>";
+                table.innerHTML += res;
+            }
+        }
+        let d = $("#facilitiesList")[0];
+        d.innerHTML = "";
+        d.appendChild(table);
+        let data = s_inf[num].inf[platformnum];
+        let f = data.facilities;
+        for (let i = 0; i < f.length; i++) {
+            let res1 = "<span class='facilitiesgroup'><span class='exitnum'>" + f[i][2] + "</span>";
+            if (f[i][1].indexOf(1) !== -1)
+                res1 += "<span class='escalator'></span>";
+            else if (f[i][1].indexOf(2) !== -1)
+                res1 += "<span class='staircase'></span>";
+            else if (f[i][1].indexOf(3) !== -1)
+                res1 += "<span class='elevator'></span>";
+            res1 += "</span>";
+            let res2 = typeof (f[i][3]) !== "undefined" ? "<span class=\"font-" + f[i][3] + " border-" + f[i][3] + " interchange\"><span class=\"insideborder\">" + linedata[globallist.indexOf(f[i][3])] + "</span></span>" : "";
+            $("#door_" + f[i][0])[0].innerHTML += "<span>" + res2 + res1 + "</span>";
+        }
+        window.num = num;
+    }
+
+    window.onload = () => {
+        let cs = $("#CurrentStation")[0];
+        cs.innerHTML = "";
+        cs.appendChild(cE({type: "h2", innerText: f_s_list[num][cL]}));
+        cs.appendChild(cE({type: "h3", innerText: f_s_list[num][cL === 4 ? 0 : 4]}));
+    };
+
+    loadRequire();
+    showstationinf(192, 1);
 </script>
 </html>
