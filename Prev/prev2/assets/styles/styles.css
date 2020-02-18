@@ -243,7 +243,7 @@ h3:not(:nth-child(2)) {
     z-index: 1035;
     width: 100%;
     height: 100%;
-    top:50%;
+    top: 50%;
 }
 
 #platformChoserWrap .inner {
@@ -332,8 +332,15 @@ h3:not(:nth-child(2)) {
     left: 0;
 }
 
+#inftable {
+    width: 1800px;
+    height: 100%;
+    overflow: scroll;
+}
+
 #inftable > div {
     display: inline-block;
+    height: 100%;
 }
 
 #inftable > div > :nth-child(2) {
