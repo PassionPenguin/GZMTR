@@ -47,9 +47,9 @@ window.cE = (data) => {
         for (let i = 0; i < data.attr.length; i++)
             e.setAttribute(data.attr[i][0], data.attr[i][1]);
     if (typeof data.innerText !== "undefined")
-        e.innerText = data.innerText[cL];
+        e.innerText = typeof (data.innerText) === "object" ? data.innerText[cL] : data.innerText;
     if (typeof data.innerHTML !== "undefined")
-        e.innerHTML = data.innerHTML[cL];
+        e.innerHTML = typeof (data.innerHTML) === "object" ? data.innerHTML[cL] : data.innerText;
     return e;
 };
 

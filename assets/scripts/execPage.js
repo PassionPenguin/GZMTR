@@ -1,6 +1,6 @@
 /* Made by Penguin */
 pg.stationList = {
-    requireLib: ["stationlist"],
+    requireLib: ["stationlist", "stationnum"],
     data: {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: true,
@@ -22,10 +22,6 @@ pg.stationList = {
                 }
             }
         });
-        let infWrap = cE({type: "div", attr: [["class", "stationInf"]]});
-        infWrap.appendChild(cE({type: "h2", attr: [["class", "stationName"], ["id", "stationName"]]}));
-        infWrap.appendChild(cE({type: "h3", attr: [["class", "stationSubName"], ["id", "stationSubName"]]}));
-        document.body.appendChild(infWrap);
     }, collapseSL: (name) => {
         name = name.substr(5);
         console.log(name);
@@ -72,12 +68,22 @@ pg.stationList = {
                 }
                 for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
                     let station = cE({type: "p"});
-                    station.innerHTML = processPill(linedata[i], num + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
+                    let d = num;
+                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
+                    station.onclick = function () {
+                        pg.stationList.loadStationInf(i, d)
+                    };
                     subContainer.appendChild(station);
                 }
             }
             container.appendChild(subContainer);
         }
         $("#Line1-GZ")[0].classList.add("show");
+    }, loadStationInf: (line, num) => {
+        let nameId = s_num[line][num];
+        $("#stationName")[0].innerText = f_s_list[nameId][cL];
+        $("#stationSubName")[0].innerText = f_s_list[nameId][cL === 4 ? 0 : 4];
+        $(".stationInf")[0].classList.add("show");
+        $("#pg-app-wrap")[0].classList.add("stationInfActive");
     }
 };

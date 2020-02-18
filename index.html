@@ -72,7 +72,7 @@
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
-    window.onload = function () {
+    window.onload = () => {
         let wrap = $("#pg-app-wrap")[0];
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
