@@ -17,7 +17,7 @@ window.string = {
     transferDesc: ["换乘方式", "换乘方式", "", "", "Transfer Type"],
     transferInfo: [["同台换乘", "同台换乘", "", "", "Transfer at the opposite"], ["通道换乘", "通道换乘", "", "", "Via Passage"], ["站厅换乘", "站厅换乘", "", "", "Via Hall"]],
     exitNum: ["出口数量", "出口数量", "", "", "Exits Num"],
-    openTimeDesc: ["首班车时间", "首班车时间", "", "", "First Train Time"],
-    closeTimeDesc: ["末班车时间", "末班车时间", "", "", "Last Train Time"],
+    FirstTrainDesc: ["首班车", "首班车", "", "", "First Train Time"],
+    LastTrainDesc: ["末班车", "末班车", "", "", "Last Train Time"],
     serviceTimeDesc: ["服务时间", "服务时间", "", "", "Service Time"],
 };

@@ -871,3 +871,18 @@ nav.nav-bottom.stationInfActive {
     margin: -1px 0;
     height: 19px;
 }
+
+p:not(#StationCode):not(#Location) > span:nth-child(2) > span {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2) {
+    margin-left: 10px;
+}
+
+#FirstTrain > span:nth-child(2) > span > span:not(:first-child):not(:nth-child(2)), #LastTrain > span:nth-child(2) > span > span:not(:first-child):not(:nth-child(2)) {
+    display: block;
+    margin: 5px 0;
+}

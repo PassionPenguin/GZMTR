@@ -149,7 +149,7 @@
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: shortLinename[linedata.indexOf(via[i])]
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL]
                 }));
                 viaWrap.appendChild(wrap);
             }
@@ -183,7 +183,7 @@
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: string.structureInfo[s_inf[num].structureType[i]][cL]
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.structureInfo[s_inf[num].structureType[i]][cL]
                 }));
                 structureWrap.appendChild(wrap);
             }
@@ -205,7 +205,7 @@
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: string.hallInfo[s_inf[num].hallType[i]][cL]
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.hallInfo[s_inf[num].hallType[i]][cL]
                 }));
                 hallWrap.appendChild(wrap);
             }
@@ -227,14 +227,83 @@
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: string.platformInfo[s_inf[num].platformType[i]][cL]
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.platformInfo[s_inf[num].platformType[i]][cL]
                 }));
                 platformWrap.appendChild(wrap);
             }
             Platform.appendChild(platformWrap);
             cs.appendChild(Platform);
         } // Platform
-        cs.appendChild(cE({type: "p", innerText: s_inf[num].shortDesc}));
+        {
+            let Exit = cE({type: "p", attr: [["id", "StationExit"]]});
+            Exit.appendChild(cE({
+                type: "span",
+                innerText: string.exitNum[cL]
+            }));
+            let exitWrap = cE({type: "span"});
+            let wrap = cE({type: "span"});
+            wrap.appendChild(cE({
+                type: "span",
+                innerText: s_inf[num].exitNum
+            }));
+            exitWrap.appendChild(wrap);
+            Exit.appendChild(exitWrap);
+            cs.appendChild(Exit);
+        } // Exit
+        {
+            let FirstTrain = cE({type: "p", attr: [["id", "FirstTrain"]]});
+            FirstTrain.appendChild(cE({
+                type: "span",
+                innerText: string.FirstTrainDesc[cL]
+            }));
+            let firstTrainWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
+                }));
+                for (let j = 0; j < s_inf[num].firstTrain[i].length; j++)
+                    wrap.appendChild(cE({
+                        type: "span",
+                        innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf[num].firstTrain[i][j][0]] + ": " + s_inf[num].firstTrain[i][j][1]
+                    }));
+                firstTrainWrap.appendChild(wrap);
+            }
+            FirstTrain.appendChild(firstTrainWrap);
+            cs.appendChild(FirstTrain);
+        } // FirstTrain
+        {
+            let LastTrain = cE({type: "p", attr: [["id", "LastTrain"]]});
+            LastTrain.appendChild(cE({
+                type: "span",
+                innerText: string.LastTrainDesc[cL]
+            }));
+            let lastTrainWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
+                }));
+                for (let j = 0; j < s_inf[num].lastTrain[i].length; j++)
+                    wrap.appendChild(cE({
+                        type: "span",
+                        innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf[num].lastTrain[i][j][0]] + ": " + s_inf[num].lastTrain[i][j][1]
+                    }));
+                lastTrainWrap.appendChild(wrap);
+            }
+            LastTrain.appendChild(lastTrainWrap);
+            cs.appendChild(LastTrain);
+        } // LastTrain
     };
 
     loadRequire();
