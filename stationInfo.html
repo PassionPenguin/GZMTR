@@ -62,7 +62,7 @@
 <script src="./assets/data/stationlist.js"></script>
 <script src="./assets/data/stationnum.js"></script>
 <script>
-    let topTab = $(".topTab>div>div").forEach(e => {
+    $(".topTab>div>div").forEach(e => {
         e.onclick = () => {
             if (!e.classList.contains("active")) {
                 $(".topTab .active,#InfoTab>.active").forEach(d => {
@@ -119,9 +119,55 @@
         cs.innerHTML = "";
         cs.appendChild(cE({type: "h2", innerText: f_s_list[num][cL]}));
         cs.appendChild(cE({type: "h3", innerText: f_s_list[num][cL === 4 ? 0 : 4]}));
+        let flocation = processLocation(s_inf[num].location[0].toString(), s_inf[num].location[1].toString());
+        let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
+        locationWrap.appendChild(cE({
+            type: "span",
+            attr: [["id", "LocationDesc"]],
+            innerText: string.locationDesc[cL]
+        }));
+        let location = cE({type: "span"});
+        location.appendChild(cE({type: "span", attr: [["id", "LocationLng"]], innerText: flocation[0]}));
+        location.appendChild(cE({type: "span", attr: [["id", "LocationLat"]], innerText: flocation[1]}));
+        locationWrap.appendChild(location);
+        cs.appendChild(locationWrap);
+        let Line = cE({type: "p", attr: [["id", "LinePassed"]]});
+        Line.appendChild(cE({
+            type: "span",
+            attr: [["id", "LineDesc"]],
+            innerText: string.lineDesc[cL]
+        }));
+        let via = s_inf[num].via;
+        let viaWrap = cE({type: "span"});
+        for (let i = 0; i < via.length; i++) {
+            let wrap = cE({type: "span"});
+            wrap.appendChild(cE({
+                type: "span",
+                attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+            }));
+            wrap.appendChild(cE({
+                type: "span",
+                attr: [["id", "LinePassed"]],
+                innerText: shortLinename[linedata.indexOf(via[i])]
+            }));
+            viaWrap.appendChild(wrap);
+        }
+        Line.appendChild(viaWrap);
+        let Code = cE({type: "p", attr: [["id", "StationCode"]]});
+        Code.appendChild(cE({
+            type: "span",
+            attr: [["id", "CodeDesc"]],
+            innerText: string.codeDesc[cL]
+        }));
+        let CodeWrap = cE({type: "span", attr: [["class", "stationCode"]]});
+        for (let i = 0; i < via.length; i++)
+            CodeWrap.innerHTML += processPill(via[i], s_num[linedata.indexOf(via[i])].indexOf(num) + 1, globallist[linedata.indexOf(via[i])]);
+        Code.appendChild(CodeWrap);
+        cs.appendChild(Line);
+        cs.appendChild(Code);
     };
 
     loadRequire();
-    showstationinf(192, 1);
+    showstationinf(38, 0);
 </script>
 </html>
