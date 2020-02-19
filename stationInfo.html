@@ -119,55 +119,125 @@
         cs.innerHTML = "";
         cs.appendChild(cE({type: "h2", innerText: f_s_list[num][cL]}));
         cs.appendChild(cE({type: "h3", innerText: f_s_list[num][cL === 4 ? 0 : 4]}));
-        let flocation = processLocation(s_inf[num].location[0].toString(), s_inf[num].location[1].toString());
-        let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
-        locationWrap.appendChild(cE({
-            type: "span",
-            attr: [["id", "LocationDesc"]],
-            innerText: string.locationDesc[cL]
-        }));
-        let location = cE({type: "span"});
-        location.appendChild(cE({type: "span", attr: [["id", "LocationLng"]], innerText: flocation[0]}));
-        location.appendChild(cE({type: "span", attr: [["id", "LocationLat"]], innerText: flocation[1]}));
-        locationWrap.appendChild(location);
-        cs.appendChild(locationWrap);
-        let Line = cE({type: "p", attr: [["id", "LinePassed"]]});
-        Line.appendChild(cE({
-            type: "span",
-            attr: [["id", "LineDesc"]],
-            innerText: string.lineDesc[cL]
-        }));
         let via = s_inf[num].via;
-        let viaWrap = cE({type: "span"});
-        for (let i = 0; i < via.length; i++) {
-            let wrap = cE({type: "span"});
-            wrap.appendChild(cE({
+        {
+            let flocation = processLocation(s_inf[num].location[0].toString(), s_inf[num].location[1].toString());
+            let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
+            locationWrap.appendChild(cE({
                 type: "span",
-                attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                attr: [["id", "LocationDesc"]],
+                innerText: string.locationDesc[cL]
             }));
-            wrap.appendChild(cE({
+            let location = cE({type: "span"});
+            location.appendChild(cE({type: "span", attr: [["id", "LocationLng"]], innerText: flocation[0]}));
+            location.appendChild(cE({type: "span", attr: [["id", "LocationLat"]], innerText: flocation[1]}));
+            locationWrap.appendChild(location);
+            cs.appendChild(locationWrap);
+        } // Location
+        {
+            let Line = cE({type: "p", attr: [["class", "shouldCrossLine"]]});
+            Line.appendChild(cE({
                 type: "span",
-                attr: [["id", "LinePassed"]],
-                innerText: shortLinename[linedata.indexOf(via[i])]
+                innerText: string.lineDesc[cL]
             }));
-            viaWrap.appendChild(wrap);
-        }
-        Line.appendChild(viaWrap);
-        let Code = cE({type: "p", attr: [["id", "StationCode"]]});
-        Code.appendChild(cE({
-            type: "span",
-            attr: [["id", "CodeDesc"]],
-            innerText: string.codeDesc[cL]
-        }));
-        let CodeWrap = cE({type: "span", attr: [["class", "stationCode"]]});
-        for (let i = 0; i < via.length; i++)
-            CodeWrap.innerHTML += processPill(via[i], s_num[linedata.indexOf(via[i])].indexOf(num) + 1, globallist[linedata.indexOf(via[i])]);
-        Code.appendChild(CodeWrap);
-        cs.appendChild(Line);
-        cs.appendChild(Code);
+            let viaWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: shortLinename[linedata.indexOf(via[i])]
+                }));
+                viaWrap.appendChild(wrap);
+            }
+            Line.appendChild(viaWrap);
+            cs.appendChild(Line);
+        } // Line Passed
+        {
+            let Code = cE({type: "p", attr: [["id", "StationCode"]]});
+            Code.appendChild(cE({
+                type: "span",
+                innerText: string.codeDesc[cL]
+            }));
+            let CodeWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++)
+                CodeWrap.innerHTML += processPill(via[i], s_num[linedata.indexOf(via[i])].indexOf(num) + 1, globallist[linedata.indexOf(via[i])]);
+            Code.appendChild(CodeWrap);
+            cs.appendChild(Code);
+        } // Code
+        {
+            let Structure = cE({type: "p", attr: [["id", "StationStructure"]]});
+            Structure.appendChild(cE({
+                type: "span",
+                innerText: string.structureDesc[cL]
+            }));
+            let structureWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: string.structureInfo[s_inf[num].structureType[i]][cL]
+                }));
+                structureWrap.appendChild(wrap);
+            }
+            Structure.appendChild(structureWrap);
+            cs.appendChild(Structure);
+        } // Structure
+        {
+            let Hall = cE({type: "p", attr: [["id", "StationHall"]]});
+            Hall.appendChild(cE({
+                type: "span",
+                innerText: string.hallDesc[cL]
+            }));
+            let hallWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: string.hallInfo[s_inf[num].hallType[i]][cL]
+                }));
+                hallWrap.appendChild(wrap);
+            }
+            Hall.appendChild(hallWrap);
+            cs.appendChild(Hall);
+        } // Hall
+        {
+            let Platform = cE({type: "p", attr: [["id", "StationPlatform"]]});
+            Platform.appendChild(cE({
+                type: "span",
+                innerText: string.platformDesc[cL]
+            }));
+            let platformWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: string.platformInfo[s_inf[num].platformType[i]][cL]
+                }));
+                platformWrap.appendChild(wrap);
+            }
+            Platform.appendChild(platformWrap);
+            cs.appendChild(Platform);
+        } // Platform
+        cs.appendChild(cE({type: "p", innerText: s_inf[num].shortDesc}));
     };
 
     loadRequire();
-    showstationinf(38, 0);
+    showstationinf(0, 0);
 </script>
 </html>
