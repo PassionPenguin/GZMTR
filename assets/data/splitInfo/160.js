@@ -1,0 +1,1 @@
+{"name":["清塘","清塘","清塘-せいとう","칭탕","Qingtang"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.262704,23.372522],"via":["9"],"platformBelong":[["1","9"],["2","9"]]}

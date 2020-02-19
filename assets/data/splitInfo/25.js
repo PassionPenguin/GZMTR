@@ -1,0 +1,1 @@
+{"name":["江南西","江南西","江南西-こうなんさい","장난시 역","Jiangnanxi"],"inf":[{"platform":1,"facilities":[[8,[1,2],"仅通往A<br>B<br>C"],[23,[1,2,4],"仅通往D<br>E"]]},{"platform":2,"facilities":[[8,[1,2],"仅通往A<br>B<br>C"],[23,[1,2,4],"仅通往D<br>E"]]}],"location":[113.273918,23.097214],"via":["2"],"platformBelong":[["1","2"],["2","2"]]}

@@ -1,0 +1,1 @@
+{"name":["中大","中大","中大-ちゅうだい","중다 역","Sun Yat-sen University"],"inf":[{"platform":1,"facilities":[[8,[1],"B<br>C"],[20,[2],""],[24,[1],"A<br>D"],[27,[3],"",true]]},{"platform":2,"facilities":[[8,[1],"B<br>C"],[20,[2],""],[24,[1],"A<br>D"],[27,[3],"",true]]}],"location":[113.292863,23.092124],"via":["8"],"platformBelong":[["1","8"],["2","8"]]}

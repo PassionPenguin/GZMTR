@@ -1,0 +1,1 @@
+{"name":["雙崗","双岗","双崗-そうとう","쌍강","Shuanggang"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.474331,23.094468],"via":["13"],"platformBelong":[["1","13"],["2","13"]]}

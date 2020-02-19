@@ -1,0 +1,1 @@
+{"name":["農講所","农讲所","農講所-のうこうしょ","농민 운동 강습소","Peasants Movement Institute"],"inf":[{"platform":1,"facilities":[[7,[1],"C"],[15,[3],""],[22,[1,2],"A<br>D"]]},{"platform":2,"facilities":[[6,[1],"C"],[15,[3],""],[21,[2],"A<br>D"],[22,[1],"A<br>D"]]}],"location":[113.275602,23.126623],"via":["1"],"platformBelong":[["1","1"],["2","1"]]}

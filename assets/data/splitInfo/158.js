@@ -1,0 +1,1 @@
+{"name":["蓮塘","莲塘","蓮塘-れんとう","롄톈","Liantang"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.245149,23.389101],"via":["9"],"platformBelong":[["1","9"],["2","9"]]}

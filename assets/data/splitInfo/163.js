@@ -1,0 +1,1 @@
+{"name":["南海神廟","南海神庙","南海神廟-なんかいしんびょう","남해신묘","Nanhai God Temple"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.497434,23.083718],"via":["13"],"platformBelong":[["1","13"],["2","13"]]}

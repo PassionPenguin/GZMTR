@@ -1,0 +1,1 @@
+{"name":["飛鵝嶺","飞鹅岭","飛鵝嶺-ひがねれい","페이어링","Fei'eling"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.155127,23.378345],"via":["9"],"platformBelong":[["1","9"],["9","9"]]}
