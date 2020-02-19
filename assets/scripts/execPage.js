@@ -30,9 +30,6 @@ pg.stationList = {
         });
         $("#" + name)[0].classList.add("show");
     }, loadStationList: () => {
-        let processPill = (a, b, c) => {
-            return "<span class='StationNumber border-" + c + "'><span>" + a + "</span><span>" + (b < 10 ? "0" + b : b) + "</span></span>";
-        };
         let container = $("#selectLine")[0];
         for (let i = 0; i < linebelong.length; i++) {
             let subContainer = cE({type: "div"});

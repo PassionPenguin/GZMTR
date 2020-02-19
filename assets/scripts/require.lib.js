@@ -49,8 +49,19 @@ window.cE = (data) => {
     if (typeof data.innerText !== "undefined")
         e.innerText = typeof (data.innerText) === "object" ? data.innerText[cL] : data.innerText;
     if (typeof data.innerHTML !== "undefined")
-        e.innerHTML = typeof (data.innerHTML) === "object" ? data.innerHTML[cL] : data.innerText;
+        e.innerHTML = typeof (data.innerHTML) === "object" ? data.innerHTML[cL] : data.innerHTML;
     return e;
+};
+
+window.processLocation = (a, b) => {
+    let processPrecision = (d) => {
+        return d.substr(0, d.indexOf(".")) + "°" + d.substr(d.indexOf(".") + 1, 2) + "\"" + d.substr(d.indexOf(".") + 3, 2) + "." + d.substr(d.indexOf(".") + 5, 2) + "'";
+    };
+    return [(a > -20 && a < 160 ? processPrecision(a) + "E" : processPrecision(-1 * a) + "W"), (b > 0 ? processPrecision(b) + "N" : processPrecision(-1 * b) + "S")];
+};
+
+window.processPill = (a, b, c) => {
+    return "<span class='StationNumber border-" + c + "'><span>" + a + "</span><span>" + (b < 10 ? "0" + b : b) + "</span></span>";
 };
 
 // Core String Data
