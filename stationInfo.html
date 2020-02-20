@@ -172,6 +172,40 @@
             Line.appendChild(viaWrap);
             g.appendChild(Line);
         } // Line Passed
+        if (typeof s_inf[num].transferType !== "undefined") {
+            let Transfer = cE({type: "p"});
+            Transfer.appendChild(cE({
+                type: "span",
+                innerText: string.transferDesc[cL]
+            }));
+            let viaWrap = cE({type: "span"});
+            for (let i = 0; i < via.length; i++) {
+                let wrap = cE({type: "span"});
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + " => "
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i === via.length - 1 ? i - 1 : i + 1])]]]
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: " " + shortLinename[linedata.indexOf(via[i === via.length - 1 ? i - 1 : i + 1])][cL] + " : "
+                }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerText: string.transferInfo[s_inf[num].transferType[i]]
+                }));
+                viaWrap.appendChild(wrap);
+            }
+            Transfer.appendChild(viaWrap);
+            g.appendChild(Transfer);
+        } // Transfer Type
         {
             let Structure = cE({type: "p", attr: [["id", "StationStructure"]]});
             Structure.appendChild(cE({
