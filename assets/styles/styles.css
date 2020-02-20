@@ -989,14 +989,14 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     margin-left: 20px;
 }
 
-#MapContatiner {
+#MapContainer {
     width: calc(100% - 20px);
     margin: 0 10px 10px 10px;
     height: 400px;
     max-height: 75vh;
 }
 
-#MapContatiner * {
+#MapContainer * {
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;

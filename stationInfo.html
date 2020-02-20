@@ -127,7 +127,7 @@
         cs.innerHTML = "";
         let via = s_inf[num].via;
         let g = cE({type: "div", attr: [["class", "shortInfo"]]});
-        cs.appendChild(cE({type: "div", attr: [["class", "MapContatiner"], ["id", "MapContatiner"]]}));
+        cs.appendChild(cE({type: "div", attr: [["class", "MapContainer"], ["id", "MapContainer"]]}));
         {
             let flocation = processLocation(s_inf[num].location[0].toString(), s_inf[num].location[1].toString());
             let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
@@ -429,7 +429,7 @@
                 tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
             }
         };
-        let map = new AMap.Map('MapContatiner', {
+        let map = new AMap.Map('MapContainer', {
             center: s_inf[num].location,
             zoom: 18,
             mapStyle: (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
