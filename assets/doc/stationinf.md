@@ -29,3 +29,13 @@
 1 -> 通道换乘
 
 2 -> 站厅换乘
+
+## 将json合并会js
+
+```bash
+for ((i=0; i<=26; i++))
+do
+cat "${i}.json" >> /users/penguin/downloads/stationinf.js #自行替换地址
+echo "," >>  /users/penguin/downloads/stationinf.js #自行替换地址
+done
+```
