@@ -163,6 +163,10 @@
                     type: "span",
                     innerHTML: processPill(via[i], s_num[linedata.indexOf(via[i])].indexOf(num) + 1, globallist[linedata.indexOf(via[i])])
                 }));
+                wrap.appendChild(cE({
+                    type: "span",
+                    innerHTML: s_inf[num].openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
+                }));
                 viaWrap.appendChild(wrap);
             }
             Line.appendChild(viaWrap);
@@ -251,6 +255,23 @@
             g.appendChild(Exit);
         } // Exit
         {
+            let ServiceTime = cE({type: "p", attr: [["id", "ServiceTime"]]});
+            ServiceTime.appendChild(cE({
+                type: "span",
+                innerText: string.serviceTimeDesc[cL]
+            }));
+            let serviceTimeWrap = cE({type: "span"});
+            let wrap = cE({type: "span"});
+            wrap.appendChild(cE({
+                type: "span",
+                innerText: s_inf[num].serviceTime.replace(/ND/, " (" + ["次日", "次日", "", "", "Next day"][cL] + ")")
+            }));
+            serviceTimeWrap.appendChild(wrap);
+            ServiceTime.appendChild(serviceTimeWrap);
+            g.appendChild(ServiceTime);
+        }
+        // ServiceTime
+        {
             let FirstTrain = cE({type: "p", attr: [["id", "FirstTrain"]]});
             FirstTrain.appendChild(cE({
                 type: "span",
@@ -325,7 +346,9 @@
         } // StationStructureDesc
         let a = cE({type: "div"});
         let b = cE({type: "div"});
+        a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
         a.appendChild(cE({type: "p", innerText: s_inf[num].exitDesc})); // Exit Desc
+        b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
         b.appendChild(cE({type: "p", innerText: s_inf[num].usageDesc})); // Usage Desc
         d.appendChild(a);
         d.appendChild(b);
@@ -378,7 +401,6 @@
             mapStyle: (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
         });
     };
-
     loadRequire();
     showstationinf(typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0, 0);
 </script>
