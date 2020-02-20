@@ -991,8 +991,9 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 
 #MapContatiner {
     width: calc(100% - 20px);
-    margin:0 10px 10px 10px;
+    margin: 0 10px 10px 10px;
     height: 400px;
+    max-height: 75vh;
 }
 
 #MapContatiner * {
