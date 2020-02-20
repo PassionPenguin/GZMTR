@@ -58,6 +58,7 @@
     --var-light: #fff;
     --var-grey: #888;
     --var-lightgrey: #aaa;
+    --var-lightgrey200: #aaaaaa22;
     --var-lightdark: #555;
     --var-black: #000;
     --var-white: #fff;
@@ -718,9 +719,9 @@ nav.nav-bottom.stationInfActive {
 
 #InfoTab > div {
     position: absolute;
-    padding: 10px 20px;
+    padding: 10px 0;
     display: block;
-    width: calc(100% - 40px);
+    width: 100%;
     height: calc(100% - 20px);
     overflow: scroll;
 }
@@ -932,20 +933,20 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #CurrentStation h4 {
-    font: 600 24px/24px Anodina, sans-serif;
+    font: 600 20px/24px Anodina, sans-serif;
     margin: 0 0 5px 0;
     padding-bottom: 5px;
 }
 
 
 #CurrentStation h5 {
-    font: 600 20px/24px Anodina, sans-serif;
-    margin: 0;
+    font: 600 18px/24px Anodina, sans-serif;
+    margin: 5px 0;
 }
 
 #CurrentStation h6 {
-    font: 700 18px/28px Anodina, sans-serif;
-    margin: 0;
+    font: 700 16px/28px Anodina, sans-serif;
+    margin: 5px 0;
 }
 
 #facilitiesList:not(.active) {
@@ -957,4 +958,33 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     bottom: 50%;
     transform: translate(0, 50%);
     height: initial !important;
+}
+
+#CurrentStation > div {
+    background: var(--var-lightgrey200);
+}
+
+#CurrentStation > div > * {
+    margin: 10px 0;
+    padding: 10px 25px;
+    background: var(--var-white);
+}
+
+#CurrentStation > .moreInfo > * {
+    padding: 25px !important;
+}
+
+#CurrentStation > div > * > span:first-child {
+    font: 800 16px/1 Anodina, sans-serif
+}
+
+#CurrentStation > div > *:not(#Location):not(#StationCode) > span:first-child {
+    margin-bottom: 10px;
+    display: block;
+}
+
+#Location > span:nth-child(2), #StationCode > span:nth-child(2) {
+    width: calc(75% - 20px);
+    display: inline-block;
+    margin-left: 20px;
 }

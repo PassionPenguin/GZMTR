@@ -22,5 +22,7 @@ window.string = {
     FirstTrainDesc: ["首班车", "首班车", "", "", "First Train Time"],
     LastTrainDesc: ["末班车", "末班车", "", "", "Last Train Time"],
     serviceTimeDesc: ["服务时间", "服务时间", "", "", "Service Time"],
-    structureName:["结构","结构","","","Structure"]
+    structureName:["结构","结构","","","Structure"],
+    historyName:["历史","历史","","","History"],
+    futureExName:["未来拓展","未来拓展","","","Future Expansion"]
 };
