@@ -392,6 +392,6 @@
     };
 
     loadRequire();
-    showstationinf(1, 0);
+    showstationinf(typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") : 0, 0);
 </script>
 </html>

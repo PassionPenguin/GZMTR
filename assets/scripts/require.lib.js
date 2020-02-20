@@ -64,6 +64,19 @@ window.processPill = (a, b, c) => {
     return "<span class='StationNumber border-" + c + "'><span>" + a + "</span><span>" + (b < 10 ? "0" + b : b) + "</span></span>";
 };
 
+window.GetPara = (para) => {
+    let result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === para) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+};
+
 // Core String Data
 
 // Core Line Data
