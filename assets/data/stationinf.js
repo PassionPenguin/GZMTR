@@ -206,7 +206,7 @@ window.s_inf = [{
         "1997-6=28_",
         "2010-11=3_"
     ],
-    "serviceTime": "05:55-00:07",
+    "serviceTime": "05:55-00:07ND",
     "firstTrain": [
         [
             [
