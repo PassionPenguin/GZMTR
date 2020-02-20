@@ -5,6 +5,8 @@ window.sentences = [
     ["今日系[icon]fa fa-lemon' style='font-weight:400[/icon] 仲系 [icon]fa fa-apple-alt[/icon] 嘞", "今天是[icon]fa fa-lemon' style='font-weight:400[/icon] 还是 [icon]fa fa-apple-alt[/icon] 呢", "[icon]fa fa-lemon[/icon]", "[icon]fa fa-lemon[/icon]", "What'll be today? [icon]fa fa-lemon' style='font-weight:400[/icon] or [icon]fa fa-apple-alt[/icon] ?"]
 ];
 window.string = {
+    infoDesc:["简介信息","简介信息","","","Info"],
+    facilityDesc:["车站设施","车站设施","","","Facilities"],
     locationDesc: ["地理座標", "地理坐标", "", "", "Map Position"],
     lineDesc: ["經過線路", "经过线路", "", "", "Line Passed"],
     codeDesc: ["站點代碼", "站点代码", "", "", "Station Code"],
@@ -20,4 +22,5 @@ window.string = {
     FirstTrainDesc: ["首班车", "首班车", "", "", "First Train Time"],
     LastTrainDesc: ["末班车", "末班车", "", "", "Last Train Time"],
     serviceTimeDesc: ["服务时间", "服务时间", "", "", "Service Time"],
+    structureName:["结构","结构","","","Structure"]
 };

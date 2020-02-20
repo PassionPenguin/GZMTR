@@ -623,17 +623,39 @@ nav.nav-bottom.stationInfActive {
 
 /* stationInfo.html */
 .topTab {
-    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: 42px;
     font: 14px/40px Anodina, sans-serif;
     text-align: center;
     cursor: pointer;
     z-index: 1001;
+    height: 102px;
+    position: fixed;
+    background: var(--var-white);
 }
 
+.topTab.down {
+    height: 42px !important;
+}
+
+.topTab.down h2, .topTab.down h3 {
+    height: 0;
+    opacity: 0;
+}
+
+.topTab h2 {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-size: 30px;
+}
+
+.topTab h2, .topTab h3 {
+    text-align: left;
+    line-height: 36px;
+    display: inline-block;
+    width: fit-content;
+}
 
 .topTab > div {
     position: relative;
@@ -644,13 +666,13 @@ nav.nav-bottom.stationInfActive {
 .topTab div div {
     position: absolute;
     left: 0;
-    top: -2px;
-    height: 100%;
+    bottom: -2px;
+    height: 44px;
     width: 50%;
     outline: none;
 }
 
-.topTab div div:nth-child(2) {
+.topTab div div:nth-child(4) {
     left: 50%;
 }
 
@@ -671,7 +693,7 @@ nav.nav-bottom.stationInfActive {
     transition: 1s ease;
 }
 
-.topTab div div:nth-child(1):after {
+.topTab div div:nth-child(3):after {
     left: unset;
     right: 0;
 }
@@ -735,6 +757,7 @@ nav.nav-bottom.stationInfActive {
     width: 1800px;
     height: 100%;
     overflow: scroll;
+    white-space: nowrap;
 }
 
 #inftable > div {
@@ -819,6 +842,22 @@ nav.nav-bottom.stationInfActive {
     display: inline-block;
 }
 
+#CurrentStation {
+    overflow-y: scroll;
+}
+
+#CurrentStation.down {
+    margin-top: 42px;
+}
+
+#CurrentStation:not(.down) {
+    margin-top: 102px;
+}
+
+#CurrentStation > p {
+    height: fit-content;
+}
+
 #CurrentStation > p > span:first-child {
     text-align: center;
     width: 68px;
@@ -834,7 +873,7 @@ nav.nav-bottom.stationInfActive {
     text-align: left;
     width: calc(100% - 80px);
     display: inline-block;
-    height: fit-content;
+    height: initial;
     vertical-align: top;
     margin-left: 10px;
 }
@@ -885,4 +924,37 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 #FirstTrain > span:nth-child(2) > span > span:not(:first-child):not(:nth-child(2)), #LastTrain > span:nth-child(2) > span > span:not(:first-child):not(:nth-child(2)) {
     display: block;
     margin: 5px 0;
+}
+
+#CurrentStation p {
+    font: 400 14px/21px Anodina, sans-serif;
+    margin: 8px 0;
+}
+
+#CurrentStation h4 {
+    font: 600 24px/24px Anodina, sans-serif;
+    margin: 0 0 5px 0;
+    padding-bottom: 5px;
+}
+
+
+#CurrentStation h5 {
+    font: 600 20px/24px Anodina, sans-serif;
+    margin: 0;
+}
+
+#CurrentStation h6 {
+    font: 700 18px/28px Anodina, sans-serif;
+    margin: 0;
+}
+
+#facilitiesList:not(.active) {
+    right: -200vw;
+}
+
+#facilitiesList {
+    margin: auto 20px;
+    bottom: 50%;
+    transform: translate(0, 50%);
+    height: initial !important;
 }
