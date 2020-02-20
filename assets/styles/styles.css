@@ -648,7 +648,7 @@ nav.nav-bottom.stationInfActive {
 .topTab h2 {
     margin-top: 20px;
     margin-bottom: -10px;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .topTab h2, .topTab h3 {
@@ -991,7 +991,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 
 #MapContatiner {
     width: calc(100% - 20px);
-    margin: 20px 10px 10px 10px;
+    margin:0 10px 10px 10px;
     height: 400px;
 }
 
