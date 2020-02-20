@@ -3510,7 +3510,9 @@ window.s_inf = [{
             "Guangzhou South Railway Station"
         ],
         "inf": [
-            {},
+            {
+                "facilities": []
+            },
             {
                 "platform": 2,
                 "facilities": [
@@ -3539,7 +3541,9 @@ window.s_inf = [{
                     ]
                 ]
             },
-            {},
+            {
+                "facilities": []
+            },
             {
                 "platform": 4,
                 "facilities": [
