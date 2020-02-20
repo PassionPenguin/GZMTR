@@ -357,7 +357,7 @@
             }
             d.appendChild(a);
         } // HistoryDesc
-        {
+        if (typeof s_inf[num].futureExpansion !== "undefined") {
             let a = cE({type: "div"});
             a.appendChild(cE({type: "h4", innerText: string.futureExName[cL]}));
             for (let i = 0; i < s_inf[num].futureExpansion.length; i++) {
@@ -392,6 +392,6 @@
     };
 
     loadRequire();
-    showstationinf(0, 0);
+    showstationinf(1, 0);
 </script>
 </html>
