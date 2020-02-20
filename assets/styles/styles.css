@@ -960,7 +960,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     height: initial !important;
 }
 
-#CurrentStation > div {
+#CurrentStation {
     background: var(--var-lightgrey200);
 }
 
@@ -987,4 +987,16 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     width: calc(75% - 20px);
     display: inline-block;
     margin-left: 20px;
+}
+
+#MapContatiner {
+    width: calc(100% - 20px);
+    margin: 20px 10px 10px 10px;
+    height: 400px;
+}
+
+#MapContatiner * {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }

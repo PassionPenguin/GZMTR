@@ -34,10 +34,10 @@
 
 <nav class="nav-bottom" id="pg-app-bottom">
     <ul>
-        <li pg-target="home" onclick="loadPage.require('index')"><span class="active">home</span><span
+        <li pg-target="home" onclick="loadPage.require('index')"><span>home</span><span
                 class="description">Home</span>
         </li>
-        <li pg-target="info" onclick="loadPage.require('stationList')"><span>info</span><span
+        <li pg-target="info" onclick="loadPage.require('stationList')"><span class="active">info</span><span
                 class="description">Info</span>
         </li>
         <li pg-target="map" onclick="loadPage(2)"><span>map</span><span class="description">Routemap</span></li>
@@ -53,9 +53,10 @@
 <script src="./assets/data/stationplat.js"></script>
 <script src="./assets/data/stationlist.js"></script>
 <script src="./assets/data/stationnum.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"></script>
 <script>
 
-    function showstationinf(num, platformnum) {
+    window.showstationinf = (num, platformnum) => {
         let ch = $("#pg-app-wrap > .topTab > .inner")[0];
         ch.innerHTML = "";
         let a = [cE({
@@ -124,13 +125,13 @@
             $("#door_" + f[i][0])[0].innerHTML += "<span>" + res2 + res1 + "</span>";
         }
         window.num = num;
-    }
-
+    };
     window.onload = () => {
         let cs = $("#CurrentStation")[0];
         cs.innerHTML = "";
         let via = s_inf[num].via;
-        let g= cE({type:"div",attr:[["class","shortInfo"]]});
+        let g = cE({type: "div", attr: [["class", "shortInfo"]]});
+        cs.appendChild(cE({type: "div", attr: [["class", "MapContatiner"], ["id", "MapContatiner"]]}));
         {
             let flocation = processLocation(s_inf[num].location[0].toString(), s_inf[num].location[1].toString());
             let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
@@ -382,7 +383,12 @@
                 cs.classList.contains("down") ? cs.classList.remove("down") : void (0);
                 tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
             }
-        }
+        };
+        let map = new AMap.Map('MapContatiner', {
+            center: s_inf[num].location,
+            zoom: 18,
+            mapStyle: (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
+        });
     };
 
     loadRequire();
