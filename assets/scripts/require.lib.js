@@ -44,7 +44,7 @@ window.loadRequire = () => {
 
     window.cL = system.get("language") === "" ? 0 : parseInt(system.get("language"));
     window.cT = system.get("theme") === "" ? 0 : parseInt(system.get("theme"));
-    document.documentElement.classList.add(theme[cT]+"Theme");
+    document.documentElement.classList.add(theme[cT] + "Theme");
     window.overrideDarkMode = ["", "false"].indexOf(system.get("overrideDarkMode")) === -1;
     if (overrideDarkMode)
         document.documentElement.classList.add("custom-theme");
@@ -116,4 +116,4 @@ window.linebelong = [{
     line: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 }, {name: ["東莞", "东莞", "東莞", "동관", "Dongguan"], line: [15]}];
 window.language = ["繁體中文", "简体中文", "日本語", "한국어", "English"];
-window.theme = ["Simple", "Darker", "Summer", "Rain"];
+window.theme = ["Simple", "Darker", "Summer", "Rain", "Tea"];

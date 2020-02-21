@@ -56,6 +56,11 @@
     --var-accent: #46a8c5;
 }
 
+.TeaTheme:root {
+    --var-white: #f9fff9;
+    --var-accent: #8bc34a;
+}
+
 .DarkerTheme {
     --var-dark: #fff;
     --var-light: #222;

@@ -618,7 +618,7 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "themeChoser"]],
-                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div></div>"
+                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div><div>Tea</div></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[cT].classList.add("active");
