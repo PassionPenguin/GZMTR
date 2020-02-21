@@ -563,3 +563,15 @@ pg.stationinfo = {
         window.num = num;
     }
 };
+/* Made by Penguin */
+pg.makeRoute = {
+    requireLib: ["interchange"],
+    data: {
+        topNav: false,
+        topInput: false,
+        navBottom: 2
+    },
+    init: (a) => {
+        window.location.href = "makeRoute.html?start=" + a[0] + "&end=" + a[1];
+    }
+};

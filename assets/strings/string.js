@@ -23,8 +23,16 @@ window.string = {
     LastTrainDesc: ["末班车", "末班车", "", "", "Last Train Time"],
     serviceTimeDesc: ["服务时间", "服务时间", "", "", "Service Time"],
     structureName: ["结构", "结构", "", "", "Structure"],
-    exitName:["出入口信息","出入口信息","","","Exits"],
-    usageName:["客流情况","客流情况","","","Flows"],
+    exitName: ["出入口信息", "出入口信息", "", "", "Exits"],
+    usageName: ["客流情况", "客流情况", "", "", "Flows"],
     historyName: ["历史", "历史", "", "", "History"],
-    futureExName: ["未来拓展", "未来拓展", "", "", "Future Expansion"]
+    futureExName: ["未来拓展", "未来拓展", "", "", "Future Expansion"],
+    operatedNy: ["由廣州地鐵集團運營", "由广州地铁集团运营", "", "", "Service Operated By GZMTR Co., Ltd"],
+    belong: ["查看設施對應的車門Number", "查看设施对应的车门号", "", "", "See facilities's nearby door"],
+    beginNavi: ["或者開始導航", "或者开始导航", "", "", "Or start a new navigation"],
+    interchangeCost: ["換乘大概耗時", "换乘大概耗时", "", "", "Transfer will takes about"],
+    Minute: ["分鐘", "分钟", "", "", "Minutes"],
+    ContinueTaking: ["繼續乘坐", "继续乘坐", "", "", "Continue taking this train."],
+    WeRecomend: ["我們推介您在"],
+    DoorWait: ["號幕門處候車以便快速換車/離站"]
 };

@@ -1086,3 +1086,135 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     transform: translate(-50%, -33.3%);
     font: 900 36px/1 Anodina, sans-serif;
 }
+
+#routeInformation {
+    width: 100%;
+    height: 100%;
+    overflow: hidden scroll;
+    margin-top: 10px;
+}
+
+#routeInformation h4 {
+    font: 600 18px Anodina, sans-serif;
+    padding: 0 20px 10px 20px;
+    margin-top: -5px;
+    display: block;
+    margin-bottom: 0;
+}
+
+#routeInformation > div > div {
+    border-left: 5px solid;
+    padding: 20px 10px;
+}
+
+#routeInformation h4 .StationNumber {
+    width: fit-content;
+}
+
+#routeInformation h4 .StationNumber:nth-child(2) {
+    margin-left: 0;
+}
+
+#routeInformation > div > p {
+    margin: -5px 0 20px 20px;
+    font: 12px/1 Anodina, sans-serif;
+    color: var(--var-grey);
+}
+
+#routeInformation .tripOrigin {
+    border-radius: 50%;
+    margin-left: 2px;
+    padding: 5px;
+    border: 3px solid;
+    width: 2px;
+    height: 2px;
+}
+
+#routeInformation .leftpane > div:not(.tripOrigin) {
+    height: 120px;
+    width: 5px;
+    display: block;
+    padding: 0;
+    margin-left: 7.5px;
+    vertical-align: top;
+}
+
+#routeInformation .leftpane > div:not(.tripOrigin).longer {
+    height: 146px;
+}
+
+#routeInformation .leftpane {
+    width: 20px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#routeInformation .rightpane {
+    vertical-align: top;
+    width: calc(100vw - 100px);
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#routeInformation .numbox {
+    width: 100% !important;
+    border: 0;
+    margin-left: 20px !important;
+    padding: 7px 0 0 0;
+}
+
+#routeInformation .numbox span[class^="border-Line"] {
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    font: 12px/1 Anodina, sans-serif;
+    vertical-align: middle;
+    border-radius: 5px;
+    border: 3px solid;
+    margin-right: 10px;
+    color: var(--var-black);
+}
+
+#routeInformation .numbox p {
+    font: 200 14px/1 Anodina, sans-serif;
+    color: var(--var-dark);
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#routeInformation .numbox .expandIcon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: -5px 10px 0 0;
+    background: url("../media/vectors/ic_expand_more-24px.svg");
+}
+
+#routeInformation [aria-expanded="true"] .expandIcon {
+    background: url("../media/vectors/ic_expand_less-24px.svg")
+}
+
+#routeInformation .numbox > p:nth-child(2) {
+    opacity: 0.6;
+}
+
+#routeInformation .numbox > p:nth-child(2):hover, #routeInformation .numbox p:nth-child(2):focus {
+    opacity: 1;
+}
+
+#routeInformation .numbox > div > p {
+    margin: 0;
+    padding: 7px 0;
+    font: 600 13px/1 Anodina, sans-serif;
+    height: 18px;
+}
+
+#routeInformation [aria-expanded="true"] > p:nth-child(2) {
+    margin-bottom: 0;
+}
+
+#routeInformation .numbox > div > p:last-child {
+    color: var(--var-grey);
+    margin-bottom: 10px;
+}
