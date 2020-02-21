@@ -151,6 +151,7 @@
                 head.classList.contains("show") ? void (0) : head.classList.add("show");
                 document.body.classList.contains("withoutHeader") ? document.body.classList.remove("withoutHeader") : void (0);
             } else {
+                document.body.classList.contains("hasSearchBar") ? document.body.classList.remove("hasSearchBar") : void (0);
                 head.classList.contains("show") ? head.classList.remove("show") : void (0);
                 document.body.classList.contains("withoutHeader") ? void (0) : document.body.classList.add("withoutHeader");
             }
