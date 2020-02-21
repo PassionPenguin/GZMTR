@@ -34,5 +34,7 @@ window.string = {
     Minute: ["分鐘", "分钟", "", "", "Minutes"],
     ContinueTaking: ["繼續乘坐", "继续乘坐", "", "", "Continue taking this train."],
     WeRecomend: ["我們推介您在"],
-    DoorWait: ["號幕門處候車以便快速換車/離站"]
+    DoorWait: ["號幕門處候車以便快速換車/離站"],
+    emptyWikiData: ["无维基数据", "无维基数据", "", "", "No Wiki Data"],
+    emptyInfData: ["无设施数据", "无设施数据", "", "", "No Facilities Data"]
 };

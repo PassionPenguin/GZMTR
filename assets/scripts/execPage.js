@@ -182,7 +182,15 @@ pg.stationinfo = {
         InfoTab.appendChild(cs);
         InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
         wrap.appendChild(InfoTab);
-        pg.stationinfo.showstationinf(typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0, 0);
+        let num = typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
+        if (s_inf[num].exitNum === undefined) {
+            $("#bg-animation span")[0].innerHTML = string.emptyWikiData[cL];
+            setTimeout(() => {
+                loadPage.require("stationList")
+            }, 1000);
+            return 0;
+        }
+        pg.stationinfo.showstationinf(num, 0);
         let via = s_inf[num].via;
         let g = cE({type: "div", attr: [["class", "shortInfo"]]});
         cs.appendChild(cE({type: "div", attr: [["class", "MapContainer"], ["id", "MapContainer"]]}));
@@ -493,6 +501,11 @@ pg.stationinfo = {
             mapStyle: (window.matchMedia("(prefers-color-scheme: dark)").matches || document.documentElement.classList.contains("dark-theme")) ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
         });
     }, showstationinf: (num, platformnum) => {
+        let emptyData = false;
+        if (s_inf[num].inf[platformnum].facilities.length === 0 || s_inf[num].inf[platformnum].facilities === null || s_inf[num].inf[platformnum].facilities === undefined) {
+            $("#bg-animation span")[0].innerHTML = string.emptyInfData[cL];
+            emptyData = true;
+        }
         let ch = $("#pg-app-wrap > .topTab > .inner")[0];
         ch.innerHTML = "";
         let a = [cE({
@@ -513,6 +526,8 @@ pg.stationinfo = {
         }));
         ch.appendChild(a[0]);
         ch.appendChild(a[1]);
+        if (emptyData)
+            return 0;
         a.forEach(e => {
             e.onclick = () => {
                 if (!e.classList.contains("active")) {
