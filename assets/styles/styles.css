@@ -444,7 +444,7 @@ nav.nav-bottom li > span:nth-child(2) {
 /* staionlist.html */
 
 .selectLine {
-    width: 100px;
+    width: 125px;
     height: calc(100vh - 150px);
     display: inline-block;
     vertical-align: top;
@@ -480,7 +480,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .selectStation {
-    width: calc(100% - 130px);
+    width: calc(100% - 155px);
     margin-left: 15px;
     height: calc(100vh - 150px);
     display: inline-block;
@@ -527,9 +527,13 @@ nav.nav-bottom li > span:nth-child(2) {
     display: inline-block;
     margin: 0 10px;
     height: 28px;
-    width: 70px;
+    max-width: 70px;
     text-align: left;
     vertical-align: middle;
+}
+
+.StationNumber * {
+    text-transform: full-width;
 }
 
 .StationNumber span {
@@ -563,6 +567,9 @@ nav.nav-bottom li > span:nth-child(2) {
 
 .selectStation p > span:not(.StationNumber) {
     font: 15px/21px Anodina, sans-serif;
+    display: inline-block;
+    max-width: calc(100% - 90px);
+    vertical-align: top;
 }
 
 .stationInf {
