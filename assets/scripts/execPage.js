@@ -167,7 +167,7 @@ pg.index = {
 /* Made by Penguin */
 pg.stationinfo = {
     // requireLib: ["https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"],
-    requireLib: ["stationnum"],
+    requireLib: [],
     data: {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: false,
