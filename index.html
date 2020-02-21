@@ -13,6 +13,9 @@
 <nav class="nav-head">
     <div class="container" id="pg-app-head">
         <div class="nav-description" id="top-description"><span>广州地铁指南</span></div>
+        <div class="nav-inputModel">
+            <div contenteditable="true"></div>
+        </div>
     </div>
 </nav>
 
@@ -77,13 +80,24 @@
 <script src="./assets/scripts/execPage.js"></script>
 <script>
     let LocalHistory = [], si = -1;
+    window.onpopstate = () => {
+        if (!(GetPara("stationid") === null || GetPara("stationid") === "")) {
+            if (GetPara("stationid") !== "index")
+                loadPage.require("stationinfo", GetPara("stationid"));
+        } else {
+            loadPage.require(GetPara("type"));
+        }
+        if (GetPara("type") === "index" || !(GetPara("stationid") === null || GetPara("stationid") === "")) $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+    };
     window.onload = () => {
         loadRequire();
-        if (!(GetPara("stationid") === null || GetPara("stationid") === ""))
+        if (!(GetPara("stationid") === null || GetPara("stationid") === "")) {
             if (GetPara("stationid") !== "index")
-                loadPage.require(GetPara("stationid"));
-        let wrap = $("#pg-app-wrap")[0];
-        $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+                loadPage.require("stationinfo", GetPara("stationid"));
+        } else {
+            loadPage.require(GetPara("type"));
+        }
+        if (GetPara("type") === "index" || !(GetPara("stationid") === null || GetPara("stationid") === "")) $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
     window.loadPage = {
         data: eval("pg.index"),
@@ -94,9 +108,10 @@
             if (typeof (name) !== "undefined")
                 if (name === "stationinfo") {
                     si = num;
+                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num);
                 } else {
                     LocalHistory.push(name);
-                    history.pushState("index.html?type=" + name, name);
+                    history.pushState(history.length, name, "?type=" + name);
                 }
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);
@@ -125,15 +140,10 @@
             let inner = $("#pg-app-wrap")[0];
             let bottom = $("#pg-app-bottom")[0];
             let inf = loadPage.data.data;
+            inner.innerHTML = "";
             if (inf.topNav) {
                 if (inf.topInput) {
-                    let inputWrap = cE({type: "div", attr: [["class", "nav-inputModel"]]});
-                    inputWrap.appendChild(cE({
-                        type: "div",
-                        attr: [["contenteditable", "true"]],
-                        innerText: inf.topInputContent
-                    }));
-                    head.appendChild(inputWrap);
+                    $("[contenteditable='true']")[0].innerHTML = inf.topInputContent[cL];
                     document.body.classList.contains("hasSearchBar") ? void (0) : document.body.classList.add("hasSearchBar");
                 } else {
                     document.body.classList.contains("hasSearchBar") ? document.body.classList.remove("hasSearchBar") : void (0);
@@ -144,8 +154,6 @@
                 head.classList.contains("show") ? head.classList.remove("show") : void (0);
                 document.body.classList.contains("withoutHeader") ? void (0) : document.body.classList.add("withoutHeader");
             }
-            inner.innerHTML = "";
-            console.log(d);
             loadPage.data.init(d);
             $("#pg-app-bottom li>span.active").forEach(e => {
                 e.classList.remove("active")
