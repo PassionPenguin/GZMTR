@@ -79,10 +79,13 @@
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
-    let LocalHistory = [], si = -1;
+    let LocalHistory = [], si = -1, se = [-1, -1];
     window.onpopstate = () => {
         if (!(GetPara("stationid") === null || GetPara("stationid") === "")) {
-            if (GetPara("stationid") !== "index")
+            if (GetPara("type") === "stationinfo")
+                loadPage.require("stationinfo", GetPara("stationid"));
+        } else if (!(GetPara("start") === null || GetPara("start") === "")) {
+            if (GetPara("type") === "makeRoute")
                 loadPage.require("stationinfo", GetPara("stationid"));
         } else {
             loadPage.require(GetPara("type"));
@@ -92,7 +95,10 @@
     window.onload = () => {
         loadRequire();
         if (!(GetPara("stationid") === null || GetPara("stationid") === "")) {
-            if (GetPara("stationid") !== "index")
+            if (GetPara("type") === "stationinfo")
+                loadPage.require("stationinfo", GetPara("stationid"));
+        } else if (!(GetPara("start") === null || GetPara("start") === "")) {
+            if (GetPara("type") === "makeRoute")
                 loadPage.require("stationinfo", GetPara("stationid"));
         } else {
             loadPage.require(GetPara("type"));
@@ -109,6 +115,9 @@
                 if (name === "stationinfo") {
                     si = num;
                     history.pushState(history.length, name, "?type=" + name + "&stationid=" + num);
+                } else if (name === "makeRoute") {
+                    se = num;
+                    history.pushState(history.length, name, "?type=" + name + "&start=" + se[0] + "&end=" + se[1]);
                 } else {
                     LocalHistory.push(name);
                     history.pushState(history.length, name, "?type=" + name);
@@ -123,17 +132,20 @@
                     loadPage.comp(si);
                 } else
                     loadPage.comp();
-            } else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
+            } else if ($("#" + loadPage.data.requireLib[loadPage.required].substr(loadPage.data.requireLib[loadPage.required].length - 7)).length === 0) {
                 let a = cE({
                     type: "script",
-                    attr: [["src", loadPage.data.requireLib[loadPage.required].includes("http") ? loadPage.data.requireLib[loadPage.required] : ("./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js")]]
+                    attr: [["src", loadPage.data.requireLib[loadPage.required].includes("http") ? loadPage.data.requireLib[loadPage.required] : ("./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js")], ["id", loadPage.data.requireLib[loadPage.required].substr(loadPage.data.requireLib[loadPage.required].length - 7)]]
                 });
                 document.body.appendChild(a);
                 a.onreadystatechange = a.onload = function () {
+                    loadPage.required++;
                     loadPage.require();
                 };
+            } else {
+                loadPage.required++;
+                loadPage.require();
             }
-            loadPage.required++;
         },
         comp: (d) => {
             let head = $("#pg-app-head")[0];
@@ -163,6 +175,11 @@
             bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
         }
     };
-
+    window.saveSE = (a) => {
+        if (a[0] === "start") se[0] = a[1];
+        else se[1] = a[1];
+        if (se[1] !== -1 && se[0] !== -1)
+            window.location.href = "makeRoute.html?start=" + se[0] + "&end=" + se[1];
+    }
 </script>
 </html>
