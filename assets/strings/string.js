@@ -41,5 +41,6 @@ window.string = {
     languageDesc: ["语言", "语言", "", "", "Language"],
     themeDesc: ["样式", "样式", "", "", "Theme"],
     shouldOverrideDarkMode: ["强制取消暗色模式", "强制取消暗色模式", "", "", "Override Dark Mode"],
-    removeCookies :["清理一切用户设置","清理一切用户设置","","","Remove all User Preferences"]
+    removeCookies :["清理一切用户设置","清理一切用户设置","","","Remove all User Preferences"],
+    loading :["加载中..","加载中..","","","Loading.."]
 };

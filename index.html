@@ -125,7 +125,9 @@
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);
                 loadPage.required = 0;
-                $("#bg-animation")[0].classList.add("loading");
+                let wrap = $("#bg-animation")[0];
+                wrap.classList.add("loading");
+                wrap.innerText = string.loading;
                 loadingTime = new Date().getTime();
             }
             if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length) {
