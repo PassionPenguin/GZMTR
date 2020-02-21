@@ -1,0 +1,1 @@
+let s_inf_211={"name":["世紀蓮","世纪莲","世紀蓮-せいきれん","스지롄","Shijilian"],"inf":[{"platform":1,"facilities":[[9,[1],"A"],[15,[2,3],""],[20,[1,2],"B<br>C<br>D"]]},{"platform":2,"facilities":[[5,[1,2],"A"],[14,[3],""],[15,[2],""],[16,[1,2],"B<br>C<br>D"]]}],"location":[113.114917,22.965147],"via":["GF"],"platformBelong":[["1","GF"],["2","GF"]]};

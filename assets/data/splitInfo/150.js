@@ -1,0 +1,1 @@
+let s_inf_150={"name":["琶洲","琶洲","琶洲-はしゅう","판저우 역","Pazhou"],"inf":[{"platform":1,"facilities":[[14,[1],"出闸后B，过轨抵C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[1],"出闸后D<br>保利，过轨抵A<br>B"]]}],"location":[113.3667,23.098516],"via":["8"],"platformBelong":[["1","8"],["2","8"]]};

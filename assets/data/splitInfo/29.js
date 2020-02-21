@@ -1,0 +1,1 @@
+let s_inf_29={"name":["越秀公園","越秀公园","越秀公園-えつしゅうこうえん","웨슈 공원 역","Yuexiu Park"],"inf":[{"platform":1,"facilities":[[3,[1],"仅通往A<br>E"],[26,[1],"仅通往B<br>C<br>D"],[30,[3],"",true]]},{"platform":2,"facilities":[[[3,[1],"仅通往A<br>E"],[26,[1],"仅通往B<br>C<br>D"],[27,[3],"",true]]]}],"location":[113.261366,23.140041],"via":["2"],"platformBelong":[["1","2"],["2","2"]]};

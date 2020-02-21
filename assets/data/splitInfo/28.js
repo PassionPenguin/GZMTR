@@ -1,0 +1,1 @@
+let s_inf_28={"name":["紀念堂","纪念堂","紀念堂-きねんどう","기념당 역","Sun Yat-sen Memorial Hall"],"inf":[{"platform":1,"facilities":[[2,[3],"",true],[4,[1],"D"],[10,[2],""],[25,[1],"C"]]},{"platform":2,"facilities":[[2,[3],"",true],[4,[1],"D"],[10,[2],""],[25,[1],"C"]]}],"location":[113.263431,23.132179],"via":["2","2"],"platformBelong":[["1","2"],["2","2"]]};

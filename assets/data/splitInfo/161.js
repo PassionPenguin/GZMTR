@@ -1,0 +1,1 @@
+let s_inf_161={"name":["裕豐圍","裕丰围","裕豊囲-ようほうい","유풍위","Yufengwei"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.455011,23.094934],"via":["13"],"platformBelong":[["1","13"],["2","13"]]};
