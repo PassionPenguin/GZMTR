@@ -74,21 +74,14 @@
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
+    let LocalHistory = [];
     window.onload = () => {
         loadRequire();
+        if (!(GetPara("stationid") === null || GetPara("stationid") === ""))
+            if (GetPara("stationid") !== "index")
+                loadPage.require(GetPara("stationid"));
         let wrap = $("#pg-app-wrap")[0];
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
-        // loadPage.init();
-    };
-    pg.index = {
-        requireLib: [],
-        data: {
-            topNav: false,
-            navBottom: 0
-        },
-        init: () => {
-            loadRequire();
-        },
     };
     window.loadPage = {
         data: eval("pg.index"),
@@ -96,6 +89,8 @@
             loadPage.require("index");
         },
         require: (name) => {
+            LocalHistory.push(name);
+            history.pushState("index.html?type=" + name, name);
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);
                 loadPage.required = 0;
@@ -149,5 +144,6 @@
             bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
         }
     };
+
 </script>
 </html>
