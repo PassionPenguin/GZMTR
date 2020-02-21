@@ -59,6 +59,7 @@
     --var-grey: #888;
     --var-lightgrey: #aaa;
     --var-lightgrey200: #aaaaaa22;
+    --var-lightgrey500: #aaaaaa88;
     --var-lightdark: #555;
     --var-black: #000;
     --var-white: #fff;
@@ -149,6 +150,11 @@ nav.nav-head .container {
     font: 500 16px/1 Anodina, sans-serif;
     width: 100%;
     padding-top: 16px;
+}
+
+body:not(.hasSearchBar) .nav-inputModel {
+    opacity: 0;
+    display: none;
 }
 
 .nav-inputModel {
@@ -1217,4 +1223,52 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 #routeInformation .numbox > div > p:last-child {
     color: var(--var-grey);
     margin-bottom: 10px;
+}
+
+#prefSettings {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#prefSettings button {
+    width: 100%;
+    height: 48px;
+    box-shadow: none;
+    background: transparent;
+    border: 5px solid var(--var-lightgrey200);
+    font: 16px/1 Anodina, sans-serif;
+    padding: 10px;
+    outline: none;
+}
+
+#languageChoser {
+    background: var(--var-white);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+}
+
+#languageChoser > div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+}
+
+#languageChoser > div > div {
+    font: 16px/1 Anodina, sans-serif;
+    padding: 10px;
+}
+
+#languageChoser:not(.show) {
+    z-index: -1;
+    opacity: 0;
 }

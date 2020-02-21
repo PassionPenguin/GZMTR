@@ -580,6 +580,39 @@ pg.stationinfo = {
     }
 };
 /* Made by Penguin */
+pg.account = {
+    requireLib: [],
+    data: {
+        title: ["个人设置", "个人设置", "", "", "Settings"],
+        topNav: true,
+        topInput: false, navBottom: 3
+    },
+    init: () => {
+        let wrap = $("#pg-app-wrap")[0];
+        wrap.appendChild(cE({type: "div", attr: [["id", "prefSettings"]]}));
+        let inner = wrap.children[0];
+        inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.languageDesc[cL]}));
+        let ChoserWrap = cE({
+            type: "div",
+            attr: [["id", "languageChoser"]],
+            innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
+        });
+        inner.appendChild(ChoserWrap);
+        let toggler = cE({type: "button", innerText: language[cL]});
+        toggler.onclick = () => {
+            if (!ChoserWrap.classList.contains("show"))
+                ChoserWrap.classList.add("show")
+        };
+        for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
+            ChoserWrap.children[0].children[i].onclick = () => {
+                system.set("language", language.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
+                window.location.reload();
+            };
+        }
+        inner.appendChild(toggler);
+    }
+};
+/* Made by Penguin */
 pg.makeRoute = {
     requireLib: ["interchange"],
     data: {
