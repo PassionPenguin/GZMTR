@@ -1,4 +1,24 @@
 // let i = 0;
+//function base64Encode( stringInput ) {
+//
+// 			// NOTE: This normalization technique for handling characters that require
+// 			// more than an 8-bit representation was provided on the Mozilla Developer
+// 			// Network website for Base64 encoding. They also provided a companion DECODE
+// 			// method. But, we don't need to decode in this demo.
+// 			// --
+// 			// READ MORE: https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding#The_Unicode_Problem
+// 			var normalizedInput = encodeURIComponent( stringInput ).replace(
+// 				/%([0-9A-F]{2})/g,
+// 				function toSolidBytes( $0, hex ) {
+//
+// 					return( String.fromCharCode( "0x" + hex ) );
+//
+// 				}
+// 			);
+//
+// 			return( btoa( normalizedInput ) );
+//
+// 		}
 //
 // function loadData() {
 //     let d = window.s_inf[i];

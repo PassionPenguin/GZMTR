@@ -90,7 +90,7 @@
         } else {
             loadPage.require(GetPara("type"));
         }
-        if (GetPara("type") === "index" || !(GetPara("stationid") === null || GetPara("stationid") === "")) $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+        if (GetPara("type") === "index" || GetPara("stationid") === null || GetPara("stationid") === "") $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
     window.onload = () => {
         loadRequire();
@@ -103,7 +103,7 @@
         } else {
             loadPage.require(GetPara("type"));
         }
-        if (GetPara("type") === "index" || !(GetPara("stationid") === null || GetPara("stationid") === "")) $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+        if (GetPara("type") === "index" || GetPara("stationid") === null || GetPara("stationid") === "") $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
     window.loadPage = {
         data: eval("pg.index"),
