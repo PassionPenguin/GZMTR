@@ -591,25 +591,73 @@ pg.account = {
         let wrap = $("#pg-app-wrap")[0];
         wrap.appendChild(cE({type: "div", attr: [["id", "prefSettings"]]}));
         let inner = wrap.children[0];
-        inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.languageDesc[cL]}));
-        let ChoserWrap = cE({
-            type: "div",
-            attr: [["id", "languageChoser"]],
-            innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
-        });
-        inner.appendChild(ChoserWrap);
-        let toggler = cE({type: "button", innerText: language[cL]});
-        toggler.onclick = () => {
-            if (!ChoserWrap.classList.contains("show"))
-                ChoserWrap.classList.add("show")
-        };
-        for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
-            ChoserWrap.children[0].children[i].onclick = () => {
-                system.set("language", language.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
-                window.location.reload();
+        {
+            inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.languageDesc[cL]}));
+            let ChoserWrap = cE({
+                type: "div",
+                attr: [["id", "languageChoser"]],
+                innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
+            });
+            inner.appendChild(ChoserWrap);
+            let toggler = cE({type: "button", innerText: language[cL]});
+            toggler.onclick = () => {
+                if (!ChoserWrap.classList.contains("show"))
+                    ChoserWrap.classList.add("show")
             };
+            for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
+                ChoserWrap.children[0].children[i].onclick = () => {
+                    system.set("language", language.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
+                    window.location.reload();
+                };
+            }
+            inner.appendChild(toggler);
         }
-        inner.appendChild(toggler);
+        {
+            inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.themeDesc[cL]}));
+            let ChoserWrap = cE({
+                type: "div",
+                attr: [["id", "themeChoser"]],
+                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div></div>"
+            });
+            inner.appendChild(ChoserWrap);
+            let toggler = cE({type: "button", innerText: theme[cT]});
+            toggler.onclick = () => {
+                if (!ChoserWrap.classList.contains("show"))
+                    ChoserWrap.classList.add("show")
+            };
+            for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
+                ChoserWrap.children[0].children[i].onclick = () => {
+                    system.set("theme", theme.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
+                    window.location.reload();
+                };
+            }
+            inner.appendChild(toggler);
+        }
+        {
+            inner.appendChild(cE({
+                type: "p",
+                attr: [["class", "prefName"]],
+                innerText: string.shouldOverrideDarkMode[cL]
+            }));
+            let ChoserWrap = cE({
+                type: "div",
+                attr: [["id", "OverrideDarkModeChoser"]],
+                innerHTML: "<div><div>true</div><div>false</div></div>"
+            });
+            inner.appendChild(ChoserWrap);
+            let toggler = cE({type: "button", innerText: overrideDarkMode});
+            toggler.onclick = () => {
+                if (!ChoserWrap.classList.contains("show"))
+                    ChoserWrap.classList.add("show")
+            };
+            for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
+                ChoserWrap.children[0].children[i].onclick = () => {
+                    system.set("overrideDarkMode", ChoserWrap.children[0].children[i].innerText);
+                    window.location.reload();
+                };
+            }
+            inner.appendChild(toggler);
+        }
     }
 };
 /* Made by Penguin */

@@ -53,21 +53,6 @@
 
 /* Main */
 
-:root {
-    --var-dark: #222;
-    --var-light: #fff;
-    --var-grey: #888;
-    --var-lightgrey: #aaa;
-    --var-lightgrey200: #aaaaaa22;
-    --var-lightgrey500: #aaaaaa88;
-    --var-lightdark: #555;
-    --var-black: #000;
-    --var-white: #fff;
-    --var-accent: #c51835;
-    --red: #cb4042;
-    --green: #3fcd44;
-}
-
 * {
     transition: 500ms;
     font-family: Anodina, sans-serif;
@@ -1248,7 +1233,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     outline: none;
 }
 
-#languageChoser {
+[id$="Choser"] {
     background: var(--var-white);
     position: fixed;
     width: 100%;
@@ -1260,7 +1245,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     transform: translate(-50%, -50%);
 }
 
-#languageChoser > div {
+[id$="Choser"] > div {
     width: 200px;
     height: 200px;
     position: absolute;
@@ -1270,12 +1255,12 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     z-index: 1001;
 }
 
-#languageChoser > div > div {
+[id$="Choser"] > div > div {
     font: 16px/1 Anodina, sans-serif;
     padding: 10px;
 }
 
-#languageChoser:not(.show) {
+[id$="Choser"]:not(.show) {
     z-index: -1;
     opacity: 0;
 }
