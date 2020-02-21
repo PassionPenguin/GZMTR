@@ -599,8 +599,8 @@ pg.account = {
                 innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
             });
             inner.appendChild(ChoserWrap);
-            let toggler = cE({type: "button", innerText: language[cL]});
-            toggler.onclick = () => {
+            let triggle = cE({type: "button", innerText: language[cL]});
+            triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -610,7 +610,7 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(toggler);
+            inner.appendChild(triggle);
         }
         {
             inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.themeDesc[cL]}));
@@ -620,8 +620,8 @@ pg.account = {
                 innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div></div>"
             });
             inner.appendChild(ChoserWrap);
-            let toggler = cE({type: "button", innerText: theme[cT]});
-            toggler.onclick = () => {
+            let triggle = cE({type: "button", innerText: theme[cT]});
+            triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -631,7 +631,7 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(toggler);
+            inner.appendChild(triggle);
         }
         {
             inner.appendChild(cE({
@@ -645,8 +645,8 @@ pg.account = {
                 innerHTML: "<div><div>true</div><div>false</div></div>"
             });
             inner.appendChild(ChoserWrap);
-            let toggler = cE({type: "button", innerText: overrideDarkMode});
-            toggler.onclick = () => {
+            let triggle = cE({type: "button", innerText: overrideDarkMode});
+            triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -656,7 +656,30 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(toggler);
+            inner.appendChild(triggle);
+        }
+        {
+            inner.appendChild(cE({
+                type: "p",
+                attr: [["class", "prefName"]],
+                innerText: string.removeCookies[cL]
+            }));
+            let ChoserWrap = cE({
+                type: "div",
+                attr: [["id", "RemoveAllPreferencesChoser"]],
+                innerHTML: "<div><div>true</div><div>false</div></div>"
+            });
+            inner.appendChild(ChoserWrap);
+            let triggle = cE({type: "button", innerText: string.removeCookies[cL]});
+            triggle.onclick = () => {
+                if (!ChoserWrap.classList.contains("show"))
+                    ChoserWrap.classList.add("show")
+            };
+            ChoserWrap.children[0].children[0].onclick = () => {
+                system.removeAll();
+                window.location.reload();
+            };
+            inner.appendChild(triggle);
         }
     }
 };

@@ -38,8 +38,8 @@ window.string = {
     DoorWait: ["號幕門處候車以便快速換車/離站"],
     emptyWikiData: ["无维基数据", "无维基数据", "", "", "No Wiki Data"],
     emptyInfData: ["无设施数据", "无设施数据", "", "", "No Facilities Data"],
-    languageDesc: ["请选择您的语言", "请选择您的语言", "请选择您的语言", "请选择您的语言", "Pls Choose Your Language"],
-    themeDesc: ["请选择您的语言", "请选择您的语言", "请选择您的语言", "请选择您的语言", "Pls Choose Your Language"],
-    shouldOverrideDarkMode: ["强制取消暗色模式", "强制取消暗色模式", "强制取消暗色模式", "强制取消暗色模式", "Override Dark Mode"]
-
+    languageDesc: ["语言", "语言", "", "", "Language"],
+    themeDesc: ["样式", "样式", "", "", "Theme"],
+    shouldOverrideDarkMode: ["强制取消暗色模式", "强制取消暗色模式", "", "", "Override Dark Mode"],
+    removeCookies :["清理一切用户设置","清理一切用户设置","","","Remove all User Preferences"]
 };

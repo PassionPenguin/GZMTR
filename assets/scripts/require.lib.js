@@ -10,6 +10,9 @@ window.loadRequire = () => {
         system.set = (name, value) => {
             android.storeStringPref(value, name)
         };
+        system.removeAll = () => {
+            android.sharedPreferencesRemove()
+        };
     } else {
         system.get = (cname) => {
             let name = cname + "=";
@@ -31,6 +34,11 @@ window.loadRequire = () => {
             d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
             let expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        };
+        system.removeAll = () => {
+            document.cookie.split(";").forEach(function (c) {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
         }
     }
 
