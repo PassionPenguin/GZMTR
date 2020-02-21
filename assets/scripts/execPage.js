@@ -182,7 +182,6 @@ pg.stationinfo = {
         InfoTab.appendChild(cs);
         InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
         wrap.appendChild(InfoTab);
-        console.log(s_numInsert);
         pg.stationinfo.showstationinf(typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0, 0);
         let via = s_inf[num].via;
         let g = cE({type: "div", attr: [["class", "shortInfo"]]});
