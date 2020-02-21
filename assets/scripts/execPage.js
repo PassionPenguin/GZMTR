@@ -217,7 +217,7 @@ pg.stationinfo = {
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerHTML: processPill(via[i], s_num[linedata.indexOf(via[i])].indexOf(num) + 1, globallist[linedata.indexOf(via[i])])
+                    innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf[num].via[0])].indexOf(parseInt(num)) + 1, globallist[linedata.indexOf(via[i])])
                 }));
                 wrap.appendChild(cE({
                     type: "span",
