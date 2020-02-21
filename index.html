@@ -67,38 +67,46 @@
         </li>
     </ul>
 </nav>
+
+<div id="bg-animation"></div>
 </body>
 <script src="./assets/strings/string.js"></script>
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
     window.onload = () => {
+        loadRequire();
         let wrap = $("#pg-app-wrap")[0];
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
+        // loadPage.init();
     };
     pg.index = {
+        requireLib: [],
         data: {
             topNav: false,
             navBottom: 0
         },
         init: () => {
             loadRequire();
-
         },
     };
     window.loadPage = {
-        init: () => {
-            loadPage.required = 0;
-        },
         data: eval("pg.index"),
+        init: () => {
+            loadPage.require("index");
+        },
         require: (name) => {
-            if (loadPage.required === 0) loadPage.data = eval("pg." + name);
-            if (loadPage.required === loadPage.data.requireLib.length)
+            if (typeof (name) !== "undefined") {
+                loadPage.data = eval("pg." + name);
+                loadPage.required = 0;
+                $("#bg-animation")[0].classList.add("loading");
+            }
+            if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length)
                 loadPage.comp();
             else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
                 let a = cE({
                     type: "script",
-                    attr: [["src", "./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js"], ["id", loadPage.data.requireLib[loadPage.required]]]
+                    attr: [["src", loadPage.data.requireLib[loadPage.required].includes("http") ? loadPage.data.requireLib[loadPage.required] : ("./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js")]]
                 });
                 document.body.appendChild(a);
                 a.onreadystatechange = a.onload = function () {
@@ -137,11 +145,9 @@
             $("#pg-app-bottom li>span.active").forEach(e => {
                 e.classList.remove("active")
             });
+            $("#bg-animation")[0].classList.remove("loading");
             bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
         }
     };
-
-    loadRequire();
-    loadPage.init();
 </script>
 </html>

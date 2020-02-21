@@ -309,7 +309,7 @@ nav.nav-bottom li > span:nth-child(2) {
     height: 90px;
     width: calc(100% - 40px);
     background: var(--var-white);
-    z-index: 9999;
+    z-index: 1001;
     border-radius: 10px 10px 0 0;
 }
 
@@ -1000,4 +1000,70 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+#bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--var-white);
+    z-index: 1002;
+}
+
+#bg-animation:not(.loading) {
+    display: none;
+}
+
+#bg-animation.loading:after {
+    content: " ";
+    display: block;
+    z-index: 1002;
+    background: url(/assets/media/vectors/Train.svg) no-repeat;
+    background-size: 100% 48px;
+    position: fixed;
+    bottom: -12px;
+    width: 100%;
+    height: 48px;
+    animation: 30s trainMoving ease-in-out infinite;
+}
+
+@keyframes trainMoving {
+    from {
+        left: -200%;
+    }
+    16.6% {
+        left: 200%;
+    }
+    16.7% {
+        left: -200%;
+    }
+    33.3% {
+        left: 200%;
+    }
+    33.4% {
+        left: -200%;
+    }
+    50% {
+        left: -200%
+    }
+    50.1% {
+        left: -200%;
+    }
+    66.6% {
+        left: 200%;
+    }
+    66.7% {
+        left: -200%;
+    }
+    83.3% {
+        left: 200%;
+    }
+    83.4% {
+        left: -200%;
+    }
+    to {
+        left: -200%
+    }
 }
