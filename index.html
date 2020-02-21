@@ -136,8 +136,7 @@
                     head.appendChild(inputWrap);
                     document.body.classList.contains("hasSearchBar") ? void (0) : document.body.classList.add("hasSearchBar");
                 } else {
-                    document.body.classList.contains("hasSearchBar") ? void (0) : document.body.classList.add("hasSearchBar");
-                    head.hasChildNodes($("nav-inputModel")[0]) ? head.removeChild($("nav-inputModel")[0]) : void (0)
+                    document.body.classList.contains("hasSearchBar") ? document.body.classList.remove("hasSearchBar") : void (0);
                 }
                 head.classList.contains("show") ? void (0) : head.classList.add("show");
                 document.body.classList.contains("withoutHeader") ? document.body.classList.remove("withoutHeader") : void (0);
