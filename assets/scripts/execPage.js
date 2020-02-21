@@ -77,7 +77,7 @@ pg.stationList = {
         }
         $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
-        loadPage.require("stationinfo",s_num[line][num]);
+        loadPage.require("stationinfo", s_num[line][num]);
     }
 };
 /* Made by Penguin */
@@ -223,7 +223,7 @@ pg.stationinfo = {
                 }));
                 wrap.appendChild(cE({
                     type: "span",
-                    innerHTML: s_inf[num].openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
+                    innerHTML: " 开通于 " + s_inf[num].openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
                 }));
                 viaWrap.appendChild(wrap);
             }
