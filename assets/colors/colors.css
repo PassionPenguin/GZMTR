@@ -31,9 +31,7 @@
     --FSTGM1: rgb(147, 183, 147);
     --GZTHP1: rgb(75, 37, 26);
     --DGR2: #ED1C24;
-}
 
-:root {
     --var-dark: #222;
     --var-light: #fff;
     --var-grey: #888;
@@ -48,16 +46,24 @@
     --green: #3fcd44;
 }
 
-.darkmode:not(.custom-theme) {
+.SummerTheme:root {
+    --var-white: #fffef9;
+    --var-accent: #d2963f;
+}
+
+.RainTheme:root {
+    --var-white: #f3fbff;
+    --var-accent: #46a8c5;
+}
+
+.DarkerTheme {
     --var-dark: #fff;
     --var-light: #222;
     --var-lightgrey: #555;
     --var-lightdark: #ccc;
     --var-black: #fff;
     --var-white: #000;
-    --var-accent: #c51835;
-    --red: #cb4042;
-    --green: #3fcd44;
+    --var-accent: #d7de93;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,8 +75,6 @@
         --var-black: #fff;
         --var-white: #000;
         --var-accent: #c51835;
-        --red: #cb4042;
-        --green: #3fcd44;
     }
 }
 

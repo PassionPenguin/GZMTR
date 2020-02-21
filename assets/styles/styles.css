@@ -1264,3 +1264,21 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     z-index: -1;
     opacity: 0;
 }
+
+[id$="Choser"] .active {
+    color: var(--var-accent);
+}
+
+[id$="Choser"] .active:before {
+    color: var(--var-accent);
+    content: "<";
+    margin: 0 10px;
+    display: inline-block;
+}
+
+[id$="Choser"] .active:after {
+    color: var(--var-accent);
+    content: ">";
+    margin: 0 10px;
+    display: inline-block;
+}

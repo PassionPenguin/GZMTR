@@ -599,6 +599,7 @@ pg.account = {
                 innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
             });
             inner.appendChild(ChoserWrap);
+            ChoserWrap.children[0].children[cL].classList.add("active");
             let triggle = cE({type: "button", innerText: language[cL]});
             triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
@@ -620,6 +621,7 @@ pg.account = {
                 innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div></div>"
             });
             inner.appendChild(ChoserWrap);
+            ChoserWrap.children[0].children[cT].classList.add("active");
             let triggle = cE({type: "button", innerText: theme[cT]});
             triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
@@ -645,6 +647,7 @@ pg.account = {
                 innerHTML: "<div><div>true</div><div>false</div></div>"
             });
             inner.appendChild(ChoserWrap);
+            ChoserWrap.children[0].children[overrideDarkMode === true ? 0 : 1].classList.add("active");
             let triggle = cE({type: "button", innerText: overrideDarkMode});
             triggle.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
@@ -678,6 +681,9 @@ pg.account = {
             ChoserWrap.children[0].children[0].onclick = () => {
                 system.removeAll();
                 window.location.reload();
+            };
+            ChoserWrap.children[0].children[1].onclick = () => {
+                ChoserWrap.classList.remove("show")
             };
             inner.appendChild(triggle);
         }
