@@ -79,7 +79,7 @@
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
-    let LocalHistory = [], si = -1, se = [-1, -1];
+    let LocalHistory = [], si = -1, se = [-1, -1], loadingTime = 0;
     window.onpopstate = () => {
         if (!(GetPara("stationid") === null || GetPara("stationid") === "")) {
             if (GetPara("type") === "stationinfo")
@@ -126,6 +126,7 @@
                 loadPage.data = eval("pg." + name);
                 loadPage.required = 0;
                 $("#bg-animation")[0].classList.add("loading");
+                loadingTime = new Date().getTime();
             }
             if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length) {
                 if (si !== -1) {
@@ -171,7 +172,11 @@
             $("#pg-app-bottom li>span.active").forEach(e => {
                 e.classList.remove("active")
             });
-            $("#bg-animation")[0].classList.remove("loading");
+            if (loadingTime - new Date().getTime() < -1000)
+                $("#bg-animation")[0].classList.remove("loading");
+            else setTimeout(() => {
+                $("#bg-animation")[0].classList.remove("loading");
+            }, loadingTime - new Date().getTime() + 1000);
             bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
         }
     };

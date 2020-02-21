@@ -184,7 +184,7 @@ pg.stationinfo = {
         wrap.appendChild(InfoTab);
         let num = typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
         if (s_inf[num].exitNum === undefined) {
-            $("#bg-animation span")[0].innerHTML = string.emptyWikiData[cL];
+            showWarning(string.emptyWikiData[cL], 1000);
             setTimeout(() => {
                 loadPage.require("stationList")
             }, 1000);
@@ -503,7 +503,7 @@ pg.stationinfo = {
     }, showstationinf: (num, platformnum) => {
         let emptyData = false;
         if (s_inf[num].inf[platformnum].facilities.length === 0 || s_inf[num].inf[platformnum].facilities === null || s_inf[num].inf[platformnum].facilities === undefined) {
-            $("#bg-animation span")[0].innerHTML = string.emptyInfData[cL];
+            showWarning(string.emptyInfData[cL], 1000);
             emptyData = true;
         }
         let ch = $("#pg-app-wrap > .topTab > .inner")[0];
@@ -526,19 +526,20 @@ pg.stationinfo = {
         }));
         ch.appendChild(a[0]);
         ch.appendChild(a[1]);
-        if (emptyData)
-            return 0;
         a.forEach(e => {
             e.onclick = () => {
-                if (!e.classList.contains("active")) {
+                if (!(emptyData && a.indexOf(e) === 1) && !e.classList.contains("active")) {
                     $(".topTab .active,#InfoTab>.active").forEach(d => {
                         d.classList.remove("active")
                     });
                     e.classList.add("active");
                     $("#InfoTab>div")[Array.prototype.indexOf.call($(".topTab>div>div"), e)].classList.add("active");
-                }
+                } else if (emptyData && a.indexOf(e) === 1)
+                    alert("暂无数据");
             }
         });
+        if (emptyData)
+            return 0;
         let table = cE({type: "div", attr: [["id", "inftable"]]});
         let p_num = s_inf[num].platformBelong[platformnum][1];
         let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8", "13"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];

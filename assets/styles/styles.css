@@ -309,7 +309,7 @@ nav.nav-bottom li > span:nth-child(2) {
     height: 90px;
     width: calc(100% - 40px);
     background: var(--var-white);
-    z-index: 1001;
+    z-index: 999;
     border-radius: 10px 10px 0 0;
 }
 
