@@ -221,7 +221,8 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .hasSearchBar .pg-app-wrap {
-    height: calc(100% - 150px);
+    height: calc(100% - 175px);
+    padding-top: 25px;
 }
 
 .head-wrap {
@@ -1227,7 +1228,8 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     height: 48px;
     box-shadow: none;
     background: transparent;
-    border: 5px solid var(--var-lightgrey200);
+    border: 5px solid var(--var-light);
+    color: var(--var-dark);
     font: 16px/1 Anodina, sans-serif;
     padding: 10px;
     outline: none;
