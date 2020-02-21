@@ -47,17 +47,17 @@
 }
 
 .SummerTheme:root {
-    --var-light: #fffef9;
+    --var-light: #fff771;
     --var-accent: #d2963f;
 }
 
 .RainTheme:root {
-    --var-light: #f3fbff;
+    --var-light: #8ddcff;
     --var-accent: #46a8c5;
 }
 
 .TeaTheme:root {
-    --var-light: #f9fff9;
+    --var-light: #e4ffce;
     --var-accent: #8bc34a;
 }
 
