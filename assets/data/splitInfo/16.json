@@ -7,7 +7,9 @@
     "Guangzhou South Railway Station"
   ],
   "inf": [
-    {},
+    {
+      "facilities": []
+    },
     {
       "platform": 2,
       "facilities": [
@@ -36,7 +38,9 @@
         ]
       ]
     },
-    {},
+    {
+      "facilities": []
+    },
     {
       "platform": 4,
       "facilities": [

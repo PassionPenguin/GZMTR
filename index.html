@@ -67,38 +67,51 @@
         </li>
     </ul>
 </nav>
+
+<div id="bg-animation">
+    <span>LOADING...</span>
+</div>
 </body>
 <script src="./assets/strings/string.js"></script>
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
+    let LocalHistory = [], si = -1;
     window.onload = () => {
+        loadRequire();
+        if (!(GetPara("stationid") === null || GetPara("stationid") === ""))
+            if (GetPara("stationid") !== "index")
+                loadPage.require(GetPara("stationid"));
         let wrap = $("#pg-app-wrap")[0];
         $("#Sentence")[0].innerHTML = sentences[Math.floor(Math.random() * sentences.length)][cL].replace(new RegExp("\\[icon]", "g"), " <span class='").replace(new RegExp("\\[/icon]", "g"), "'></span>");
     };
-    pg.index = {
-        data: {
-            topNav: false,
-            navBottom: 0
-        },
-        init: () => {
-            loadRequire();
-
-        },
-    };
     window.loadPage = {
-        init: () => {
-            loadPage.required = 0;
-        },
         data: eval("pg.index"),
-        require: (name) => {
-            if (loadPage.required === 0) loadPage.data = eval("pg." + name);
-            if (loadPage.required === loadPage.data.requireLib.length)
-                loadPage.comp();
-            else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
+        init: () => {
+            loadPage.require("index");
+        },
+        require: (name, num) => {
+            if (typeof (name) !== "undefined")
+                if (name === "stationinfo") {
+                    si = num;
+                } else {
+                    LocalHistory.push(name);
+                    history.pushState("index.html?type=" + name, name);
+                }
+            if (typeof (name) !== "undefined") {
+                loadPage.data = eval("pg." + name);
+                loadPage.required = 0;
+                $("#bg-animation")[0].classList.add("loading");
+            }
+            if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length) {
+                if (si !== -1) {
+                    loadPage.comp(si);
+                } else
+                    loadPage.comp();
+            } else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
                 let a = cE({
                     type: "script",
-                    attr: [["src", "./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js"], ["id", loadPage.data.requireLib[loadPage.required]]]
+                    attr: [["src", loadPage.data.requireLib[loadPage.required].includes("http") ? loadPage.data.requireLib[loadPage.required] : ("./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js")]]
                 });
                 document.body.appendChild(a);
                 a.onreadystatechange = a.onload = function () {
@@ -107,7 +120,7 @@
             }
             loadPage.required++;
         },
-        comp: () => {
+        comp: (d) => {
             let head = $("#pg-app-head")[0];
             let inner = $("#pg-app-wrap")[0];
             let bottom = $("#pg-app-bottom")[0];
@@ -133,15 +146,15 @@
                 document.body.classList.contains("withoutHeader") ? void (0) : document.body.classList.add("withoutHeader");
             }
             inner.innerHTML = "";
-            loadPage.data.init();
+            console.log(d);
+            loadPage.data.init(d);
             $("#pg-app-bottom li>span.active").forEach(e => {
                 e.classList.remove("active")
             });
+            $("#bg-animation")[0].classList.remove("loading");
             bottom.children[0].children[inf.navBottom].children[0].classList.add("active");
         }
     };
 
-    loadRequire();
-    loadPage.init();
 </script>
 </html>

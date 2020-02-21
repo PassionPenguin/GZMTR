@@ -23,6 +23,8 @@ window.string = {
     LastTrainDesc: ["末班车", "末班车", "", "", "Last Train Time"],
     serviceTimeDesc: ["服务时间", "服务时间", "", "", "Service Time"],
     structureName: ["结构", "结构", "", "", "Structure"],
+    exitName:["出入口信息","出入口信息","","","Exits"],
+    usageName:["客流情况","客流情况","","","Flows"],
     historyName: ["历史", "历史", "", "", "History"],
     futureExName: ["未来拓展", "未来拓展", "", "", "Future Expansion"]
 };
