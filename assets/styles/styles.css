@@ -172,7 +172,7 @@ nav.nav-bottom {
     width: 100%;
     height: 54px;
     z-index: 1000;
-    background: var(--var-light);
+    background: var(--var-white);
 }
 
 nav.nav-bottom ul {
@@ -1228,7 +1228,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     height: 48px;
     box-shadow: none;
     background: transparent;
-    border: 5px solid var(--var-light);
+    border: 5px solid var(--var-lightgrey200);
     color: var(--var-dark);
     font: 16px/1 Anodina, sans-serif;
     padding: 10px;
@@ -1283,4 +1283,11 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     content: ">";
     margin: 0 10px;
     display: inline-block;
+}
+
+[id$="Choser"] .ignoreBackground {
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: var(--var-white);
 }

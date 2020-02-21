@@ -166,8 +166,7 @@ pg.index = {
 };
 /* Made by Penguin */
 pg.stationinfo = {
-    // requireLib: ["https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"],
-    requireLib: [],
+    requireLib: ["stationnum", "https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"],
     data: {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: false,
@@ -603,12 +602,12 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "languageChoser"]],
-                innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div>"
+                innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[cL].classList.add("active");
-            let triggle = cE({type: "button", innerText: language[cL]});
-            triggle.onclick = () => {
+            let trigger = cE({type: "button", innerText: language[cL]});
+            trigger.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -618,19 +617,22 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(triggle);
+            ChoserWrap.children[1].onclick = ()=>{
+                ChoserWrap.classList.remove("show")
+            };
+            inner.appendChild(trigger);
         }
         {
             inner.appendChild(cE({type: "p", attr: [["class", "prefName"]], innerText: string.themeDesc[cL]}));
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "themeChoser"]],
-                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div><div>Tea</div></div>"
+                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div><div>Tea</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[cT].classList.add("active");
-            let triggle = cE({type: "button", innerText: theme[cT]});
-            triggle.onclick = () => {
+            let trigger = cE({type: "button", innerText: theme[cT]});
+            trigger.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -640,7 +642,10 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(triggle);
+            ChoserWrap.children[1].onclick = ()=>{
+                ChoserWrap.classList.remove("show")
+            };
+            inner.appendChild(trigger);
         }
         {
             inner.appendChild(cE({
@@ -651,12 +656,12 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "OverrideDarkModeChoser"]],
-                innerHTML: "<div><div>true</div><div>false</div></div>"
+                innerHTML: "<div><div>true</div><div>false</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[overrideDarkMode === true ? 0 : 1].classList.add("active");
-            let triggle = cE({type: "button", innerText: overrideDarkMode});
-            triggle.onclick = () => {
+            let trigger = cE({type: "button", innerText: overrideDarkMode});
+            trigger.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
@@ -666,7 +671,10 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            inner.appendChild(triggle);
+            ChoserWrap.children[1].onclick = ()=>{
+                ChoserWrap.classList.remove("show")
+            };
+            inner.appendChild(trigger);
         }
         {
             inner.appendChild(cE({
@@ -677,13 +685,16 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "RemoveAllPreferencesChoser"]],
-                innerHTML: "<div><div>true</div><div>false</div></div>"
+                innerHTML: "<div><div>true</div><div>false</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
-            let triggle = cE({type: "button", innerText: string.removeCookies[cL]});
-            triggle.onclick = () => {
+            let trigger = cE({type: "button", innerText: string.removeCookies[cL]});
+            trigger.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
+            };
+            document.body.onclick = ()=>{
+
             };
             ChoserWrap.children[0].children[0].onclick = () => {
                 system.removeAll();
@@ -692,7 +703,10 @@ pg.account = {
             ChoserWrap.children[0].children[1].onclick = () => {
                 ChoserWrap.classList.remove("show")
             };
-            inner.appendChild(triggle);
+            ChoserWrap.children[1].onclick = ()=>{
+                ChoserWrap.classList.remove("show")
+            };
+            inner.appendChild(trigger);
         }
     }
 };
