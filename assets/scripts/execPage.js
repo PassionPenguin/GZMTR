@@ -77,7 +77,7 @@ pg.stationList = {
         }
         $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
-        loadPage.require("stationinfo");
+        loadPage.require("stationinfo",s_num[line][num]);
     }
 };
 /* Made by Penguin */
@@ -150,6 +150,7 @@ pg.index = {
                     let d = num;
                     station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
                     station.onclick = function () {
+                        console.log(i, d);
                         pg.stationList.loadStationInf(i, d)
                     };
                     subContainer.appendChild(station);
@@ -159,7 +160,8 @@ pg.index = {
         }
         $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
-        loadPage.require("stationinfo");
+        console.log(s_num[line][num]);
+        loadPage.require("stationinfo", s_num[line][num]);
     }
 };
 /* Made by Penguin */
@@ -170,7 +172,7 @@ pg.stationinfo = {
         topNav: false,
         topInput: false, navBottom: 1
     },
-    init: () => {
+    init: (s_numInsert) => {
         let wrap = $("#pg-app-wrap")[0];
         let topTab = cE({type: "div", attr: [["class", "topTab"]]});
         topTab.appendChild(cE({type: "div", attr: [["class", "inner"]]}));
@@ -180,7 +182,8 @@ pg.stationinfo = {
         InfoTab.appendChild(cs);
         InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
         wrap.appendChild(InfoTab);
-        pg.stationinfo.showstationinf(typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0, 0);
+        console.log(s_numInsert);
+        pg.stationinfo.showstationinf(typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0, 0);
         let via = s_inf[num].via;
         let g = cE({type: "div", attr: [["class", "shortInfo"]]});
         cs.appendChild(cE({type: "div", attr: [["class", "MapContainer"], ["id", "MapContainer"]]}));

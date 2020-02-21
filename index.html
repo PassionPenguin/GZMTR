@@ -74,7 +74,7 @@
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/scripts/execPage.js"></script>
 <script>
-    let LocalHistory = [];
+    let LocalHistory = [], si = -1;
     window.onload = () => {
         loadRequire();
         if (!(GetPara("stationid") === null || GetPara("stationid") === ""))
@@ -88,17 +88,25 @@
         init: () => {
             loadPage.require("index");
         },
-        require: (name) => {
-            LocalHistory.push(name);
-            history.pushState("index.html?type=" + name, name);
+        require: (name, num) => {
+            if (typeof (name) !== "undefined")
+                if (name === "stationinfo") {
+                    si = num;
+                } else {
+                    LocalHistory.push(name);
+                    history.pushState("index.html?type=" + name, name);
+                }
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);
                 loadPage.required = 0;
                 $("#bg-animation")[0].classList.add("loading");
             }
-            if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length)
-                loadPage.comp();
-            else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
+            if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length) {
+                if (si !== -1) {
+                    loadPage.comp(si);
+                } else
+                    loadPage.comp();
+            } else if (!document.body.innerHTML.includes("<script src=\"" + loadPage.data.requireLib[loadPage.required])) {
                 let a = cE({
                     type: "script",
                     attr: [["src", loadPage.data.requireLib[loadPage.required].includes("http") ? loadPage.data.requireLib[loadPage.required] : ("./assets/data/" + loadPage.data.requireLib[loadPage.required] + ".js")]]
@@ -110,7 +118,7 @@
             }
             loadPage.required++;
         },
-        comp: () => {
+        comp: (d) => {
             let head = $("#pg-app-head")[0];
             let inner = $("#pg-app-wrap")[0];
             let bottom = $("#pg-app-bottom")[0];
@@ -136,7 +144,8 @@
                 document.body.classList.contains("withoutHeader") ? void (0) : document.body.classList.add("withoutHeader");
             }
             inner.innerHTML = "";
-            loadPage.data.init();
+            console.log(d);
+            loadPage.data.init(d);
             $("#pg-app-bottom li>span.active").forEach(e => {
                 e.classList.remove("active")
             });
