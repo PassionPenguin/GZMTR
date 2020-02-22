@@ -1,6 +1,6 @@
 /* Made by Penguin */
 pg.stationList = {
-    requireLib: ["stationlist", "stationnum"],
+    requireLib: ["stationlist", "stationnum", "stationinf"],
     data: {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: true,
@@ -27,6 +27,34 @@ pg.stationList = {
                     pg.stationList.collapseSL(e.children[i].children[0].getAttribute("class"));
                 }
             }
+        });
+        let SearchInput = $(".nav-inputModel>[contenteditable='true']")[0];
+        SearchInput.oninput = () => {
+            SearchInput.innerHTML !== "" ? pg.stationList.search(SearchInput) : $("#ResultDisplay")[0].classList.contains("show") ? $("#ResultDisplay")[0].classList.remove("show") : void (0);
+        };
+    }, search: (a) => {
+        let numList = [];
+        s_inf.forEach(e => {
+            e[0].join().toLowerCase().indexOf(a.innerHTML.toLowerCase()) !== -1 ? numList.push(s_inf.indexOf(e)) : void (0);
+        });
+        let result = $("#ResultDisplay")[0];
+        result.classList.add("show");
+        result.innerHTML = "";
+        numList.forEach(e => {
+            let wrap = cE({type: "div"});
+            let r = s_inf[e];
+            for (let i = 0; i < r[1].length; i++) {
+                console.log(i, r[1][i]);
+                wrap.appendChild(cE({
+                    type: "span",
+                    attr: [["class", "icon-" + globallist[linedata.indexOf(r[1][i])]]]
+                }));
+            }
+            wrap.appendChild(cE({type: "span", innerText: r[0][cL].split("-")[0]}));
+            wrap.onclick = () => {
+                loadPage.require("stationinfo", e);
+            };
+            result.appendChild(wrap);
         });
     }, collapseSL: (name) => {
         name = name.substr(5);
@@ -162,7 +190,7 @@ pg.stationinfo = {
         let a = cE({type: "script", attr: [["src", "./assets/data/splitInfo/" + s_numInsert + ".js"]]});
         document.body.appendChild(a);
         a.onreadystatechange = a.onload = function () {
-            window.s_inf = eval("s_inf_" + s_numInsert);
+            window.s_inf_tmp = eval("s_inf_" + s_numInsert);
             let wrap = $("#pg-app-wrap")[0];
             let topTab = cE({type: "div", attr: [["class", "topTab"]]});
             topTab.appendChild(cE({type: "div", attr: [["class", "inner"]]}));
@@ -173,7 +201,7 @@ pg.stationinfo = {
             InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
             wrap.appendChild(InfoTab);
             let num = typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
-            if (s_inf.exitNum === undefined) {
+            if (s_inf_tmp.exitNum === undefined) {
                 showWarning(string.emptyWikiData[cL], 1000);
                 setTimeout(() => {
                     loadPage.require("stationList")
@@ -181,7 +209,7 @@ pg.stationinfo = {
                 return 0;
             }
             pg.stationinfo.showstationinf(num, 0);
-            let via = s_inf.via;
+            let via = s_inf_tmp.via;
             let g = cE({type: "div", attr: [["class", "shortInfo"]]});
             let mapCont = cE({type: "div", attr: [["class", "MapContainer"]]});
             let dir_from = cE({type: "div", attr: [["id", "dir_from"]]});
@@ -203,7 +231,7 @@ pg.stationinfo = {
             mapCont.appendChild(cE({type: "div", attr: [["id", "MapContainer"]]}));
             cs.appendChild(mapCont);
             {
-                let flocation = processLocation(s_inf.location[0].toString(), s_inf.location[1].toString());
+                let flocation = processLocation(s_inf_tmp.location[0].toString(), s_inf_tmp.location[1].toString());
                 let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
                 locationWrap.appendChild(cE({
                     type: "span",
@@ -235,26 +263,26 @@ pg.stationinfo = {
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf.via[0])].indexOf(parseInt(num)) + 1, globallist[linedata.indexOf(via[i])])
+                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf(parseInt(num)) + 1, globallist[linedata.indexOf(via[i])])
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerHTML: " 开通于 " + s_inf.openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
+                        innerHTML: " 开通于 " + s_inf_tmp.openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
                     }));
                     viaWrap.appendChild(wrap);
                 }
                 Line.appendChild(viaWrap);
                 g.appendChild(Line);
             } // Line Passed
-            if (typeof s_inf.transferType !== "undefined") {
+            if (typeof s_inf_tmp.transferType !== "undefined") {
                 let Transfer = cE({type: "p"});
                 Transfer.appendChild(cE({
                     type: "span",
                     innerText: string.transferDesc[cL]
                 }));
                 let viaWrap = cE({type: "span"});
-                for (let i = 0; i < s_inf.transferType.length; i++) {
-                    viaWrap.appendChild(cE({type: "span", innerText: string.transferInfo[s_inf.transferType[i]]}));
+                for (let i = 0; i < s_inf_tmp.transferType.length; i++) {
+                    viaWrap.appendChild(cE({type: "span", innerText: string.transferInfo[s_inf_tmp.transferType[i]]}));
                 }
                 Transfer.appendChild(viaWrap);
                 g.appendChild(Transfer);
@@ -274,7 +302,7 @@ pg.stationinfo = {
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.structureInfo[s_inf.structureType[i]][cL]
+                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.structureInfo[s_inf_tmp.structureType[i]][cL]
                     }));
                     structureWrap.appendChild(wrap);
                 }
@@ -296,7 +324,7 @@ pg.stationinfo = {
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.hallInfo[s_inf.hallType[i]][cL]
+                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.hallInfo[s_inf_tmp.hallType[i]][cL]
                     }));
                     hallWrap.appendChild(wrap);
                 }
@@ -318,7 +346,7 @@ pg.stationinfo = {
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.platformInfo[s_inf.platformType[i]][cL]
+                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.platformInfo[s_inf_tmp.platformType[i]][cL]
                     }));
                     platformWrap.appendChild(wrap);
                 }
@@ -335,7 +363,7 @@ pg.stationinfo = {
                 let wrap = cE({type: "span"});
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: s_inf.exitNum
+                    innerText: s_inf_tmp.exitNum
                 }));
                 exitWrap.appendChild(wrap);
                 Exit.appendChild(exitWrap);
@@ -351,7 +379,7 @@ pg.stationinfo = {
                 let wrap = cE({type: "span"});
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: s_inf.serviceTime.replace(/ND/, " (" + ["次日", "次日", "", "", "Next day"][cL] + ")")
+                    innerText: s_inf_tmp.serviceTime.replace(/ND/, " (" + ["次日", "次日", "", "", "Next day"][cL] + ")")
                 }));
                 serviceTimeWrap.appendChild(wrap);
                 ServiceTime.appendChild(serviceTimeWrap);
@@ -375,10 +403,10 @@ pg.stationinfo = {
                         type: "span",
                         innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
                     }));
-                    for (let j = 0; j < s_inf.firstTrain[i].length; j++)
+                    for (let j = 0; j < s_inf_tmp.firstTrain[i].length; j++)
                         wrap.appendChild(cE({
                             type: "span",
-                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf.firstTrain[i][j][0]] + ": " + s_inf.firstTrain[i][j][1]
+                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.firstTrain[i][j][0]] + ": " + s_inf_tmp.firstTrain[i][j][1]
                         }));
                     firstTrainWrap.appendChild(wrap);
                 }
@@ -402,10 +430,10 @@ pg.stationinfo = {
                         type: "span",
                         innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
                     }));
-                    for (let j = 0; j < s_inf.lastTrain[i].length; j++)
+                    for (let j = 0; j < s_inf_tmp.lastTrain[i].length; j++)
                         wrap.appendChild(cE({
                             type: "span",
-                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf.lastTrain[i][j][0]] + ": " + s_inf.lastTrain[i][j][1]
+                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.lastTrain[i][j][0]] + ": " + s_inf_tmp.lastTrain[i][j][1]
                         }));
                     lastTrainWrap.appendChild(wrap);
                 }
@@ -414,60 +442,60 @@ pg.stationinfo = {
             } // LastTrain
             cs.appendChild(g);
             let d = cE({type: "div", attr: [["class", "moreInfo"]]});
-            d.appendChild(cE({type: "p", innerText: s_inf.shortDesc})); // ShortDescription
+            d.appendChild(cE({type: "p", innerText: s_inf_tmp.shortDesc})); // ShortDescription
             {
                 let a = cE({type: "div"});
                 a.appendChild(cE({type: "h4", innerText: string.structureName[cL]}));
-                for (let i = 0; i < s_inf.structureDesc.length; i++) {
-                    a.appendChild(cE({type: "h5", innerText: s_inf.structureDesc[i][0]}));
-                    if (typeof s_inf.structureDesc[i][1] === "object")
-                        for (let j = 0; j < s_inf.structureDesc[i][1].length; j++) {
-                            if (typeof s_inf.structureDesc[i][1][j].title !== "undefined")
-                                a.appendChild(cE({type: "h6", innerText: s_inf.structureDesc[i][1][j].title}));
-                            a.appendChild(cE({type: "p", innerText: s_inf.structureDesc[i][1][j].data}));
+                for (let i = 0; i < s_inf_tmp.structureDesc.length; i++) {
+                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.structureDesc[i][0]}));
+                    if (typeof s_inf_tmp.structureDesc[i][1] === "object")
+                        for (let j = 0; j < s_inf_tmp.structureDesc[i][1].length; j++) {
+                            if (typeof s_inf_tmp.structureDesc[i][1][j].title !== "undefined")
+                                a.appendChild(cE({type: "h6", innerText: s_inf_tmp.structureDesc[i][1][j].title}));
+                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.structureDesc[i][1][j].data}));
                         }
 
-                    else a.appendChild(cE({type: "p", innerText: s_inf.structureDesc[i][1]}));
+                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.structureDesc[i][1]}));
                 }
                 d.appendChild(a);
             } // StationStructureDesc
             let a = cE({type: "div"});
             let b = cE({type: "div"});
             a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
-            a.appendChild(cE({type: "p", innerText: s_inf.exitDesc})); // Exit Desc
+            a.appendChild(cE({type: "p", innerText: s_inf_tmp.exitDesc})); // Exit Desc
             b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
-            b.appendChild(cE({type: "p", innerText: s_inf.usageDesc})); // Usage Desc
+            b.appendChild(cE({type: "p", innerText: s_inf_tmp.usageDesc})); // Usage Desc
             d.appendChild(a);
             d.appendChild(b);
             {
                 let a = cE({type: "div"});
                 a.appendChild(cE({type: "h4", innerText: string.historyName[cL]}));
-                for (let i = 0; i < s_inf.history.length; i++) {
-                    a.appendChild(cE({type: "h5", innerText: s_inf.history[i][0]}));
-                    if (typeof s_inf.history[i][1] === "object")
-                        for (let j = 0; j < s_inf.history[i][1].length; j++) {
-                            if (typeof s_inf.history[i][1][j].title !== "undefined")
-                                a.appendChild(cE({type: "h6", innerText: s_inf.history[i][1][j].title}));
-                            a.appendChild(cE({type: "p", innerText: s_inf.history[i][1][j].data}));
+                for (let i = 0; i < s_inf_tmp.history.length; i++) {
+                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.history[i][0]}));
+                    if (typeof s_inf_tmp.history[i][1] === "object")
+                        for (let j = 0; j < s_inf_tmp.history[i][1].length; j++) {
+                            if (typeof s_inf_tmp.history[i][1][j].title !== "undefined")
+                                a.appendChild(cE({type: "h6", innerText: s_inf_tmp.history[i][1][j].title}));
+                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1][j].data}));
                         }
 
-                    else a.appendChild(cE({type: "p", innerText: s_inf.history[i][1]}));
+                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1]}));
                 }
                 d.appendChild(a);
             } // HistoryDesc
-            if (typeof s_inf.futureExpansion !== "undefined") {
+            if (typeof s_inf_tmp.futureExpansion !== "undefined") {
                 let a = cE({type: "div"});
                 a.appendChild(cE({type: "h4", innerText: string.futureExName[cL]}));
-                for (let i = 0; i < s_inf.futureExpansion.length; i++) {
-                    a.appendChild(cE({type: "h5", innerText: s_inf.futureExpansion[i][0]}));
-                    if (typeof s_inf.futureExpansion[i][1] === "object")
-                        for (let j = 0; j < s_inf.futureExpansion[i][1].length; j++) {
-                            if (typeof s_inf.futureExpansion[i][1][j].title !== "undefined")
-                                a.appendChild(cE({type: "h6", innerText: s_inf.structureDesc[i][1][j].title}));
-                            a.appendChild(cE({type: "p", innerText: s_inf.futureExpansion[i][1][j].data}));
+                for (let i = 0; i < s_inf_tmp.futureExpansion.length; i++) {
+                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.futureExpansion[i][0]}));
+                    if (typeof s_inf_tmp.futureExpansion[i][1] === "object")
+                        for (let j = 0; j < s_inf_tmp.futureExpansion[i][1].length; j++) {
+                            if (typeof s_inf_tmp.futureExpansion[i][1][j].title !== "undefined")
+                                a.appendChild(cE({type: "h6", innerText: s_inf_tmp.structureDesc[i][1][j].title}));
+                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.futureExpansion[i][1][j].data}));
                         }
 
-                    else a.appendChild(cE({type: "p", innerText: s_inf.futureExpansion[i][1]}));
+                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.futureExpansion[i][1]}));
                 }
                 d.appendChild(a);
             } // FutureExpansion
@@ -483,7 +511,7 @@ pg.stationinfo = {
                 }
             };
             let map = new AMap.Map('MapContainer', {
-                center: s_inf.location,
+                center: s_inf_tmp.location,
                 zoom: 18,
                 mapStyle: ((window.matchMedia("(prefers-color-scheme: dark)").matches) && !document.documentElement.classList.contains("custom-theme")) || document.documentElement.classList.contains("darkerTheme") ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
             });
@@ -491,7 +519,7 @@ pg.stationinfo = {
     },
     showstationinf: (num, platformnum) => {
         let emptyData = false;
-        if (s_inf.inf[platformnum].facilities.length === 0 || s_inf.inf[platformnum].facilities === null || s_inf.inf[platformnum].facilities === undefined) {
+        if (s_inf_tmp.inf[platformnum].facilities.length === 0 || s_inf_tmp.inf[platformnum].facilities === null || s_inf_tmp.inf[platformnum].facilities === undefined) {
             showWarning(string.emptyInfData[cL], 1000);
             emptyData = true;
         }
@@ -507,11 +535,11 @@ pg.stationinfo = {
         })];
         ch.appendChild(cE({
             type: "h2",
-            innerHTML: s_inf.name[cL].split("-")[0]
+            innerHTML: s_inf_tmp.name[cL].split("-")[0]
         }));
         ch.appendChild(cE({
             type: "h3",
-            innerHTML: s_inf.name[cL === 4 ? 0 : 4]
+            innerHTML: s_inf_tmp.name[cL === 4 ? 0 : 4]
         }));
         ch.appendChild(a[0]);
         ch.appendChild(a[1]);
@@ -530,7 +558,7 @@ pg.stationinfo = {
         if (emptyData)
             return 0;
         let table = cE({type: "div", attr: [["id", "inftable"]]});
-        let p_num = s_inf.platformBelong[platformnum][1];
+        let p_num = s_inf_tmp.platformBelong[platformnum][1];
         let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8", "13"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];
         for (let i = 1, k = 1; i <= door[0]; i++) {
             for (let j = 1; j <= door[1]; j++, k++) {
@@ -551,7 +579,7 @@ pg.stationinfo = {
         let d = $("#facilitiesList")[0];
         d.innerHTML = "";
         d.appendChild(table);
-        let data = s_inf.inf[platformnum];
+        let data = s_inf_tmp.inf[platformnum];
         let f = data.facilities;
         for (let i = 0; i < f.length; i++) {
             let res1 = "<span class='facilitiesgroup'><span class='exitnum'>" + f[i][2] + "</span>";
