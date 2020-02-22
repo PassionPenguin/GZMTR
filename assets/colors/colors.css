@@ -75,7 +75,7 @@
     --var-black: #fff;
     --var-white: #000;
     --var-white500: #00000088;
-    --var-accent: #d7de93;
+    --var-accent: #57c4d2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,7 +87,7 @@
         --var-black: #fff;
         --var-white: #000;
         --var-white500: #00000088;
-        --var-accent: #c51835;
+        --var-accent: #57c4d2;
     }
 }
 
