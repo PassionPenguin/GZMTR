@@ -66,7 +66,7 @@ pg.stationList = {
                 for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
                     let station = cE({type: "p"});
                     let d = num;
-                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
+                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split("-")[0] + "</span>";
                     station.onclick = function () {
                         pg.stationList.loadStationInf(i, d)
                     };
@@ -617,7 +617,7 @@ pg.account = {
                     window.location.reload();
                 };
             }
-            ChoserWrap.children[1].onclick = ()=>{
+            ChoserWrap.children[1].onclick = () => {
                 ChoserWrap.classList.remove("show")
             };
             inner.appendChild(trigger);
@@ -627,7 +627,7 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "themeChoser"]],
-                innerHTML: "<div><div>Simple</div><div>Darker</div><div>Summer</div><div>Rain</div><div>Tea</div></div><div class='ignoreBackground'></div>"
+                innerHTML: "<div><div>" + theme[0][cL] + "</div><div>" + theme[1][cL] + "</div><div>" + theme[2][cL] + "</div><div>" + theme[3][cL] + "</div><div>" + theme[4][cL] + "</div><div>" + theme[5][cL] + "</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[cT].classList.add("active");
@@ -638,11 +638,11 @@ pg.account = {
             };
             for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
                 ChoserWrap.children[0].children[i].onclick = () => {
-                    system.set("theme", theme.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
+                    system.set("theme", i);
                     window.location.reload();
                 };
             }
-            ChoserWrap.children[1].onclick = ()=>{
+            ChoserWrap.children[1].onclick = () => {
                 ChoserWrap.classList.remove("show")
             };
             inner.appendChild(trigger);
@@ -656,22 +656,22 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "OverrideDarkModeChoser"]],
-                innerHTML: "<div><div>true</div><div>false</div></div><div class='ignoreBackground'></div>"
+                innerHTML: "<div><div>" + string.true[cL] + "</div><div>" + string.false[cL] + "</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[overrideDarkMode === true ? 0 : 1].classList.add("active");
-            let trigger = cE({type: "button", innerText: overrideDarkMode});
+            let trigger = cE({type: "button", innerText: overrideDarkMode ? string.true[cL] : string.false[cL]});
             trigger.onclick = () => {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
             for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
                 ChoserWrap.children[0].children[i].onclick = () => {
-                    system.set("overrideDarkMode", ChoserWrap.children[0].children[i].innerText);
+                    system.set("overrideDarkMode", i);
                     window.location.reload();
                 };
             }
-            ChoserWrap.children[1].onclick = ()=>{
+            ChoserWrap.children[1].onclick = () => {
                 ChoserWrap.classList.remove("show")
             };
             inner.appendChild(trigger);
@@ -685,7 +685,7 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "RemoveAllPreferencesChoser"]],
-                innerHTML: "<div><div>true</div><div>false</div></div><div class='ignoreBackground'></div>"
+                innerHTML: "<div><div>" + string.true[cL] + "</div><div>" + string.false[cL] + "</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             let trigger = cE({type: "button", innerText: string.removeCookies[cL]});
@@ -693,17 +693,11 @@ pg.account = {
                 if (!ChoserWrap.classList.contains("show"))
                     ChoserWrap.classList.add("show")
             };
-            document.body.onclick = ()=>{
-
-            };
             ChoserWrap.children[0].children[0].onclick = () => {
                 system.removeAll();
                 window.location.reload();
             };
-            ChoserWrap.children[0].children[1].onclick = () => {
-                ChoserWrap.classList.remove("show")
-            };
-            ChoserWrap.children[1].onclick = ()=>{
+            ChoserWrap.children[0].children[1].onclick = ChoserWrap.children[1].onclick = () => {
                 ChoserWrap.classList.remove("show")
             };
             inner.appendChild(trigger);
