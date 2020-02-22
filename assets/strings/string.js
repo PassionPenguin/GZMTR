@@ -50,6 +50,8 @@ window.string = {
     shouldOverrideDarkMode: ["強制取消暗黑模式", "强制取消暗色模式", "ダーク　モードを取り消す", "어두운 모드의 강제 취소", "Override dark mode"],
     removeCookies: ["清除一切用戶設定", "清理一切用户设置", "全部ユーザー設定を消去する", "모든 사용자 설정 지우기", "Remove all user preferences"],
     loading: ["加載中..", "加载中..", "ロード中..", "로드 중입니다 ..", "Loading.."],
-    true: ["確認", "确定", "確認", "확인하다", "Confirm"],
-    false: ["取消", "取消", "キャンセル", "취소", "Cancel"],
+    confirm: ["確認", "确定", "確認", "확인하다", "Confirm"],
+    cancel: ["取消", "取消", "キャンセル", "취소", "Cancel"],
+    true: ["開啟", "开启", "開く", "오픈", "True"],
+    false: ["關閉", "关闭", "閉じる", "닫기", "False"],
 };

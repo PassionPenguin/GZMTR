@@ -667,7 +667,7 @@ pg.account = {
             };
             for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
                 ChoserWrap.children[0].children[i].onclick = () => {
-                    system.set("overrideDarkMode", i);
+                    system.set("overrideDarkMode", i === 1 ? 0 : 1);
                     window.location.reload();
                 };
             }
@@ -685,7 +685,7 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "RemoveAllPreferencesChoser"]],
-                innerHTML: "<div><div>" + string.true[cL] + "</div><div>" + string.false[cL] + "</div></div><div class='ignoreBackground'></div>"
+                innerHTML: "<div><div>" + string.confirm[cL] + "</div><div>" + string.cancel[cL] + "</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             let trigger = cE({type: "button", innerText: string.removeCookies[cL]});
