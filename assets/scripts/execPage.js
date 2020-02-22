@@ -173,7 +173,7 @@ pg.stationinfo = {
         topInput: false, navBottom: 1
     },
     init: (s_numInsert) => {
-        let a = cE({type: "script", attr: [["src", "/assets/data/splitInfo/" + s_numInsert + ".js"]]});
+        let a = cE({type: "script", attr: [["src", "./assets/data/splitInfo/" + s_numInsert + ".js"]]});
         document.body.appendChild(a);
         a.onreadystatechange = a.onload = function () {
             window.s_inf = eval("s_inf_" + s_numInsert);
@@ -189,9 +189,9 @@ pg.stationinfo = {
             let num = typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
             if (s_inf.exitNum === undefined) {
                 showWarning(string.emptyWikiData[cL], 1000);
-                setTimeout(() => {
-                    loadPage.require("stationList")
-                }, 1000);
+                // setTimeout(() => {
+                //     loadPage.require("stationList")
+                // }, 1000);
                 return 0;
             }
             pg.stationinfo.showstationinf(num, 0);
