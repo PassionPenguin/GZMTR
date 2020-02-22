@@ -95,15 +95,15 @@ html, body.pg-app {
     background: var(--var-white);
 }
 
-body.pg-app {
+body.pg-app .pg-app-wrap {
     margin-top: 48px;
 }
 
-body.pg-app.hasSearchBar {
+body.pg-app.hasSearchBar .pg-app-wrap {
     margin-top: 96px;
 }
 
-body.pg-app.withoutHeader {
+body.pg-app.withoutHeader .pg-app-wrap {
     margin: 0;
 }
 
@@ -1144,9 +1144,8 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 #routeInformation h4 {
     font: 600 18px Anodina, sans-serif;
     padding: 0 20px 10px 20px;
-    margin-top: -5px;
     display: block;
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 #routeInformation > div > div {
@@ -1178,7 +1177,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #routeInformation .leftpane > div:not(.tripOrigin) {
-    height: 120px;
+    height: 128px;
     width: 5px;
     display: block;
     padding: 0;
@@ -1187,7 +1186,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #routeInformation .leftpane > div:not(.tripOrigin).longer {
-    height: 146px;
+    height: 151px;
 }
 
 #routeInformation .leftpane {
