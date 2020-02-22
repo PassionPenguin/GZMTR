@@ -8,6 +8,12 @@ pg.stationList = {
         topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to...'"], navBottom: 1
     },
     init: () => {
+        if (system.get("dirfrom") !== "" && system.get("dirto") !== "") {
+            let href = "makeRoute.html?start=" + parseInt(system.get("dirfrom")) + "&end=" + parseInt(system.get("dirto"));
+            system.set("dirfrom", "");
+            system.set("dirto", "");
+            window.location.href = href;
+        }
         let wrap = $("#pg-app-wrap")[0];
         wrap.appendChild(cE({type: "div", attr: [["id", "selectLine"], ["class", "selectLine"]]}));
         wrap.appendChild(cE({
@@ -90,27 +96,7 @@ pg.index = {
         topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to...'"], navBottom: 1
     },
     init: () => {
-        let wrap = $("#pg-app-wrap")[0];
-        wrap.appendChild(cE({type: "div", attr: [["id", "selectLine"], ["class", "selectLine"]]}));
-        wrap.appendChild(cE({
-            type: "div",
-            attr: [["id", "selectStation"], ["class", "selectStation"]]
-        }));
-        pg.stationList.loadStationList();
-        $("#selectLine>div").forEach((e) => {
-            for (let i = 1; i < e.children.length; i++) {
-                e.children[i].onclick = () => {
-                    pg.stationList.collapseSL(e.children[i].children[0].getAttribute("class"));
-                }
-            }
-        });
-    }, collapseSL: (name) => {
-        name = name.substr(5);
-        console.log(name);
-        $("#selectStation .show").forEach((e) => {
-            e.classList.remove("show");
-        });
-        $("#" + name)[0].classList.add("show");
+
     }, loadStationList: () => {
         let container = $("#selectLine")[0];
         for (let i = 0; i < linebelong.length; i++) {
@@ -197,7 +183,25 @@ pg.stationinfo = {
             pg.stationinfo.showstationinf(num, 0);
             let via = s_inf.via;
             let g = cE({type: "div", attr: [["class", "shortInfo"]]});
-            cs.appendChild(cE({type: "div", attr: [["class", "MapContainer"], ["id", "MapContainer"]]}));
+            let mapCont = cE({type: "div", attr: [["class", "MapContainer"]]});
+            let dir_from = cE({type: "div", attr: [["id", "dir_from"]]});
+            dir_from.appendChild(cE({type: "div", innerText: "directions"}));
+            dir_from.appendChild(cE({type: "span", innerText: string.dirFrom[cL]}));
+            dir_from.onclick = () => {
+                system.set("dirfrom", num);
+                loadPage.require("stationList");
+            };
+            mapCont.appendChild(dir_from);
+            let dir_to = cE({type: "div", attr: [["id", "dir_to"]]});
+            dir_to.appendChild(cE({type: "div", innerText: "directions_subway"}));
+            dir_to.appendChild(cE({type: "span", innerText: string.dirTo[cL]}));
+            dir_to.onclick = () => {
+                system.set("dirto", num);
+                loadPage.require("stationList");
+            };
+            mapCont.appendChild(dir_to);
+            mapCont.appendChild(cE({type: "div", attr: [["id", "MapContainer"]]}));
+            cs.appendChild(mapCont);
             {
                 let flocation = processLocation(s_inf.location[0].toString(), s_inf.location[1].toString());
                 let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
@@ -524,7 +528,7 @@ pg.stationinfo = {
         })];
         ch.appendChild(cE({
             type: "h2",
-            innerHTML: s_inf.name[cL]
+            innerHTML: s_inf.name[cL].split("-")[0]
         }));
         ch.appendChild(cE({
             type: "h3",
