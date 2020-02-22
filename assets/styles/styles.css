@@ -1295,7 +1295,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 [id$="Choser"] > div {
-    width: 200px;
+    width: 205px;
     height: 200px;
     position: absolute;
     left: 50%;
