@@ -6,10 +6,10 @@ window.sentences = [
 ];
 window.feature = [["主頁", "主页", "ホーム", "홈페이지", "Home"], ["車站資訊", "车站信息", "駅の情報", "역 정보", "Info"], ["線路圖", "线路图", "路線図", "운영 로드맵", "Routemap"], ["設置", "设置", "設定", "설치", "Settings"]];
 window.theme = [
-    ["簡潔白", "简洁白", "White", "화이트", "Simple White"],
-    ["冷淡黑", "冷淡黑", "ブラック", "화이트", "Cold Black"],
+    ["簡潔白", "简洁白", "潔白", "화이트", "Simple White"],
+    ["冷淡黑", "冷淡黑", "炭黒", "화이트", "Cold Black"],
     ["淡玫粉", "淡玫粉", "桜", "화이트", "Sakura"],
-    ["盛夏黃", "盛夏黄", "イェロー", "노랑", "Summer"],
+    ["盛夏黃", "盛夏黄", "黄", "노랑", "Summer"],
     ["澄空藍", "澄空蓝", "瓶覗", "블루", "Skyblue"],
     ["细柳綠", "细柳绿", "裏柳", "초록", "Grass"]];
 window.string = {
@@ -43,17 +43,19 @@ window.string = {
     ContinueTaking: ["繼續乘坐", "继续乘坐", "この電車を続くお乗りください", "계속 주행", "Continue taking this train."],
     WeRecomend: ["我們推介你在", "我们推荐您在", "もっと速く乗り換えると駅を出る為に", "우리는 당신을 추천합니다", "We recommend you to wait at screen door No."],
     DoorWait: ["號幕門處候車以便快速換車/離站", "号屏蔽门处候车以便快速换乘/出站", "号ホームドアにお待ちはおすすめです", "역을 더 빨리 옮기거나 나가기위한 것", " for quicker transferring or exiting the station"],
-    emptyWikiData: ["無維基數據", "无维基数据", "ウィキ　データがない", "위키 데이터 없음", "No Wiki Data"],
-    emptyInfData: ["無設施數據", "无设施数据", "施設データがない", "시설 데이터가 없습니다", "No Facilities Data"],
+    emptyWikiData: ["無維基數據", "无维基数据", "ウィキ　データはありません", "위키 데이터 없음", "No Wiki Data"],
+    emptyInfData: ["無設施數據", "无设施数据", "施設データはありません", "시설 데이터가 없습니다", "No Facilities Data"],
     languageDesc: ["請選擇你的語言", "请选择您的语言", "言語を選んでください", "언어를 선택하십시오", "Please select your language"],
     themeDesc: ["樣式", "样式", "テーマ", "테마", "Theme"],
     shouldOverrideDarkMode: ["強制取消暗黑模式", "强制取消暗色模式", "ダーク　モードを取り消す", "어두운 모드의 강제 취소", "Override dark mode"],
     removeCookies: ["清除一切用戶設定", "清理一切用户设置", "全部ユーザー設定を消去する", "모든 사용자 설정 지우기", "Remove all user preferences"],
-    loading: ["加載中..", "加载中..", "ロード中..", "로드 중입니다 ..", "Loading.."],
+    loading: ["加載中..", "加载中..", "読み込み中..", "로드 중입니다 ..", "Loading.."],
     confirm: ["確認", "确定", "確認", "확인하다", "Confirm"],
     cancel: ["取消", "取消", "キャンセル", "취소", "Cancel"],
     true: ["開啟", "开启", "開く", "오픈", "True"],
     false: ["關閉", "关闭", "閉じる", "닫기", "False"],
-    dirFrom: ["出发", "出发", "に行く", "로 이동", "From"],
-    dirTo: ["前往", "前往", "出発", "출발", "To"],
+    dirFrom: ["出发", "出发", "出発", "로 이동", "From"],
+    dirTo: ["前往", "前往", "到着", "출발", "To"],
+    aboutTime: ["預估耗時", "大概耗时", "大概耗时", "시간이 걸린다", "About"],
+    aboutArrived: ["預估抵達時間", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Approx. arrival time "]
 };
