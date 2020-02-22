@@ -499,11 +499,11 @@ pg.stationinfo = {
                     tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
                 }
             };
-            // let map = new AMap.Map('MapContainer', {
-            //     center: s_inf.location,
-            //     zoom: 18,
-            //     mapStyle: ((window.matchMedia("(prefers-color-scheme: dark)").matches) && !document.documentElement.classList.contains("custom-theme")) || document.documentElement.classList.contains("darkerTheme") ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
-            // });
+            let map = new AMap.Map('MapContainer', {
+                center: s_inf.location,
+                zoom: 18,
+                mapStyle: ((window.matchMedia("(prefers-color-scheme: dark)").matches) && !document.documentElement.classList.contains("custom-theme")) || document.documentElement.classList.contains("darkerTheme") ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
+            });
         }
     },
     showstationinf: (num, platformnum) => {
