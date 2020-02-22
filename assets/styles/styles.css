@@ -463,6 +463,8 @@ nav.nav-bottom li > span:nth-child(2) {
 
 .selectLine > div > div > span:not(:first-child) {
     margin-left: 4px;
+    display: inline-block;
+    max-width: calc(100% - 15px);
 }
 
 .selectStation {
