@@ -117,5 +117,5 @@ window.linebelong = [{
     name: ["廣州", "广州", "広州", "광저우", "Guangzhou"],
     line: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 }, {name: ["東莞", "东莞", "東莞", "동관", "Dongguan"], line: [15]}];
-window.language = ["繁體中文", "简体中文", "日本語", "한국어", "English"];
+window.language = ["繁體中文（HK）", "简体中文", "日本語", "한국어", "English"];
 window.themeName = ["Simple", "Darker", "Watermelon", "Summer", "Rain", "Tea"];
