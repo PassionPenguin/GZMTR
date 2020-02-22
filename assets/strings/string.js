@@ -30,7 +30,7 @@ window.string = {
     hallDesc: ["站廳類別", "站厅类型", "ホール　タイプ", "역 홀 타입", "Hall Type"],
     hallInfo: [["地下大堂", "地下站厅", "地下ホール", "지하철역 홀", "Underground Station Hall"], ["地面站廳", "地面站厅", "地面ホール", "지상국 홀", "Ground Station Hall"], ["高架站廳", "高架站厅", "高架ホール", "높은 역 홀", "Overground Station Hall"]],
     transferDesc: ["轉乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
-    transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
+    transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"],["节点换乘","节点换乘","","Transfer via node"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
     exitNum: ["出口數量", "出口数量", "出口の数量", "수출 횟수", "Exits Num"],
     FirstTrainDesc: ["首班車", "首班车", "始発時間", "첫 열차", "First Train Time"],
     LastTrainDesc: ["尾班車", "末班车", "終電時間", "末班车", "Last Train Time"],
