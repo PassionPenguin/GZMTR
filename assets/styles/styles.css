@@ -117,6 +117,11 @@ nav.nav-head {
     background: var(--var-light);
 }
 
+body.pg-app.withoutHeader nav.nav-head {
+    opacity: 0;
+    z-index: -1;
+}
+
 nav.nav-head .container:not(.show) {
     display: none;
 }
@@ -991,11 +996,51 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     margin-left: 20px;
 }
 
-#MapContainer {
+.MapContainer {
     width: calc(100% - 20px);
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 30px 10px;
     height: 400px;
     max-height: 75vh;
+    position: relative;
+}
+
+#dir_to {
+    right: 12px !important;
+}
+
+#dir_from, #dir_to {
+    border: 3px solid var(--var-accent);
+    border-radius: 50%;
+    position: absolute;
+    right: 80px;
+    bottom: -12px;
+    width: 54px;
+    height: 54px;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000;
+    text-align: center;
+}
+
+#MapContainer {
+    position: relative;
+    height: 400px;
+    max-height: 75vh;
+}
+
+[id^="dir_"] div {
+    margin-top: 4px;
+    font-family: "Material Icons", sans-serif;
+    font-size: 28px;
+    color: var(--var-accent) !important;
+}
+
+[id^="dir_"] span {
+    display: block;
+    color: var(--var-accent) !important;
+    transform: scale(0.8);
+    margin-top: -4px;
+    font: 800 12px Anodina, sans-serif;
 }
 
 .amap-maps {
@@ -1086,7 +1131,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     left: 50%;
     top: 33.3%;
     transform: translate(-50%, -33.3%);
-    font: 900 36px/1 Anodina, sans-serif;
+    font: 900 28px/1 Anodina, sans-serif;
 }
 
 #routeInformation {
