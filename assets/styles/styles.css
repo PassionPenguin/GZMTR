@@ -1338,3 +1338,21 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     height: 100%;
     background: var(--var-white);
 }
+
+#RouteData {
+    display: block;
+    font: 800 18px/1 Anodina, sasn;
+    text-align: center;
+    border-top: 3px solid var(--var-accent);
+    padding-top: 20px;
+}
+
+#arrivedTime {
+    display: block;
+    font: 800 18px/1 Anodina, sasn;
+    text-align: center;
+}
+
+.routeinfo #routeinfWrap #routeInformation {
+    margin-top: 20px;
+}

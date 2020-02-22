@@ -36,15 +36,15 @@
 
 <nav class="nav-bottom" id="pg-app-bottom">
     <ul>
-        <li pg-target="home" onclick="loadPage.require('index')"><span>home</span><span
+        <li pg-target="home" onclick="window.location.href='index.html?type=index'"><span>home</span><span
                 class="description">Home</span>
         </li>
-        <li pg-target="info" onclick="loadPage.require('stationList')"><span>info</span><span
+        <li pg-target="info" onclick="window.location.href='index.html?type=stationinfo'"><span>info</span><span
                 class="description">Info</span>
         </li>
-        <li pg-target="map" onclick="loadPage(2)"><span class="active">map</span><span
+        <li pg-target="map" onclick="window.location.href='routemap'"><span class="active">map</span><span
                 class="description">Routemap</span></li>
-        <li pg-target="settings" onclick="loadPage(3)"><span>settings</span><span
+        <li pg-target="settings" onclick="window.location.href='index.html?type=account'"><span>settings</span><span
                 class="description">Settings</span>
         </li>
     </ul>
@@ -295,7 +295,7 @@
         let route = getRoute(start, end);
         let time = route[0][1], length = route[0][2], price = route[0][3], inter = route[1][0], num = route[1][1],
             partTime = route[1][2], partDistance = route[1][3], routeDirection = route[1][4], sepStation = route[1][5];
-        $("#CurrentRoute")[0].innerText = n_res_2[start][cL].split("-")[0] + " -> " + n_res_2[end][cL].split("-")[0];
+        $("#CurrentRoute")[0].innerText = n_res_2[start][cL].split("-")[0] + " -> " + n_res_2[end][cL].split("-")[0] + " " + string.aboutTime[cL] + time + string.Minute[cL];
         let id = [1, -15, -39, -39, -70, -94, -118, -150, -159, -174, -185, -196, -196, -219, -240, -255, -265];
         let lp = $("#left-pane")[0];
         let rp = $("#right-pane")[0];
@@ -367,6 +367,17 @@
         rp.appendChild(cE({
             type: "h4",
             innerHTML: n_res_2[end][cL].split("-")[0] + processPill(belong[2], processNumber((parseInt(inter[inter.length - 1]) + id[belong[3]])), belong[1])
+        }));
+        let infWrap = $("#routeInformation")[0];
+        infWrap.appendChild(cE({
+            type: "h5",
+            attr: [["id", "RouteData"]],
+            innerText: "CN¥" + price + " , " + (length / 1000).toPrecision(2) + " km , " + time + string.Minute[cL]
+        }));
+        infWrap.appendChild(cE({
+            type: "h5",
+            attr: [["id", "arrivedTime"]],
+            innerText: string.aboutArrived[cL] + ": " + new Date((new Date().getTime()) + 11).toLocaleTimeString()
         }));
     };
     window.onload = function () {
