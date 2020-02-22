@@ -39,7 +39,7 @@ window.string = {
     belong: ["查看設施對應的車門Number", "查看设施对应的车门号", "対応のホームドアのナンバーリングを見る", "시설에 해당하는 문 번호를 봅니다", "See facilities's nearby door"],
     beginNavi: ["或者開始導航", "或者开始导航", "ナビゲーションを始める", "또는 탐색 시작", "Or start a new navigation"],
     interchangeCost: ["換乘大概耗時", "换乘大概耗时", "乗り換え時間は", "전송에는 약 시간이 걸립니다", "Transfer will take about"],
-    Minute: ["分鐘", "分钟", "分ぐらいかかります", "", "minute(s)"],
+    Minute: ["分鐘", "分钟", "分", "분", "minute(s)"],
     ContinueTaking: ["繼續乘坐", "继续乘坐", "この電車を続くお乗りください", "계속 주행", "Continue taking this train."],
     WeRecomend: ["我們推介你在", "我们推荐您在", "もっと速く乗り換えると駅を出る為に", "우리는 당신을 추천합니다", "We recommend you to wait at screen door No."],
     DoorWait: ["號幕門處候車以便快速換車/離站", "号屏蔽门处候车以便快速换乘/出站", "号ホームドアにお待ちはおすすめです", "역을 더 빨리 옮기거나 나가기위한 것", " for quicker transferring or exiting the station"],
@@ -56,4 +56,6 @@ window.string = {
     false: ["關閉", "关闭", "閉じる", "닫기", "False"],
     dirFrom: ["出发", "出发", "に行く", "로 이동", "From"],
     dirTo: ["前往", "前往", "出発", "출발", "To"],
+    aboutTime: ["大概耗时", "大概耗时", "大概耗时", "시간이 걸린다", "About"],
+    aboutArrived: ["大概到达时间", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Appro. arrival time "]
 };
