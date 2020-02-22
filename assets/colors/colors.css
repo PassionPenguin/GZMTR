@@ -61,6 +61,11 @@
     --var-accent: #8bc34a;
 }
 
+.WatermelonTheme:root {
+    --var-light: #ffe0d7;
+    --var-accent: #e15d61;
+}
+
 .DarkerTheme {
     --var-dark: #fff;
     --var-light: #222;
