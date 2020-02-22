@@ -1,10 +1,15 @@
 /* Made by Penguin */
 
 window.sentences = [
-    ["就算你failed佐，我都唔會唔鍾意你[icon]fa fa-heart beating[/icon]", "就算你失败了，我也会爱你呀[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "No matter you succeeded or not,\n I will love you all the time[icon]fa fa-heart beating[/icon]"],
+    ["就算你fail咗，我都唔會唔鍾意你[icon]fa fa-heart beating[/icon]", "就算你失败了，我也会爱你呀[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "No matter you succeeded or not,\n I will love you all the time[icon]fa fa-heart beating[/icon]"],
     ["今日系[icon]fa fa-lemon' style='font-weight:400[/icon] 仲系 [icon]fa fa-apple-alt[/icon] 嘞", "今天是[icon]fa fa-lemon' style='font-weight:400[/icon] 还是 [icon]fa fa-apple-alt[/icon] 呢", "[icon]fa fa-lemon[/icon]", "[icon]fa fa-lemon[/icon]", "What will be today? [icon]fa fa-lemon' style='font-weight:400[/icon] or [icon]fa fa-apple-alt[/icon] ?"]
 ];
-window.feature = [["主頁", "主页", "ホーム", "홈페이지", "Home"], ["車站資訊", "车站信息", "駅の情報", "역 정보", "Info"], ["線路圖", "线路图", "路線図", "운영 로드맵", "Routemap"], ["設置", "设置", "設定", "설치", "Settings"]];
+window.feature = [
+    ["主頁", "主页", "ホーム", "홈페이지", "Home"], 
+    ["車站資訊", "车站信息", "駅の情報", "역 정보", "Info"], 
+    ["路綫圖", "线路图", "路線図", "운영 로드맵", "Routemap"], 
+    ["設定", "设置", "設定", "설치", "Settings"]
+];
 window.theme = [
     ["簡潔白", "简洁白", "White", "화이트", "Simple White"],
     ["冷淡黑", "冷淡黑", "ブラック", "화이트", "Cold Black"],
@@ -16,15 +21,15 @@ window.string = {
     infoDesc: ["簡介信息", "简介信息", "案内", "안내", "Info"],
     facilityDesc: ["車站設施", "车站设施", "ファシリティーズ", "역 시설", "Facilities"],
     locationDesc: ["地理座標", "地理坐标", "地図座標", "지리 좌표", "Map Position"],
-    lineDesc: ["經過線路", "经过线路", "経由路線", "통과 선", "Line Passed"],
-    codeDesc: ["站點代碼", "站点代码", "駅ナンバーリング", "사이트 코드", "Station Code"],
+    lineDesc: ["途經路綫", "经过线路", "経由路線", "통과 선", "Line Passed"],
+    codeDesc: ["車站代碼", "站点代码", "駅ナンバーリング", "사이트 코드", "Station Code"],
     structureDesc: ["車站結構", "车站结构", "駅の結構", "스테이션 구조", "Structure Type"],
     structureInfo: [["地下車站", "地下车站", "地下駅", "지하역", "Underground Station"], ["地面車站", "地面车站", "地面駅", "지상 역", "Ground Station"], ["高架車站", "高架车站", "高架駅", "고가 역", "Overground Station"]],
     platformDesc: ["月台類型", "月台类型", "ホーム　タイプ", "플랫폼 유형", "Platform Type"],
-    platformInfo: [["島式站台", "岛式站台", "アイランド　ホーム", "섬 플랫폼", "Island Platform"], ["側式站台", "侧式站台", "サイド　ホーム", "사이드 플랫폼", "Side Platform"], ["雙島式站台", "双岛式站台", "ダブル　アイランド　ホーム", "더블 아일랜드 플랫폼", "DblIsland Platform"], ["雙側式站台", "双侧式站台", "ダブル　サイド　ホーム", "양면 플랫폼", "DblSide Platform"], ["完全混合式站台", "完全混合式站台", "ミクス　ホーム", "완전 하이브리드 플랫폼", "Mixed Platform"], ["西班牙式站台", "西班牙式站台", "ホーム", "스페인어 플랫폼", "Spanish solution"], ["分離島式站台", "分离岛式站台", "ホーム", "분리 된 섬 플랫폼", "Split Platform"]],
+    platformInfo: [["島式月台", "岛式站台", "アイランド　ホーム", "섬 플랫폼", "Island Platform"], ["側式站台", "侧式站台", "サイド　ホーム", "사이드 플랫폼", "Side Platform"], ["雙島式站台", "双岛式站台", "ダブル　アイランド　ホーム", "더블 아일랜드 플랫폼", "DblIsland Platform"], ["雙側式站台", "双侧式站台", "ダブル　サイド　ホーム", "양면 플랫폼", "DblSide Platform"], ["完全混合式站台", "完全混合式站台", "ミクス　ホーム", "완전 하이브리드 플랫폼", "Mixed Platform"], ["西班牙式站台", "西班牙式站台", "ホーム", "스페인어 플랫폼", "Spanish solution"], ["分離島式站台", "分离岛式站台", "ホーム", "분리 된 섬 플랫폼", "Split Platform"]],
     hallDesc: ["站廳類別", "站厅类型", "ホール　タイプ", "역 홀 타입", "Hall Type"],
-    hallInfo: [["地下站廳", "地下站厅", "地下ホール", "지하철역 홀", "Underground Station Hall"], ["地面站廳", "地面站厅", "地面ホール", "지상국 홀", "Ground Station Hall"], ["高架站廳", "高架站厅", "高架ホール", "높은 역 홀", "Overground Station Hall"]],
-    transferDesc: ["換乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
+    hallInfo: [["地下大堂", "地下站厅", "地下ホール", "지하철역 홀", "Underground Station Hall"], ["地面站廳", "地面站厅", "地面ホール", "지상국 홀", "Ground Station Hall"], ["高架站廳", "高架站厅", "高架ホール", "높은 역 홀", "Overground Station Hall"]],
+    transferDesc: ["轉乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
     transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
     exitNum: ["出口數量", "出口数量", "出口の数量", "수출 횟수", "Exits Num"],
     FirstTrainDesc: ["首班車", "首班车", "始発時間", "첫 열차", "First Train Time"],
@@ -36,26 +41,26 @@ window.string = {
     historyName: ["歷史", "历史", "歴史", "연혁", "History"],
     futureExName: ["未來拓展", "未来拓展", "未來エクスパンション", "향후 확장", "Future Expansion"],
     operatedNy: ["由廣州地鐵集團運營", "由广州地铁集团运营", "広州メトロ公司が運営している", "광저우 메트로 그룹 운영", "Service Operated By GZMTR Co., Ltd"],
-    belong: ["查看設施對應的車門Number", "查看设施对应的车门号", "対応のホームドアのナンバーリングを見る", "시설에 해당하는 문 번호를 봅니다", "See facilities's nearby door"],
+    belong: ["檢視設施對應的車門編號", "查看设施对应的车门号", "対応のホームドアのナンバーリングを見る", "시설에 해당하는 문 번호를 봅니다", "See facilities's nearby door"],
     beginNavi: ["或者開始導航", "或者开始导航", "ナビゲーションを始める", "또는 탐색 시작", "Or start a new navigation"],
-    interchangeCost: ["換乘大概耗時", "换乘大概耗时", "乗り換え時間は", "전송에는 약 시간이 걸립니다", "Transfer will take about"],
+    interchangeCost: ["轉乘預估耗時", "换乘大概耗时", "乗り換え時間は", "전송에는 약 시간이 걸립니다", "Transfer will take about"],
     Minute: ["分鐘", "分钟", "分", "분", "minute(s)"],
     ContinueTaking: ["繼續乘坐", "继续乘坐", "この電車を続くお乗りください", "계속 주행", "Continue taking this train."],
-    WeRecomend: ["我們推介你在", "我们推荐您在", "もっと速く乗り換えると駅を出る為に", "우리는 당신을 추천합니다", "We recommend you to wait at screen door No."],
-    DoorWait: ["號幕門處候車以便快速換車/離站", "号屏蔽门处候车以便快速换乘/出站", "号ホームドアにお待ちはおすすめです", "역을 더 빨리 옮기거나 나가기위한 것", " for quicker transferring or exiting the station"],
+    WeRecomend: ["我們建議你在", "我们推荐您在", "もっと速く乗り換えると駅を出る為に", "우리는 당신을 추천합니다", "We recommend you to wait at screen door No."],
+    DoorWait: ["號幕門處候車以快速轉乘/離站", "号屏蔽门处候车以便快速换乘/出站", "号ホームドアにお待ちはおすすめです", "역을 더 빨리 옮기거나 나가기위한 것", " for quicker transferring or exiting the station"],
     emptyWikiData: ["無維基數據", "无维基数据", "ウィキ　データがない", "위키 데이터 없음", "No Wiki Data"],
     emptyInfData: ["無設施數據", "无设施数据", "施設データがない", "시설 데이터가 없습니다", "No Facilities Data"],
     languageDesc: ["請選擇你的語言", "请选择您的语言", "言語を選んでください", "언어를 선택하십시오", "Please select your language"],
     themeDesc: ["樣式", "样式", "テーマ", "테마", "Theme"],
     shouldOverrideDarkMode: ["強制取消暗黑模式", "强制取消暗色模式", "ダーク　モードを取り消す", "어두운 모드의 강제 취소", "Override dark mode"],
-    removeCookies: ["清除一切用戶設定", "清理一切用户设置", "全部ユーザー設定を消去する", "모든 사용자 설정 지우기", "Remove all user preferences"],
-    loading: ["加載中..", "加载中..", "ロード中..", "로드 중입니다 ..", "Loading.."],
+    removeCookies: ["清除所有用戶設定", "清理一切用户设置", "全部ユーザー設定を消去する", "모든 사용자 설정 지우기", "Remove all user preferences"],
+    loading: ["載入中..", "加载中..", "ロード中..", "로드 중입니다 ..", "Loading.."],
     confirm: ["確認", "确定", "確認", "확인하다", "Confirm"],
     cancel: ["取消", "取消", "キャンセル", "취소", "Cancel"],
     true: ["開啟", "开启", "開く", "오픈", "True"],
     false: ["關閉", "关闭", "閉じる", "닫기", "False"],
-    dirFrom: ["出发", "出发", "に行く", "로 이동", "From"],
+    dirFrom: ["出發", "出发", "に行く", "로 이동", "From"],
     dirTo: ["前往", "前往", "出発", "출발", "To"],
-    aboutTime: ["大概耗时", "大概耗时", "大概耗时", "시간이 걸린다", "About"],
-    aboutArrived: ["大概到达时间", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Appro. arrival time "]
+    aboutTime: ["預估耗時", "大概耗时", "大概耗时", "시간이 걸린다", "About"],
+    aboutArrived: ["預估抵達時間", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Appro. arrival time "]
 };
