@@ -253,29 +253,8 @@ pg.stationinfo = {
                     innerText: string.transferDesc[cL]
                 }));
                 let viaWrap = cE({type: "span"});
-                for (let i = 0; i < via.length; i++) {
-                    let wrap = cE({type: "span"});
-                    wrap.appendChild(cE({
-                        type: "span",
-                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
-                    }));
-                    wrap.appendChild(cE({
-                        type: "span",
-                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + " => "
-                    }));
-                    wrap.appendChild(cE({
-                        type: "span",
-                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i === via.length - 1 ? i - 1 : i + 1])]]]
-                    }));
-                    wrap.appendChild(cE({
-                        type: "span",
-                        innerText: " " + shortLinename[linedata.indexOf(via[i === via.length - 1 ? i - 1 : i + 1])][cL] + " : "
-                    }));
-                    wrap.appendChild(cE({
-                        type: "span",
-                        innerText: string.transferInfo[s_inf.transferType[i]]
-                    }));
-                    viaWrap.appendChild(wrap);
+                for (let i = 0; i < s_inf.transferType.length; i++) {
+                    viaWrap.appendChild(cE({type: "span", innerText: string.transferInfo[s_inf.transferType[i]]}));
                 }
                 Transfer.appendChild(viaWrap);
                 g.appendChild(Transfer);

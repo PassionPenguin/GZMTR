@@ -16,7 +16,7 @@ let s_inf_30 = {
     "structureType": [0, 0],
     "platformType": [0, 6],
     "hallType": [0, 0],
-    "transferType": [[0, [3], 1, [3]], [0, [3], 0, [3]]],
+    "transferType": [3],
     "exitNum": [10],
     "openTime": ["2002-12=29_", "2009-12=28_"],
     "serviceTime": "06:06-00:08ND",
