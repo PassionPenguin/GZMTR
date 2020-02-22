@@ -43,6 +43,8 @@ window.loadRequire = () => {
     }
 
     window.cL = system.get("language") === "" ? 0 : parseInt(system.get("language"));
+    let langCodes = ['zh-HK', 'zh-Hans', 'ja', 'ko', 'en'];
+    document.documentElement.setAttribute('lang', langCodes[cL]);
     window.cT = system.get("theme") === "" ? 0 : parseInt(system.get("theme"));
     document.documentElement.classList.add(themeName[cT] + "Theme");
     window.overrideDarkMode = ["", "0"].indexOf(system.get("overrideDarkMode")) === -1;
