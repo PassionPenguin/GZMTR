@@ -96,7 +96,7 @@ window.GetPara = (para) => {
 window.showWarning = (inf, time) => {
     time = time || 2000;
     let wrap = $("#bg-animation")[0];
-    wrap.innerHTML = inf;
+    wrap.children[0].innerHTML = inf;
     wrap.classList.add("loading");
     setTimeout(() => {
         wrap.classList.remove("loading");

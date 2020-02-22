@@ -151,6 +151,7 @@ body:not(.hasSearchBar) .nav-inputModel {
     border: 1px solid var(--var-grey);
     border-radius: 20px;
     font: 500 14px/16px Anodina, sans-serif;
+    background: var(--var-white500);
 }
 
 .nav-inputModel > div {

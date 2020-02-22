@@ -14,7 +14,7 @@
     <div class="container" id="pg-app-head">
         <div class="nav-description" id="top-description"><span>广州地铁指南</span></div>
         <div class="nav-inputModel">
-            <div contenteditable="true"></div>
+            <div contenteditable="true" onclick="this.innerText=''"></div>
         </div>
     </div>
 </nav>
@@ -127,7 +127,7 @@
                 loadPage.required = 0;
                 let wrap = $("#bg-animation")[0];
                 wrap.classList.add("loading");
-                wrap.innerText = string.loading;
+                wrap.children[0].innerText = string.loading[cL];
                 loadingTime = new Date().getTime();
             }
             if (loadPage.required === loadPage.data.requireLib.length || loadPage.required > loadPage.data.requireLib.length) {
