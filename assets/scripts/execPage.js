@@ -596,7 +596,7 @@ pg.account = {
             };
             for (let i = 0; i < ChoserWrap.children[0].children.length; i++) {
                 ChoserWrap.children[0].children[i].onclick = () => {
-                    system.set("language", language.indexOf(ChoserWrap.children[0].children[i].innerText).toString());
+                    system.set("language", i);
                     window.location.reload();
                 };
             }

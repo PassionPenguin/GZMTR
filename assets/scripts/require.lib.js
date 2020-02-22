@@ -42,7 +42,7 @@ window.loadRequire = () => {
         }
     }
 
-    window.cL = system.get("language") === "" ? 0 : parseInt(system.get("language"));
+    window.cL = ["", "-1"].indexOf(system.get("language")) !== -1 ? 0 : parseInt(system.get("language"));
     let langCodes = ['zh-HK', 'zh-Hans', 'ja', 'ko', 'en'];
     document.documentElement.setAttribute('lang', langCodes[cL]);
     window.cT = system.get("theme") === "" ? 0 : parseInt(system.get("theme"));
