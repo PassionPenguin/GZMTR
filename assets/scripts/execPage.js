@@ -606,7 +606,7 @@ pg.account = {
             let ChoserWrap = cE({
                 type: "div",
                 attr: [["id", "languageChoser"]],
-                innerHTML: "<div><div>繁體中文</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div><div class='ignoreBackground'></div>"
+                innerHTML: "<div><div>繁體中文（香港）</div><div>简体中文</div><div>日本語</div><div>한국어</div><div>English</div></div><div class='ignoreBackground'></div>"
             });
             inner.appendChild(ChoserWrap);
             ChoserWrap.children[0].children[cL].classList.add("active");
