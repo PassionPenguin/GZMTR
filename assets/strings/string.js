@@ -1,13 +1,13 @@
 /* Made by Penguin */
 
 window.sentences = [
-    ["就算你fail咗，我都唔會唔鍾意你[icon]fa fa-heart beating[/icon]", "就算你失败了，我也会爱你呀[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "[icon]fa fa-heart beating[/icon]", "No matter you succeeded or not,\n I will love you all the time[icon]fa fa-heart beating[/icon]"],
-    ["今日系[icon]fa fa-lemon' style='font-weight:400[/icon] 仲系 [icon]fa fa-apple-alt[/icon] 嘞", "今天是[icon]fa fa-lemon' style='font-weight:400[/icon] 还是 [icon]fa fa-apple-alt[/icon] 呢", "[icon]fa fa-lemon[/icon]", "[icon]fa fa-lemon[/icon]", "What will be today? [icon]fa fa-lemon' style='font-weight:400[/icon] or [icon]fa fa-apple-alt[/icon] ?"]
+    ["就算你fail咗，我都唔會唔鍾意你", "就算你失败了，我也会爱你呀", "", "", "No matter you succeeded or not,\n I will love you all the time"],
+    ["今日系好运仲系特别好运嘞", "今天是好运气还是特别好运气呢", "", "", "What will be today? Good Luck or Very Good Luck?"]
 ];
 window.feature = [
-    ["主頁", "主页", "ホーム", "홈페이지", "Home"], 
-    ["車站資訊", "车站信息", "駅の情報", "역 정보", "Info"], 
-    ["路綫圖", "线路图", "路線図", "운영 로드맵", "Routemap"], 
+    ["主頁", "主页", "ホーム", "홈페이지", "Home"],
+    ["車站資訊", "车站信息", "駅の情報", "역 정보", "Info"],
+    ["路綫圖", "线路图", "路線図", "운영 로드맵", "Routemap"],
     ["設定", "设置", "設定", "설치", "Settings"]
 ];
 window.theme = [
@@ -30,7 +30,7 @@ window.string = {
     hallDesc: ["站廳類別", "站厅类型", "ホール　タイプ", "역 홀 타입", "Hall Type"],
     hallInfo: [["地下大堂", "地下站厅", "地下ホール", "지하철역 홀", "Underground Station Hall"], ["地面站廳", "地面站厅", "地面ホール", "지상국 홀", "Ground Station Hall"], ["高架站廳", "高架站厅", "高架ホール", "높은 역 홀", "Overground Station Hall"]],
     transferDesc: ["轉乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
-    transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"],["节点换乘","节点换乘","","Transfer via node"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
+    transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["节点换乘", "节点换乘", "", "Transfer via node"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
     exitNum: ["出口數量", "出口数量", "出口の数量", "수출 횟수", "Exits Num"],
     FirstTrainDesc: ["首班車", "首班车", "始発時間", "첫 열차", "First Train Time"],
     LastTrainDesc: ["尾班車", "末班车", "終電時間", "末班车", "Last Train Time"],
