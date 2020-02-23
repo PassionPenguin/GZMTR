@@ -116,13 +116,13 @@
             if (typeof (name) !== "undefined")
                 if (name === "stationinfo") {
                     si = num;
-                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num);
+                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num + "&referer=" + GetPara("referer"));
                 } else if (name === "makeRoute") {
                     se = num;
                     history.pushState(history.length, name, "?type=" + name + "&start=" + se[0] + "&end=" + se[1]);
                 } else {
                     LocalHistory.push(name);
-                    history.pushState(history.length, name, "?type=" + name);
+                    history.pushState(history.length, name, "?type=" + name + "&lineid=" + GetPara("lineid"));
                 }
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);

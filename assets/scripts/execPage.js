@@ -109,9 +109,13 @@ pg.stationList = {
             }
             container.appendChild(subContainer);
         }
-        $("#Line1-GZ")[0].classList.add("show");
+        if (GetPara("lineid") !== "null" || GetPara("lineid") !== "")
+            if (!isNaN(parseInt(GetPara("lineid"))))
+                $("#" + globallist[parseInt(GetPara("lineid")) - 1])[0].classList.add("show");
+            else
+                $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
-        loadPage.require("stationinfo", s_num[line][num]);
+        loadPage.require("stationinfo", s_num[line][num] + "&referer=stationList&lineid=" + line);
     }
 };
 /* Made by Penguin */
@@ -187,10 +191,17 @@ pg.stationinfo = {
         topInput: false, navBottom: 1
     },
     init: (s_numInsert) => {
-        let a = cE({type: "script", attr: [["src", "./assets/data/splitInfo/" + s_numInsert + ".js"]]});
+        if (parseInt(GetPara("stationid")) > 236 || isNaN(parseInt(GetPara("stationid")))) {
+            showWarning(string.emptyWikiData[cL], 1000);
+            setTimeout(() => {
+                loadPage.require("stationList")
+            }, 1000);
+            return 0;
+        }
+        let a = cE({type: "script", attr: [["src", "./assets/data/splitInfo/" + GetPara("stationid") + ".js"]]});
         document.body.appendChild(a);
         a.onreadystatechange = a.onload = function () {
-            window.s_inf_tmp = eval("s_inf_" + s_numInsert);
+            window.s_inf_tmp = eval("s_inf_" + GetPara("stationid"));
             let wrap = $("#pg-app-wrap")[0];
             let topTab = cE({type: "div", attr: [["class", "topTab"]]});
             topTab.appendChild(cE({type: "div", attr: [["class", "inner"]]}));
@@ -200,7 +211,7 @@ pg.stationinfo = {
             InfoTab.appendChild(cs);
             InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
             wrap.appendChild(InfoTab);
-            let num = typeof s_numInsert !== "undefined" ? s_numInsert : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
+            let num = typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
             if (s_inf_tmp.exitNum === undefined) {
                 showWarning(string.emptyWikiData[cL], 1000);
                 setTimeout(() => {
@@ -216,16 +227,28 @@ pg.stationinfo = {
             dir_from.appendChild(cE({type: "div", innerText: "directions"}));
             dir_from.appendChild(cE({type: "span", innerText: string.dirFrom[cL]}));
             dir_from.onclick = () => {
+                showWarning(string.successfullyLoadStart[cL]);
                 system.set("dirfrom", num);
-                loadPage.require("stationList");
+                if (GetPara("referer") === "routeMap")
+                    window.location.href = "routeMap.html";
+                if (GetPara("referer") === "stationList")
+                    window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
+                else
+                    loadPage.require("stationList");
             };
             mapCont.appendChild(dir_from);
             let dir_to = cE({type: "div", attr: [["id", "dir_to"]]});
             dir_to.appendChild(cE({type: "div", innerText: "directions_subway"}));
             dir_to.appendChild(cE({type: "span", innerText: string.dirTo[cL]}));
             dir_to.onclick = () => {
+                showWarning(string.successfullyLoadEnd[cL]);
                 system.set("dirto", num);
-                loadPage.require("stationList");
+                if (GetPara("referer") === "routeMap")
+                    window.location.href = "routeMap.html";
+                if (GetPara("referer") === "stationList")
+                    window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
+                else
+                    loadPage.require("stationList");
             };
             mapCont.appendChild(dir_to);
             mapCont.appendChild(cE({type: "div", attr: [["id", "MapContainer"]]}));

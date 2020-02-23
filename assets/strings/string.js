@@ -63,5 +63,7 @@ window.string = {
     dirFrom: ["出發", "出发", "に行く", "로 이동", "From"],
     dirTo: ["前往", "前往", "出発", "출발", "To"],
     aboutTime: ["預估耗時", "大概耗时", "大概耗时", "시간이 걸린다", "About"],
-    aboutArrived: ["預估抵達時間", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Appro. arrival time "]
+    aboutArrived: ["預估抵達時間", "大概到达时间", "おおよその到着時間", "대략적인 도착 시간", "Appro. arrival time "],
+    successfullyLoadStart: ["成功选择起点", "成功选择起点", "成功选择起点", "成功选择起点", "Successfully Choose Start Point"],
+    successfullyLoadEnd: ["成功选择终点", "成功选择终点", "成功选择终点", "成功选择终点", "Successfully Choose End Point"],
 };
