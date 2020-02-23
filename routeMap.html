@@ -2574,7 +2574,7 @@
     window.onload = function () {
         loadRequire();
         if (system.get("dirfrom") !== "" && system.get("dirto") !== "") {
-            let href = "makeRoute.html?start=" + parseInt(system.get("dirfrom")) + "&end=" + parseInt(system.get("dirto"));
+            let href = "makeRoute.html?start=" +  Int(system.get("dirfrom")) + "&end=" +  Int(system.get("dirto"));
             system.set("dirfrom", "");
             system.set("dirto", "");
             window.location.href = href;
@@ -2589,7 +2589,7 @@
         let r = $("[id^='n_']");
         r.forEach(e => {
             e.onclick = () => {
-                let rid = parseInt(e.id.substr(2));
+                let rid =  Int(e.id.substr(2));
                 rid >= 237 && rid <= 247 ? alert("暂未开通") : window.location.href = ("index.html?type=stationinfo&stationid=" + rid + "&referer=routeMap");
             }
         });

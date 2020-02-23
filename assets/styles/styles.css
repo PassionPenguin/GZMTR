@@ -731,7 +731,7 @@ nav.nav-bottom.stationInfActive {
     padding: 10px 0;
     display: block;
     width: 100%;
-    height: calc(100% - 20px);
+    height: calc(100% - 105px);
     overflow: scroll;
 }
 
@@ -778,6 +778,57 @@ nav.nav-bottom.stationInfActive {
     min-width: 40px;
     text-align: center;
     line-height: 40px;
+}
+
+.escalator, .elevator, .staircase {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    margin: 0 6px;
+}
+
+.escalator {
+    background: url("../media/vectors/ic_esc_black.svg");
+}
+
+. .escalator {
+    background: url("../media/vectors/ic_esc_black.svg");
+}
+
+. .elevator {
+    background: url("../media/vectors/ic_ele_black.svg");
+}
+
+. .staircase {
+    background: url("../media/vectors/ic_staircase_black.svg");
+}
+
+.DarkerTheme .escalator {
+    background: url("../media/vectors/ic_esc_white.svg");
+}
+
+.DarkerTheme .elevator {
+    background: url("../media/vectors/ic_ele_white.svg");
+}
+
+.DarkerTheme .staircase {
+    background: url("../media/vectors/ic_staircase_white.svg");
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .escalator {
+        background: url("../media/vectors/ic_esc_white.svg");
+    }
+
+    .elevator {
+        background: url("../media/vectors/ic_ele_white.svg");
+    }
+
+    .staircase {
+        background: url("../media/vectors/ic_staircase_white.svg");
+    }
 }
 
 #CurrentStation {

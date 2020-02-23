@@ -9,7 +9,7 @@ pg.stationList = {
     },
     init: () => {
         if (system.get("dirfrom") !== "" && system.get("dirto") !== "") {
-            let href = "makeRoute.html?start=" + parseInt(system.get("dirfrom")) + "&end=" + parseInt(system.get("dirto"));
+            let href = "makeRoute.html?start=" +  Int(system.get("dirfrom")) + "&end=" +  Int(system.get("dirto"));
             system.set("dirfrom", "");
             system.set("dirto", "");
             window.location.href = href;
@@ -121,8 +121,8 @@ pg.stationList = {
             container.appendChild(subContainer);
         }
         if (GetPara("lineid") !== "null" || GetPara("lineid") !== "")
-            if (!isNaN(parseInt(GetPara("lineid"))))
-                $("#" + globallist[parseInt(GetPara("lineid"))])[0].classList.add("show");
+            if (!isNaN( Int(GetPara("lineid"))))
+                $("#" + globallist[ Int(GetPara("lineid"))])[0].classList.add("show");
             else
                 $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
@@ -195,14 +195,14 @@ pg.index = {
 };
 /* Made by Penguin */
 pg.stationinfo = {
-    requireLib: ["stationnum", "https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"],
+    requireLib: ["stationnum"/*, "https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef"*/],
     data: {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: false,
         topInput: false, navBottom: 1
     },
     init: (s_numInsert) => {
-        if (parseInt(GetPara("stationid")) > 236 || isNaN(parseInt(GetPara("stationid")))) {
+        if ( Int(GetPara("stationid")) > 236 || isNaN( Int(GetPara("stationid")))) {
             showWarning(string.emptyWikiData[cL], 1000);
             setTimeout(() => {
                 loadPage.require("stationList")
@@ -298,7 +298,7 @@ pg.stationinfo = {
                     }));
                     wrap.appendChild(cE({
                         type: "span",
-                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf(parseInt(num)) + 1, globallist[linedata.indexOf(via[i])])
+                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf( Int(num)) + 1, globallist[linedata.indexOf(via[i])])
                     }));
                     wrap.appendChild(cE({
                         type: "span",
@@ -545,11 +545,11 @@ pg.stationinfo = {
                     tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
                 }
             };
-            let map = new AMap.Map('MapContainer', {
-                center: s_inf_tmp.location,
-                zoom: 18,
-                mapStyle: ((window.matchMedia("(prefers-color-scheme: dark)").matches) && !document.documentElement.classList.contains("custom-theme")) || document.documentElement.classList.contains("darkerTheme") ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
-            });
+            // let map = new AMap.Map('MapContainer', {
+            //     center: s_inf_tmp.location,
+            //     zoom: 18,
+            //     mapStyle: ((window.matchMedia("(prefers-color-scheme: dark)").matches) && !document.documentElement.classList.contains("custom-theme")) || document.documentElement.classList.contains("darkerTheme") ? "amap://styles/7ebd5ad07161a9299e7bb30105216afc" : "amap://styles/fa8296862961dbb06ff972ff82e04813"
+            // });
         }
     },
     showstationinf: (num, platformnum) => {
@@ -628,7 +628,7 @@ pg.stationinfo = {
             wrap.appendChild(cE({
                 type: "span",
                 innerHTML: "<span>" + res2 + res1 + "</span>",
-                attr: [["style", "margin-top:" + ((f[i][0] - nowToTop - 1) * 43 + ((f[i][0] - 1 - nowToTop) / door[0]).toPrecision(1) * 10 + 6.5 + (nowToTop % 5 === 0 ? 10 : 0)) + "px"]]
+                attr: [["style", "margin-top:" + ((f[i][0] - nowToTop - 1) * 43 + ((f[i][0] - 1 - nowToTop) / door[0]).toPrecision(1) * 10 + 5 + (nowToTop % 5 === 0 ? 10 : 0)) + "px"]]
             }));
             nowToTop = f[i][0];
         }
