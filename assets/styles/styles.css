@@ -1076,7 +1076,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     content: " ";
     display: block;
     z-index: 1002;
-    background: url(/assets/media/vectors/Train.svg) no-repeat;
+    background: url(../media/vectors/Train.svg) no-repeat;
     background-size: 100% 48px;
     position: fixed;
     bottom: 42px;
