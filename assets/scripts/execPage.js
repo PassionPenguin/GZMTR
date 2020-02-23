@@ -111,11 +111,11 @@ pg.stationList = {
         }
         if (GetPara("lineid") !== "null" || GetPara("lineid") !== "")
             if (!isNaN(parseInt(GetPara("lineid"))))
-                $("#" + globallist[parseInt(GetPara("lineid")) - 1])[0].classList.add("show");
+                $("#" + globallist[parseInt(GetPara("lineid"))])[0].classList.add("show");
             else
                 $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
-        loadPage.require("stationinfo", s_num[line][num] + "&referer=stationList&lineid=" + line);
+        loadPage.require("stationinfo", s_num[line][num] + "&referer=stationList&lineid=" + (line));
     }
 };
 /* Made by Penguin */
