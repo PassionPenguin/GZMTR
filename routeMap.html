@@ -2566,12 +2566,13 @@
     <span>LOADING...</span>
 </div>
 </body>
-<script src="./assets/data/@string.js"></script>
+<script src="./assets/strings/string.js"></script>
 <script src="./assets/scripts/panzoom.js"></script>
 <script src="./assets/scripts/require.lib.js"></script>
 <script src="./assets/data/convertStoN.js"></script>
 <script>
     window.onload = function () {
+        loadRequire();
         if (system.get("dirfrom") !== "" && system.get("dirto") !== "") {
             let href = "makeRoute.html?start=" + parseInt(system.get("dirfrom")) + "&end=" + parseInt(system.get("dirto"));
             system.set("dirfrom", "");
