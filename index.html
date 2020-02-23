@@ -65,7 +65,7 @@
         <li pg-target="info" onclick="loadPage.require('stationList')"><span>info</span><span
                 class="description">Info</span>
         </li>
-        <li pg-target="map" onclick="loadPage(2)"><span>map</span><span class="description">Routemap</span></li>
+        <li pg-target="map" onclick="window.location.href='routeMap.html'"><span>map</span><span class="description">Routemap</span></li>
         <li pg-target="settings" onclick="loadPage.require('account')"><span>settings</span><span class="description">Settings</span>
         </li>
     </ul>
@@ -116,7 +116,7 @@
             if (typeof (name) !== "undefined")
                 if (name === "stationinfo") {
                     si = num;
-                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num + "&referer=" + GetPara("referer"));
+                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num + "&referer=" + GetPara("referer" + "&lineid=" + GetPara("lineid")));
                 } else if (name === "makeRoute") {
                     se = num;
                     history.pushState(history.length, name, "?type=" + name + "&start=" + se[0] + "&end=" + se[1]);
