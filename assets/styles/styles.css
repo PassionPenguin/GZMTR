@@ -227,7 +227,6 @@ nav.nav-bottom li > span:nth-child(2) {
 
 .hasSearchBar .pg-app-wrap {
     height: calc(100% - 175px);
-    padding-top: 25px;
 }
 
 .head-wrap {
@@ -435,12 +434,15 @@ nav.nav-bottom li > span:nth-child(2) {
 /* staionlist.html */
 
 .selectLine {
-    padding-top: 25px;
     width: 125px;
     height: calc(100vh - 200px);
     display: inline-block;
     vertical-align: top;
     overflow-y: scroll;
+}
+
+.selectLine > :first-child, .selectStation > div > :first-child {
+    padding-top: 25px;
 }
 
 .selectLine > div {
@@ -474,7 +476,6 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .selectStation {
-    padding-top: 25px;
     width: calc(100% - 155px);
     margin-left: 15px;
     height: calc(100vh - 200px);
