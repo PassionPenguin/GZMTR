@@ -592,7 +592,7 @@ pg.stationinfo = {
         });
         if (emptyData)
             return 0;
-        let table = cE({type: "div", attr: [["id", "inftable"]]});
+        let table = cE({type: "div", attr: [["id", "infTable"]]});
         let p_num = s_inf_tmp.platformBelong[platformnum][1];
         let door = [["GF", "4", "6"].includes(p_num) ? 4 : p_num === "13" ? 8 : p_num === "APM" ? 2 : 6, ["1", "2", "8", "13"].includes(p_num) ? 5 : ["4", "5", "6"].includes(p_num) ? 3 : p_num === "APM" ? 2 : 4];
         for (let i = 1, k = 1; i <= door[0]; i++) {
@@ -607,15 +607,14 @@ pg.stationinfo = {
                         res += "<div class='last-cabin last-door'>";
                     else res += "<div class='last-door'>";
                 else res += "<div>";
-                res += "<div id='door_" + k + "'></div><div>" + k + "</div></div>";
+                res += "<div>" + k + "</div></div>";
                 table.innerHTML += res;
             }
         }
         let d = $("#facilitiesList")[0];
         d.innerHTML = "";
-        d.appendChild(table);
         let data = s_inf_tmp.inf[platformnum];
-        let f = data.facilities;
+        let f = data.facilities, nowToTop = 0, wrap = cE({type: "div"});
         for (let i = 0; i < f.length; i++) {
             let res1 = "<span class='facilitiesgroup'><span class='exitnum'>" + f[i][2] + "</span>";
             if (f[i][1].indexOf(1) !== -1)
@@ -626,8 +625,15 @@ pg.stationinfo = {
                 res1 += "<span class='elevator'></span>";
             res1 += "</span>";
             let res2 = typeof (f[i][3]) !== "undefined" ? "<span class=\"font-" + f[i][3] + " border-" + f[i][3] + " interchange\"><span class=\"insideborder\">" + linedata[globallist.indexOf(f[i][3])] + "</span></span>" : "";
-            $("#door_" + f[i][0])[0].innerHTML += "<span>" + res2 + res1 + "</span>";
+            wrap.appendChild(cE({
+                type: "span",
+                innerHTML: "<span>" + res2 + res1 + "</span>",
+                attr: [["style", "margin-top:" + ((f[i][0] - nowToTop - 1) * 43 + ((f[i][0] - 1 - nowToTop) / door[0]).toPrecision(1) * 10 + 6.5 + (nowToTop % 5 === 0 ? 10 : 0)) + "px"]]
+            }));
+            nowToTop = f[i][0];
         }
+        d.appendChild(wrap);
+        d.appendChild(table);
         window.num = num;
     }
 };

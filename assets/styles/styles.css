@@ -763,93 +763,21 @@ nav.nav-bottom.stationInfActive {
     margin-top: 0;
 }
 
-#inftable {
-    width: 1800px;
-    height: 100%;
-    overflow: scroll;
-    white-space: nowrap;
-}
-
-#inftable > div {
+#infTable {
+    vertical-align: top;
     display: inline-block;
-    height: 100%;
 }
 
-#inftable > div > :nth-child(2) {
-    width: 60px;
-    height: 50px;
-    border-radius: 0;
-    border: 3px solid var(--var-dark);
-    border-right-width: 0;
-    text-align: center;
-    font: 900 24px/42px Anodina;
-    color: var(--var-dark);
-}
-
-#inftable > div.last-door > :nth-child(2) {
-    border-radius: 0 25px 25px 0;
-    width: 75px;
-    border-right-width: 3px;
-}
-
-#inftable > div.first-door > :nth-child(2) {
-    border-radius: 25px 0 0 25px;
-    margin-left: 10px;
-    width: 75px;
-}
-
-[id^="door_"] {
-    width: 50px;
-    height: fit-content;
-    padding: 20px 0;
-    text-align: center;
-    font: 900 20px/28px Anodina, sans-serif;
-    white-space: normal;
-}
-
-.escalator {
-    background-image: url("../media/vectors/ic_esc_black.svg")
-}
-
-.elevator {
-    background-image: url("../media/vectors/ic_ele_black.svg")
-}
-
-.staircase {
-    background-image: url("../media/vectors/ic_staircase_black.svg")
-}
-
-.escalator, .elevator, .staircase {
-    width: 36px;
-    height: 36px;
-    background-size: 36px;
-    display: block;
-    margin: 0 auto;
-}
-
-.facilitiesgroup {
-    display: block;
-    width: 50px;
-    height: fit-content;
-    padding: 12px 6px;
-    border: 3px solid var(--var-dark);
-    border-radius: 10px;
-}
-
-.interchange {
-    border: 2px solid;
-    width: 30px;
-    height: 30px;
-    display: block;
-    margin: 0 auto 20px auto;
-    border-radius: 50%;
-    font: 900 20px/26px Anodina;
-}
-
-.icon.platformnum {
-    position: absolute;
-    right: 10px;
+#facilitiesList > div:first-child {
     display: inline-block;
+}
+
+#facilitiesList > div:first-child > span {
+    display: block;
+    height: 40px;
+    min-width: 40px;
+    text-align: center;
+    line-height: 40px;
 }
 
 #CurrentStation {
@@ -886,6 +814,42 @@ nav.nav-bottom.stationInfActive {
     height: initial;
     vertical-align: top;
     margin-left: 10px;
+}
+
+#facilitiesList {
+    margin: 0 !important;
+    width: fit-content !important;
+    bottom: unset;
+    top: 102px;
+    transform: translate(0);
+    height: calc(100vh - 172px);
+}
+
+#facilitiesList.active {
+    right: 20px !important;
+}
+
+#infTable > div {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 3px solid var(--var-black);
+    font-weight: 700;
+}
+
+#infTable > div:not(.last-door) {
+    border-bottom: 0;
+}
+
+#infTable .first-door {
+    border-radius: 25px 25px 0 0;
+    margin-top: 10px;
+}
+
+#infTable .last-door {
+    border-radius: 0 0 25px 25px;
+    margin-bottom: 10px;
 }
 
 #LocationLng, #LocationLat {
@@ -960,13 +924,6 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 
 #facilitiesList:not(.active) {
     right: -200vw;
-}
-
-#facilitiesList {
-    margin: auto 20px;
-    bottom: 50%;
-    transform: translate(0, 50%);
-    height: initial !important;
 }
 
 #CurrentStation {
