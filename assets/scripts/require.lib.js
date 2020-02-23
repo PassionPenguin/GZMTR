@@ -42,10 +42,10 @@ window.loadRequire = () => {
         }
     }
 
-    window.cL = ["", "-1"].indexOf(system.get("language")) !== -1 || isNaN(Int(system.get("language"))) ? 0 : Int(system.get("language"));
+    window.cL = ["", "-1"].indexOf(system.get("language")) !== -1 || !isNaN(Int(system.get("language"))) ? 0 : Int(system.get("language"));
     let langCodes = ['zh-HK', 'zh-Hans', 'ja', 'ko', 'en'];
     document.documentElement.setAttribute('lang', langCodes[cL]);
-    window.cT = ["", "-1"].indexOf(system.get("theme")) || isNaN(Int(system.get("theme"))) ? 0 : Int(system.get("theme"));
+    window.cT = ["", "-1"].indexOf(system.get("theme")) !== -1 || isNaN(Int(system.get("theme"))) ? 0 : Int(system.get("theme"));
     document.documentElement.classList.add(themeName[cT] + "Theme");
     window.overrideDarkMode = ["", "0"].indexOf(system.get("overrideDarkMode")) === -1;
     if (overrideDarkMode)
