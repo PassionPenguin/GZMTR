@@ -30,7 +30,7 @@ window.string = {
     hallDesc: ["站廳類別", "站厅类型", "ホール　タイプ", "역 홀 타입", "Hall Type"],
     hallInfo: [["地下大堂", "地下站厅", "地下ホール", "지하철역 홀", "Underground Station Hall"], ["地面站廳", "地面站厅", "地面ホール", "지상국 홀", "Ground Station Hall"], ["高架站廳", "高架站厅", "高架ホール", "높은 역 홀", "Overground Station Hall"]],
     transferDesc: ["轉乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
-    transferInfo: [["同台換乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道換乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["节点换乘", "节点换乘", "", "Transfer via node"], ["站廳換乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
+    transferInfo: [["同台轉乘", "同台换乘", "ホームでお乗り換え", "동일한 플랫폼에서 전송", "Transfer at the opposite"], ["通道轉乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["節點轉乘", "节点换乘", "ノードでお乗り換え", "노드 전송", "Transfer via node"], ["站廳轉乘", "站厅换乘", "ホールでお乗り換え", "역 이동", "Transfer via hall"]],
     exitNum: ["出口數量", "出口数量", "出口の数量", "수출 횟수", "Exits Num"],
     FirstTrainDesc: ["首班車", "首班车", "始発時間", "첫 열차", "First Train Time"],
     LastTrainDesc: ["尾班車", "末班车", "終電時間", "末班车", "Last Train Time"],
@@ -64,6 +64,6 @@ window.string = {
     dirTo: ["前往", "前往", "到着", "출발", "To"],
     aboutTime: ["預估耗時", "大概耗时", "予想の時間", "시간이 걸린다", "About"],
     aboutArrived: ["預估抵達時間", "大概到达时间", "予想の到着時間", "대략적인 도착 시간", "Approx. arrival time "],
-    successfullyLoadStart: ["成功选择起点", "成功选择起点", "起点が選んだ", "成功选择起点", "Successfully chose start point"],
-    successfullyLoadEnd: ["成功选择终点", "成功选择终点", "終点が選んだ", "成功选择终点", "Successfully choose end point"],
+    successfullyLoadStart: ["成功選擇起點", "成功选择起点", "起点が選んだ", "성공을위한 출발점 선택", "Successfully chose start point"],
+    successfullyLoadEnd: ["成功選擇終點", "成功选择终点", "終点が選んだ", "엔드 포인트를 성공적으로 선택했습니다", "Successfully chose end point"],
 };
