@@ -97,7 +97,16 @@ pg.stationList = {
                     subContainer.appendChild(subtitle);
                     hasChild = true;
                 }
+                let flag = false;
                 for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
+                    if (num === 16 && i === 2 && !flag) {
+                        num = 10;
+                        flag = true;
+                    }
+                    if (num === 13 && i === 10 && !flag) {
+                        num = 7;
+                        flag = true;
+                    }
                     let station = cE({type: "p"});
                     let d = num;
                     station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split("-")[0] + "</span>";
