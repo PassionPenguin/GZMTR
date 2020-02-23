@@ -2,16 +2,16 @@ let s_inf_21 = {
     "name": ["南洲", "南洲", "南洲-なんしゅう", "난저우 역", "Nanzhou"],
     "inf": [{
         "platform": 1,
-        "facilities": [[6, [1], "B"], [10, [2], ""], [23, [1, 2], "A<br>C<br>D 楼梯可换乘GF线", "Line-GF"], [25, [3], "站厅", "Line-GF"]]
+        "facilities": [[6, [1], "B"], [10, [2], ""], [23, [1, 2], "A C D 楼梯可换乘GF线", "Line-GF"], [25, [3], "站厅", "Line-GF"]]
     }, {
         "platform": 2,
-        "facilities": [[6, [1], "B"], [10, [2], ""], [23, [1, 2], "A<br>C<br>D 楼梯可换乘GF线", "Line-GF"], [25, [3], "站厅", "Line-GF"]]
+        "facilities": [[6, [1], "B"], [10, [2], ""], [23, [1, 2], "A C D 楼梯可换乘GF线", "Line-GF"], [25, [3], "站厅", "Line-GF"]]
     }, {
         "platform": 3,
-        "facilities": [[9, [1], "B<br>C<br>D"], [4, [1, 2], "A"], [13, [2], "节点", "Line-GF"], [16, [3], "站厅", "Line-GF"]]
+        "facilities": [[9, [1], "B C D"], [4, [1, 2], "A"], [13, [2], "节点", "Line-GF"], [16, [3], "站厅", "Line-GF"]]
     }, {
         "platform": 4,
-        "facilities": [[9, [1], "B<br>C<br>D"], [4, [1, 2], "A"], [13, [2], "节点", "Line-GF"], [16, [3], "站厅", "Line-GF"]]
+        "facilities": [[9, [1], "B C D"], [4, [1, 2], "A"], [13, [2], "节点", "Line-GF"], [16, [3], "站厅", "Line-GF"]]
     }],
     "location": [113.297367, 23.064799],
     "via": ["2", "GF"],

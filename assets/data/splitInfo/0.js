@@ -1,17 +1,17 @@
 let s_inf_0 = {
     "name": ["西塱", "西塱", "西塱-せいろう", "시랑", "Xilang"],
-    "inf": [{"platform": 1, "facilities": [[7, [1], "C"], [15, [3], ""], [22, [1, 2], "A<br>D"]]}, {
+    "inf": [{"platform": 1, "facilities": [[7, [1], "C"], [15, [3], ""], [22, [1, 2], "A D"]]}, {
         "platform": 2,
-        "facilities": [[6, [1], "C"], [15, [3], ""], [21, [2], "A<br>D"], [22, [1], "A<br>D"]]
+        "facilities": [[6, [1], "C"], [15, [3], ""], [21, [2], "A D"], [22, [1], "A D"]]
     }, {
         "platform": 3,
-        "facilities": [[6, [1], "C"], [15, [3], ""], [21, [2], "A<br>D"], [22, [1], "A<br>D"]]
+        "facilities": [[6, [1], "C"], [15, [3], ""], [21, [2], "A D"], [22, [1], "A D"]]
     }, {
         "platform": 4,
-        "facilities": [[2, [3], "A<br>B<br>J", "Line1-GZ"], [4, [1, 2], "A<br>B<br>J", "Line1-GZ"], [14, [1, 2], "D<br>F"]]
+        "facilities": [[2, [3], "A B J", "Line1-GZ"], [4, [1, 2], "A B J", "Line1-GZ"], [14, [1, 2], "D F"]]
     }, {
         "platform": 5,
-        "facilities": [[2, [3], "A<br>B<br>J", "Line1-GZ"], [4, [1, 2], "A<br>B<br>J", "Line1-GZ"], [14, [1, 2], "D<br>F"]]
+        "facilities": [[2, [3], "A B J", "Line1-GZ"], [4, [1, 2], "A B J", "Line1-GZ"], [14, [1, 2], "D F"]]
     }],
     "location": [113.231978, 23.065437],
     "via": ["1", "GF"],

@@ -1,1 +1,1 @@
-let s_inf_169={"name":["官湖","官湖","官湖-かんこ","관호","Guanhu"],"inf":[{"platform":1,"facilities":[[14,[0],"B<br>C<br>D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C<br>保利"],[17,[0],"A<br>B<br>D<br>保利"]]}],"location":[113.636569,23.137226],"via":["13"],"platformBelong":[["1","13"],["2","13"]]};
+let s_inf_169={"name":["官湖","官湖","官湖-かんこ","관호","Guanhu"],"inf":[{"platform":1,"facilities":[[14,[0],"B C D"],[18,[0],"A"]]},{"platform":2,"facilities":[[14,[0],"C 保利"],[17,[0],"A B D 保利"]]}],"location":[113.636569,23.137226],"via":["13"],"platformBelong":[["1","13"],["2","13"]]};
