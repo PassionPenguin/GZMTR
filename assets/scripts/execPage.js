@@ -99,16 +99,18 @@ pg.stationList = {
                 }
                 let flag = false;
                 for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
+                    let d = num;
                     if (num === 16 && i === 2 && !flag) {
-                        num = 10;
+                        d = 10;
+                        num--;
                         flag = true;
                     }
                     if (num === 13 && i === 10 && !flag) {
-                        num = 7;
+                        d = 7;
+                        num--;
                         flag = true;
                     }
                     let station = cE({type: "p"});
-                    let d = num;
                     station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split("-")[0] + "</span>";
                     station.onclick = function () {
                         pg.stationList.loadStationInf(i, d)
