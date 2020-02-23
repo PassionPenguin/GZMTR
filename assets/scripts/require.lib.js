@@ -8,7 +8,7 @@ window.loadRequire = () => {
             return android.getPref(name);
         };
         system.set = (name, value) => {
-            android.storeStringPref(value, name)
+            android.storeStringPref(name, value)
         };
         system.removeAll = () => {
             android.sharedPreferencesRemove()
