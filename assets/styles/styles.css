@@ -437,7 +437,7 @@ nav.nav-bottom li > span:nth-child(2) {
 .selectLine {
     padding-top: 25px;
     width: 125px;
-    height: calc(100vh - 175px);
+    height: calc(100vh - 200px);
     display: inline-block;
     vertical-align: top;
     overflow-y: scroll;
@@ -477,7 +477,7 @@ nav.nav-bottom li > span:nth-child(2) {
     padding-top: 25px;
     width: calc(100% - 155px);
     margin-left: 15px;
-    height: calc(100vh - 175px);
+    height: calc(100vh - 200px);
     display: inline-block;
     vertical-align: top;
     overflow-y: scroll;
