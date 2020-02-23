@@ -1,8 +1,8 @@
 /* Made by Penguin */
 
 window.sentences = [
-    ["就算你fail咗，我都唔會唔鍾意你", "就算你失败了，我也会爱你呀", "", "", "No matter you succeeded or not,\n I will love you all the time"],
-    ["今日系好运仲系特别好运嘞", "今天是好运气还是特别好运气呢", "", "", "What will be today? Good Luck or Very Good Luck?"]
+    ["就算你fail咗，我都唔會唔鍾意你", "就算你失败了，我也会爱你呀", "たとえ失敗しても、いつも愛している。", "", "No matter you succeeded or not,\n I will love you all the time"],
+    ["今日系好运嘞，或系特别好运嘞？", "今天是好运气还是特别好运气呢", "今日は幸運ですか、それとも大幸運ですか。", "", "What will it be today? Good luck or great fortune?"]
 ];
 window.feature = [
     ["主頁", "主页", "ホーム", "홈페이지", "Home"],
@@ -52,8 +52,7 @@ window.string = {
     emptyInfData: ["無設施數據", "无设施数据", "施設データはありません", "시설 데이터가 없습니다", "No Facilities Data"],
     languageDesc: ["請選擇你的語言", "请选择您的语言", "言語を選んでください", "언어를 선택하십시오", "Please select your language"],
     themeDesc: ["樣式", "样式", "テーマ", "테마", "Theme"],
-    shouldOverrideDarkMode: ["強制取消暗黑模式", "强制取消暗色模式", "ダーク　モードを取り消す", "어두운 모드의 강제 취소",
-        "Override dark mode"],
+    shouldOverrideDarkMode: ["強制取消暗黑模式", "强制取消暗色模式", "ダーク　モードを取り消す", "어두운 모드의 강제 취소", "Override dark mode"],
     removeCookies: ["清除所有用戶設定", "清理一切用户设置", "全部ユーザー設定を消去する", "모든 사용자 설정 지우기", "Remove all user preferences"],
     loading: ["載入中..", "加载中..", "読み込み中..", "로드 중입니다 ..", "Loading.."],
     confirm: ["確認", "确定", "確認", "확인하다", "Confirm"],
@@ -64,6 +63,6 @@ window.string = {
     dirTo: ["前往", "前往", "到着", "출발", "To"],
     aboutTime: ["預估耗時", "大概耗时", "予想の時間", "시간이 걸린다", "About"],
     aboutArrived: ["預估抵達時間", "大概到达时间", "予想の到着時間", "대략적인 도착 시간", "Approx. arrival time "],
-    successfullyLoadStart: ["成功選擇起點", "成功选择起点", "起点が選んだ", "성공을위한 출발점 선택", "Successfully chose start point"],
-    successfullyLoadEnd: ["成功選擇終點", "成功选择终点", "終点が選んだ", "엔드 포인트를 성공적으로 선택했습니다", "Successfully chose end point"],
+    successfullyLoadStart: ["成功選擇起點", "成功选择起点", "起点が選んだ", "성공을위한 출발점 선택", "Start point chosen"],
+    successfullyLoadEnd: ["成功選擇終點", "成功选择终点", "終点が選んだ", "엔드 포인트를 성공적으로 선택했습니다", "End point chosen"],
 };
