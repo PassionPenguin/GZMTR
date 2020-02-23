@@ -224,11 +224,8 @@ pg.stationinfo = {
             wrap.appendChild(InfoTab);
             let num = typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
             if (s_inf_tmp.exitNum === undefined) {
-                showWarning(string.emptyWikiData[cL], 1000);
-                setTimeout(() => {
-                    loadPage.require("stationList")
-                }, 1000);
-                return 0;
+                showWarning(string.emptyWikiData[cL]);
+                loadPage.require("stationList")
             }
             pg.stationinfo.showstationinf(num, 0);
             let via = s_inf_tmp.via;
@@ -240,12 +237,14 @@ pg.stationinfo = {
             dir_from.onclick = () => {
                 showWarning(string.successfullyLoadStart[cL]);
                 system.set("dirfrom", num);
-                if (GetPara("referer") === "routeMap")
-                    window.location.href = "routeMap.html";
-                if (GetPara("referer") === "stationList")
-                    window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
-                else
-                    loadPage.require("stationList");
+                setTimeout(() => {
+                    if (GetPara("referer") === "routeMap")
+                        window.location.href = "routeMap.html";
+                    if (GetPara("referer") === "stationList")
+                        window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
+                    else
+                        loadPage.require("stationList");
+                }, 1000);
             };
             mapCont.appendChild(dir_from);
             let dir_to = cE({type: "div", attr: [["id", "dir_to"]]});
@@ -254,12 +253,14 @@ pg.stationinfo = {
             dir_to.onclick = () => {
                 showWarning(string.successfullyLoadEnd[cL]);
                 system.set("dirto", num);
-                if (GetPara("referer") === "routeMap")
-                    window.location.href = "routeMap.html";
-                if (GetPara("referer") === "stationList")
-                    window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
-                else
-                    loadPage.require("stationList");
+                setTimeout(() => {
+                    if (GetPara("referer") === "routeMap")
+                        window.location.href = "routeMap.html";
+                    if (GetPara("referer") === "stationList")
+                        window.location.href = "index.html?type=stationList&lineid=" + GetPara("lineid");
+                    else
+                        loadPage.require("stationList");
+                }, 1000);
             };
             mapCont.appendChild(dir_to);
             mapCont.appendChild(cE({type: "div", attr: [["id", "MapContainer"]]}));
