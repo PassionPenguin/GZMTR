@@ -1406,3 +1406,8 @@ html.noMap .MapContainer {
 html.noMap #MapContainer {
     display: none;
 }
+
+#routeInformation {
+    overflow: scroll;
+    height: calc(100vh - 106px);
+}
