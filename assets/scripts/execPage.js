@@ -5,7 +5,7 @@ pg.stationList = {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: true,
         topInput: true,
-        topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to...'"], navBottom: 1
+        topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to..."], navBottom: 1
     },
     init: () => {
         if (system.get("dirfrom") !== "" && system.get("dirto") !== "") {
@@ -136,7 +136,7 @@ pg.index = {
         title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
         topNav: true,
         topInput: true,
-        topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to...'"], navBottom: 1
+        topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to..."], navBottom: 1
     },
     init: () => {
 
@@ -315,7 +315,7 @@ pg.stationinfo = {
                                 }));
                                 wrap.appendChild(cE({
                                     type: "span",
-                                    innerHTML: " 开通于 " + s_inf_tmp.openTime[i].replace(/-/, ["年", "年", "", "", ", "][cL]).replace(/=/, ["月", "月", "", "", " "][cL]).replace(/_/, ["日", "日", "", "", ""][cL])
+                                    innerHTML: ["開業時間：", "开通时间：", "開業時間：", "", "Since "][cL] + s_inf_tmp.openTime[i].replace(/-/, ["年", "年", "年", "", "."][cL]).replace(/=/, ["月", "月", "月", "", "."][cL]).replace(/_/, ["日", "日", "日", "", ""][cL])
                                 }));
                                 viaWrap.appendChild(wrap);
                             }
@@ -430,7 +430,7 @@ pg.stationinfo = {
                             let wrap = cE({type: "span"});
                             wrap.appendChild(cE({
                                 type: "span",
-                                innerText: s_inf_tmp.serviceTime.replace(/ND/, " (" + ["次日", "次日", "", "", "Next day"][cL] + ")")
+                                innerText: s_inf_tmp.serviceTime.replace(/ND/, " (" + ["次日", "次日", "翌日", "", "Next day"][cL] + ")")
                             }));
                             serviceTimeWrap.appendChild(wrap);
                             ServiceTime.appendChild(serviceTimeWrap);
