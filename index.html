@@ -88,6 +88,8 @@
         } else if (!(GetPara("start") === null || GetPara("start") === "")) {
             if (GetPara("type") === "makeRoute")
                 loadPage.require("stationinfo", GetPara("stationid"));
+        } else if (GetPara("type") === "") {
+            loadPage.require("index");
         } else {
             loadPage.require(GetPara("type"));
         }
@@ -101,6 +103,8 @@
         } else if (!(GetPara("start") === null || GetPara("start") === "")) {
             if (GetPara("type") === "makeRoute")
                 loadPage.require("stationinfo", GetPara("stationid"));
+        } else if (GetPara("type") === "") {
+            loadPage.require("index");
         } else {
             loadPage.require(GetPara("type"));
         }
@@ -115,16 +119,21 @@
             if ($("#ResultDisplay")[0].classList.contains("show"))
                 $("#ResultDisplay")[0].classList.remove("show");
             if (typeof (name) !== "undefined")
-                if (name === "stationinfo") {
-                    si = num;
-                    history.pushState(history.length, name, "?type=" + name + "&stationid=" + num + "&referer=" + GetPara("referer" + "&lineid=" + GetPara("lineid")));
-                } else if (name === "makeRoute") {
-                    se = num;
-                    history.pushState(history.length, name, "?type=" + name + "&start=" + se[0] + "&end=" + se[1]);
-                } else {
-                    LocalHistory.push(name);
-                    history.pushState(history.length, name, "?type=" + name + "&lineid=" + GetPara("lineid"));
+                if (GetPara("type") === "" || GetPara("type") === "null") {
+                    history.pushState(history.length, "index", "?type=index");
+                    pg.index.init();
+                    return 0;
                 }
+            if (name === "stationinfo") {
+                si = num;
+                history.pushState(history.length, name, "?type=" + name + "&stationid=" + num + "&referer=" + GetPara("referer" + "&lineid=" + GetPara("lineid")));
+            } else if (name === "makeRoute") {
+                se = num;
+                history.pushState(history.length, name, "?type=" + name + "&start=" + se[0] + "&end=" + se[1]);
+            } else {
+                LocalHistory.push(name);
+                history.pushState(history.length, name, "?type=" + name + "&lineid=" + GetPara("lineid"));
+            }
             if (typeof (name) !== "undefined") {
                 loadPage.data = eval("pg." + name);
                 loadPage.required = 0;
