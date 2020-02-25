@@ -1,0 +1,221 @@
+{
+  "app-package-name": "com.passionpenguin.guide.gzmtr",
+  "app-upd-log": [
+    {
+      "updid": "[251c5c67b5be0871f5d9388edcc77c48f7ac6e3e]",
+      "upd-time": "2020/2/20",
+      "updver": "0.1",
+      "upd-type": "添加内容",
+      "upd-body": "添加内容一号线站点如下：",
+      "upd-info": "西塱\n坑口\n花地湾\n芳村\n黄沙\n长寿路\n陈家祠\n西门口\n公园前\n农讲所\n烈士陵园\n东山口\n杨箕\n体育西路\n体育中心\n广州东站"
+    },
+    {
+      "updid": "[9a1aceb48be7d46dc4871a901e9b000251a6787e]",
+      "upd-time": "2020/2/20",
+      "updver": "0.2",
+      "upd-type": "添加内容",
+      "upd-body": "添加内容二号线站点（广州南站-市二宫）如下：",
+      "upd-info": "广州南站\n石壁\n会江\n南浦\n洛溪\n南洲\n东晓南\n江泰路\n昌岗\n江南西\n市二宫"
+    },
+    {
+      "updid": "[6ecff32a07b8bd444d51bfc1326e28034213005a]",
+      "upd-time": "2020/2/20",
+      "updver": "0.2.1",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "修正西塱站错误时间方向\n将json修改merge进入js文件使其生效\n将药丸与途经线路合并，减少空间损耗"
+    },
+    {
+      "updid": "[2462362405d40519e6cebde196643b972712850e]",
+      "upd-time": "2020/2/20",
+      "updver": "0.2.11",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：：",
+      "upd-info": "将显示内容正确化"
+    },
+    {
+      "updid": "[591017d101d4f40664f15088041034a14272a3c2]",
+      "updver": "0.2.12",
+      "upd-time": "2020/2/21",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "修正广州南站错误信息"
+    },
+    {
+      "updid": "[c0f280b85896cce5a0e08da79abd5065558445b2]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.13",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "修改地图画布尺寸保证不会overflow"
+    },
+    {
+      "updid": "[ce0b88252eaeec0f981c784125044105b3cfb642]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.21",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "添加换乘方式（如通道、站厅等）"
+    },
+    {
+      "updid": "[6e24de58e4f68fc49a311fe480f3089a5224fba5]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.22",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "添加加载动画"
+    },
+    {
+      "updid": "[2425de9371be87a51fa81afdf88957a940ef9672]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.23",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "支持history历史信息"
+    },
+    {
+      "updid": "[75245f07dd55d13003620a3aef13106c02bbfb78]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.24",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "绑定list=>info"
+    },
+    {
+      "updid": "[71cb6d639a0a059d0d5e99ef9b8043ff38c4eea9]",
+      "upd-time": "2020/2/21",
+      "updver": "0.2.31",
+      "upd-type": "功能调整",
+      "upd-body": "功能修正：",
+      "upd-info": "修正动画相关的样式"
+    },
+    {
+      "updid": "[2539cb3ec0f1933bbf3bc8b5454ab5b8f3ef016b]",
+      "upd-time": "2020/2/21",
+      "updver": "0.3",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "删了tmp(alpha)的local branch但是忘了合并。。恢复回来"
+    },
+    {
+      "updid": "[59ecef977a7e2d41b58a2eb37091f8ab752346c1]",
+      "upd-time": "2020/2/21",
+      "updver": "0.4",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "将makeRoute回置于master并予以功能性修改"
+    },
+    {
+      "updid": "[8ca78175fb6fa6c19acd5d34ad5b6a1eb6cfeea9]",
+      "upd-time": "2020/2/21",
+      "updver": "0.4.1",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "加载script前判断是否存在该script（以加载地址后7位为id）\n"
+    },
+    {
+      "updid": "[01eba6a85ef96a33b916b0f4da68722278269a98]",
+      "upd-time": "2020/2/21",
+      "updver": "0.4.2",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "根据a版建议，若无维基数据将显示一个提醒，然后1s后返回选择信息处。\n若无设施数据，将显示1s的提醒，并且禁用设施的入口\n添加共用函数方法 showWarning(String: inf, Number: time)"
+    },
+    {
+      "updid": "[26d5201bdae27961a8e6c6b92b3bcc434d1a6599]",
+      "upd-time": "2020/2/21",
+      "updver": "0.5",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "添加不稳定的cookie支持，支持更改用户语言"
+    },
+    {
+      "updid": "[0be656803b1151295eee24269650ea3795a52204]",
+      "upd-time": "2020/2/21",
+      "updver": "0.5.1",
+      "upd-type": "功能调整",
+      "upd-body": "功能修正：",
+      "upd-info": "对长站名优化"
+    },
+    {
+      "updid": "[0eb26934c969f0066d725d50bd3f73863cf5eaa8]",
+      "upd-time": "2020/2/21",
+      "updver": "0.6",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "修改语言选择器部分错误\n添加样式选择器\n添加强制取消暗黑模式选择"
+    },
+    {
+      "updid": "[72cfb44f7bb9154176b429003aff129d6c43f244]",
+      "upd-time": "2020/2/21",
+      "updver": "0.6.2",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "更新样式\n在选择器界面高亮当前选择"
+    },
+    {
+      "updid": "[0eb26934c969f0066d725d50bd3f73863cf5eaa8]",
+      "upd-time": "2020/2/21",
+      "updver": "0.6.3",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "添加新的主题"
+    },
+    {
+      "updid": "[0eb26934c969f0066d725d50bd3f73863cf5eaa8]",
+      "upd-time": "2020/2/21",
+      "updver": "0.6.4",
+      "upd-type": "功能调整",
+      "upd-body": "功能修正：",
+      "upd-info": "主题作用域修改"
+    },
+    {
+      "updid": "[cac4b30de52b46528f56b1263466ee8fc8e65ebd]",
+      "upd-time": "2020/2/21",
+      "updver": "0.6.5",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "日语支持"
+    },
+    {
+      "updid": "[ad1ab06a5a2592ca5b5ace62f8d8056bdf48af20]",
+      "upd-time": "2020/2/21",
+      "updver": "0.7",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "stationinfo数据存储分开，将json数据变为js数据"
+    },
+    {
+      "updid": "[7aa97e3e0370585709b209376b2579ca6d30cb05]",
+      "upd-time": "2020/2/21",
+      "updver": "0.7.1",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "不正确的if判断语句予以修改"
+    },
+    {
+      "updid": "[397e451993a51bc3869293efa728540f92e9dda6]",
+      "upd-time": "2020/2/22",
+      "updver": "0.7.2",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "修正样式及其作用域\n在个人设置页面点击空白部分退出选择器"
+    },
+    {
+      "updid": "[35c68bc173997c4f1581473026df53f0f9e01dd9]",
+      "upd-time": "2020/2/22",
+      "updver": "0.7.3",
+      "upd-type": "修正部分错误",
+      "upd-body": "修正错误：",
+      "upd-info": "修正splitInfo内数据（execPage.js呼叫的数据）来自GitHub的作用域的问题，由于之前用的是根目录现在换了...\n修正加载时候无法写入错误数据显示信息的错误\n去除主页面的语录待以后加回来"
+    },
+    {
+      "updid": "[3909544e3947aa369c351d76fe6c495ca8e502ca]",
+      "upd-time": "2020/2/22",
+      "updver": "0.7.4",
+      "upd-type": "功能补充",
+      "upd-body": "功能添加：",
+      "upd-info": "用Google Translate翻译支持韩语"
+    }
+  ]
+}
