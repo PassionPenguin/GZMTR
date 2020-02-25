@@ -2,7 +2,7 @@
 pg.stationList = {
     requireLib: ["stationlist", "stationnum", "stationinf"],
     data: {
-        title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
+        title: ["車站列表", "车站列表", "駅一覧", "방송국 목록", "StationList"],
         topNav: true,
         topInput: true,
         topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to..."], navBottom: 1
@@ -131,73 +131,22 @@ pg.stationList = {
 };
 /* Made by Penguin */
 pg.index = {
-    requireLib: ["stationlist", "stationnum"],
+    requireLib: [],
     data: {
-        title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
-        topNav: true,
-        topInput: true,
+        title: ["廣州地鐵車站信息", "广州地铁车站信息", "広州地下鉄駅の情報", "광저우 지하철 역 정보", "GZMTR Info Guide"],
+        topNav: false,
+        topInput: false,
         topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to..."], navBottom: 1
     },
     init: () => {
 
-    }, loadStationList: () => {
-        let container = $("#selectLine")[0];
-        for (let i = 0; i < linebelong.length; i++) {
-            let subContainer = cE({type: "div"});
-            let name = cE({type: "div"});
-            name.innerText = linebelong[i].name[cL];
-            subContainer.appendChild(name);
-            for (let j = 0; j < linebelong[i].line.length; j++) {
-                let line = cE({type: "div"});
-                let span = cE({type: "span"});
-                span.classList.add("icon-" + globallist[linebelong[i].line[j]]);
-                line.appendChild(span);
-                let name = cE({type: "span"});
-                name.innerText = shortLinename[linebelong[i].line[j]][cL];
-                line.appendChild(name);
-                subContainer.appendChild(line);
-            }
-            container.appendChild(subContainer);
-        }
-        container = $("#selectStation")[0];
-        for (let i = 0; i < s_list.length; i++) {
-            let subContainer = cE({type: "div"});
-            subContainer.id = globallist[i];
-            let title = cE({type: "h2"});
-            title.innerText = linename[i][cL];
-            subContainer.appendChild(title);
-            for (let j = 0, num = 0; j < s_list[i].station.length; j++) {
-                let hasChild = false;
-                if (typeof s_list[i].station[j][0] === "string") {
-                    let subtitle = cE({type: "h3"});
-                    subtitle.innerText = s_list[i].station[j][0];
-                    subContainer.appendChild(subtitle);
-                    hasChild = true;
-                }
-                for (let k = hasChild ? 1 : 0; k < s_list[i].station[j].length; k++, num++) {
-                    let station = cE({type: "p"});
-                    let d = num;
-                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL] + "</span>";
-                    station.onclick = function () {
-                        console.log(i, d);
-                        pg.stationList.loadStationInf(i, d)
-                    };
-                    subContainer.appendChild(station);
-                }
-            }
-            container.appendChild(subContainer);
-        }
-        $("#Line1-GZ")[0].classList.add("show");
-    }, loadStationInf: (line, num) => {
-        console.log(s_num[line][num]);
-        loadPage.require("stationinfo", s_num[line][num]);
     }
 };
 /* Made by Penguin */
 pg.stationinfo = {
     requireLib: ["stationnum"],
     data: {
-        title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "INFO"],
+        title: ["車站資訊", "车站信息", "駅の情報", "역 정보", "STATION INFO"],
         topNav: false,
         topInput: false, navBottom: 1
     },
@@ -669,7 +618,7 @@ pg.stationinfo = {
 pg.account = {
     requireLib: [],
     data: {
-        title: ["个人设置", "个人设置", "", "", "Settings"],
+        title: ["個人設定", "个人设置", "個人設置", "개인 설정", "Settings"],
         topNav: true,
         topInput: false, navBottom: 3
     },
@@ -815,8 +764,9 @@ pg.account = {
 };
 /* Made by Penguin */
 pg.makeRoute = {
-    requireLib: ["interchange"],
+    requireLib: [],
     data: {
+        title: "none",
         topNav: false,
         topInput: false,
         navBottom: 2
