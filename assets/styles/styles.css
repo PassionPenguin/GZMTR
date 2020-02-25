@@ -226,7 +226,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .hasSearchBar .pg-app-wrap {
-    height: calc(100% - 175px);
+    height: calc(100% - 150px);
 }
 
 .head-wrap {
@@ -435,7 +435,7 @@ nav.nav-bottom li > span:nth-child(2) {
 
 .selectLine {
     width: 125px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px);
     display: inline-block;
     vertical-align: top;
     overflow-y: scroll;
@@ -478,7 +478,7 @@ nav.nav-bottom li > span:nth-child(2) {
 .selectStation {
     width: calc(100% - 155px);
     margin-left: 15px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px);
     display: inline-block;
     vertical-align: top;
     overflow-y: scroll;
@@ -1368,8 +1368,9 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #ResultDisplay {
+    padding: 25px 0 0 0;
     width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 155px);
     position: fixed;
     left: 0;
     top: 96px;

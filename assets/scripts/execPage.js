@@ -398,7 +398,7 @@ pg.stationinfo = {
                 let wrap = cE({type: "span"});
                 wrap.appendChild(cE({
                     type: "span",
-                    innerText: s_inf_tmp.exitNum
+                    innerText: s_inf_tmp.exitNum[0]
                 }));
                 exitWrap.appendChild(wrap);
                 Exit.appendChild(exitWrap);
