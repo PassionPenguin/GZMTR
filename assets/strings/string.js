@@ -65,4 +65,5 @@ window.string = {
     aboutArrived: ["預估抵達時間", "大概到达时间", "予想の到着時間", "대략적인 도착 시간", "Approx. arrival time "],
     successfullyLoadStart: ["成功選擇起點", "成功选择起点", "起点が選んだ", "성공을위한 출발점 선택", "Start point chosen"],
     successfullyLoadEnd: ["成功選擇終點", "成功选择终点", "終点が選んだ", "엔드 포인트를 성공적으로 선택했습니다", "End point chosen"],
+    hasMap: ["加載地圖插件", "加载地图插件", "ロードマッププラグイン", "로드맵 플러그인", "Load Map Plugin"]
 };

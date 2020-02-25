@@ -53,6 +53,9 @@ window.loadRequire = () => {
     let bottomNav = $("#pg-app-bottom")[0].children[0];
     for (let i = 0; i < bottomNav.children.length; i++)
         bottomNav.children[i].children[1].innerHTML = feature[i][cL];
+    window.isMap = ["", "-1"].indexOf(system.get("isMap")) !== -1 || isNaN(Int(system.get("isMap"))) ? 1 : Int(system.get("isMap"));
+    window.isAMap = ["", "-1"].indexOf(system.get("isAMap")) !== -1 || isNaN(Int(system.get("isAMap"))) ? 1 : Int(system.get("isAMap"));
+    document.documentElement.classList.add(isMap ? "hasMap" : "noMap");
 };
 
 window.$ = (a) => {
@@ -73,6 +76,14 @@ window.cE = (data) => {
 
 window.Int = (a) => {
     return parseInt(a);
+};
+
+window.importScripts = (url, callback) => {
+    let script = cE({type: "script", attr: [["src", url]]});
+    document.body.appendChild(script);
+    callback !== undefined ? script.onload = script.onreadystatechange = () => {
+        callback();
+    } : void (0);
 };
 
 window.processLocation = (a, b) => {
