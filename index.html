@@ -119,7 +119,7 @@
             if ($("#ResultDisplay")[0].classList.contains("show"))
                 $("#ResultDisplay")[0].classList.remove("show");
             if (typeof (name) !== "undefined")
-                if (GetPara("type") === "" || GetPara("type") === "null") {
+                if (GetPara("type") === "" || GetPara("type") === "null" || GetPara("type") === "index") {
                     history.pushState(history.length, "index", "?type=index");
                     pg.index.init();
                     return 0;
