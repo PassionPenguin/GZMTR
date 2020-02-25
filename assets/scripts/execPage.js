@@ -50,7 +50,7 @@ pg.stationList = {
                     attr: [["class", "icon-" + globallist[linedata.indexOf(r[1][i])]]]
                 }));
             }
-            wrap.appendChild(cE({type: "span", innerText: cL===3?r[0][cL].split("-")[0]:r[0][cL]}));
+            wrap.appendChild(cE({type: "span", innerText: r[0][cL].split(cL === 2 ? "-" : "undefined")[0]}));
             wrap.onclick = () => {
                 loadPage.require("stationinfo", e);
             };
@@ -111,7 +111,7 @@ pg.stationList = {
                         flag = true;
                     }
                     let station = cE({type: "p"});
-                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + cL===3?s_list[i].station[j][k][cL].split("-")[0]:s_list[i].station[j][k][cL] + "</span>";
+                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split(cL === 2 ? "-" : "undefined")[0] + "</span>";
                     station.onclick = function () {
                         pg.stationList.loadStationInf(i, d)
                     };
@@ -177,13 +177,7 @@ pg.stationinfo = {
                         InfoTab.appendChild(cE({type: "div", attr: [["id", "facilitiesList"]]}));
                         wrap.appendChild(InfoTab);
                         let num = typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") : typeof GetPara("stationid") !== "undefined" ? GetPara("stationid") === null || GetPara("stationid") === "" ? 0 : GetPara("stationid") : 0;
-                        if (s_inf_tmp.exitNum === undefined) {
-                            showWarning(string.emptyWikiData[cL]);
-                            loadPage.require("stationList")
-                        }
                         pg.stationinfo.showstationinf(num, 0);
-                        let via = s_inf_tmp.via;
-                        let g = cE({type: "div", attr: [["class", "shortInfo"]]});
                         let mapCont = cE({type: "div", attr: [["class", "MapContainer"]]});
                         let dir_from = cE({type: "div", attr: [["id", "dir_from"]]});
                         dir_from.appendChild(cE({type: "div", innerText: "directions"}));
@@ -219,303 +213,318 @@ pg.stationinfo = {
                         mapCont.appendChild(dir_to);
                         mapCont.appendChild(cE({type: "div", attr: [["id", "MapContainer"]]}));
                         cs.appendChild(mapCont);
-                        {
-                            let flocation = processLocation(s_inf_tmp.location[0].toString(), s_inf_tmp.location[1].toString());
-                            let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
-                            locationWrap.appendChild(cE({
-                                type: "span",
-                                attr: [["id", "LocationDesc"]],
-                                innerText: string.locationDesc[cL]
-                            }));
-                            let location = cE({type: "span"});
-                            location.appendChild(cE({
-                                type: "span",
-                                attr: [["id", "LocationLng"]],
-                                innerText: flocation[0]
-                            }));
-                            location.appendChild(cE({
-                                type: "span",
-                                attr: [["id", "LocationLat"]],
-                                innerText: flocation[1]
-                            }));
-                            locationWrap.appendChild(location);
-                            g.appendChild(locationWrap);
-                        } // Location
-                        {
-                            let Line = cE({type: "p", attr: [["class", "shouldCrossLine"]]});
-                            Line.appendChild(cE({
-                                type: "span",
-                                innerText: string.lineDesc[cL]
-                            }));
-                            let viaWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
+                        if (s_inf_tmp.exitNum !== undefined) {
+                            showWarning(string.emptyWikiData[cL]);
+
+                            let via = s_inf_tmp.via;
+                            let g = cE({type: "div", attr: [["class", "shortInfo"]]});
+                            {
+                                let flocation = processLocation(s_inf_tmp.location[0].toString(), s_inf_tmp.location[1].toString());
+                                let locationWrap = cE({type: "p", attr: [["id", "Location"]]});
+                                locationWrap.appendChild(cE({
+                                    type: "span",
+                                    attr: [["id", "LocationDesc"]],
+                                    innerText: string.locationDesc[cL]
+                                }));
+                                let location = cE({type: "span"});
+                                location.appendChild(cE({
+                                    type: "span",
+                                    attr: [["id", "LocationLng"]],
+                                    innerText: flocation[0]
+                                }));
+                                location.appendChild(cE({
+                                    type: "span",
+                                    attr: [["id", "LocationLat"]],
+                                    innerText: flocation[1]
+                                }));
+                                locationWrap.appendChild(location);
+                                g.appendChild(locationWrap);
+                            } // Location
+                            {
+                                let Line = cE({type: "p", attr: [["class", "shouldCrossLine"]]});
+                                Line.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.lineDesc[cL]
+                                }));
+                                let viaWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf(Int(num)) + 1, globallist[linedata.indexOf(via[i])])
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerHTML: ["開業時間：", "开通时间：", "開業時間：", "", "Since "][cL] + s_inf_tmp.openTime[i].replace(/-/, ["年", "年", "年", "", "."][cL]).replace(/=/, ["月", "月", "月", "", "."][cL]).replace(/_/, ["日", "日", "日", "", ""][cL])
+                                    }));
+                                    viaWrap.appendChild(wrap);
+                                }
+                                Line.appendChild(viaWrap);
+                                g.appendChild(Line);
+                            } // Line Passed
+                            if (typeof s_inf_tmp.transferType !== "undefined") {
+                                let Transfer = cE({type: "p"});
+                                Transfer.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.transferDesc[cL]
+                                }));
+                                let viaWrap = cE({type: "span"});
+                                for (let i = 0; i < s_inf_tmp.transferType.length; i++) {
+                                    viaWrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: string.transferInfo[s_inf_tmp.transferType[i]]
+                                    }));
+                                }
+                                Transfer.appendChild(viaWrap);
+                                g.appendChild(Transfer);
+                            } // Transfer Type
+                            {
+                                let Structure = cE({type: "p", attr: [["id", "StationStructure"]]});
+                                Structure.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.structureDesc[cL]
+                                }));
+                                let structureWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.structureInfo[s_inf_tmp.structureType[i]][cL]
+                                    }));
+                                    structureWrap.appendChild(wrap);
+                                }
+                                Structure.appendChild(structureWrap);
+                                g.appendChild(Structure);
+                            } // Structure
+                            {
+                                let Hall = cE({type: "p", attr: [["id", "StationHall"]]});
+                                Hall.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.hallDesc[cL]
+                                }));
+                                let hallWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.hallInfo[s_inf_tmp.hallType[i]][cL]
+                                    }));
+                                    hallWrap.appendChild(wrap);
+                                }
+                                Hall.appendChild(hallWrap);
+                                g.appendChild(Hall);
+                            } // Hall
+                            {
+                                let Platform = cE({type: "p", attr: [["id", "StationPlatform"]]});
+                                Platform.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.platformDesc[cL]
+                                }));
+                                let platformWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.platformInfo[s_inf_tmp.platformType[i]][cL]
+                                    }));
+                                    platformWrap.appendChild(wrap);
+                                }
+                                Platform.appendChild(platformWrap);
+                                g.appendChild(Platform);
+                            } // Platform
+                            {
+                                let Exit = cE({type: "p", attr: [["id", "StationExit"]]});
+                                Exit.appendChild(cE({
+                                    type: "span",
+                                    innerText: string.exitNum[cL]
+                                }));
+                                let exitWrap = cE({type: "span"});
                                 let wrap = cE({type: "span"});
                                 wrap.appendChild(cE({
                                     type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    innerText: s_inf_tmp.exitNum[0]
                                 }));
-                                wrap.appendChild(cE({
+                                exitWrap.appendChild(wrap);
+                                Exit.appendChild(exitWrap);
+                                g.appendChild(Exit);
+                            } // Exit
+                            {
+                                let ServiceTime = cE({type: "p", attr: [["id", "ServiceTime"]]});
+                                ServiceTime.appendChild(cE({
                                     type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL]
+                                    innerText: string.serviceTimeDesc[cL]
                                 }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf(Int(num)) + 1, globallist[linedata.indexOf(via[i])])
-                                }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerHTML: ["開業時間：", "开通时间：", "開業時間：", "", "Since "][cL] + s_inf_tmp.openTime[i].replace(/-/, ["年", "年", "年", "", "."][cL]).replace(/=/, ["月", "月", "月", "", "."][cL]).replace(/_/, ["日", "日", "日", "", ""][cL])
-                                }));
-                                viaWrap.appendChild(wrap);
-                            }
-                            Line.appendChild(viaWrap);
-                            g.appendChild(Line);
-                        } // Line Passed
-                        if (typeof s_inf_tmp.transferType !== "undefined") {
-                            let Transfer = cE({type: "p"});
-                            Transfer.appendChild(cE({
-                                type: "span",
-                                innerText: string.transferDesc[cL]
-                            }));
-                            let viaWrap = cE({type: "span"});
-                            for (let i = 0; i < s_inf_tmp.transferType.length; i++) {
-                                viaWrap.appendChild(cE({
-                                    type: "span",
-                                    innerText: string.transferInfo[s_inf_tmp.transferType[i]]
-                                }));
-                            }
-                            Transfer.appendChild(viaWrap);
-                            g.appendChild(Transfer);
-                        } // Transfer Type
-                        {
-                            let Structure = cE({type: "p", attr: [["id", "StationStructure"]]});
-                            Structure.appendChild(cE({
-                                type: "span",
-                                innerText: string.structureDesc[cL]
-                            }));
-                            let structureWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
+                                let serviceTimeWrap = cE({type: "span"});
                                 let wrap = cE({type: "span"});
                                 wrap.appendChild(cE({
                                     type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    innerText: s_inf_tmp.serviceTime.replace(/ND/, " (" + ["次日", "次日", "翌日", "", "Next day"][cL] + ")")
                                 }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.structureInfo[s_inf_tmp.structureType[i]][cL]
-                                }));
-                                structureWrap.appendChild(wrap);
+                                serviceTimeWrap.appendChild(wrap);
+                                ServiceTime.appendChild(serviceTimeWrap);
+                                g.appendChild(ServiceTime);
                             }
-                            Structure.appendChild(structureWrap);
-                            g.appendChild(Structure);
-                        } // Structure
-                        {
-                            let Hall = cE({type: "p", attr: [["id", "StationHall"]]});
-                            Hall.appendChild(cE({
-                                type: "span",
-                                innerText: string.hallDesc[cL]
-                            }));
-                            let hallWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
-                                let wrap = cE({type: "span"});
-                                wrap.appendChild(cE({
+                            // ServiceTime
+                            {
+                                let FirstTrain = cE({type: "p", attr: [["id", "FirstTrain"]]});
+                                FirstTrain.appendChild(cE({
                                     type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    innerText: string.FirstTrainDesc[cL]
                                 }));
-                                wrap.appendChild(cE({
+                                let firstTrainWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
+                                    }));
+                                    for (let j = 0; j < s_inf_tmp.firstTrain[i].length; j++)
+                                        wrap.appendChild(cE({
+                                            type: "span",
+                                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.firstTrain[i][j][0]] + ": " + s_inf_tmp.firstTrain[i][j][1]
+                                        }));
+                                    firstTrainWrap.appendChild(wrap);
+                                }
+                                FirstTrain.appendChild(firstTrainWrap);
+                                g.appendChild(FirstTrain);
+                            } // FirstTrain
+                            {
+                                let LastTrain = cE({type: "p", attr: [["id", "LastTrain"]]});
+                                LastTrain.appendChild(cE({
                                     type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.hallInfo[s_inf_tmp.hallType[i]][cL]
+                                    innerText: string.LastTrainDesc[cL]
                                 }));
-                                hallWrap.appendChild(wrap);
-                            }
-                            Hall.appendChild(hallWrap);
-                            g.appendChild(Hall);
-                        } // Hall
-                        {
-                            let Platform = cE({type: "p", attr: [["id", "StationPlatform"]]});
-                            Platform.appendChild(cE({
-                                type: "span",
-                                innerText: string.platformDesc[cL]
-                            }));
-                            let platformWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
-                                let wrap = cE({type: "span"});
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
-                                }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": " + string.platformInfo[s_inf_tmp.platformType[i]][cL]
-                                }));
-                                platformWrap.appendChild(wrap);
-                            }
-                            Platform.appendChild(platformWrap);
-                            g.appendChild(Platform);
-                        } // Platform
-                        {
-                            let Exit = cE({type: "p", attr: [["id", "StationExit"]]});
-                            Exit.appendChild(cE({
-                                type: "span",
-                                innerText: string.exitNum[cL]
-                            }));
-                            let exitWrap = cE({type: "span"});
-                            let wrap = cE({type: "span"});
-                            wrap.appendChild(cE({
-                                type: "span",
-                                innerText: s_inf_tmp.exitNum[0]
-                            }));
-                            exitWrap.appendChild(wrap);
-                            Exit.appendChild(exitWrap);
-                            g.appendChild(Exit);
-                        } // Exit
-                        {
-                            let ServiceTime = cE({type: "p", attr: [["id", "ServiceTime"]]});
-                            ServiceTime.appendChild(cE({
-                                type: "span",
-                                innerText: string.serviceTimeDesc[cL]
-                            }));
-                            let serviceTimeWrap = cE({type: "span"});
-                            let wrap = cE({type: "span"});
-                            wrap.appendChild(cE({
-                                type: "span",
-                                innerText: s_inf_tmp.serviceTime.replace(/ND/, " (" + ["次日", "次日", "翌日", "", "Next day"][cL] + ")")
-                            }));
-                            serviceTimeWrap.appendChild(wrap);
-                            ServiceTime.appendChild(serviceTimeWrap);
-                            g.appendChild(ServiceTime);
+                                let lastTrainWrap = cE({type: "span"});
+                                for (let i = 0; i < via.length; i++) {
+                                    let wrap = cE({type: "span"});
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
+                                    }));
+                                    wrap.appendChild(cE({
+                                        type: "span",
+                                        innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
+                                    }));
+                                    for (let j = 0; j < s_inf_tmp.lastTrain[i].length; j++)
+                                        wrap.appendChild(cE({
+                                            type: "span",
+                                            innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.lastTrain[i][j][0]] + ": " + s_inf_tmp.lastTrain[i][j][1]
+                                        }));
+                                    lastTrainWrap.appendChild(wrap);
+                                }
+                                LastTrain.appendChild(lastTrainWrap);
+                                g.appendChild(LastTrain);
+                            } // LastTrain
+                            cs.appendChild(g);
+                            let d = cE({type: "div", attr: [["class", "moreInfo"]]});
+                            d.appendChild(cE({type: "p", innerText: s_inf_tmp.shortDesc})); // ShortDescription
+                            {
+                                let a = cE({type: "div"});
+                                a.appendChild(cE({type: "h4", innerText: string.structureName[cL]}));
+                                for (let i = 0; i < s_inf_tmp.structureDesc.length; i++) {
+                                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.structureDesc[i][0]}));
+                                    if (typeof s_inf_tmp.structureDesc[i][1] === "object")
+                                        for (let j = 0; j < s_inf_tmp.structureDesc[i][1].length; j++) {
+                                            if (typeof s_inf_tmp.structureDesc[i][1][j].title !== "undefined")
+                                                a.appendChild(cE({
+                                                    type: "h6",
+                                                    innerText: s_inf_tmp.structureDesc[i][1][j].title
+                                                }));
+                                            a.appendChild(cE({
+                                                type: "p",
+                                                innerText: s_inf_tmp.structureDesc[i][1][j].data
+                                            }));
+                                        }
+
+                                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.structureDesc[i][1]}));
+                                }
+                                d.appendChild(a);
+                            } // StationStructureDesc
+                            let a = cE({type: "div"});
+                            let b = cE({type: "div"});
+                            a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
+                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.exitDesc})); // Exit Desc
+                            b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
+                            b.appendChild(cE({type: "p", innerText: s_inf_tmp.usageDesc})); // Usage Desc
+                            d.appendChild(a);
+                            d.appendChild(b);
+                            {
+                                let a = cE({type: "div"});
+                                a.appendChild(cE({type: "h4", innerText: string.historyName[cL]}));
+                                for (let i = 0; i < s_inf_tmp.history.length; i++) {
+                                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.history[i][0]}));
+                                    if (typeof s_inf_tmp.history[i][1] === "object")
+                                        for (let j = 0; j < s_inf_tmp.history[i][1].length; j++) {
+                                            if (typeof s_inf_tmp.history[i][1][j].title !== "undefined")
+                                                a.appendChild(cE({
+                                                    type: "h6",
+                                                    innerText: s_inf_tmp.history[i][1][j].title
+                                                }));
+                                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1][j].data}));
+                                        }
+
+                                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1]}));
+                                }
+                                d.appendChild(a);
+                            } // HistoryDesc
+                            if (typeof s_inf_tmp.futureExpansion !== "undefined") {
+                                let a = cE({type: "div"});
+                                a.appendChild(cE({type: "h4", innerText: string.futureExName[cL]}));
+                                for (let i = 0; i < s_inf_tmp.futureExpansion.length; i++) {
+                                    a.appendChild(cE({type: "h5", innerText: s_inf_tmp.futureExpansion[i][0]}));
+                                    if (typeof s_inf_tmp.futureExpansion[i][1] === "object")
+                                        for (let j = 0; j < s_inf_tmp.futureExpansion[i][1].length; j++) {
+                                            if (typeof s_inf_tmp.futureExpansion[i][1][j].title !== "undefined")
+                                                a.appendChild(cE({
+                                                    type: "h6",
+                                                    innerText: s_inf_tmp.structureDesc[i][1][j].title
+                                                }));
+                                            a.appendChild(cE({
+                                                type: "p",
+                                                innerText: s_inf_tmp.futureExpansion[i][1][j].data
+                                            }));
+                                        }
+
+                                    else a.appendChild(cE({type: "p", innerText: s_inf_tmp.futureExpansion[i][1]}));
+                                }
+                                d.appendChild(a);
+                            } // FutureExpansion
+                            cs.appendChild(d);
+                            let tt = $(".topTab")[0];
+                            cs.onscroll = () => {
+                                if (cs.scrollTop > 60) {
+                                    cs.classList.add("down");
+                                    tt.classList.add("down");
+                                } else {
+                                    cs.classList.contains("down") ? cs.classList.remove("down") : void (0);
+                                    tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
+                                }
+                            };
                         }
-                        // ServiceTime
-                        {
-                            let FirstTrain = cE({type: "p", attr: [["id", "FirstTrain"]]});
-                            FirstTrain.appendChild(cE({
-                                type: "span",
-                                innerText: string.FirstTrainDesc[cL]
-                            }));
-                            let firstTrainWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
-                                let wrap = cE({type: "span"});
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
-                                }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
-                                }));
-                                for (let j = 0; j < s_inf_tmp.firstTrain[i].length; j++)
-                                    wrap.appendChild(cE({
-                                        type: "span",
-                                        innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.firstTrain[i][j][0]] + ": " + s_inf_tmp.firstTrain[i][j][1]
-                                    }));
-                                firstTrainWrap.appendChild(wrap);
-                            }
-                            FirstTrain.appendChild(firstTrainWrap);
-                            g.appendChild(FirstTrain);
-                        } // FirstTrain
-                        {
-                            let LastTrain = cE({type: "p", attr: [["id", "LastTrain"]]});
-                            LastTrain.appendChild(cE({
-                                type: "span",
-                                innerText: string.LastTrainDesc[cL]
-                            }));
-                            let lastTrainWrap = cE({type: "span"});
-                            for (let i = 0; i < via.length; i++) {
-                                let wrap = cE({type: "span"});
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    attr: [["class", "icon-" + globallist[linedata.indexOf(via[i])]]]
-                                }));
-                                wrap.appendChild(cE({
-                                    type: "span",
-                                    innerText: shortLinename[linedata.indexOf(via[i])][cL] + ": "
-                                }));
-                                for (let j = 0; j < s_inf_tmp.lastTrain[i].length; j++)
-                                    wrap.appendChild(cE({
-                                        type: "span",
-                                        innerText: routedirection[linedata.indexOf(via[i])][cL][s_inf_tmp.lastTrain[i][j][0]] + ": " + s_inf_tmp.lastTrain[i][j][1]
-                                    }));
-                                lastTrainWrap.appendChild(wrap);
-                            }
-                            LastTrain.appendChild(lastTrainWrap);
-                            g.appendChild(LastTrain);
-                        } // LastTrain
-                        cs.appendChild(g);
-                        let d = cE({type: "div", attr: [["class", "moreInfo"]]});
-                        d.appendChild(cE({type: "p", innerText: s_inf_tmp.shortDesc})); // ShortDescription
-                        {
-                            let a = cE({type: "div"});
-                            a.appendChild(cE({type: "h4", innerText: string.structureName[cL]}));
-                            for (let i = 0; i < s_inf_tmp.structureDesc.length; i++) {
-                                a.appendChild(cE({type: "h5", innerText: s_inf_tmp.structureDesc[i][0]}));
-                                if (typeof s_inf_tmp.structureDesc[i][1] === "object")
-                                    for (let j = 0; j < s_inf_tmp.structureDesc[i][1].length; j++) {
-                                        if (typeof s_inf_tmp.structureDesc[i][1][j].title !== "undefined")
-                                            a.appendChild(cE({
-                                                type: "h6",
-                                                innerText: s_inf_tmp.structureDesc[i][1][j].title
-                                            }));
-                                        a.appendChild(cE({type: "p", innerText: s_inf_tmp.structureDesc[i][1][j].data}));
-                                    }
-
-                                else a.appendChild(cE({type: "p", innerText: s_inf_tmp.structureDesc[i][1]}));
-                            }
-                            d.appendChild(a);
-                        } // StationStructureDesc
-                        let a = cE({type: "div"});
-                        let b = cE({type: "div"});
-                        a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
-                        a.appendChild(cE({type: "p", innerText: s_inf_tmp.exitDesc})); // Exit Desc
-                        b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
-                        b.appendChild(cE({type: "p", innerText: s_inf_tmp.usageDesc})); // Usage Desc
-                        d.appendChild(a);
-                        d.appendChild(b);
-                        {
-                            let a = cE({type: "div"});
-                            a.appendChild(cE({type: "h4", innerText: string.historyName[cL]}));
-                            for (let i = 0; i < s_inf_tmp.history.length; i++) {
-                                a.appendChild(cE({type: "h5", innerText: s_inf_tmp.history[i][0]}));
-                                if (typeof s_inf_tmp.history[i][1] === "object")
-                                    for (let j = 0; j < s_inf_tmp.history[i][1].length; j++) {
-                                        if (typeof s_inf_tmp.history[i][1][j].title !== "undefined")
-                                            a.appendChild(cE({type: "h6", innerText: s_inf_tmp.history[i][1][j].title}));
-                                        a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1][j].data}));
-                                    }
-
-                                else a.appendChild(cE({type: "p", innerText: s_inf_tmp.history[i][1]}));
-                            }
-                            d.appendChild(a);
-                        } // HistoryDesc
-                        if (typeof s_inf_tmp.futureExpansion !== "undefined") {
-                            let a = cE({type: "div"});
-                            a.appendChild(cE({type: "h4", innerText: string.futureExName[cL]}));
-                            for (let i = 0; i < s_inf_tmp.futureExpansion.length; i++) {
-                                a.appendChild(cE({type: "h5", innerText: s_inf_tmp.futureExpansion[i][0]}));
-                                if (typeof s_inf_tmp.futureExpansion[i][1] === "object")
-                                    for (let j = 0; j < s_inf_tmp.futureExpansion[i][1].length; j++) {
-                                        if (typeof s_inf_tmp.futureExpansion[i][1][j].title !== "undefined")
-                                            a.appendChild(cE({
-                                                type: "h6",
-                                                innerText: s_inf_tmp.structureDesc[i][1][j].title
-                                            }));
-                                        a.appendChild(cE({type: "p", innerText: s_inf_tmp.futureExpansion[i][1][j].data}));
-                                    }
-
-                                else a.appendChild(cE({type: "p", innerText: s_inf_tmp.futureExpansion[i][1]}));
-                            }
-                            d.appendChild(a);
-                        } // FutureExpansion
-                        cs.appendChild(d);
-                        let tt = $(".topTab")[0];
-                        cs.onscroll = () => {
-                            if (cs.scrollTop > 60) {
-                                cs.classList.add("down");
-                                tt.classList.add("down");
-                            } else {
-                                cs.classList.contains("down") ? cs.classList.remove("down") : void (0);
-                                tt.classList.contains("down") ? tt.classList.remove("down") : void (0);
-                            }
-                        };
                         if (isMap)
                             if (isAMap) {
                                 let map = new AMap.Map('MapContainer', {
@@ -547,7 +556,7 @@ pg.stationinfo = {
         })];
         ch.appendChild(cE({
             type: "h2",
-            innerHTML: cL===3?s_inf_tmp.name[cL].split("-")[0]:s_inf_tmp.name[cL]
+            innerHTML: s_inf_tmp.name[cL].split(cL === 2 ? "-" : "undefined")[0]
         }));
         ch.appendChild(cE({
             type: "h3",
