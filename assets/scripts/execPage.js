@@ -50,7 +50,7 @@ pg.stationList = {
                     attr: [["class", "icon-" + globallist[linedata.indexOf(r[1][i])]]]
                 }));
             }
-            wrap.appendChild(cE({type: "span", innerText: r[0][cL].split("-")[0]}));
+            wrap.appendChild(cE({type: "span", innerText: cL===3?r[0][cL].split("-")[0]:r[0][cL]}));
             wrap.onclick = () => {
                 loadPage.require("stationinfo", e);
             };
@@ -111,7 +111,7 @@ pg.stationList = {
                         flag = true;
                     }
                     let station = cE({type: "p"});
-                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split("-")[0] + "</span>";
+                    station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + cL===3?s_list[i].station[j][k][cL].split("-")[0]:s_list[i].station[j][k][cL] + "</span>";
                     station.onclick = function () {
                         pg.stationList.loadStationInf(i, d)
                     };
@@ -598,7 +598,7 @@ pg.stationinfo = {
         })];
         ch.appendChild(cE({
             type: "h2",
-            innerHTML: s_inf_tmp.name[cL].split("-")[0]
+            innerHTML: cL===3?s_inf_tmp.name[cL].split("-")[0]:s_inf_tmp.name[cL]
         }));
         ch.appendChild(cE({
             type: "h3",
