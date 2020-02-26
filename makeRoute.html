@@ -331,7 +331,7 @@
             else if (belong[0] === "3") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 0 : 4];
             else if (belong[0] === "14") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 0 : 2];
             else if (belong[0] === "KCL") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 3 : 1];
-            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + rd + "</p><p><span class='expandIcon'></span>" + num[i] + [" 個站 ", " 个站 ", "　駅　", "", " station(s), "][cL] + partTime[i] + [" 分鐘， 共 ", " 分钟， 共 ", " 分、 ", "", "min, "][cL] + (partDistance[i] / 1000) + " km</p><div id='showmore_" + i + "' style='display: none'>";
+            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + rd + "</p><p><span class='expandIcon'></span>" + num[i] + [" 個站， ", " 个站， ", "　駅、 ", "", " station(s), "][cL] + partTime[i] + [" 分鐘， 共 ", " 分钟， 共 ", " 分、 ", "", "min, "][cL] + (partDistance[i] / 1000) + " km</p><div id='showmore_" + i + "' style='display: none'>";
             for (let t = 0; t < sepStation[i].length; t++)
                 html += "<p>" + n_res_2[sepStation[i][t]][cL].split(cL === 2 ? "-" : "undefined")[0] + "</p>";
 
