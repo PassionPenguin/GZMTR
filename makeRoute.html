@@ -283,6 +283,7 @@
         return [res, gn[name.indexOf(res)], line[name.indexOf(res)], name.indexOf(res)];
     };
     processResult = (start, end) => {
+        routedirection = [[["廣州東站方向", "西塱方向"], ["广州东站方向", "西塱方向"], ["広州東駅方面", "西塱方面"], ["광저우 동역까지", "서쪽"], ["To Guangzhou E. Railway Station", "To Xilang"]], [["嘉禾望崗方向", "廣州南站方向"], ["嘉禾望岗方向", "广州南站方向"], ["嘉禾望崗方面", "広州南駅方面"], ["지아 왕강 지역", "루 저우 남 지역"], ["To Jiahe Wanggang", "To Guangzhou S. Railway Station"]], [["天河客運站方向", "機場北方向", "機場北/天河客運站方向", "體育西路方向", "番禺廣場方向", "體育西路/番禺廣場方向"], ["天河客运站方向", "机场北方向", "机场北/天河客运站方向", "体育西路方向", "番禺广场方向", "体育西路/番禺广场方向"], ["天河客運站方面", "空港北方面", "空港北方面/天河客運站方面", "体育西路方面", "番禺広場方面", "体育西路/番禺広場方面"], ["톈허 여객 터미널", "공항 북쪽", "공항 북쪽 / 톈허 여객 터미널", "톈 위서로", "판위 스퀘어", "톈 위서로 / 판위 스퀘어"], ["To Tinahe Coach Terminal", "To Airport N.", "To Airport N./Tianhe Coach Terminal", "To Tiyu Xilu", "To Panyu Square", "To Tiyu Xilu/Panyu Square"]], [["黃村方向", "南沙客運港方向"], ["黄村方向", "南沙客运港方向"], ["黃村方面", "南沙客運港方面"], ["후앙 쿤 지역", "난샤 여객 항구 지역"], ["To Huangcun", "To Nansha Passenger Port"]], [["文沖方向", "滘口方向", "三溪方向"], ["文冲方向", "滘口方向", "三溪方向"], ["文沖方面", "滘口方面", "三溪方面"], ["원 종 측면", "이코 우 측면", "산시 역 측면"], ["To Wenchong", "To Jiaokou", "To Sanxi"]], [["香雪方向", "潯峰崗方向"], ["香雪方向", "浔峰岗方向"], ["香雪方面", "潯峰崗方面"], ["향설 ", "심봉초"], ["To Xiangxue", "To Xunfenggang"]], [["大學城南方向", "廣州南站方向"], ["大学城南方向", "广州南站方向"], ["大學城南方面", "広州南駅方面"], ["대학교 도시의 남쪽 측면", "광저우 남역"], ["To Higher Education Mega Center S.", "To Guangzhou S. Railway Station"]], [["文化公園方向", "萬勝圍方向"], ["文化公园方向", "万胜围方向"], ["文化公園方面", "萬勝圍方面"], ["문화 공원", "완성 웨이"], ["To Cultural Park", "To Wanshengwei"]], [["高增方向", "飛鵝嶺方向"], ["高增方向", "飞鹅岭方向"], ["高增方面", "飛鵝嶺方面"], ["고성장 지역", "페이 게링 지역"], ["To Gaozeng", "To Fei'eling"]], [["新沙方向", "魚珠方向"], ["新沙方向", "鱼珠方向"], ["新沙方面", "魚珠方面"], ["신샤 지역", "물고기 구슬 지역"], ["To Xinsha", "To Yuzhu"]], [["東風方向", "鎮龍方向", "嘉禾望崗方向", "新和方向"], ["东风方向", "镇龙方向", "嘉禾望岗方向", "新和方向"], ["東風方面", "鎮龍方面", "嘉禾望崗方面", "新和方面"], ["동풍 방향", "정룽 방향", "지애 왕강 방향", "신와 방향"], ["To Dongfeng", "To Zhenlong", "To Jiahe Wanggang", "To Xinhe"]], [["增城廣場方向", "員村方向"], ["增城广场方向", "员村方向"], ["增城広場方面", "員村方面"], ["정청 광장으로가는 길", "위안 쿤으로가는 길"], ["To Zengcheng Square", "To Yuancun"]], [["瀝滘方向", "新城東方向"], ["沥滘方向", "新城东方向"], ["瀝滘方面", "新城東方面"], ["릴리의 방향으로", "도시의 동쪽으로"], ["To Lijiao", "To Xincheng Dong"]], [["林和西方向", "廣州塔方向"], ["林和西方向", "广州塔方向"], ["林和西方面", "広州タワー方面"], ["린 허시 지역", "광저우 타워 지역"], ["To Linhexi", "To Canton Tower"]], [["廣州塔方向", "萬勝圍方向"], ["广州塔方向", "万胜围方向"], ["広州タワー方面", "萬勝圍方面"], ["광저우 타워 지역", "완성 웨이"], ["To Canton Tower", "To Wanshengwei"]]];
         let processNumber = (num) => {
             return num < 10 ? ("0" + num).toString() : num.toString();
         };
@@ -291,7 +292,7 @@
             partTime = route[1][2], partDistance = route[1][3], routeDirection = route[1][4], sepStation = route[1][5];
         start = route[0][0][0];
         end = route[0][0][route[0][0].length - 1];
-        $("#CurrentRoute")[0].innerText = n_res_2[start][cL].split(cL === 2 ? "-" : "undefined")[0] + " -> " + n_res_2[end][cL].split(cL === 2 ? "-" : "undefined")[0] + " " + string.aboutTime[cL] + time + string.Minute[cL];
+        $("#CurrentRoute")[0].innerText = n_res_2[start][cL].split(cL === 2 ? "-" : "undefined")[0] + " -> " + n_res_2[end][cL].split(cL === 2 ? "-" : "undefined")[0] + " " + string.aboutTime[cL] + time + " " + string.Minute[cL];
         let id = [1, -15, -39, -39, -70, -94, -118, -150, -159, -174, -185, -196, -196, -219, -240, -265, -274];
         let lp = $("#left-pane")[0];
         let rp = $("#right-pane")[0];
@@ -331,7 +332,7 @@
             else if (belong[0] === "3") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 0 : 4];
             else if (belong[0] === "14") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 0 : 2];
             else if (belong[0] === "KCL") rd = routedirection[globallist.indexOf(i === 0 ? belong[1] : belong[1][1])][cL][routeDirection[i] === 0 ? 3 : 1];
-            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + rd + "</p><p><span class='expandIcon'></span>" + num[i] + [" 個站 ", " 个站 ", "　駅　", "", " station(s), "][cL] + partTime[i] + [" 分鐘， 共 ", " 分钟， 共 ", " 分、 ", "", "min, "][cL] + (partDistance[i] / 1000) + " km</p><div id='showmore_" + i + "' style='display: none'>";
+            let html = "<p><span class='border-" + (i === 0 ? belong[1] : belong[1][1]) + "'>" + (i === 0 ? belong[0] : belong[1][0]) + "</span>" + rd + "</p><p><span class='expandIcon'></span>" + num[i] + [" 個站，", " 个站，", " 駅、", " 역 ", " station(s), "][cL] + partTime[i] + [" 分鐘， 共 ", " 分钟， 共 ", " 分、 ", " 분 ", " min, "][cL] + (partDistance[i] / 1000) + " km</p><div id='showmore_" + i + "' style='display: none'>";
             for (let t = 0; t < sepStation[i].length; t++)
                 html += "<p>" + n_res_2[sepStation[i][t]][cL].split(cL === 2 ? "-" : "undefined")[0] + "</p>";
 
@@ -368,7 +369,7 @@
         infWrap.appendChild(cE({
             type: "h5",
             attr: [["id", "RouteData"]],
-            innerText: "CN¥" + price + " , " + (length / 1000).toPrecision(2) + " km , " + time + string.Minute[cL]
+            innerText: "CN¥" + price + " , " + (length / 1000).toPrecision(2) + " km , " + time + " "+ string.Minute[cL]
         }));
         infWrap.appendChild(cE({
             type: "h5",
