@@ -126,6 +126,7 @@ pg.stationList = {
             else
                 $("#Line1-GZ")[0].classList.add("show");
     }, loadStationInf: (line, num) => {
+        if (line === 7) num += 13;
         loadPage.require("stationinfo", s_num[line][num] + "&referer=stationList&lineid=" + (line));
     }
 };
@@ -540,7 +541,7 @@ pg.stationinfo = {
     },
     showstationinf: (num, platformnum) => {
         let emptyData = false;
-        if (s_inf_tmp.inf[platformnum].facilities.length === 0 || s_inf_tmp.inf[platformnum].facilities === null || s_inf_tmp.inf[platformnum].facilities === undefined) {
+        if (s_inf_tmp.inf[platformnum].facilities === undefined || s_inf_tmp.inf[platformnum].facilities.length === 0 || s_inf_tmp.inf[platformnum].facilities === null || s_inf_tmp.inf[platformnum].facilities === undefined) {
             showWarning(string.emptyInfData[cL], 1000);
             emptyData = true;
         }
