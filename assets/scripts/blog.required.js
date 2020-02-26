@@ -89,24 +89,50 @@ window.forumDisplay = () => {
         app.append(resultThread);
     }
     {
+        let loadThreadList = (page) => {
+            loadURL(window.location.href.replace(/(page=).*?($)/, "page=" + page));
+        };
         let pgsBox = cE({type: "div", attr: [["id", "pg-pgs"]]});
-        let curPage = [...pg.$("#pgt>.pg>*")].filter(i => i.tagName === "STRONG")[0].innerText;
-        let firstPage = pg.$("#pgt>.pg>:first-child")[0].innerText;
-        let lastPage = pg.$("#pgt>.pg>:last-child")[0].innerText;
-        if (curPage !== firstPage) {
-            let prevPage = cE({type: "span", innerText: "", attr: [["class", "mi prevPage"]]});
+        let curPage = Int([...pg.$("#pgt>.pg>*")].filter(i => i.tagName === "STRONG")[0].innerText);
+        let lastPage = Int([...pg.$("#pgt>.pg>*")].filter(i => i.classList.contains("last"))[0].innerText.substr(4));
+        if (curPage !== 1) {
+            let firstPage = cE({type: "span", innerText: "first_page", attr: [["class", "mi nextPage"]]});
+            firstPage.onclick = () => {
+                loadThreadList(1);
+            };
+            pgsBox.append(firstPage);
+            let prevPage = cE({type: "span", innerText: "chevron_left", attr: [["class", "mi prevPage"]]});
             prevPage.onclick = () => {
-                loadURL(window.location.href.replace(/(page=).*?($)/, "page=" + (Int(curPage) - 1)));
+                loadThreadList(curPage - 1);
             };
             pgsBox.append(prevPage);
         }
         pgsBox.append(cE({type: "span", innerText: curPage}));
+        if (curPage - 1 >= 1) {
+            let page = cE({type: "span", innerText: (curPage - 1), attr: [["class", "mi page"]]});
+            page.onclick = () => {
+                loadThreadList(curPage - 1);
+            };
+            pgsBox.append(page);
+        }
+        if (curPage + 1 <= lastPage) {
+            let page = cE({type: "span", innerText: (curPage + 1), attr: [["class", "mi page"]]});
+            page.onclick = () => {
+                loadThreadList(curPage + 1);
+            };
+            pgsBox.append(page);
+        }
         if (curPage !== lastPage) {
-            let nextPage = cE({type: "span", innerText: "", attr: [["class", "mi nextPage"]]});
+            let nextPage = cE({type: "span", innerText: "chevron_right", attr: [["class", "mi nextPage"]]});
             nextPage.onclick = () => {
-                loadURL(window.location.href.replace(/(page=).*?($)/, "page=" + (Int(curPage) + 1)));
+                loadThreadList(curPage + 1);
             };
             pgsBox.append(nextPage);
+            let lastPage = cE({type: "span", innerText: "last_page", attr: [["class", "mi nextPage"]]});
+            lastPage.onclick = () => {
+                loadThreadList(lastPage);
+            };
+            pgsBox.append(lastPage);
         }
         app.append(pgsBox)
     }

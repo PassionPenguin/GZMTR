@@ -202,3 +202,31 @@ div[class^="city-icon-"] {
     opacity: 0;
 }
 
+#pg-pgs {
+    width: 100%;
+    height: 36px;
+    text-align: center;
+}
+
+#pg-pgs > * {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+#pg-pgs > *:hover, #pg-pgs > *:focus {
+    background: var(--black);
+    color: var(--white);
+}
+
+#pg-pgs > .nextPage, #pg-pgs > .prevPage {
+    font: 24px/28px 'Material Icons';
+}
+
+#pg-pgs > :not(.nextPage):not(.prevPage) {
+    font: 16px/28px monospace;
+}
