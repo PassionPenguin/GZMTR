@@ -10,13 +10,9 @@
 }
 
 @font-face {
-    font-family: Anodina-bold;
+    font-family: Anodina;
+    font-weight: 600;
     src: url("../media/font/Anodina-Bold.otf");
-}
-
-@font-face {
-    font-family: Anodina-light;
-    src: url("../media/font/Anodina-Light.otf");
 }
 
 @font-face {
