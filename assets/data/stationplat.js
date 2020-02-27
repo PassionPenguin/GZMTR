@@ -283,7 +283,9 @@ window.s_plat = [
         ["5", "3"],
         ["3", "3"],
         ["1", "APM"],
-        ["9", "APM"]
+        ["9", "APM"],
+        ["2", "THZ1"],
+        ["9", "THZ1"]
     ], 
     //48 Zhujiang New Town
     [
@@ -486,13 +488,16 @@ window.s_plat = [
     //85 Guanzhou
     [
         ["1", "4"], 
-        ["2", "4"]],
+        ["2", "4"]
+    ],
     //86 Wanshengwei
     [
         ["1", "4"], 
         ["2", "4"], 
         ["1", "8"], 
-        ["9", "8"]
+        ["9", "8"],
+        ["9", "THZ1"],
+        ["1", "THZ1"]
     ],
     //87 Chebeinan
     [
@@ -720,12 +725,12 @@ window.s_plat = [
         ["1", "6"], 
         ["2", "6"]
     ],
-    //129 Jinfeng 
+    //129 Huangbei 
     [
         ["1", "6"], 
         ["2", "6"]
     ],
-    //130 Huangbei
+    //130 Jinfeng
     [
         ["1", "6"], 
         ["2", "6"]
@@ -772,7 +777,7 @@ window.s_plat = [
         ["1", "7"], 
         ["2", "7"]
     ],
-    //139 Banqian
+    //139 Banqiao
     [
         ["1", "7"], 
         ["2", "7"]
@@ -1268,16 +1273,62 @@ window.s_plat = [
     [
         ["1", "APM"], 
         ["2", "APM"]
+    ],
+    //237 Canton Tower East
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //238 Liede Bridge South
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //239 Party Pier
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //240 Nanfeng
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //241 Canton Fair Complex West
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //242 Canton Fair Complex Middle
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //243 Canton Fair Complex East
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //244 Pazhou Bridge South
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
+    ],
+    //245 Pazhou Pagoda
+    [
+        ["2", "THZ1"],
+        ["1", "THZ1"]
     ]
-    //237 Jiaoxin
-    //238 Tinggang
-    //239 Shijing
-    //240 Xiaoping
-    //241 Shitan
-    //242 Julong
-    //243 Shangbu
-    //244 Tongde
-    //245 Ezhangtan
-    //246 Caihongqiao
-    //247 Hualin Buddhist Temple
+    //246 Jiaoxin
+    //247 Tinggang
+    //248 Shijing
+    //249 Xiaoping
+    //250 Shitan
+    //251 Julong
+    //252 Shangbu
+    //253 Tongde
+    //254 Ezhangtan
+    //255 Caihongqiao
+    //256 Hualin Buddhist Temple
+
 ];
