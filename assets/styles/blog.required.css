@@ -711,3 +711,9 @@ p.pg-threadAuthorName {
     overflow: hidden;
     white-space: nowrap;
 }
+
+p.pg-threadPostMeta {
+    max-width: calc(100vw - 125px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
