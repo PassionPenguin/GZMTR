@@ -208,8 +208,17 @@ window.threadDisplay = () => {
         thread.append(cE({
             type: "div",
             attr: [["class", "postThreadContent"]],
-            innerHTML: threadContent[1].innerHTML
+            innerHTML: threadContent[1].innerHTML.replace(/src="*".+zoomfile="/ig, "src=\"")
         }));
+        let replyBTN = cE({
+            type: "div",
+            attr: [["class", "replyToThis"], ["rid", [...pg.$("div[id^='post_']")][id].id.substr(5)]],
+            innerText: "回复"
+        });
+        replyBTN.onclick = () => {
+            loadURL(id !== "0" ? ("http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid + "&repquote=" + replyBTN.getAttribute("rid").substr(5)) : "http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid)
+        };
+        thread.append(replyBTN);
         threadWrap.append(thread);
     });
     {
@@ -260,4 +269,8 @@ window.threadDisplay = () => {
     }
     app.append(threadWrap);
     document.body.append(app);
+};
+
+window.postDisplay = () => {
+
 };

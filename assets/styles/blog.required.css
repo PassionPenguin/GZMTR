@@ -274,3 +274,11 @@ p.pg-threadPostInfo {
 p.pg-threadAuthorName {
     font: 800 14px/1 Anodina, sans-serif;
 }
+
+.pg-threadWrap, .pg-threadWrap * {
+    max-width: calc(100vw - 80px)
+}
+
+.pg-threadPost {
+    margin: 0 0 30px 0;
+}
