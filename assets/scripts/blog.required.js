@@ -822,7 +822,7 @@ window.basicComp = () => {
     if (avatarBox) {//logined
 
     } else {
-        if (document.body.classList.contains("pg_register")) {
+        if (!document.body.classList.contains("pg_register")) {
             showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
         }
     }
