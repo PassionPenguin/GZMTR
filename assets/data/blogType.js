@@ -48,19 +48,20 @@ let blog = [
     { name: "轨道收藏", fid: 33, iconid: "COL" },
     { name: "都市风情", fid: 16, iconid: "SCN" }, 
     //生活休闲
-    { name: "地铁地产", fid: 31, iconid: "EST" },
+    // { name: "地铁地产", fid: 31, iconid: "EST" },
     { name: "地铁美食", fid: 15, iconid: "FOOD" },
-    { name: "交易市场", fid: 60, iconid: "MARK" },
+    // { name: "交易市场", fid: 60, iconid: "MARK" },
     { name: "轨交游戏", fid: 145, iconid: "GAME" },
     { name: "站前广场", fid: 21, iconid: "CHAT" },
     //铁道讨论
-    { name: "城际高铁", fid: 46, iconid: "ICHS" },
-    { name: "机车车辆", fid: 45, iconid: "TRA" },
-    { name: "轨道知识", fid: 43, iconid: "KNOW" },
+    // { name: "城际高铁", fid: 46, iconid: "ICHS" },
+    // { name: "机车车辆", fid: 45, iconid: "TRA" },
+    // { name: "轨道知识", fid: 43, iconid: "KNOW" },
     //合作分区
-    { name: "地铁的真相", fid: 150, iconid: "TRU" },
-    { name: "都市快轨交通", fid: 152, iconid: "HST" },
+    // { name: "地铁的真相", fid: 150, iconid: "TRU" },
+    // { name: "都市快轨交通", fid: 152, iconid: "HST" },
     //管理分区
-    { name: "意见建议", fid: 18, iconid: "CMS" },
-    { name: "地铁族网刊", fid: 146, iconid: "MAG" }
+    { name: "站务公告", fid: 17, iconid: "MA" },
+    // { name: "意见建议", fid: 18, iconid: "CMS" },
+    // { name: "地铁族网刊", fid: 146, iconid: "MAG" }
 ];

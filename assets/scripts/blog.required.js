@@ -150,11 +150,11 @@ window.forumDisplay = () => {
                 loadThreadList(curPage + 1);
             };
             pgsBox.append(nextPage);
-            let lastPage = cE({type: "span", innerText: "last_page", attr: [["class", "mi nextPage"]]});
-            lastPage.onclick = () => {
+            let lPCont = cE({type: "span", innerText: "last_page", attr: [["class", "mi nextPage"]]});
+            lPCont.onclick = () => {
                 loadThreadList(lastPage);
             };
-            pgsBox.append(lastPage);
+            pgsBox.append(lPCont);
         }
         app.append(pgsBox)
     }
@@ -205,25 +205,44 @@ window.threadDisplay = () => {
         ThreadPostInfo.append(UsrInfoBox);
         ThreadPostInfo.append(postInfo);
         thread.append(ThreadPostInfo);
+        let pid = [...pg.$("#ct.wp>#postlist>div[id^='post_']")][id].id;
         thread.append(cE({
             type: "div",
             attr: [["class", "postThreadContent"]],
             innerHTML: threadContent[1].innerHTML.replace(/src="*".+zoomfile="/ig, "src=\"")
         }));
-        let replyBTN = cE({
+        let threadUtil = cE({
             type: "div",
-            attr: [["class", "replyToThis"], ["rid", [...pg.$("div[id^='post_']")][id].id.substr(5)]],
+            attr: [["class", "threadUtil"]]
+        });
+        let replyBTN = cE({
+            type: "span",
+            attr: [["class", "replyToThis"], ["rid", pid.substr(5)]],
             innerText: "回复"
         });
         replyBTN.onclick = () => {
-            loadURL(id !== "0" ? ("http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid + "&repquote=" + replyBTN.getAttribute("rid").substr(5)) : "http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid)
+            loadURL(id !== "0" ? ("http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid + "&repquote=" + replyBTN.getAttribute("rid")) : "http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid)
         };
-        thread.append(replyBTN);
+        threadUtil.append(replyBTN);
+        if (document.body.innerHTML.includes("评分")) {
+            let rateBTN = cE({
+                type: "span",
+                attr: [["class", "makeRate"], ["rid", pid.substr(5)]],
+                innerText: "评分"
+            });
+            rateBTN.onclick = () => {
+                showWindow('rate', 'forum.php?mod=misc&action=rate&tid=' + tid + '&pid=' + rateBTN.getAttribute("rid") + '', 'get', -1);
+                return false;
+            };
+            threadUtil.append(rateBTN);
+        }
+        thread.append(threadUtil);
         threadWrap.append(thread);
     });
+    app.append(threadWrap);
     {
         let loadPostList = (page) => {
-            loadURL("http://www.ditiezu.com/forum.php?mod=forumdisplay&tid=" + tid + "&page=" + page);
+            loadURL("http://www.ditiezu.com/forum.php?mod=viewthread&tid=" + tid + "&page=" + page);
         };
         let pgsBox = cE({type: "div", attr: [["id", "pg-pgs"]]});
         if (curPage !== 1) {
@@ -259,15 +278,14 @@ window.threadDisplay = () => {
                 loadPostList(curPage + 1);
             };
             pgsBox.append(nextPage);
-            let lastPage = cE({type: "span", innerText: "last_page", attr: [["class", "mi nextPage"]]});
-            lastPage.onclick = () => {
+            let lPCont = cE({type: "span", innerText: "last_page", attr: [["class", "mi nextPage"]]});
+            lPCont.onclick = () => {
                 loadPostList(lastPage);
             };
-            pgsBox.append(lastPage);
+            pgsBox.append(lPCont);
         }
         app.append(pgsBox)
     }
-    app.append(threadWrap);
     document.body.append(app);
 };
 
