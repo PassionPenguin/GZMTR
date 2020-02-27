@@ -291,6 +291,8 @@ window.blog = [
         "iconid": "CHAT",
         "enName": "H2O Plaza"
     },
+    //铁道讨论
+    {"name": "城际高铁", "fid": 46, "iconid": "Railway", "enName": "Railway"},
     //管理分区
     {
         "name": "站务公告",

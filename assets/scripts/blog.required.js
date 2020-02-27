@@ -2,6 +2,48 @@
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
+    },
+    prompt: (title, placeholder, callback, inf) => {
+        let promptWrap = cE({type: "div", attr: [["id", "pg-prompt-wrap"]]});
+        let promptInfo = cE({type: "span", attr: [["class", "pg-prompt-info"]], innerText: title});
+        let promptInput = cE({
+            type: "div",
+            attr: [["contenteditable", "true"], ["class", "pg-prompt-input"]],
+            innerText: placeholder
+        });
+        let promptTips = cE({type: "div", attr: [["class", "pg-prompt-promptInfo"]], innerText: inf});
+        let ctrlGroup = cE({type: "div", attr: [["class", "pg-prompt-ctrl"]]});
+        let submitPrompt = cE({
+            type: "span",
+            attr: [["class", "pg-prompt-ctrl"]],
+            innerHTML: "<span class='mi'>check</span><span>确认信息</span>"
+        });
+        submitPrompt.onclick = () => {
+            promptWrap.classList.remove("active");
+            setTimeout(() => {
+                document.body.removeChild(promptWrap)
+            }, 500);
+            callback(promptInput.innerHTML);
+        };
+        let closePrompt = cE({
+            type: "span",
+            attr: [["class", "pg-prompt-ctrl"]],
+            innerHTML: "<span class='mi'>close</span><span>关闭窗口</span>"
+        });
+        closePrompt.onclick = () => {
+            promptWrap.classList.remove("active");
+            setTimeout(() => {
+                document.body.removeChild(promptWrap)
+            }, 500);
+            callback(false);
+        };
+        ctrlGroup.append(submitPrompt);
+        ctrlGroup.append(closePrompt);
+        promptWrap.append(promptInfo);
+        promptWrap.append(promptInput);
+        promptWrap.append(promptTips);
+        promptWrap.append(ctrlGroup);
+        document.body.append(promptWrap);
     }
 };
 window.cE = (data) => {
@@ -17,6 +59,9 @@ window.cE = (data) => {
 };
 window.Int = parseInt;
 Node.prototype.append = Node.prototype.appendChild;
+window.pgFocus = (a) => {
+    return a.getAttribute("pg-active");
+};
 if (!Array.prototype.last) {
     Array.prototype.last = function () {
         return this[this.length - 1];
@@ -54,8 +99,9 @@ window.loadURL = (url) => {
     window.location.href = url;
 };
 
-window.forumDisplay = () => {
-    window.blog = [{name: "北京区", fid: 7, iconid: "BJ", enName: "Beijing"}, {
+
+window.blog = [
+    {name: "北京区", fid: 7, iconid: "BJ", enName: "Beijing"}, {
         name: "天津区",
         fid: 6,
         iconid: "TJ",
@@ -175,7 +221,14 @@ window.forumDisplay = () => {
         fid: 21,
         iconid: "CHAT",
         enName: "H2O Plaza"
-    }, {name: "站务公告", fid: 17, iconid: "MA", enName: "Announcement"}];
+    }, {name: "城际高铁", fid: 46, iconid: "Railway", "enName": "Railway"}, {
+        name: "站务公告",
+        fid: 17,
+        iconid: "MA",
+        enName: "Announcement"
+    }];
+
+window.forumDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     app.append(cE({type: "div", attr: [["class", "pg-backgroundImage"]]}));
     app.append(cE({type: "div", attr: [["class", "pg-backgroundFilter"]]}));
@@ -187,7 +240,7 @@ window.forumDisplay = () => {
         let appName = cE({type: "div", attr: [["class", "pg-titleName"]]});
         appName.append(cE({
             type: "img",
-            attr: [["class", "city-icon-GZ"], ["src", "http://127.0.0.1/assets/media/images/city-icon/compressed/" + blog[curIndex].iconid + ".svg"]]
+            attr: [["class", "city-icon-GZ"], ["src", "https://passionpenguin.github.io/GZMTR/assets/media/images/city-icon/compressed/" + blog[curIndex].iconid + ".svg"]]
         }));
         appName.append(cE({
             type: "div",
@@ -289,13 +342,23 @@ window.forumDisplay = () => {
         }
         app.append(pgsBox)
     }
+    app.append(cE({
+        type: "p",
+        attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
+        innerText: "designed and coded by @PassionPenguin"
+    }));
     document.body.append(app);
 };
 
 window.threadDisplay = () => {
-    let curPage = Int([...pg.$("#pgt .pg>*")].filter(i => i.tagName === "STRONG")[0].innerText);
-    let lastPage = [...pg.$("#pgt .pg>*")].filter(i => !i.classList.contains("nxt")).last().innerText;
-    lastPage = Int(lastPage.includes("...") ? lastPage.substr(4) : lastPage);
+    if (pg.$("#pgt .pg>*").length !== 0) {
+        window.curPage = Int([...pg.$("#pgt .pg>*")].filter(i => i.tagName === "STRONG")[0].innerText);
+        window.lastPage = [...pg.$("#pgt .pg>*")].filter(i => !i.classList.contains("nxt")).last().innerText;
+        lastPage = Int(lastPage.includes("...") ? lastPage.substr(4) : lastPage);
+    } else {
+        window.curPage = 1;
+        window.lastPage = 1
+    }
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let threadSubject = pg.$("#thread_subject")[0].innerText;
     let topName = cE({
@@ -375,7 +438,7 @@ window.threadDisplay = () => {
         threadWrap.append(thread);
     });
     app.append(threadWrap);
-    {
+    try {
         let loadPostList = (page) => {
             loadURL("http://www.ditiezu.com/forum.php?mod=viewthread&tid=" + tid + "&page=" + page);
         };
@@ -420,8 +483,15 @@ window.threadDisplay = () => {
             pgsBox.append(lPCont);
         }
         app.append(pgsBox)
+    } catch (e) {
+        console.log("A/E:\tOnly One Page");
     }
     document.body.append(app);
+    app.append(cE({
+        type: "p",
+        attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
+        innerText: "designed and coded by @PassionPenguin"
+    }));
 };
 
 window.loginDisplay = () => {
@@ -434,8 +504,350 @@ window.loginDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     app.append(topName);
     document.body.append(app);
+    app.append(cE({
+        type: "p",
+        attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
+        innerText: "designed and coded by @PassionPenguin"
+    }));
+};
+
+window.indexDisplay = () => {
+    let list = [...pg.$(".slideshow li")].map((i, index) => [i.children[0].children[0].src, i.children[1].innerText, i.children[0].href, index]);
+    let belongINF = [...pg.$(".comiis_onemiddleulone:first-child.clearfix>li")].map(i => [i.children[0].innerText, i.children[1].innerText]);
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    app.append(cE({type: "p", innerText: "热门板块", attr: [["class", "pg-hotForumDescription"]]}));
+    {
+        let hotForum = cE({type: "div", attr: [["id", "pg-hotForum"]]});
+        let recList = [23, 7, 21, 46, 39, 16];
+        recList.forEach((e) => {
+            let forumBox = cE({type: "div", attr: [["class", "hotForum"]]});
+            forumBox.append(cE({
+                type: "img",
+                attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/images/city-icon/compressed/" + blog[blog.map(i => i.fid).indexOf(e)].iconid + ".svg"], ["onclick", "loadURL(\"" + "http://www.ditiezu.com/forum.php?mod=forumdisplay&fid=" + e + "\")"]]
+            }));
+            forumBox.append(cE({type: "p", innerText: blog[blog.map(i => i.fid).indexOf(e)].name}));
+            hotForum.append(forumBox);
+        });
+        app.append(hotForum);
+    }//topped fid
+
+    app.append(cE({type: "p", innerText: "今日聚焦", attr: [["class", "pg-hotThreadDescription"]]}));
+    {
+        let recommendPosts = cE({type: "div", attr: [["id", "pg-recommendPosts"]]});
+        list.forEach(e => {
+            let listBox = cE({
+                type: "div",
+                attr: [["class", "pg-recommendPost"], ["onclick", "loadURL(\"" + e[2] + "\")"]]
+            });
+            let metaInfo = cE({type: "div", attr: [["class", "pg-recommendPostMeta"]]});
+            metaInfo.append(cE({type: "p", attr: [["class", "pg-recommendPostName"]], innerText: e[1]}));
+            metaInfo.append(cE({
+                type: "p",
+                attr: [["class", "pg-recommendPostInfo"]],
+                innerHTML: "<span class='pg-fidBadge'>" + belongINF[e[3]][1] + "</span>" + "<span class='pg-threadAuthorName'>" + belongINF[e[3]][0] + "</span>"
+            }));
+            listBox.append(metaInfo);
+            listBox.append(cE({
+                type: "img",
+                attr: [["class", "pg-recommendPostImage"], ["src", e[0]]]
+            }));
+            recommendPosts.append(listBox);
+        });
+        app.append(recommendPosts);
+    }//recommend slideshow
+
+    app.append(cE({type: "p", innerText: "主要板块", attr: [["class", "pg-mainForumDescription"]]}));
+    {
+        let ForumList = cE({type: "div", attr: [["id", "pg-hotForum"]]});
+        blog.forEach(e => {
+            let Forum = cE({
+                type: "div",
+                attr: [["class", "normalForumList"], ["onclick", "loadURL(\"" + "http://www.ditiezu.com/forum.php?mod=forumdisplay&fid=" + e.fid + "\")"]]
+            });
+            Forum.append(cE({
+                type: "img",
+                attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/images/city-icon/compressed/" + e.iconid + ".svg"]]
+            }));
+            Forum.append(cE({
+                type: "p",
+                innerHTML: "<span class=\"cnName\">" + e.name + "</span>" + "<span class=\"enName\">" + e.enName + "</span>"
+            }));
+            ForumList.append(Forum);
+        });
+        app.append(ForumList);
+    }//all fid list
+    app.append(cE({
+        type: "p",
+        attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
+        innerText: "designed and coded by @PassionPenguin"
+    }));
+    document.body.append(app);
 };
 
 window.postDisplay = () => {
+    let g = (e) => {
+        let startPosition = e.selectionStart;
+        let endPosition = e.selectionEnd;
+        // Check if you've selected text
+        if ((!startPosition) || (!endPosition))
+            return 0;
+        else if (startPosition === endPosition)
+            return startPosition;
+        else
+            return [startPosition, endPosition];
+    };
+    let styled = (bracketId, attr, dbl) => {
+        let cur = g(editBox);
+        let beginBracket = "[" + bracketId + (attr !== "" && attr !== undefined && attr ? ("=" + attr + "]") : "]");
+        let endBracket = "[/" + bracketId + "]";
+        dbl = dbl !== undefined ? dbl : true;
+        if (typeof cur === "number") {
+            editBox.value = editBox.value.substring(0, cur) + beginBracket + (dbl ? endBracket : "") + editBox.value.substring(cur, editBox.value.length);
+            editBox.setSelectionRange(cur + beginBracket.length, cur + beginBracket.length);
+        } else {
+            editBox.value = editBox.value.substring(0, cur[0]) + beginBracket + editBox.value.substring(cur[0], cur[1]) + (dbl ? endBracket : "") + editBox.value.substring(cur[1], editBox.value.length);
+            editBox.setSelectionRange(cur[0], cur[0] + beginBracket.length);
+        }
+    };
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let textEditBoxWrap = cE({type: "div", attr: [["id", "pg-postEditBoxWrap"]]});
+    let editBox = cE({type: "textarea", attr: [["id", "pg-postEditBox"]]});
+    textEditBoxWrap.append(editBox);
+    let editBoxUtilBoxWrap = cE({type: "div", attr: [["id", "pg-postEditBoxUtilBoxWrap"]]});
+    let editBoxUtilBox = cE({type: "div", attr: [["id", "pg-postEditBoxUtilBox"]]});
+    textEditBoxWrap.append(editBoxUtilBox);
+    let mainFeatureWrap = cE({type: "div", attr: [["id", "mainFeatureWrap"]]});
+    let textStyleWrap = cE({type: "div", attr: [["id", "textStyleWrap"]]});
+    let makeSpecialWrap = cE({type: "div", attr: [["id", "makeSpecialWrap"]]});
+    let textStyleBox = cE({
+        type: "span",
+        attr: [["class", "mi pg-textStyleTrigger"], ["pg-active", "false"]],
+        innerText: "text_fields"
+    });
+    textStyleBox.onclick = () => {
+        if (pgFocus(textStyleBox)) {
+            textStyleBox.classList.add("active");
+            editBoxUtilBoxWrap.classList.add("TextStyle");
+        } else {
+            textStyleBox.classList.remove("active");
+            editBoxUtilBoxWrap.classList.remove("TextStyle");
+        }
+        return false;
+    };
+    mainFeatureWrap.append(textStyleBox);
+    let makeSpecial = cE({
+        type: "span",
+        attr: [["class", "mi pg-makeSpecialTrigger"], ["pg-active", "false"]],
+        innerText: "add_circle_outline"
+    });
+    makeSpecial.onclick = () => {
+        if (pgFocus(makeSpecial)) {
+            makeSpecial.classList.add("active");
+            editBoxUtilBoxWrap.classList.add("MakeSpecial");
+        } else {
+            makeSpecial.classList.remove("active");
+            editBoxUtilBoxWrap.classList.remove("MakeSpecial");
+        }
+        return false;
+    };
+    mainFeatureWrap.append(makeSpecial);
+    let undo = cE({
+        type: "span",
+        attr: [["class", "mi pg-undoTrigger"], ["pg-active", "false"]],
+        innerText: "undo"
+    });
+    undo.onclick = () => {
+        pg.$("#e_undo")[0].click();
+        return false;
+    };
+    mainFeatureWrap.append(undo);
+    let redo = cE({
+        type: "span",
+        attr: [["class", "mi pg-redoTrigger"], ["pg-active", "false"]],
+        innerText: "redo"
+    });
+    redo.onclick = () => {
+        pg.$("#e_redo")[0].click();
+        return false;
+    };
+    mainFeatureWrap.append(redo);
+    {
+        let bold = cE({type: "span", attr: [["class", "mi"]], innerText: "format_bold"});
+        bold.onclick = () => {
+            styled("b");
+            return false;
+        };
+        textStyleWrap.append(bold);
+        let italic = cE({type: "span", attr: [["class", "mi"]], innerText: "format_italic"});
+        italic.onclick = () => {
+            styled("i");
+            return false;
+        };
+        textStyleWrap.append(italic);
+        let underline = cE({type: "span", attr: [["class", "mi"]], innerText: "format_underlined"});
+        underline.onclick = () => {
+            styled("u");
+            return false;
+        };
+        textStyleWrap.append(underline);
+        let strike = cE({type: "span", attr: [["class", "mi"]], innerText: "format_strikethrough"});
+        strike.onclick = () => {
+            styled("s");
+            return false;
+        };
+        textStyleWrap.append(strike);
+        let heading = cE({type: "span", attr: [["class", "mi"]], innerText: "title"});
+        heading.onclick = () => {
+            styled("size", "5");
+            return false;
+        };
+        textStyleWrap.append(heading);
+        let quote = cE({type: "span", attr: [["class", "mi"]], innerText: "format_quote"});
+        quote.onclick = () => {
+            styled("quote");
+            return false;
+        };
+        textStyleWrap.append(quote);
+        let code = cE({type: "span", attr: [["class", "mi"]], innerText: "code"});
+        code.onclick = () => {
+            styled("code");
+            return false;
+        };
+        textStyleWrap.append(code);
+        let back = cE({type: "span", attr: [["class", "mi"]], innerText: "chevron_right"});
+        back.onclick = () => {
+            editBoxUtilBoxWrap.classList.remove("TextStyle");
+            return false;
+        };
+        textStyleWrap.append(back);
+    }
+    {
+        let back = cE({type: "span", attr: [["class", "mi"]], innerText: "chevron_left"});
+        back.onclick = () => {
+            editBoxUtilBoxWrap.classList.remove("MakeSpecial");
+            return false;
+        };
+        makeSpecialWrap.append(back);
+        let link = cE({type: "span", attr: [["class", "mi"]], innerText: "insert_link"});
+        link.onclick = () => {
+            pg.prompt("请输入您想要插入的链接内容", "https://passionpenguin.github.io/GZMTR", (res) => {
+                if (res !== false) styled("url", res);
+            });
+            return false;
+        };
+        makeSpecialWrap.append(link);
+        let horizontalLink = cE({type: "span", attr: [["class", "mi"]], innerText: "remove"});
+        horizontalLink.onclick = () => {
+            styled("hr", "", false);
+            return false;
+        };
+        makeSpecialWrap.append(horizontalLink);
+    }
+    editBoxUtilBoxWrap.append(textStyleWrap);
+    editBoxUtilBoxWrap.append(mainFeatureWrap);
+    editBoxUtilBoxWrap.append(makeSpecialWrap);
+    editBoxUtilBox.append(editBoxUtilBoxWrap);
 
+    let postType = pg.$("#subjecthide a") !== null ? "reply" : "new";
+    let sendUtilToolBox = cE({type: "div", attr: [["id", "sendUtilToolBox"]]});
+    let back = cE({type: "span", attr: [["class", "mi"]], innerText: "close"});
+    back.onclick = () => {
+        !confirm("确认要离开？离开将保存当前内容") ? void (0) : history.back();
+    };
+    let subjectHeader = cE({type: "div", attr: [["id", "sendTitle"], ["contenteditable", "true"]]});
+    sendUtilToolBox.append(back);
+    let post = cE({type: "span", attr: [["class", "mi theme-color"]], innerText: "send"});
+    switch (postType) {
+        case "new":
+            sendUtilToolBox.append(cE({type: "div", innerText: "发表新帖子"}));
+            pg.prompt("请输入您的标题", "例如：震惊，企鹅竟然是母的", (res) => {
+                if (res !== false)
+                    subjectHeader.innerText = res;
+            });
+            post.onclick = () => {
+                let typeid = [...pg.$("#typeid_ctrl_menu li")].map((i, index) => [i.innerText, i, index]);
+                pg.prompt("请输入您的主题分类", typeid[0][0], (res) => {
+                    if (res !== false) {
+                        if ([-1, 0].indexOf(typeid.map(i => i[0]).indexOf(res)) !== -1) {
+                            showWarning("请重新输入");
+                        } else {
+                            typeid[typeid.map(i => i[0]).indexOf(res)][1].click();
+                            if (subjectHeader.innerText === "") {
+                                showWarning("请输入您的标题");
+                            } else {
+                                if (editBox.value === "" || editBox.value.length < 10) {
+                                    showWarning("字数不够10");
+                                } else {
+                                    pg.$("#subject")[0].value = subjectHeader.innerText;
+                                    pg.$("#e_textarea")[0].value = editBox.value;
+                                    pg.$("#postsubmit")[0].click();
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            break;
+        case "reply":
+            sendUtilToolBox.append(cE({type: "div", innerText: "回复帖子"}));
+            let subject = pg.$("#subjecthide")[0].innerText.substring(0, pg.$("#subjecthide")[0].innerText.length - 5);
+            subjectHeader.innerText = subject;
+            post.onclick = () => {
+                pg.$("#e_textarea")[0].value = editBox.value;
+                pg.$("#postsubmit")[0].click();
+            };
+            break;
+    }
+    sendUtilToolBox.append(post);
+    app.append(sendUtilToolBox);
+    app.append(textEditBoxWrap);
+    document.body.append(app);
+};
+
+window.showWarning = (inf, time, callback) => {
+    time = time || 2000;
+    inf = inf || "加载中...";
+    let wrap = pg.$("#bg-animation")[0];
+    wrap.children[0].innerHTML = inf;
+    wrap.classList.add("loading");
+    setTimeout(() => {
+        wrap.classList.remove("loading");
+        if (callback)
+            callback();
+    }, time);
+};
+
+window.basicComp = () => {
+    let avatarBox = pg.$(".avt.y")[0];
+    if (avatarBox) {//logined
+
+    } else {
+        showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
+    }
+    {
+        let loadingFrame = cE({type: "div", attr: [["id", "bg-animation"]]});
+        let loadingTips = cE({type: "span"});
+        loadingFrame.append(loadingTips);
+        document.body.append(loadingFrame);
+        let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
+        let mainPage = cE({
+            type: "div",
+            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/forum.php\")"]],
+            innerHTML: "<span class='mi'>home</span><span>主页</span>"
+        });
+        let messagePage = cE({
+            type: "div",
+            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")"]],
+            innerHTML: "<span class='mi'>message</span><span>消息</span>"
+        });
+        let accountPage = cE({
+            type: "div",
+            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=spacecp&ac=credit\")"]],
+            innerHTML: "<span class='mi'>person</span><span>个人</span>"
+        });
+        bottomBar.append(mainPage);
+        bottomBar.append(messagePage);
+        bottomBar.append(accountPage);
+        document.body.append(bottomBar);
+    }
 };

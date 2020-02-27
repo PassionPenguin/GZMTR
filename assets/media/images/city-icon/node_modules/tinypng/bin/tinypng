@@ -1,0 +1,118 @@
+#!/usr/bin/env sh
+
+#
+# Setup.
+#
+
+VERSION="0.1.1"
+
+#
+# Log <type> <msg>
+#
+
+log() {
+  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" $1 $2
+}
+
+#
+# Exit with the given <msg ...>
+#
+
+abort() {
+  printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+}
+
+#
+# Ensure we have curl or wget support.
+#
+
+GET=
+
+command -v curl > /dev/null && GET="curl -# -L"
+
+test -z "$GET" && abort "curl required"
+
+#
+# Output usage information.
+#
+
+display_help() {
+  cat <<-EOF
+
+  Usage: tinypng [options] [args]
+
+  Options:
+
+    -V, --version        Output current version of tinypng
+    -h, --help           Display help information
+    -r, --recursive      Converting all PNG files recursively
+
+  Example:
+
+    tinypng -r
+    tinypng image.png
+    tinypng folder/*.png
+
+EOF
+  exit 0
+}
+
+display_n_version() {
+  echo $VERSION && exit 0
+}
+
+converting() {
+    filename=$(basename $1)
+    ext=$(echo ${filename##*.} | tr "[:upper:]" "[:lower:]")
+    if [ -f $1 ]
+    then
+        if [ $ext == "png" ]
+        then
+            JSON=`curl http://tinypng.org/api/shrink --request POST --data-binary @$1 2>/dev/null  `
+            URL=${JSON/*url\":\"/}
+            URL=${URL/\"*/}
+
+            curl $URL>${1} 2>/dev/null
+
+            log "${1} updated."
+        else
+            abort "Must be a PNG file: ${1}"
+        fi
+    else
+        abort "File not found: ${1}"
+    fi
+}
+
+run() {
+    DIR=`pwd`
+    RECURSIVE=${1:-false}
+
+    if [ $RECURSIVE == true ]
+    then
+        find "${DIR}" -type f -name "*.png" 2>/dev/null | while IFS= read -r file
+        do
+            converting $file
+        done
+    else
+        ls "${DIR}/${@}" 2>/dev/null | while IFS= read -r file
+        do
+            converting $file
+        done
+    fi
+
+    exit 0
+}
+
+while test $# -ne 0; do
+    case $1 in
+        -V|--version) display_n_version ;;
+        -h|--help|help) display_help ;;
+        -r|--recursive) run true ;;
+        *) run $@ ;;
+    esac
+    shift
+done
+
+abort "Missing args!! See help: tinypng -h"
+
+exit 0
