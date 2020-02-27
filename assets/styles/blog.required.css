@@ -147,7 +147,7 @@ body > *:not(#pg-app):not(#append_parent) * {
     z-index: 0;
 }
 
-div[class^="city-icon-"] {
+img[class^="city-icon-"] {
     width: 36px;
     height: 36px;
     border-radius: 25%;
@@ -155,11 +155,6 @@ div[class^="city-icon-"] {
     background-color: var(--white);
     display: inline-block;
     vertical-align: middle;
-}
-
-.city-icon-GZ {
-    background: url("http://127.0.0.1/assets/media/images/city-icon/GZ.svg");
-    background-size: 100%;
 }
 
 .pg-titleName > :nth-child(2) {
@@ -179,7 +174,6 @@ div[class^="city-icon-"] {
 .pg-threadBox {
     z-index: 1002;
     margin-top: -75px;
-    position: absolute;
     bottom: 0;
     top: 200px;
     left: 20px;
@@ -317,4 +311,403 @@ p.pg-threadAuthorName {
 
 .pg-threadWrap {
     margin-top: 64px;
+}
+
+.pg-backgroundFilter, .pg-backgroundImage {
+    z-index: -1;
+}
+
+.theme-color {
+    color: var(--theme);
+}
+
+.ic-back.theme-color.mi {
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.pg_register td.m_r, .pg_register #fwin_login > table > tbody > tr:last-child {
+    display: none;
+}
+
+#fwin_content_login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 48px;
+}
+
+.pg_register .rfm th {
+    width: 75px;
+}
+
+a.flbc
+
+@charset "UTF-8";
+html, body {
+    margin: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+* {
+    transition: 500ms;
+}
+
+@font-face {
+    font-family: Anodina;
+    src: url("http://127.0.0.1/assets/media/font/Anodina-Regular.otf");
+}
+
+@font-face {
+    font-family: Anodina;
+    font-weight: 600;
+    src: url("http://127.0.0.1/assets/media/font/Anodina-Bold.otf");
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url("../media/font/MaterialIcons-Regular.woff2") format('woff2')
+}
+
+.mi {
+    font-family: 'Material Icons', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+
+:root {
+    --theme: #027988;
+    --theme200: #03b6cd88;
+    --black: #000;
+    --box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .1);
+    --white: #fff;
+    --white200: #ffffff22;
+    --grey: #888;
+}
+
+#pg-app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    overflow: scroll;
+    background: var(--white);
+    z-index: 1000;
+}
+
+body > *:not(#pg-app):not(#append_parent) * {
+    overflow: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.pg-stickThreadBox {
+    width: calc(100vw - 80px);
+    max-width: 380px;
+    margin: 0 auto;
+    box-shadow: var(--box-shadow);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: var(--white);
+}
+
+.pg-stickThread .threadListName {
+    margin: 4px 0;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.pg-normalThreadBox, .pg-threadWrap {
+    width: calc(100vw - 80px);
+    margin: 20px auto 0;
+    max-width: 380px;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.pg-normalThread .threadListName {
+    margin: 16px 0;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+#pg-app-titleBar {
+    width: 100%;
+    height: 175px;
+    position: relative;
+}
+
+#pg-app {
+    height: 100vh;
+    overflow: scroll;
+}
+
+.pg-backgroundImage {
+    left: -12.5%;
+    top: -10%;
+    width: 125%;
+    height: 250px;
+    position: fixed;
+    background: url(http://127.0.0.1/assets/media/images/banner.png) #03b6cd88;
+    background-size: 125%;
+    background-position-y: 37.5%;
+    filter: blur(5px);
+}
+
+.pg-backgroundFilter {
+    background: var(--white200);
+    width: 100%;
+    height: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+img[class^="city-icon-"] {
+    width: 36px;
+    height: 36px;
+    border-radius: 25%;
+    border: 3px solid var(--white);
+    background-color: var(--white);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pg-titleName > :nth-child(2) {
+    color: var(--white);
+    display: inline-block;
+    vertical-align: middle;
+    font: 800 20px/1 Anodina;
+    margin-left: 10px;
+}
+
+.pg-titleName {
+    position: absolute;
+    left: 20px;
+    bottom: 90px;
+}
+
+.pg-threadBox {
+    z-index: 1002;
+    margin-top: -75px;
+    bottom: 0;
+    top: 200px;
+    left: 20px;
+}
+
+.fidName .cn {
+    display: block;
+}
+
+.fidName .en {
+    display: block;
+    font-size: 18px;
+}
+
+#topName {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    background: var(--white);
+    box-shadow: 0 0 10px 0 var(--grey);
+    text-align: center;
+    font: 800 16px/48px Anodina, sans-serif;
+    z-index: 1003;
+}
+
+#topName:not(.scrolled) {
+    opacity: 0;
+}
+
+#pg-pgs {
+    width: 100%;
+    height: 36px;
+    text-align: center;
+}
+
+#pg-pgs > * {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+#pg-pgs > *:hover, #pg-pgs > *:focus {
+    background: var(--black);
+    color: var(--white);
+}
+
+#pg-pgs > .nextPage, #pg-pgs > .prevPage {
+    font: 24px/28px 'Material Icons';
+}
+
+#pg-pgs > :not(.nextPage):not(.prevPage) {
+    font: 16px/28px monospace;
+}
+
+img.pg-threadAuthorAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pg-threadAuthorInfo, .pg-threadPostMeta {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pg-threadAuthorInfo p, .pg-threadPostInfo span {
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+
+.postThreadContent {
+    width: calc(100vw - 90px);
+    margin: 20px auto;
+}
+
+.postThreadContent .t_fsz {
+    min-height: unset;
+}
+
+p.pg-threadPostInfo {
+    color: var(--grey);
+}
+
+p.pg-threadAuthorName {
+    font: 800 14px/1 Anodina, sans-serif;
+}
+
+.pg-threadWrap, .pg-threadWrap * {
+    max-width: calc(100vw - 80px)
+}
+
+.pg-threadPost {
+    margin: 0 0 30px 0;
+}
+
+.replyToThis:before {
+    display: inline-block;
+    content: "reply";
+    font: 24px/1 "Material Icons";
+    vertical-align: middle;
+    margin: -3px 6px 0 0;
+}
+
+.makeRate:before {
+    display: inline-block;
+    content: "thumb_up";
+    font: 18px/1 "Material Icons";
+    vertical-align: middle;
+    margin: -3px 6px 0 12px;
+}
+
+#append_parent #fwin_rate.fwinmask {
+    overflow: scroll !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: fixed !important;
+    left: 50% !important;
+    top: 37.5% !important;
+    transform: translate(-50%, -37.5%);
+}
+
+#append_parent > * {
+    z-index: 1002 !important;
+}
+
+.pg-threadWrap {
+    margin-top: 64px;
+}
+
+.pg-backgroundFilter, .pg-backgroundImage {
+    z-index: -1;
+}
+
+.theme-color {
+    color: var(--theme);
+}
+
+#topName > * {
+    vertical-align: middle;
+}
+
+.ic-back.theme-color.mi {
+    vertical-align: middle;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.pg_register td.m_r, .pg_register #fwin_login > table > tbody > tr:last-child {
+    display: none;
+}
+
+#fwin_content_login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 48px;
+}
+
+.pg_register .rfm th {
+    width: 75px;
+}
+
+.pg_register a.flbc {
+    display: none;
+}
+
+#topName > span:nth-child(2) {
+    display: inline-block;
+    max-width: calc(100vw - 100px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
