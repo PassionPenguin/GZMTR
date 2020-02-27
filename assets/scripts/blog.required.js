@@ -822,7 +822,9 @@ window.basicComp = () => {
     if (avatarBox) {//logined
 
     } else {
-        showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
+        if (!document.body.classList.contains("pg_register")) {
+            showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
+        }
     }
     {
         let loadingFrame = cE({type: "div", attr: [["id", "bg-animation"]]});
