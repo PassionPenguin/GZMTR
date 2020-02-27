@@ -74,7 +74,7 @@ html, body {
     z-index: 1000;
 }
 
-body > *:not(#pg-app) * {
+body > *:not(#pg-app):not(#append_parent) * {
     overflow: hidden !important;
     opacity: 0 !important;
     width: 0 !important;
@@ -281,4 +281,40 @@ p.pg-threadAuthorName {
 
 .pg-threadPost {
     margin: 0 0 30px 0;
+}
+
+.replyToThis:before {
+    display: inline-block;
+    content: "reply";
+    font: 24px/1 "Material Icons";
+    vertical-align: middle;
+    margin: -3px 6px 0 0;
+}
+
+.makeRate:before {
+    display: inline-block;
+    content: "thumb_up";
+    font: 18px/1 "Material Icons";
+    vertical-align: middle;
+    margin: -3px 6px 0 12px;
+}
+
+#append_parent #fwin_rate.fwinmask {
+    overflow: scroll !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: fixed !important;
+    left: 50% !important;
+    top: 37.5% !important;
+    transform: translate(-50%, -37.5%);
+}
+
+#append_parent > * {
+    z-index: 1002 !important;
+}
+
+.pg-threadWrap {
+    margin-top: 64px;
 }
