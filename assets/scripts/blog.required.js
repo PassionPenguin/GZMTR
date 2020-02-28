@@ -95,6 +95,30 @@ window.loadURL = (url) => {
     console.log("W:\tRedirect to " + url);
     window.location.href = url;
 };
+window.g = (e) => {
+    let startPosition = e.selectionStart;
+    let endPosition = e.selectionEnd;
+    // Check if you've selected text
+    if ((!startPosition) || (!endPosition))
+        return 0;
+    else if (startPosition === endPosition)
+        return startPosition;
+    else
+        return [startPosition, endPosition];
+};
+window.styled = (bracketId, attr, dbl, content) => {
+    let cur = g(editBox);
+    let beginBracket = "[" + bracketId + (attr !== "" && attr !== undefined && attr ? ("=" + attr + "]") : "]");
+    let endBracket = "[/" + bracketId + "]";
+    dbl = dbl !== undefined ? dbl : true;
+    if (typeof cur === "number") {
+        editBox.value = editBox.value.substring(0, cur) + beginBracket + (content ? content : "") + (dbl ? endBracket : "") + editBox.value.substring(cur, editBox.value.length);
+        editBox.setSelectionRange(cur + beginBracket.length - 1, cur + beginBracket.length - 1);
+    } else {
+        editBox.value = editBox.value.substring(0, cur[0]) + beginBracket + editBox.value.substring(cur[0], cur[1]) + (content ? content : "") + (dbl ? endBracket : "") + editBox.value.substring(cur[1], editBox.value.length);
+        editBox.setSelectionRange(cur[0] + beginBracket.length - 1, cur[0] + beginBracket.length - 1);
+    }
+};
 
 window.blog = [
     {name: "北京区", fid: 7, iconid: "BJ", enName: "Beijing"}, {
@@ -588,33 +612,9 @@ window.indexDisplay = () => {
 };
 
 window.postDisplay = () => {
-    let g = (e) => {
-        let startPosition = e.selectionStart;
-        let endPosition = e.selectionEnd;
-        // Check if you've selected text
-        if ((!startPosition) || (!endPosition))
-            return 0;
-        else if (startPosition === endPosition)
-            return startPosition;
-        else
-            return [startPosition, endPosition];
-    };
-    let styled = (bracketId, attr, dbl) => {
-        let cur = g(editBox);
-        let beginBracket = "[" + bracketId + (attr !== "" && attr !== undefined && attr ? ("=" + attr + "]") : "]");
-        let endBracket = "[/" + bracketId + "]";
-        dbl = dbl !== undefined ? dbl : true;
-        if (typeof cur === "number") {
-            editBox.value = editBox.value.substring(0, cur) + beginBracket + (dbl ? endBracket : "") + editBox.value.substring(cur, editBox.value.length);
-            editBox.setSelectionRange(cur + beginBracket.length, cur + beginBracket.length);
-        } else {
-            editBox.value = editBox.value.substring(0, cur[0]) + beginBracket + editBox.value.substring(cur[0], cur[1]) + (dbl ? endBracket : "") + editBox.value.substring(cur[1], editBox.value.length);
-            editBox.setSelectionRange(cur[0], cur[0] + beginBracket.length);
-        }
-    };
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let textEditBoxWrap = cE({type: "div", attr: [["id", "pg-postEditBoxWrap"]]});
-    let editBox = cE({type: "textarea", attr: [["id", "pg-postEditBox"]]});
+    window.editBox = cE({type: "textarea", attr: [["id", "pg-postEditBox"]]});
     textEditBoxWrap.append(editBox);
     let editBoxUtilBoxWrap = cE({type: "div", attr: [["id", "pg-postEditBoxUtilBoxWrap"]]});
     let editBoxUtilBox = cE({type: "div", attr: [["id", "pg-postEditBoxUtilBox"]]});
@@ -669,21 +669,53 @@ window.postDisplay = () => {
         attr: [["class", "mi pg-prefTrigger"], ["pg-active", "false"]],
         innerText: "settings"
     });
-    let featureBox = cE({type: "div", attr: [["id", "pg-editBoxPlugin"]]});
-    {
-        let xiaobai = [0, 61];
-    }
     prefSettings.onclick = () => {
-        if (!prefSettings.classList.contains("active")) {
+        if (!mainPrefrences.classList.contains("show")) { // not showing
             prefSettings.classList.add("active");
-            editBoxUtilBoxWrap.classList.add("shouldUp");
-        } else {
+            mainPrefrences.classList.add("show");
+            if (!editBoxUtilBox.classList.contains("shouldUp")) { // if not showing
+                editBoxUtilBox.classList.add("shouldUp");
+                prefrences.classList.add("show");
+            }
+            emotionToggle.classList.remove("show");
+            emotions.classList.remove("show");
+        } else { // showing
             prefSettings.classList.remove("active");
-            editBoxUtilBoxWrap.classList.remove("shouldUp");
+            mainPrefrences.classList.remove("show");
+            editBoxUtilBox.classList.remove("shouldUp");
+            prefrences.classList.remove("show");
+            emotionToggle.classList.remove("active");
+            emotions.classList.remove("active");
         }
         return false;
     };
     mainFeatureWrap.append(prefSettings);
+    let emotionToggle = cE({
+        type: "span",
+        attr: [["class", "mi pg-emotionTrigger"], ["pg-active", "false"]],
+        innerText: "mood"
+    });
+    emotionToggle.onclick = () => {
+        if (!emotions.classList.contains("show")) { // not showing
+            emotionToggle.classList.add("active");
+            emotions.classList.add("show");
+            if (!editBoxUtilBox.classList.contains("shouldUp")) { // if not showing
+                editBoxUtilBox.classList.add("shouldUp");
+                prefrences.classList.add("show");
+            }
+            prefSettings.classList.remove("show");
+            mainPrefrences.classList.remove("show");
+        } else { // showing
+            emotionToggle.classList.remove("active");
+            emotions.classList.remove("show");
+            editBoxUtilBox.classList.remove("shouldUp");
+            prefrences.classList.remove("show");
+            prefSettings.classList.remove("show");
+            mainPrefrences.classList.remove("show");
+        }
+        return false;
+    };
+    mainFeatureWrap.append(emotionToggle);
     {
         let bold = cE({type: "span", attr: [["class", "mi"]], innerText: "format_bold"});
         bold.onclick = () => {
@@ -761,7 +793,7 @@ window.postDisplay = () => {
     editBoxUtilBoxWrap.append(makeSpecialWrap);
     editBoxUtilBox.append(editBoxUtilBoxWrap);
 
-    let postType = pg.$("#typeid_ctrl") === null ? "reply" : "new";
+    let postType = pg.$("#typeid_ctrl").length === 0 ? "reply" : "new";
     let sendUtilToolBox = cE({type: "div", attr: [["id", "sendUtilToolBox"]]});
     let back = cE({type: "span", attr: [["class", "mi"]], innerText: "close"});
     back.onclick = window.onpopstate = () => {
@@ -770,8 +802,51 @@ window.postDisplay = () => {
     let subjectHeader = cE({type: "div", attr: [["id", "sendTitle"], ["contenteditable", "true"]]});
     sendUtilToolBox.append(back);
     let post = cE({type: "span", attr: [["class", "mi theme-color"], ["id", "submitPostThread"]], innerText: "send"});
+    let prefrences = cE({type: "div", attr: [["id", "prefrences"]]});
+    let mainPrefrences = cE({type: "div", attr: [["id", "main_prefrences"]]});
+    let emotions = cE({type: "div", attr: [["id", "emotionsWrap"]]});
+    for (let i = 1; i <= 112; i++) {
+        emotions.append(cE({
+            type: "img",
+            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@O_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@O_" + i + ".gif\")"], ["class", "emotions_Onion"]]
+        }))
+    }
+    for (let i = 1; i <= 62; i++) {
+        emotions.append(cE({
+            type: "img",
+            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@XB_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@XB_" + i + ".gif\")"], ["class", "emotions_Xiaobai"]]
+        }))
+    }
+    for (let i = 1; i <= 182; i++) {
+        emotions.append(cE({
+            type: "img",
+            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@Q_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@Q_" + i + ".gif\")"], ["class", "emotions_Q"]]
+        }))
+    }
+    prefrences.append(mainPrefrences);
+    prefrences.append(emotions);
+    let withFootNote = true;
+    let withFootNotes = cE({type: "div", attr: [["id", "FootNote"]], innerText: "是否带上app标签"});
+    withFootNotes.onclick = () => {
+        pg.select("请选择是否使用app标签", "选择后将会加上app发帖的图标。", "selectNotes", (res) => {
+            if (res !== false) {
+                withFootNote = res === "set";
+            }
+        });
+    };
+    mainPrefrences.append(withFootNotes);
     switch (postType) {
         case "new":
+            let readPerm = cE({type: "div", attr: [["id", "ReadPerm"]], innerText: "阅读权限"});
+            readPerm.onclick = () => {
+                pg.select("请选择您的帖子的阅读权限", "权限大于等于您所设定的值时候对方才可见。", "selectPerm", (res) => {
+                    if (res !== false) {
+                        pg.$("#readperm")[0].children[res].click();
+                    }
+                });
+            };
+            mainPrefrences.append(readPerm);
+
             sendUtilToolBox.append(cE({type: "div", innerText: "发表新帖子"}));
             pg.prompt("请输入您的标题", "例如：震惊，企鹅竟然是母的", (res) => {
                 if (res !== false) {
@@ -796,6 +871,8 @@ window.postDisplay = () => {
                                 } else {
                                     pg.$("#subject")[0].value = subjectHeader.innerText;
                                     pg.$("#e_textarea")[0].value = editBox.value;
+                                    if (withFootNote)
+                                        pg.$("#e_textarea")[0].value += "[img][/img]";
                                     pg.$("#postsubmit")[0].click();
                                 }
                             }
@@ -810,6 +887,8 @@ window.postDisplay = () => {
             subjectHeader.innerText = subject;
             post.onclick = () => {
                 pg.$("#e_textarea")[0].value = editBox.value;
+                if (withFootNote)
+                    pg.$("#e_textarea")[0].value += "[img][/img]";
                 pg.$("#postsubmit")[0].click();
             };
             break;
@@ -818,6 +897,7 @@ window.postDisplay = () => {
     sendUtilToolBox.append(subjectHeader);
     app.append(sendUtilToolBox);
     app.append(textEditBoxWrap);
+    document.body.append(prefrences);
     document.body.append(app);
 };
 

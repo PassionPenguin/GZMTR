@@ -74,7 +74,7 @@ html, body {
     z-index: 1000;
 }
 
-body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap) * {
+body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap):not(#prefrences) * {
     overflow: hidden !important;
     opacity: 0 !important;
     width: 0 !important;
@@ -1207,4 +1207,54 @@ div#fwin_viewratings *, #imgzoom *:not(img) {
 
 div#pg-postEditBoxUtilBox.shouldUp {
     bottom: 256px !important;
+}
+
+#prefrences {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 256px;
+    background: var(--white);
+    margin: 0 !important;
+    z-index: 1005;
+}
+
+#prefrences:not(.show) {
+    margin-bottom: -384px !important;
+}
+
+#main_prefrences {
+    position: fixed;
+    left: -125vw;
+    width: calc(100vw - 40px);
+    height: 216px;
+    padding: 20px;
+}
+
+#emotions {
+    position: fixed;
+    right: -125vw;
+    width: calc(100vw - 40px);
+    height: 216px;
+    padding: 20px;
+}
+
+#main_prefrences.show {
+    left: 0 !important;
+}
+
+#emotions.show {
+    right: 0 !important;
+}
+
+div#emotionsWrap {
+    height: 256px;
+    overflow: hidden scroll;
+    width: 100%;
+}
+
+img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
+    height: 36px;
+    margin: 6px;
 }
