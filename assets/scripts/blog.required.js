@@ -921,12 +921,14 @@ window.showWarning = (inf, time, callback) => {
 
 window.basicComp = () => {
     showWarning("暂停维护，将于正式开学后恢复维护。",10000);
+    
     let avatarBox = pg.$(".avt.y")[0];
     if (avatarBox) {//logined
 
     } else {
         if (!document.body.classList.contains("pg_register")) {
             showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
+            throw("S:\tStop Evaluating");
         }
     }
     {
