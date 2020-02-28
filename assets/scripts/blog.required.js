@@ -407,32 +407,36 @@ window.threadDisplay = () => {
         let id = e[1];
         let thread = cE({type: "div", attr: [["class", "pg-threadPost"]]});
         let authorName = pg.$(".authi .xw1")[id].innerText;
-        let avatarLevel = [...[...c][0].children[0].children].filter(i => i.tagName === "DIV").filter(i => i.classList.value === "")[0].children;
-        let avatar = cE({
-            type: "img",
-            attr: [["src", avatarLevel[0].children[0].children[0].src], ["class", "pg-threadAuthorAvatar"]]
-        });
-        let author = cE({type: "p", innerText: authorName, attr: [["class", "pg-threadAuthorName"]]});
-        let authorLevel = cE({
-            type: "p",
-            innerText: avatarLevel[1].innerText,
-            attr: [["class", "pg-threadAuthorLevel"]]
-        });
-        let authorInfo = cE({type: "div", attr: [["class", "pg-threadAuthorInfo"]]});
-        authorInfo.append(avatar);
         let ThreadPostInfo = cE({type: "p", attr: [["class", "pg-threadPostMeta"]]});
-        let UsrInfoBox = cE({type: "p", attr: [["class", "pg-threadAuthorInfo"]]});
-        UsrInfoBox.append(author);
-        UsrInfoBox.append(authorLevel);
         let postInfo = cE({type: "p", attr: [["class", "pg-threadPostInfo"]]});
-        thread.append(authorInfo);
+        try {
+            let avatarLevel = [...[...c][0].children[0].children].filter(i => i.tagName === "DIV").filter(i => i.classList.value === "")[0].children;
+            let avatar = cE({
+                type: "img",
+                attr: [["src", avatarLevel[0].children[0].children[0].src], ["class", "pg-threadAuthorAvatar"]]
+            });
+            let author = cE({type: "p", innerText: authorName, attr: [["class", "pg-threadAuthorName"]]});
+            let authorLevel = cE({
+                type: "p",
+                innerText: avatarLevel[1].innerText,
+                attr: [["class", "pg-threadAuthorLevel"]]
+            });
+            let authorInfo = cE({type: "div", attr: [["class", "pg-threadAuthorInfo"]]});
+            authorInfo.append(avatar);
+            let UsrInfoBox = cE({type: "p", attr: [["class", "pg-threadAuthorInfo"]]});
+            UsrInfoBox.append(author);
+            UsrInfoBox.append(authorLevel);
+            thread.append(authorInfo);
+            ThreadPostInfo.append(UsrInfoBox);
+        } catch (e) {
+
+        }
         let threadContent = [...
             c][0].children[1].children;
         let threadFloor = (curPage - 1) * 15 + id + 1;
         let threadPostTime = threadContent[0].innerText.split("发表于 ")[1].split("|")[0];
         postInfo.append(cE({type: "span", innerText: "第" + threadFloor + "楼"}));
         postInfo.append(cE({type: "span", innerText: "发表于" + threadPostTime}));
-        ThreadPostInfo.append(UsrInfoBox);
         ThreadPostInfo.append(postInfo);
         thread.append(ThreadPostInfo);
         let pid = [...pg.$("#ct.wp>#postlist>div[id^='post_']")][id].id;
