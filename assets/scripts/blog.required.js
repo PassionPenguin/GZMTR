@@ -933,8 +933,10 @@ window.basicComp = () => {
         let loadingTips = cE({type: "span"});
         loadingFrame.append(loadingTips);
         document.body.append(loadingFrame);
-        showWarning("暂停维护，将于正式开学后恢复维护。",10000);
-        throw("S:\tStop Evaluating");
+        if(GetPara("pg__dev")!=="true") {
+            showWarning("BETA Insider\n\nStop Supporting.\n\nThanks for testing.",10000);
+            throw("S:\tStop Evaluating because no dev-parameters found in url.");
+        }
         let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
         let mainPage = cE({
             type: "div",
