@@ -926,7 +926,6 @@ window.basicComp = () => {
     } else {
         if (!document.body.classList.contains("pg_register")) {
             showWarning("请先登录论坛，或者将无法使用。", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
-            throw("S:\tStop Evaluating");
         }
     }
     {
@@ -935,6 +934,7 @@ window.basicComp = () => {
         loadingFrame.append(loadingTips);
         document.body.append(loadingFrame);
         showWarning("暂停维护，将于正式开学后恢复维护。",10000);
+        throw("S:\tStop Evaluating");
         let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
         let mainPage = cE({
             type: "div",
