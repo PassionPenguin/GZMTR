@@ -457,7 +457,7 @@ html, body {
 }
 
 .pg-normalThread .threadListName {
-    margin: 0 0 24px 0;
+    margin: 0;
     text-overflow: ellipsis;
     overflow-x: hidden;
     white-space: nowrap;
@@ -775,9 +775,16 @@ p.pg-hotForumDescription, p.pg-hotThreadDescription, p.pg-mainForumDescription {
     display: block;
     width: calc(100vw - 80px);
     margin: 0 auto 10px auto;
-    box-shadow: var(--box-shadow);
     padding: 5px 20px;
-    border-radius: 5px;
+}
+
+.pg-recommendPost:not(:last-child), .pg-normalThread:not(:last-child) {
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to left, transparent, rgba(0, 0, 0, .2), rgba(0, 0, 0, .1)) 1;
+}
+
+.pg-normalThread {
+    padding: 10px 0;
 }
 
 .pg-recommendPostMeta {
@@ -1121,7 +1128,7 @@ div.pg-prompt-ctrl {
     transform: translate(0, -50%);
 }
 
-#sendUtilToolBox span.mi:last-child {
+#sendUtilToolBox #submitPostThread {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -1136,6 +1143,26 @@ div.pg-prompt-ctrl {
     top: 50%;
     transform: translate(-50%, -50%);
     font: 16px/1 Anodina, sans-serif;
+}
+
+div#sendTitle:before {
+    width: 20px;
+    content: "标题: ";
+    margin-right: 10px;
+    color: var(--theme);
+}
+
+div#sendTitle {
+    outline: none;
+    width: calc(100vw - 100px);
+    height: 36px;
+    top: 48px !important;
+    transform: translate(-50%);
+    margin: 0 auto;
+}
+
+#sendTitle:not(.show) {
+    opacity: 0;
 }
 
 #fctrl_login {
@@ -1157,8 +1184,27 @@ div#fwin_viewratings *, #imgzoom *:not(img) {
 #imgzoom {
     display: block;
     position: fixed;
-    left: 0!important;
-    top: 0!important;
+    left: 0 !important;
+    top: 0 !important;
     width: 100%;
     height: 100%;
+}
+
+#newPostToggle {
+    position: fixed;
+    bottom: 48px;
+    right: 6px;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--theme200);
+    font: 28px/48px 'Material Icons';
+    z-index: 1004;
+    border: 1px solid var(--theme200);
+    color: #fff;
+}
+
+div#pg-postEditBoxUtilBox.shouldUp {
+    bottom: 256px !important;
 }

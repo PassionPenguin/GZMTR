@@ -350,6 +350,11 @@ window.forumDisplay = () => {
         attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
         innerText: "designed and coded by @PassionPenguin"
     }));
+    document.body.append(cE({
+        type: "div",
+        attr: [["id", "newPostToggle"], ["onclick", "loadURL(\"http://www.ditiezu.com/forum.php?mod=post&action=newthread&fid=" + fid + "\")"]],
+        innerText: "add"
+    }));
     document.body.append(app);
 };
 
@@ -619,11 +624,11 @@ window.postDisplay = () => {
     let makeSpecialWrap = cE({type: "div", attr: [["id", "makeSpecialWrap"]]});
     let textStyleBox = cE({
         type: "span",
-        attr: [["class", "mi pg-textStyleTrigger"], ["pg-active", "false"]],
+        attr: [["class", "mi pg-textStyleTrigger"]],
         innerText: "text_fields"
     });
     textStyleBox.onclick = () => {
-        if (pgFocus(textStyleBox)) {
+        if (!textStyleBox.classList.contains("active")) {
             textStyleBox.classList.add("active");
             editBoxUtilBoxWrap.classList.add("TextStyle");
         } else {
@@ -635,11 +640,11 @@ window.postDisplay = () => {
     mainFeatureWrap.append(textStyleBox);
     let makeSpecial = cE({
         type: "span",
-        attr: [["class", "mi pg-makeSpecialTrigger"], ["pg-active", "false"]],
+        attr: [["class", "mi pg-makeSpecialTrigger"]],
         innerText: "add_circle_outline"
     });
     makeSpecial.onclick = () => {
-        if (pgFocus(makeSpecial)) {
+        if (!makeSpecial.classList.contains("active")) {
             makeSpecial.classList.add("active");
             editBoxUtilBoxWrap.classList.add("MakeSpecial");
         } else {
@@ -649,26 +654,36 @@ window.postDisplay = () => {
         return false;
     };
     mainFeatureWrap.append(makeSpecial);
-    let undo = cE({
+    mainFeatureWrap.append(cE({
         type: "span",
-        attr: [["class", "mi pg-undoTrigger"], ["pg-active", "false"]],
-        innerText: "undo"
+        attr: [["class", "mi pg-saveTrigger"], ["onclick", "pg.$('#e_textarea')[0].value=pg.$('#pg-postEditBox')[0].value;discuzcode('svd');return false;"]],
+        innerText: "save"
+    }));
+    mainFeatureWrap.append(cE({
+        type: "span",
+        attr: [["class", "mi pg-loadTrigger"], ["onclick", "discuzcode('rst');pg.$('#pg-postEditBox')[0].value=pg.$('#e_textarea')[0].value;return false;"]],
+        innerText: "unarchive"
+    }));
+    let prefSettings = cE({
+        type: "span",
+        attr: [["class", "mi pg-prefTrigger"], ["pg-active", "false"]],
+        innerText: "settings"
     });
-    undo.onclick = () => {
-        pg.$("#e_undo")[0].click();
+    let featureBox = cE({type: "div", attr: [["id", "pg-editBoxPlugin"]]});
+    {
+        let xiaobai = [0, 61];
+    }
+    prefSettings.onclick = () => {
+        if (!prefSettings.classList.contains("active")) {
+            prefSettings.classList.add("active");
+            editBoxUtilBoxWrap.classList.add("shouldUp");
+        } else {
+            prefSettings.classList.remove("active");
+            editBoxUtilBoxWrap.classList.remove("shouldUp");
+        }
         return false;
     };
-    mainFeatureWrap.append(undo);
-    let redo = cE({
-        type: "span",
-        attr: [["class", "mi pg-redoTrigger"], ["pg-active", "false"]],
-        innerText: "redo"
-    });
-    redo.onclick = () => {
-        pg.$("#e_redo")[0].click();
-        return false;
-    };
-    mainFeatureWrap.append(redo);
+    mainFeatureWrap.append(prefSettings);
     {
         let bold = cE({type: "span", attr: [["class", "mi"]], innerText: "format_bold"});
         bold.onclick = () => {
@@ -746,21 +761,24 @@ window.postDisplay = () => {
     editBoxUtilBoxWrap.append(makeSpecialWrap);
     editBoxUtilBox.append(editBoxUtilBoxWrap);
 
-    let postType = pg.$("#subjecthide a") !== null ? "reply" : "new";
+    let postType = pg.$("#typeid_ctrl") === null ? "reply" : "new";
     let sendUtilToolBox = cE({type: "div", attr: [["id", "sendUtilToolBox"]]});
     let back = cE({type: "span", attr: [["class", "mi"]], innerText: "close"});
-    back.onclick = () => {
-        !confirm("确认要离开？离开将保存当前内容") ? void (0) : history.back();
+    back.onclick = window.onpopstate = () => {
+        !confirm("确认要离开？离开将失去当前内容") ? void (0) : history.back();
     };
     let subjectHeader = cE({type: "div", attr: [["id", "sendTitle"], ["contenteditable", "true"]]});
     sendUtilToolBox.append(back);
-    let post = cE({type: "span", attr: [["class", "mi theme-color"]], innerText: "send"});
+    let post = cE({type: "span", attr: [["class", "mi theme-color"], ["id", "submitPostThread"]], innerText: "send"});
     switch (postType) {
         case "new":
             sendUtilToolBox.append(cE({type: "div", innerText: "发表新帖子"}));
             pg.prompt("请输入您的标题", "例如：震惊，企鹅竟然是母的", (res) => {
-                if (res !== false)
-                    subjectHeader.innerText = res;
+                if (res !== false) {
+                    subjectHeader.innerHTML = res;
+                    pg.$("#subject")[0].value = res;
+                }
+                subjectHeader.classList.add("show");
             });
             post.onclick = () => {
                 let typeid = [...pg.$("#typeid_ctrl_menu li")].map((i, index) => [i.innerText, i, index]);
@@ -797,6 +815,7 @@ window.postDisplay = () => {
             break;
     }
     sendUtilToolBox.append(post);
+    sendUtilToolBox.append(subjectHeader);
     app.append(sendUtilToolBox);
     app.append(textEditBoxWrap);
     document.body.append(app);
