@@ -74,7 +74,6 @@ window.importScripts = (url, callback) => {
         callback();
     } : void (0);
 };
-
 window.getPara = (para, url) => {
     url = url || window.location.href;
     let result = null,
@@ -88,17 +87,14 @@ window.getPara = (para, url) => {
         });
     return result;
 };
-
 window.loadThread = (tid) => {
     console.log("W:\tRedirect to http://www.ditiezu.com/forum.php?mod=viewthread&tid=" + tid);
     window.location.href = "http://www.ditiezu.com/forum.php?mod=viewthread&tid=" + tid;
 };
-
 window.loadURL = (url) => {
     console.log("W:\tRedirect to " + url);
     window.location.href = url;
 };
-
 
 window.blog = [
     {name: "北京区", fid: 7, iconid: "BJ", enName: "Beijing"}, {
@@ -283,9 +279,16 @@ window.forumDisplay = () => {
         let normalThread = [...pg.$("#moderate>table>[id^='normalthread']")].map(i => [i.children[0].children, i.id]);
         normalThread.forEach(e => {
             let a = cE({type: "div", attr: [["class", "pg-normalThread"]]});
+            let str = "";
+            let src = e[0][0].children[0].children[0].src;
+            let time = new Date();
+            if (src.includes("hot"))
+                str += " hot ";
+            else if (src.includes("pollsmall"))
+                str += " vote ";
             a.append(cE({
                 type: "div",
-                attr: [["class", "threadListName"], ["onclick", "loadThread('" + e[1].substr(13) + "')"]],
+                attr: [["class", "threadListName" + str], ["onclick", "loadThread('" + e[1].substr(13) + "')"]],
                 innerHTML: e[0][1].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText
             }));
             resultNomalThread.append(a);

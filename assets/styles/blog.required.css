@@ -435,10 +435,16 @@ html, body {
 }
 
 .pg-stickThread .threadListName {
-    margin: 4px 0;
+    margin: 5px 0;
     text-overflow: ellipsis;
     overflow-x: hidden;
     white-space: nowrap;
+}
+
+.pg-stickThread .threadListName:before {
+    content: "置顶";
+    margin-right: 15px;
+    color: var(--theme);
 }
 
 .pg-normalThreadBox, .pg-threadWrap {
@@ -451,10 +457,29 @@ html, body {
 }
 
 .pg-normalThread .threadListName {
-    margin: 16px 0;
+    margin: 0 0 24px 0;
     text-overflow: ellipsis;
     overflow-x: hidden;
     white-space: nowrap;
+    font: 400 13px/1 Anodina, sans-serif;
+}
+
+.pg-normalThread .threadListName:before {
+    content: "帖子";
+    margin-right: 15px;
+    color: var(--theme);
+}
+
+.pg-normalThread .threadListName.new:before {
+    content: "新帖";
+    margin-right: 15px;
+    color: var(--theme);
+}
+
+.pg-normalThread .threadListName.vote:before {
+    content: "投票";
+    margin-right: 15px;
+    color: var(--theme);
 }
 
 #pg-app-titleBar {
@@ -911,7 +936,7 @@ p.pg-recommendPostInfo {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 36px;
+    height: 40px;
     overflow: hidden;
     background: var(--white);
     border-top: 1px solid var(--grey);
@@ -922,7 +947,7 @@ p.pg-recommendPostInfo {
     display: inline-block;
     width: 33.3%;
     text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .pg-navBottomNaviItem > span {
@@ -1111,4 +1136,29 @@ div.pg-prompt-ctrl {
     top: 50%;
     transform: translate(-50%, -50%);
     font: 16px/1 Anodina, sans-serif;
+}
+
+#fctrl_login {
+    display: none;
+}
+
+div#fwin_viewratings {
+    left: -8px !important;
+}
+
+div#fwin_viewratings *, #imgzoom *:not(img) {
+    max-width: 100vw;
+}
+
+#imgzoom_cover {
+    z-index: 1001 !important;
+}
+
+#imgzoom {
+    display: block;
+    position: fixed;
+    left: 0!important;
+    top: 0!important;
+    width: 100%;
+    height: 100%;
 }
