@@ -1,4 +1,5 @@
 /* Made by Penguin */
+
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
@@ -919,6 +920,7 @@ window.showWarning = (inf, time, callback) => {
 };
 
 window.basicComp = () => {
+    showWarning("暂停维护，将于正式开学后恢复维护。",10000);
     let avatarBox = pg.$(".avt.y")[0];
     if (avatarBox) {//logined
 
