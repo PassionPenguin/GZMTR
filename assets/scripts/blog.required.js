@@ -919,9 +919,7 @@ window.showWarning = (inf, time, callback) => {
     }, time);
 };
 
-window.basicComp = () => {
-    showWarning("暂停维护，将于正式开学后恢复维护。",10000);
-    
+window.basicComp = () => {    
     let avatarBox = pg.$(".avt.y")[0];
     if (avatarBox) {//logined
 
@@ -936,6 +934,7 @@ window.basicComp = () => {
         let loadingTips = cE({type: "span"});
         loadingFrame.append(loadingTips);
         document.body.append(loadingFrame);
+        showWarning("暂停维护，将于正式开学后恢复维护。",10000);
         let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
         let mainPage = cE({
             type: "div",
