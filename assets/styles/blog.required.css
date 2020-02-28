@@ -774,7 +774,7 @@ p.pg-hotForumDescription, p.pg-hotThreadDescription, p.pg-mainForumDescription {
 .pg-recommendPost {
     display: block;
     width: calc(100vw - 80px);
-    margin: 0 auto 20px auto;
+    margin: 0 auto 10px auto;
     box-shadow: var(--box-shadow);
     padding: 5px 20px;
     border-radius: 5px;

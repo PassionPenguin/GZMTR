@@ -515,8 +515,7 @@ window.loginDisplay = () => {
 };
 
 window.indexDisplay = () => {
-    let list = [...pg.$(".slideshow li")].map((i, index) => [i.children[0].children[0].src, i.children[1].innerText, i.children[0].href, index]);
-    let belongINF = [...pg.$(".comiis_onemiddleulone:first-child.clearfix>li")].map(i => [i.children[0].innerText, i.children[1].innerText]);
+    let list = [...pg.$("#portal_block_55_content ul li")].map((i, index) => [index, i.children[0].innerText, i.children[1], i.children[2]]);
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     app.append(cE({type: "p", innerText: "热门板块", attr: [["class", "pg-hotForumDescription"]]}));
     {
@@ -540,20 +539,16 @@ window.indexDisplay = () => {
         list.forEach(e => {
             let listBox = cE({
                 type: "div",
-                attr: [["class", "pg-recommendPost"], ["onclick", "loadURL(\"" + e[2] + "\")"]]
+                attr: [["class", "pg-recommendPost"], ["onclick", "loadURL(\"" + e[2].href + "\")"]]
             });
             let metaInfo = cE({type: "div", attr: [["class", "pg-recommendPostMeta"]]});
-            metaInfo.append(cE({type: "p", attr: [["class", "pg-recommendPostName"]], innerText: e[1]}));
+            metaInfo.append(cE({type: "p", attr: [["class", "pg-recommendPostName"]], innerText: e[3].innerText}));
             metaInfo.append(cE({
                 type: "p",
                 attr: [["class", "pg-recommendPostInfo"]],
-                innerHTML: "<span class='pg-fidBadge'>" + belongINF[e[3]][1] + "</span>" + "<span class='pg-threadAuthorName'>" + belongINF[e[3]][0] + "</span>"
+                innerHTML: "<span class='pg-fidBadge'>" + e[2].innerText + "</span>" + "<span class='pg-threadAuthorName'>" + e[0] + "</span>"
             }));
             listBox.append(metaInfo);
-            listBox.append(cE({
-                type: "img",
-                attr: [["class", "pg-recommendPostImage"], ["src", e[0]]]
-            }));
             recommendPosts.append(listBox);
         });
         app.append(recommendPosts);
