@@ -933,7 +933,7 @@ window.basicComp = () => {
         let loadingTips = cE({type: "span"});
         loadingFrame.append(loadingTips);
         document.body.append(loadingFrame);
-        if(GetPara("pg__dev")!=="true") {
+        if(getPara("pg__dev")!=="true") {
             showWarning("BETA Insider\n\nStop Supporting.\n\nThanks for testing.",10000);
             throw("S:\tStop Evaluating because no dev-parameters found in url.");
         }
