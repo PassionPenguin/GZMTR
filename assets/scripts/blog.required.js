@@ -1,5 +1,5 @@
 /* Made by Penguin */
-
+let dev = true;
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
@@ -118,6 +118,14 @@ window.styled = (bracketId, attr, dbl, content) => {
     } else {
         editBox.value = editBox.value.substring(0, cur[0]) + beginBracket + editBox.value.substring(cur[0], cur[1]) + (content ? content : "") + (dbl ? endBracket : "") + editBox.value.substring(cur[1], editBox.value.length);
         editBox.setSelectionRange(cur[0] + beginBracket.length - 1, cur[0] + beginBracket.length - 1);
+    }
+};
+window.insert = (content) => {
+    let cur = g(editBox);
+    if (typeof cur === "number") {
+        editBox.value = editBox.value.substring(0, cur) + content + editBox.value.substring(cur, editBox.value.length);
+    } else {
+        editBox.value = editBox.value.substring(0, cur[0]) + content + editBox.value.substring(cur[1], editBox.value.length);
     }
 };
 
@@ -471,6 +479,41 @@ window.threadDisplay = () => {
             };
             threadUtil.append(rateBTN);
         }
+        if (threadFloor === 1) {
+            let star = cE({
+                type: "span",
+                attr: [["class", "star"], ["rid", pid.substr(5)]],
+                innerText: "收藏"
+            });
+            star.onclick = () => {
+                pg.$("#k_favorite")[0].click();
+                star.classList.add("theme-color");
+                return false;
+            };
+            threadUtil.append(star);
+            let appreciate = cE({
+                type: "span",
+                attr: [["class", "appreciate"], ["rid", pid.substr(5)]],
+                innerText: "赞"
+            });
+            appreciate.onclick = () => {
+                pg.$("#recommend_add")[0].click();
+                star.classList.add("theme-color");
+                return false;
+            };
+            threadUtil.append(appreciate);
+            let dislike = cE({
+                type: "span",
+                attr: [["class", "dislike"], ["rid", pid.substr(5)]],
+                innerText: "踩"
+            });
+            dislike.onclick = () => {
+                pg.$("#recommend_subtract")[0].click();
+                star.classList.add("theme-color");
+                return false;
+            };
+            threadUtil.append(dislike);
+        }
         thread.append(threadUtil);
         threadWrap.append(thread);
     });
@@ -810,24 +853,20 @@ window.postDisplay = () => {
     let prefrences = cE({type: "div", attr: [["id", "prefrences"]]});
     let mainPrefrences = cE({type: "div", attr: [["id", "main_prefrences"]]});
     let emotions = cE({type: "div", attr: [["id", "emotionsWrap"]]});
-    for (let i = 1; i <= 112; i++) {
+    let onion = [["{:10_817:}", "http://www.ditiezu.com/static/image/smiley/oniontou/001.gif"], ["{:10_836:}", "http://www.ditiezu.com/static/image/smiley/oniontou/002.gif"], ["{:10_877:}", "http://www.ditiezu.com/static/image/smiley/oniontou/003.gif"], ["{:10_804:}", "http://www.ditiezu.com/static/image/smiley/oniontou/004.gif"], ["{:10_849:}", "http://www.ditiezu.com/static/image/smiley/oniontou/005.gif"], ["{:10_865:}", "http://www.ditiezu.com/static/image/smiley/oniontou/006.gif"], ["{:10_845:}", "http://www.ditiezu.com/static/image/smiley/oniontou/007.gif"], ["{:10_852:}", "http://www.ditiezu.com/static/image/smiley/oniontou/008.gif"], ["{:10_788:}", "http://www.ditiezu.com/static/image/smiley/oniontou/009.gif"], ["{:10_838:}", "http://www.ditiezu.com/static/image/smiley/oniontou/010.gif"], ["{:10_837:}", "http://www.ditiezu.com/static/image/smiley/oniontou/011.gif"], ["{:10_868:}", "http://www.ditiezu.com/static/image/smiley/oniontou/012.gif"], ["{:10_853:}", "http://www.ditiezu.com/static/image/smiley/oniontou/013.gif"], ["{:10_830:}", "http://www.ditiezu.com/static/image/smiley/oniontou/014.gif"], ["{:10_821:}", "http://www.ditiezu.com/static/image/smiley/oniontou/015.gif"], ["{:10_875:}", "http://www.ditiezu.com/static/image/smiley/oniontou/016.gif"], ["{:10_797:}", "http://www.ditiezu.com/static/image/smiley/oniontou/017.gif"], ["{:10_872:}", "http://www.ditiezu.com/static/image/smiley/oniontou/018.gif"], ["{:10_787:}", "http://www.ditiezu.com/static/image/smiley/oniontou/019.gif"], ["{:10_773:}", "http://www.ditiezu.com/static/image/smiley/oniontou/020.gif"], ["{:10_840:}", "http://www.ditiezu.com/static/image/smiley/oniontou/021.gif"], ["{:10_888:}", "http://www.ditiezu.com/static/image/smiley/oniontou/022.gif"], ["{:10_832:}", "http://www.ditiezu.com/static/image/smiley/oniontou/023.gif"], ["{:10_774:}", "http://www.ditiezu.com/static/image/smiley/oniontou/024.gif"], ["{:10_882:}", "http://www.ditiezu.com/static/image/smiley/oniontou/025.gif"], ["{:10_864:}", "http://www.ditiezu.com/static/image/smiley/oniontou/026.gif"], ["{:10_866:}", "http://www.ditiezu.com/static/image/smiley/oniontou/027.gif"], ["{:10_803:}", "http://www.ditiezu.com/static/image/smiley/oniontou/028.gif"], ["{:10_835:}", "http://www.ditiezu.com/static/image/smiley/oniontou/029.gif"], ["{:10_820:}", "http://www.ditiezu.com/static/image/smiley/oniontou/030.gif"], ["{:10_862:}", "http://www.ditiezu.com/static/image/smiley/oniontou/031.gif"], ["{:10_780:}", "http://www.ditiezu.com/static/image/smiley/oniontou/032.gif"], ["{:10_802:}", "http://www.ditiezu.com/static/image/smiley/oniontou/033.gif"], ["{:10_887:}", "http://www.ditiezu.com/static/image/smiley/oniontou/034.gif"], ["{:10_828:}", "http://www.ditiezu.com/static/image/smiley/oniontou/035.gif"], ["{:10_873:}", "http://www.ditiezu.com/static/image/smiley/oniontou/036.gif"], ["{:10_854:}", "http://www.ditiezu.com/static/image/smiley/oniontou/037.gif"], ["{:10_791:}", "http://www.ditiezu.com/static/image/smiley/oniontou/038.gif"], ["{:10_825:}", "http://www.ditiezu.com/static/image/smiley/oniontou/039.gif"], ["{:10_833:}", "http://www.ditiezu.com/static/image/smiley/oniontou/040.gif"], ["{:10_863:}", "http://www.ditiezu.com/static/image/smiley/oniontou/041.gif"], ["{:10_824:}", "http://www.ditiezu.com/static/image/smiley/oniontou/042.gif"], ["{:10_870:}", "http://www.ditiezu.com/static/image/smiley/oniontou/043.gif"], ["{:10_878:}", "http://www.ditiezu.com/static/image/smiley/oniontou/044.gif"], ["{:10_807:}", "http://www.ditiezu.com/static/image/smiley/oniontou/045.gif"], ["{:10_869:}", "http://www.ditiezu.com/static/image/smiley/oniontou/046.gif"], ["{:10_844:}", "http://www.ditiezu.com/static/image/smiley/oniontou/047.gif"], ["{:10_798:}", "http://www.ditiezu.com/static/image/smiley/oniontou/048.gif"], ["{:10_794:}", "http://www.ditiezu.com/static/image/smiley/oniontou/049.gif"], ["{:10_779:}", "http://www.ditiezu.com/static/image/smiley/oniontou/050.gif"], ["{:10_867:}", "http://www.ditiezu.com/static/image/smiley/oniontou/051.gif"], ["{:10_880:}", "http://www.ditiezu.com/static/image/smiley/oniontou/052.gif"], ["{:10_795:}", "http://www.ditiezu.com/static/image/smiley/oniontou/053.gif"], ["{:10_860:}", "http://www.ditiezu.com/static/image/smiley/oniontou/054.gif"], ["{:10_796:}", "http://www.ditiezu.com/static/image/smiley/oniontou/055.gif"], ["{:10_790:}", "http://www.ditiezu.com/static/image/smiley/oniontou/056.gif"], ["{:10_883:}", "http://www.ditiezu.com/static/image/smiley/oniontou/057.gif"], ["{:10_811:}", "http://www.ditiezu.com/static/image/smiley/oniontou/058.gif"], ["{:10_819:}", "http://www.ditiezu.com/static/image/smiley/oniontou/059.gif"], ["{:10_881:}", "http://www.ditiezu.com/static/image/smiley/oniontou/060.gif"], ["{:10_834:}", "http://www.ditiezu.com/static/image/smiley/oniontou/061.gif"], ["{:10_810:}", "http://www.ditiezu.com/static/image/smiley/oniontou/062.gif"], ["{:10_801:}", "http://www.ditiezu.com/static/image/smiley/oniontou/063.gif"], ["{:10_786:}", "http://www.ditiezu.com/static/image/smiley/oniontou/064.gif"], ["{:10_800:}", "http://www.ditiezu.com/static/image/smiley/oniontou/065.gif"], ["{:10_855:}", "http://www.ditiezu.com/static/image/smiley/oniontou/066.gif"], ["{:10_856:}", "http://www.ditiezu.com/static/image/smiley/oniontou/067.gif"], ["{:10_809:}", "http://www.ditiezu.com/static/image/smiley/oniontou/068.gif"], ["{:10_781:}", "http://www.ditiezu.com/static/image/smiley/oniontou/069.gif"], ["{:10_843:}", "http://www.ditiezu.com/static/image/smiley/oniontou/070.gif"], ["{:10_831:}", "http://www.ditiezu.com/static/image/smiley/oniontou/071.gif"], ["{:10_806:}", "http://www.ditiezu.com/static/image/smiley/oniontou/072.gif"], ["{:10_792:}", "http://www.ditiezu.com/static/image/smiley/oniontou/073.gif"], ["{:10_813:}", "http://www.ditiezu.com/static/image/smiley/oniontou/074.gif"], ["{:10_884:}", "http://www.ditiezu.com/static/image/smiley/oniontou/075.gif"], ["{:10_782:}", "http://www.ditiezu.com/static/image/smiley/oniontou/076.gif"], ["{:10_874:}", "http://www.ditiezu.com/static/image/smiley/oniontou/077.gif"], ["{:10_846:}", "http://www.ditiezu.com/static/image/smiley/oniontou/078.gif"], ["{:10_842:}", "http://www.ditiezu.com/static/image/smiley/oniontou/079.gif"], ["{:10_775:}", "http://www.ditiezu.com/static/image/smiley/oniontou/080.gif"], ["{:10_885:}", "http://www.ditiezu.com/static/image/smiley/oniontou/081.gif"], ["{:10_815:}", "http://www.ditiezu.com/static/image/smiley/oniontou/082-1.gif"], ["{:10_812:}", "http://www.ditiezu.com/static/image/smiley/oniontou/082-2.gif"], ["{:10_823:}", "http://www.ditiezu.com/static/image/smiley/oniontou/083.gif"], ["{:10_871:}", "http://www.ditiezu.com/static/image/smiley/oniontou/084.gif"], ["{:10_861:}", "http://www.ditiezu.com/static/image/smiley/oniontou/085.gif"], ["{:10_889:}", "http://www.ditiezu.com/static/image/smiley/oniontou/086.gif"], ["{:10_879:}", "http://www.ditiezu.com/static/image/smiley/oniontou/087.gif"], ["{:10_851:}", "http://www.ditiezu.com/static/image/smiley/oniontou/088.gif"], ["{:10_839:}", "http://www.ditiezu.com/static/image/smiley/oniontou/089-1.gif"], ["{:10_776:}", "http://www.ditiezu.com/static/image/smiley/oniontou/089-2.gif"], ["{:10_793:}", "http://www.ditiezu.com/static/image/smiley/oniontou/090.gif"], ["{:10_799:}", "http://www.ditiezu.com/static/image/smiley/oniontou/091.gif"], ["{:10_848:}", "http://www.ditiezu.com/static/image/smiley/oniontou/091-1.gif"], ["{:10_826:}", "http://www.ditiezu.com/static/image/smiley/oniontou/091-2.gif"], ["{:10_783:}", "http://www.ditiezu.com/static/image/smiley/oniontou/091-3.gif"], ["{:10_850:}", "http://www.ditiezu.com/static/image/smiley/oniontou/092.gif"], ["{:10_829:}", "http://www.ditiezu.com/static/image/smiley/oniontou/093.gif"], ["{:10_859:}", "http://www.ditiezu.com/static/image/smiley/oniontou/095.gif"], ["{:10_778:}", "http://www.ditiezu.com/static/image/smiley/oniontou/096.gif"], ["{:10_784:}", "http://www.ditiezu.com/static/image/smiley/oniontou/097.gif"], ["{:10_805:}", "http://www.ditiezu.com/static/image/smiley/oniontou/098.gif"], ["{:10_827:}", "http://www.ditiezu.com/static/image/smiley/oniontou/099.gif"], ["{:10_777:}", "http://www.ditiezu.com/static/image/smiley/oniontou/100.gif"], ["{:10_814:}", "http://www.ditiezu.com/static/image/smiley/oniontou/101.gif"], ["{:10_847:}", "http://www.ditiezu.com/static/image/smiley/oniontou/102.gif"], ["{:10_857:}", "http://www.ditiezu.com/static/image/smiley/oniontou/103.gif"], ["{:10_816:}", "http://www.ditiezu.com/static/image/smiley/oniontou/104.gif"], ["{:10_789:}", "http://www.ditiezu.com/static/image/smiley/oniontou/105.gif"], ["{:10_785:}", "http://www.ditiezu.com/static/image/smiley/oniontou/106.gif"], ["{:10_822:}", "http://www.ditiezu.com/static/image/smiley/oniontou/107.gif"], ["{:10_841:}", "http://www.ditiezu.com/static/image/smiley/oniontou/108.gif"], ["{:10_818:}", "http://www.ditiezu.com/static/image/smiley/oniontou/109.gif"], ["{:10_858:}", "http://www.ditiezu.com/static/image/smiley/oniontou/110.gif"], ["{:10_876:}", "http://www.ditiezu.com/static/image/smiley/oniontou/111.gif"], ["{:10_886:}", "http://www.ditiezu.com/static/image/smiley/oniontou/112.gif"], ["{:10_808:}", "http://www.ditiezu.com/static/image/smiley/oniontou/113.gif"], ["{:10_891:}", "http://www.ditiezu.com/static/image/smiley/oniontou/114.gif"], ["{:10_892:}", "http://www.ditiezu.com/static/image/smiley/oniontou/114-s.gif"], ["{:10_890:}", "http://www.ditiezu.com/static/image/smiley/oniontou/115.gif"]];
+    let xb = [["{:xb1:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/1.gif"], ["{:xb2:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/2.gif"], ["{:xb3:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/3.gif"], ["{:xb4:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/4.gif"], ["{:xb5:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/5.gif"], ["{:xb6:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/6.gif"], ["{:xb7:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/7.gif"], ["{:xb8:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/8.gif"], ["{:xb9:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/9.gif"], ["{:xb10:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/10.gif"], ["{:xb19:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/19.gif"], ["{:xb11:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/11.gif"], ["{:xb12:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/12.gif"], ["{:xb13:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/13.gif"], ["{:xb14:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/14.gif"], ["{:xb15:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/15.gif"], ["{:xb16:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/16.gif"], ["{:xb17:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/17.gif"], ["{:xb18:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/18.gif"], ["{:xb20:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/20.gif"], ["{:xb21:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/21.gif"], ["{:xb22:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/22.gif"], ["{:xb23:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/23.gif"], ["{:xb24:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/24.gif"], ["{:xb25:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/25.gif"], ["{:xb26:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/26.gif"], ["{:xb27:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/27.gif"], ["{:xb28:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/28.gif"], ["{:xb29:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/29.gif"], ["{:xb30:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/30.gif"], ["{:xb31:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/31.gif"], ["{:xb32:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/32.gif"], ["{:xb33:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/33.gif"], ["{:xb34:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/34.gif"], ["{:xb35:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/35.gif"], ["{:xb36:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/36.gif"], ["{:xb37:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/37.gif"], ["{:xb38:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/38.gif"], ["{:xb39:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/39.gif"], ["{:xb40:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/40.gif"], ["{:xb41:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/41.gif"], ["{:xb42:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/42.gif"], ["{:xb43:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/43.gif"], ["{:xb44:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/44.gif"], ["{:xb45:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/45.gif"], ["{:xb46:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/46.gif"], ["{:xb47:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/47.gif"], ["{:xb48:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/48.gif"], ["{:xb49:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/49.gif"], ["{:xb50:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/50.gif"], ["{:xb51:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/51.gif"], ["{:xb52:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/52.gif"], ["{:xb53:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/53.gif"], ["{:xb54:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/54.gif"], ["{:xb55:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/55.gif"], ["{:xb56:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/56.gif"], ["{:xb57:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/57.gif"], ["{:xb58:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/58.gif"], ["{:xb59:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/59.gif"], ["{:xb60:}", "http://www.ditiezu.com/static/image/smiley/xiaobai/60.gif"]];
+    onion.forEach(e => {
         emotions.append(cE({
             type: "img",
-            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@O_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@O_" + i + ".gif\")"], ["class", "emotions_Onion"]]
+            attr: [["src", e[1]], ["alt", e[0]], ["onclick", "insert('" + e[0] + "')"], ["class", "emotion"]]
         }))
-    }
-    for (let i = 1; i <= 62; i++) {
+    });
+    xb.forEach(e => {
         emotions.append(cE({
             type: "img",
-            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@XB_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@XB_" + i + ".gif\")"], ["class", "emotions_Xiaobai"]]
+            attr: [["src", e[1]], ["alt", e[0]], ["onclick", "insert('" + e[0] + "')"], ["class", "emotion"]]
         }))
-    }
-    for (let i = 1; i <= 182; i++) {
-        emotions.append(cE({
-            type: "img",
-            attr: [["src", "https://passionpenguin.github.io/GZMTR/assets/media/emotions/@Q_" + i + ".gif"], ["onclick", "styled(\"img\",\"\",true,\"https://passionpenguin.github.io/GZMTR/assets/media/emotions/@Q_" + i + ".gif\")"], ["class", "emotions_Q"]]
-        }))
-    }
+    });
     prefrences.append(mainPrefrences);
     prefrences.append(emotions);
     let withFootNote = true;
@@ -877,7 +916,7 @@ window.postDisplay = () => {
                                     pg.$("#subject")[0].value = subjectHeader.innerText;
                                     pg.$("#e_textarea")[0].value = editBox.value;
                                     if (withFootNote)
-                                        pg.$("#e_textarea")[0].value += "[img][/img]";
+                                        pg.$("#e_textarea")[0].value += "由app发帖";
                                     pg.$("#postsubmit")[0].click();
                                 }
                             }
@@ -893,7 +932,7 @@ window.postDisplay = () => {
             post.onclick = () => {
                 pg.$("#e_textarea")[0].value = editBox.value;
                 if (withFootNote)
-                    pg.$("#e_textarea")[0].value += "[img][/img]";
+                    pg.$("#e_textarea")[0].value += "由app发贴";
                 pg.$("#postsubmit")[0].click();
             };
             break;
@@ -919,7 +958,7 @@ window.showWarning = (inf, time, callback) => {
     }, time);
 };
 
-window.basicComp = () => {    
+window.basicComp = () => {
     let avatarBox = pg.$(".avt.y")[0];
     if (avatarBox) {//logined
 
@@ -933,9 +972,13 @@ window.basicComp = () => {
         let loadingTips = cE({type: "span"});
         loadingFrame.append(loadingTips);
         document.body.append(loadingFrame);
-        if(getPara("pg__dev")!=="true") {
-            showWarning("BETA Insider\n\nStop Supporting.\n\nThanks for testing.",10000);
-            throw("S:\tStop Evaluating because no dev-parameters found in url.");
+        // if (getPara("pg__dev") !== "true" && !dev) {
+        //     showWarning("BETA Insider\n\nStop Supporting.\n\nThanks for testing.", 10000);
+        //     throw("S:\tStop Evaluating because no dev-parameters found in url.");
+        // }
+        if (getPara("pg__newRelease") !== "true" && !dev) {
+            showWarning("NOT NEWEST VER.\n\nStop Supporting.");
+            throw("S:\tStop Evaluating because no release-parameters found in url.");
         }
         let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
         let mainPage = cE({
@@ -953,9 +996,53 @@ window.basicComp = () => {
             attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=spacecp&ac=credit\")"]],
             innerHTML: "<span class='mi'>person</span><span>个人</span>"
         });
+        if (document.body.classList.contains("pg_register"))
+            accountPage.classList.add("theme-color");
+        else if (document.body.innerHTML.includes("未读提醒"))
+            messagePage.classList.add("theme-color");
+        else
+            mainPage.classList.add("theme-color");
         bottomBar.append(mainPage);
         bottomBar.append(messagePage);
         bottomBar.append(accountPage);
         document.body.append(bottomBar);
     }
+};
+
+window.notificationDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>提醒消息</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let bottomSelector = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")'>未读消息</span><span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice&isread=1\")'>已读消息</span>",
+        attr: [["id", "bottomSelector"]]
+    });
+    app.append(bottomSelector);
+    if (document.body.innerHTML.includes("暂时没有新提醒"))
+        app.append(cE({type: "div", attr: [["class", "pg-app-noNewNotification"]], innerText: "暂时没有新提醒"}));
+    let wrap = cE({type: "div", attr: [["id", "pg-app-notification"]]});
+    [...pg.$(".nts>dl.cl")].map(i => [i.children[0].children[0].src === undefined ? i.children[0].children[0].children[0].src : i.children[0].children[0].src, i.children[1].children[1].innerText, i.children[2].innerHTML.trim().replace(/\n/, "").replace(/&nbsp;/, ""), i]).forEach(e => {
+        let originalURL = "";
+        [...e[3].children].forEach(i => {
+            if (i.tagName === "A" && i.src.indexOf("space") === -1)
+                originalURL = i.src;
+        });
+        let notification = cE({
+            type: "div",
+            attr: [["class", "pg-notification"], ["onclick", "loadURL(\'" + originalURL + "\')"]]
+        });
+        notification.append(cE({type: "img", attr: [["src", e[0]]]}));
+        let notify = cE({type: "div", attr: [["class", "main-info"]]});
+        notify.append(cE({type: "p", attr: [["class", "pg-sendTime"]], innerText: e[1]}));
+        notify.append(cE({type: "p", attr: [["class", "pg-notifyContent"]], innerHTML: e[2]}));
+        notification.append(notify);
+        wrap.append(notification);
+    });
+    app.append(wrap);
+    document.body.append(app);
 };
