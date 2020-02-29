@@ -27,7 +27,7 @@ window.string = {
     structureInfo: [["地下車站", "地下车站", "地下駅", "지하역", "Underground Station"], ["地面車站", "地面车站", "地上駅", "지상 역", "Ground Station"], ["高架車站", "高架车站", "高架駅", "고가 역", "Overground Station"]],
     platformDesc: ["月台類型", "月台类型", "ホーム種別", "플랫폼 유형", "Platform Type"],
     platformInfo: [["島式月台", "岛式站台", "島式ホーム", "섬 플랫폼", "Island Platform"], ["側式站台", "侧式站台", "単式ホーム", "사이드 플랫폼", "Side Platform"], ["雙島式站台", "双岛式站台", "島式（2面4線）ホーム", "더블 아일랜드 플랫폼", "Double Island Platform"], ["雙側式站台", "双侧式站台", "相対式ホーム", "양면 플랫폼", "Double Side Platform"], ["完全混合式站台", "完全混合式站台", "複合式ホーム", "완전 하이브리드 플랫폼", "Mixed Platform"], ["西班牙式站台", "西班牙式站台", "乗降分離式ホーム", "스페인어 플랫폼", "Spanish solution"], ["分離式站台", "分离式站台", "分離式ホーム", "분리 된 섬 플랫폼", "Split Platform"]],
-    hallDesc: ["站廳類別", "站厅类型", "コンコース種別", "역 홀 타입", "Hall Type"],
+    hallDesc: ["站廳類別", "站厅类型", "コンコース種別", "역 홀 타입", "Concourse Type"],
     hallInfo: [["地下大堂", "地下站厅", "地下コンコース", "지하철역 홀", "Underground Concourse"], ["地面站廳", "地面站厅", "地面コンコース", "지상국 홀", "Ground Concourse"], ["高架站廳", "高架站厅", "高架コンコース", "높은 역 홀", "Overground Concourse"]],
     transferDesc: ["轉乘方式", "换乘方式", "乗り換え方式", "전송 방법", "Transfer Type"],
     transferInfo: [["同台轉乘", "同台换乘", "対面乗り換え", "동일한 플랫폼에서 전송", "Cross-platform Transfer"], ["通道轉乘", "通道换乘", "通路でお乗り換え", "채널 전송", "Transfer via passage"], ["節點轉乘", "节点换乘", "ノードでお乗り換え", "노드 전송", "Transfer via node"], ["站廳轉乘", "站厅换乘", "コンコースでお乗り換え", "역 이동", "Transfer via concourse"], ["出站轉乘", "出站转乘", "改札で乗り換え", "", "Transfer after exit"]],
