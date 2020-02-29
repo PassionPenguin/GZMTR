@@ -958,6 +958,51 @@ window.showWarning = (inf, time, callback) => {
 };
 
 window.basicComp = () => {
+    window.system = {};
+    if (typeof android !== "undefined") {
+        system.get = (name) => {
+            return android.getPref(name);
+        };
+        system.set = (name, value) => {
+            android.storeStringPref(name, value)
+        };
+        system.removeAll = () => {
+            android.sharedPreferencesRemove()
+        };
+    } else {
+        system.get = (cname) => {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        };
+        system.set = (cname, cvalue) => {
+            let d = new Date();
+            d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        };
+        system.removeAll = () => {
+            document.cookie.split(";").forEach(function (c) {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+        }
+    }
+
+    window.cT = ["", "-1"].indexOf(system.get("theme")) !== -1 || isNaN(Int(system.get("theme"))) ? 0 : Int(system.get("theme"));
+    document.documentElement.classList.add(themeName[cT] + "Theme");
+    window.overrideDarkMode = ["", "0"].indexOf(system.get("overrideDarkMode")) === -1;
+    if (overrideDarkMode)
+        document.documentElement.classList.add("custom-theme");
     let avatarBox = pg.$(".avt.y")[0];
     if (avatarBox) {//logined
 

@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import "../colors/colors.css";
+
 html, body {
     margin: 0;
     max-width: 100vw;
@@ -328,7 +330,7 @@ p.pg-threadAuthorName {
     content: "star";
 }
 
-.appreciate:before, .dislike:before, .makeRate:before,.star:before {
+.appreciate:before, .dislike:before, .makeRate:before, .star:before {
     display: inline-block;
     font: 18px/1 "Material Icons";
     vertical-align: middle;

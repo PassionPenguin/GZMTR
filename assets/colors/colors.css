@@ -42,29 +42,29 @@
     --black: #000;
     --white: #fff;
     --white500: #ffffff88;
-    --accent: #c51835;
+    --theme: #c51835;
     --red: #cb4042;
     --green: #3fcd44;
 }
 
 .SummerTheme:root {
     --light: #fff771;
-    --accent: #d2963f;
+    --theme: #d2963f;
 }
 
 .RainTheme:root {
     --light: #8ddcff;
-    --accent: #46a8c5;
+    --theme: #46a8c5;
 }
 
 .TeaTheme:root {
     --light: #e4ffce;
-    --accent: #8bc34a;
+    --theme: #8bc34a;
 }
 
 .WatermelonTheme:root {
     --light: #ffe0d7;
-    --accent: #e15d61;
+    --theme: #e15d61;
 }
 
 .DarkerTheme {
@@ -75,7 +75,7 @@
     --black: #fff;
     --white: #000;
     --white500: #00000088;
-    --accent: #57c4d2;
+    --theme: #57c4d2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,7 +87,7 @@
         --black: #fff;
         --white: #000;
         --white500: #00000088;
-        --accent: #57c4d2;
+        --theme: #57c4d2;
     }
 }
 

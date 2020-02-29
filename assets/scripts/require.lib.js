@@ -13,6 +13,9 @@ window.loadRequire = () => {
         system.removeAll = () => {
             android.sharedPreferencesRemove()
         };
+        system.loadDitiezu = () => {
+            android.loadDitiezu();
+        }
     } else {
         system.get = (cname) => {
             let name = cname + "=";
@@ -39,6 +42,9 @@ window.loadRequire = () => {
             document.cookie.split(";").forEach(function (c) {
                 document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
             });
+        };
+        system.loadDitiezu = () => {
+            window.location.href = "http://www.ditiezu.com";
         }
     }
 

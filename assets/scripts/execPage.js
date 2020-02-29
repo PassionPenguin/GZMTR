@@ -134,10 +134,9 @@ pg.stationList = {
 pg.index = {
     requireLib: [],
     data: {
-        title: ["廣州地鐵車站信息", "广州地铁车站信息", "広州地下鉄駅の情報", "광저우 지하철 역 정보", "GZMTR Info Guide"],
+        title: ["主页", "主页", "", "", "Main Page"],
         topNav: false,
-        topInput: false,
-        topInputContent: ["你想要前往", "您想要前往", "到着駅を入力", "가고 싶다", "You'd like to go to..."], navBottom: 1
+        topInput: false, navBottom: 3
     },
     init: () => {
 

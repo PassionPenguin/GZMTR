@@ -201,7 +201,7 @@ nav.nav-bottom li > span:first-child {
 }
 
 nav.nav-bottom li > span:first-child.active {
-    color: var(--accent);
+    color: var(--theme);
 }
 
 nav.nav-bottom li > span:nth-child(2) {
@@ -690,7 +690,7 @@ nav.nav-bottom.stationInfActive {
 .topTab div div:after {
     content: '';
     display: block;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--theme);
     width: 0;
     position: absolute;
     left: 0;
@@ -712,7 +712,7 @@ nav.nav-bottom.stationInfActive {
 }
 
 .topTab .active .mi, .topTab .active, .topTab div div:hover, .topTab div div:hover .mi, .topTab div div:focus, .topTab div div:focus .mi {
-    color: var(--accent)
+    color: var(--theme)
 }
 
 #InfoTab {
@@ -846,10 +846,10 @@ nav.nav-bottom.stationInfActive {
     text-align: center;
     width: 68px;
     display: inline-block;
-    color: var(--accent);
+    color: var(--theme);
     font-weight: 700;
     font-size: 14px;
-    border: 1px solid var(--accent);
+    border: 1px solid var(--theme);
     border-radius: 4px;
 }
 
@@ -1014,7 +1014,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #dir_from, #dir_to {
-    border: 3px solid var(--accent);
+    border: 3px solid var(--theme);
     border-radius: 50%;
     position: absolute;
     right: 80px;
@@ -1037,12 +1037,12 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     margin-top: 4px;
     font-family: "Material Icons", sans-serif;
     font-size: 28px;
-    color: var(--accent) !important;
+    color: var(--theme) !important;
 }
 
 [id^="dir_"] span {
     display: block;
-    color: var(--accent) !important;
+    color: var(--theme) !important;
     transform: scale(0.8);
     margin-top: -4px;
     font: 800 12px Anodina, sans-serif;
@@ -1320,18 +1320,18 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 [id$="Choser"] .active {
-    color: var(--accent);
+    color: var(--theme);
 }
 
 [id$="Choser"] .active:before {
-    color: var(--accent);
+    color: var(--theme);
     content: "<";
     margin: 0 10px;
     display: inline-block;
 }
 
 [id$="Choser"] .active:after {
-    color: var(--accent);
+    color: var(--theme);
     content: ">";
     margin: 0 10px;
     display: inline-block;
@@ -1348,7 +1348,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     display: block;
     font: 800 18px/1 Anodina, sasn;
     text-align: center;
-    border-top: 3px solid var(--accent);
+    border-top: 3px solid var(--theme);
     padding-top: 20px;
 }
 
@@ -1405,4 +1405,21 @@ html.noMap #MapContainer {
 #routeInformation {
     overflow: scroll;
     height: calc(100vh - 106px);
+}
+
+img#DitiezuAds {
+    width: 120vw;
+    position: fixed;
+    top: 0;
+    left: -10vw;
+}
+
+#fixedAdsWrap {
+    width: 125vw;
+    height: 83.3vw;
+}
+
+p.ads {
+    width: calc(100vw - 40px);
+    margin: 0 auto;
 }
