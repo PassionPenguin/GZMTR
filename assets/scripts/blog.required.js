@@ -1,5 +1,4 @@
 /* Made by Penguin */
-let dev = true;
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
