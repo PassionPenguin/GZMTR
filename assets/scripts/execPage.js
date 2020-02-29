@@ -151,7 +151,7 @@ pg.stationinfo = {
         topInput: false, navBottom: 1
     },
     init: (s_numInsert) => {
-        if (Int(GetPara("stationid")) > 236 || isNaN(Int(GetPara("stationid")))) {
+        if (Int(GetPara("stationid")) > 245 || isNaN(Int(GetPara("stationid")))) {
             showWarning(string.emptyWikiData[cL], 1000);
             setTimeout(() => {
                 loadPage.require("stationList")
