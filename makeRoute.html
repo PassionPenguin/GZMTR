@@ -276,7 +276,7 @@
         return [result, processSameRoute()];
     };
     getBelong = (id) => {
-        let res = id >= 0 && id <= 15 ? "1" : id >= 16 && id <= 39 ? "2" : id >= 40 && id <= 55 ? "3" : id >= 56 && id <= 70 ? "3N" : id >= 71 && id <= 94 ? "4" : id >= 95 && id <= 118 ? "5" : id >= 119 && id <= 150 ? "6" : id >= 151 && id <= 159 ? "7" : id >= 160 && id <= 174 ? "8" : id >= 175 && id <= 185 ? "9" : id >= 186 && id <= 196 ? "13" : id >= 197 && id <= 209 ? "14" : id >= 210 && id <= 219 ? "KCL" : id >= 210 && id <= 240 ? "21" : id >= 241 && id <= 265 ? "GF" : id >= 266 && id <= 274 ? "APM" : "THZ1";
+        let res = id >= 0 && id <= 15 ? "1" : id >= 16 && id <= 39 ? "2" : id >= 40 && id <= 55 ? "3" : id >= 56 && id <= 70 ? "3N" : id >= 71 && id <= 94 ? "4" : id >= 95 && id <= 118 ? "5" : id >= 119 && id <= 150 ? "6" : id >= 151 && id <= 159 ? "7" : (id >= 160 && id <= 174)||(id >=286 && id <= 298) ? "8" : id >= 175 && id <= 185 ? "9" : id >= 186 && id <= 196 ? "13" : id >= 197 && id <= 209 ? "14" : id >= 210 && id <= 219 ? "KCL" : id >= 210 && id <= 240 ? "21" : id >= 241 && id <= 265 ? "GF" : id >= 266 && id <= 274 ? "APM" : "THZ1";
         let name = ["1", "2", "3", "3N", "4", "5", "6", "7", "8", "9", "13", "14", "KCL", "21", "GF", "APM", "THZ1"],
             gn = ["Line1-GZ", "Line2-GZ", "Line3-GZ", "Line3-GZ", "Line4-GZ", "Line5-GZ", "Line6-GZ", "Line7-GZ", "Line8-GZ", "Line9-GZ", "Line13-GZ", "Line14-GZ", "Line14-GZ", "Line21-GZ", "Line-GF", "LineAPM-GZ", "THZ1-GZ"],
             line = [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 13, 14, 14, 21, "GF", "APM", "THZ1"];
