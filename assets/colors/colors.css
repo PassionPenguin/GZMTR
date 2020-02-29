@@ -32,62 +32,62 @@
     --GZTHP1: rgb(75, 37, 26);
     --DGR2: #ED1C24;
 
-    --var-dark: #222;
-    --var-light: #fff;
-    --var-grey: #888;
-    --var-lightgrey: #aaa;
-    --var-lightgrey200: #aaaaaa22;
-    --var-lightgrey500: #aaaaaa88;
-    --var-lightdark: #555;
-    --var-black: #000;
-    --var-white: #fff;
-    --var-white500: #ffffff88;
-    --var-accent: #c51835;
+    --dark: #222;
+    --light: #fff;
+    --grey: #888;
+    --lightgrey: #aaa;
+    --lightgrey200: #aaaaaa22;
+    --lightgrey500: #aaaaaa88;
+    --lightdark: #555;
+    --black: #000;
+    --white: #fff;
+    --white500: #ffffff88;
+    --accent: #c51835;
     --red: #cb4042;
     --green: #3fcd44;
 }
 
 .SummerTheme:root {
-    --var-light: #fff771;
-    --var-accent: #d2963f;
+    --light: #fff771;
+    --accent: #d2963f;
 }
 
 .RainTheme:root {
-    --var-light: #8ddcff;
-    --var-accent: #46a8c5;
+    --light: #8ddcff;
+    --accent: #46a8c5;
 }
 
 .TeaTheme:root {
-    --var-light: #e4ffce;
-    --var-accent: #8bc34a;
+    --light: #e4ffce;
+    --accent: #8bc34a;
 }
 
 .WatermelonTheme:root {
-    --var-light: #ffe0d7;
-    --var-accent: #e15d61;
+    --light: #ffe0d7;
+    --accent: #e15d61;
 }
 
 .DarkerTheme {
-    --var-dark: #fff;
-    --var-light: #222;
-    --var-lightgrey: #555;
-    --var-lightdark: #ccc;
-    --var-black: #fff;
-    --var-white: #000;
-    --var-white500: #00000088;
-    --var-accent: #57c4d2;
+    --dark: #fff;
+    --light: #222;
+    --lightgrey: #555;
+    --lightdark: #ccc;
+    --black: #fff;
+    --white: #000;
+    --white500: #00000088;
+    --accent: #57c4d2;
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not(.custom-theme) {
-        --var-dark: #fff;
-        --var-light: #222;
-        --var-lightgrey: #555;
-        --var-lightdark: #ccc;
-        --var-black: #fff;
-        --var-white: #000;
-        --var-white500: #00000088;
-        --var-accent: #57c4d2;
+        --dark: #fff;
+        --light: #222;
+        --lightgrey: #555;
+        --lightdark: #ccc;
+        --black: #fff;
+        --white: #000;
+        --white500: #00000088;
+        --accent: #57c4d2;
     }
 }
 

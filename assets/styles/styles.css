@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import "../colors/colors.css";
-@import "../animation/animation.css";
 /* Made by Penguin */
 
 /* Font Face */
@@ -51,7 +50,7 @@
 * {
     transition: 500ms;
     font-family: Anodina, sans-serif;
-    color: var(--var-black)
+    color: var(--black)
 }
 
 [contenteditable="true"].single-line {
@@ -81,13 +80,13 @@ html, body.pg-app {
     margin: 0;
     width: 100%;
     height: 100%;
-    background: var(--var-white);
+    background: var(--white);
     overflow: hidden;
 }
 
 .pg-app-wrap {
     overflow: hidden;
-    background: var(--var-white);
+    background: var(--white);
 }
 
 body.pg-app .pg-app-wrap {
@@ -109,7 +108,7 @@ nav.nav-head {
     top: 0;
     left: 0;
     z-index: 1000;
-    background: var(--var-light);
+    background: var(--light);
 }
 
 body.pg-app.withoutHeader nav.nav-head {
@@ -148,10 +147,10 @@ body:not(.hasSearchBar) .nav-inputModel {
     padding: 8px 0 8px 0;
     outline: 0;
     margin: 8px 0;
-    border: 1px solid var(--var-grey);
+    border: 1px solid var(--grey);
     border-radius: 20px;
     font: 500 14px/16px Anodina, sans-serif;
-    background: var(--var-white500);
+    background: var(--white500);
 }
 
 .nav-inputModel > div {
@@ -159,11 +158,11 @@ body:not(.hasSearchBar) .nav-inputModel {
     height: 100%;
     margin: 0 20px;
     outline: none;
-    color: var(--var-grey);
+    color: var(--grey);
 }
 
 .nav-inputModel > div:focus {
-    color: var(--var-black);
+    color: var(--black);
 }
 
 nav.nav-bottom {
@@ -173,7 +172,7 @@ nav.nav-bottom {
     width: 100%;
     height: 54px;
     z-index: 1000;
-    background: var(--var-white);
+    background: var(--white);
 }
 
 nav.nav-bottom ul {
@@ -202,7 +201,7 @@ nav.nav-bottom li > span:first-child {
 }
 
 nav.nav-bottom li > span:first-child.active {
-    color: var(--var-accent);
+    color: var(--accent);
 }
 
 nav.nav-bottom li > span:nth-child(2) {
@@ -300,13 +299,13 @@ nav.nav-bottom li > span:nth-child(2) {
     bottom: -1px;
     height: 90px;
     width: calc(100% - 40px);
-    background: var(--var-white);
+    background: var(--white);
     z-index: 999;
     border-radius: 10px 10px 0 0;
 }
 
 .head-wrap .ChoiceSelect * {
-    color: var(--var-dark)
+    color: var(--dark)
 }
 
 .head-wrap .ChoiceSelect > div {
@@ -384,7 +383,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 #InputSearch > div:nth-child(2) {
-    border-bottom: 1px solid var(--var-grey);
+    border-bottom: 1px solid var(--grey);
     margin-bottom: 10px;
     padding-bottom: 5px;
 }
@@ -406,11 +405,11 @@ nav.nav-bottom li > span:nth-child(2) {
     padding: 3px;
     vertical-align: middle;
     font: 400 14px/24px Anodina, sans-serif;
-    color: var(--var-grey);
+    color: var(--grey);
 }
 
 #InputSearch div > div:focus {
-    color: var(--var-black);
+    color: var(--black);
 }
 
 #copyright {
@@ -446,13 +445,13 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .selectLine > div > div:first-child {
-    color: var(--var-lightdark);
+    color: var(--lightdark);
     text-align: center;
     font: 600 16px/1 Anodina, sans-serif;
 }
 
 .selectLine > div > div:not(:first-child) {
-    color: var(--var-dark);
+    color: var(--dark);
     font: 400 15px/1 Anodina, sans-serif;
     margin: 18px 0 12px 9px;
 }
@@ -510,7 +509,7 @@ nav.nav-bottom li > span:nth-child(2) {
 }
 
 .StationNumber span {
-    color: var(--var-dark);
+    color: var(--dark);
 }
 
 
@@ -571,7 +570,7 @@ nav.nav-bottom li > span:nth-child(2) {
     height: 0;
     width: 100%;
     z-index: 1001;
-    background: var(--var-white)
+    background: var(--white)
 }
 
 .stationInf.show {
@@ -595,8 +594,8 @@ nav.nav-bottom li > span:nth-child(2) {
     width: 28px;
     text-align: center;
     font: 24px/28px "Material Icons";
-    color: var(--var-black);
-    border: 3px solid var(--var-black);
+    color: var(--black);
+    border: 3px solid var(--black);
     border-radius: 50%;
 }
 
@@ -608,8 +607,8 @@ nav.nav-bottom li > span:nth-child(2) {
     width: 28px;
     text-align: center;
     font: 24px/28px "Material Icons";
-    color: var(--var-black);
-    border: 3px solid var(--var-black);
+    color: var(--black);
+    border: 3px solid var(--black);
     border-radius: 50%;
 }
 
@@ -638,7 +637,7 @@ nav.nav-bottom.stationInfActive {
     z-index: 1001;
     height: 102px;
     position: fixed;
-    background: var(--var-white);
+    background: var(--white);
 }
 
 .topTab.down {
@@ -691,7 +690,7 @@ nav.nav-bottom.stationInfActive {
 .topTab div div:after {
     content: '';
     display: block;
-    border-bottom: 2px solid var(--var-accent);
+    border-bottom: 2px solid var(--accent);
     width: 0;
     position: absolute;
     left: 0;
@@ -713,7 +712,7 @@ nav.nav-bottom.stationInfActive {
 }
 
 .topTab .active .mi, .topTab .active, .topTab div div:hover, .topTab div div:hover .mi, .topTab div div:focus, .topTab div div:focus .mi {
-    color: var(--var-accent)
+    color: var(--accent)
 }
 
 #InfoTab {
@@ -847,10 +846,10 @@ nav.nav-bottom.stationInfActive {
     text-align: center;
     width: 68px;
     display: inline-block;
-    color: var(--var-accent);
+    color: var(--accent);
     font-weight: 700;
     font-size: 14px;
-    border: 1px solid var(--var-accent);
+    border: 1px solid var(--accent);
     border-radius: 4px;
 }
 
@@ -881,7 +880,7 @@ nav.nav-bottom.stationInfActive {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    border: 3px solid var(--var-black);
+    border: 3px solid var(--black);
     font-weight: 700;
 }
 
@@ -974,13 +973,13 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #CurrentStation {
-    background: var(--var-lightgrey200);
+    background: var(--lightgrey200);
 }
 
 #CurrentStation > div > * {
     margin: 10px 0;
     padding: 10px 25px;
-    background: var(--var-white);
+    background: var(--white);
 }
 
 #CurrentStation > .moreInfo > * {
@@ -1015,7 +1014,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #dir_from, #dir_to {
-    border: 3px solid var(--var-accent);
+    border: 3px solid var(--accent);
     border-radius: 50%;
     position: absolute;
     right: 80px;
@@ -1038,12 +1037,12 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     margin-top: 4px;
     font-family: "Material Icons", sans-serif;
     font-size: 28px;
-    color: var(--var-accent) !important;
+    color: var(--accent) !important;
 }
 
 [id^="dir_"] span {
     display: block;
-    color: var(--var-accent) !important;
+    color: var(--accent) !important;
     transform: scale(0.8);
     margin-top: -4px;
     font: 800 12px Anodina, sans-serif;
@@ -1067,7 +1066,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--var-white);
+    background: var(--white);
     z-index: 999;
     opacity: 1;
 }
@@ -1170,7 +1169,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 #routeInformation > div > p {
     margin: -5px 0 20px 20px;
     font: 12px/1 Anodina, sans-serif;
-    color: var(--var-grey);
+    color: var(--grey);
 }
 
 #routeInformation .tripOrigin {
@@ -1224,12 +1223,12 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     border-radius: 5px;
     border: 3px solid;
     margin-right: 10px;
-    color: var(--var-black);
+    color: var(--black);
 }
 
 #routeInformation .numbox p {
     font: 200 14px/1 Anodina, sans-serif;
-    color: var(--var-dark);
+    color: var(--dark);
     height: 30px;
     margin-bottom: 10px;
 }
@@ -1267,7 +1266,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 #routeInformation .numbox > div > p:last-child {
-    color: var(--var-grey);
+    color: var(--grey);
     margin-bottom: 10px;
 }
 
@@ -1281,15 +1280,15 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     height: 48px;
     box-shadow: none;
     background: transparent;
-    border: 5px solid var(--var-lightgrey200);
-    color: var(--var-dark);
+    border: 5px solid var(--lightgrey200);
+    color: var(--dark);
     font: 16px/1 Anodina, sans-serif;
     padding: 10px;
     outline: none;
 }
 
 [id$="Choser"] {
-    background: var(--var-white);
+    background: var(--white);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -1321,18 +1320,18 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
 }
 
 [id$="Choser"] .active {
-    color: var(--var-accent);
+    color: var(--accent);
 }
 
 [id$="Choser"] .active:before {
-    color: var(--var-accent);
+    color: var(--accent);
     content: "<";
     margin: 0 10px;
     display: inline-block;
 }
 
 [id$="Choser"] .active:after {
-    color: var(--var-accent);
+    color: var(--accent);
     content: ">";
     margin: 0 10px;
     display: inline-block;
@@ -1342,14 +1341,14 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     z-index: 1000;
     width: 100%;
     height: 100%;
-    background: var(--var-white);
+    background: var(--white);
 }
 
 #RouteData {
     display: block;
     font: 800 18px/1 Anodina, sasn;
     text-align: center;
-    border-top: 3px solid var(--var-accent);
+    border-top: 3px solid var(--accent);
     padding-top: 20px;
 }
 
@@ -1370,7 +1369,7 @@ p:not(#StationCode):not(#Location) > span:nth-child(2) > span > span:nth-child(2
     position: fixed;
     left: 0;
     top: 96px;
-    background: var(--var-white);
+    background: var(--white);
     overflow: scroll;
 }
 
