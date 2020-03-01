@@ -78,6 +78,10 @@
     --theme: #57c4d2;
 }
 
+.DarkerTheme * {
+    color: #fff;
+}
+
 @media (prefers-color-scheme: dark) {
     :root:not(.custom-theme) {
         --dark: #fff;
@@ -88,6 +92,10 @@
         --white: #000;
         --white500: #00000088;
         --theme: #57c4d2;
+    }
+
+    :root:not(.custom-theme) * {
+        color: #aaa;
     }
 }
 
