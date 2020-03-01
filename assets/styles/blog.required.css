@@ -79,7 +79,7 @@ html, body {
     z-index: 1000;
 }
 
-body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap):not(#prefrences) * {
+body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap):not(#prefrences):not(#pg-select-wrap) * {
     overflow: hidden !important;
     opacity: 0 !important;
     width: 0 !important;
@@ -984,7 +984,7 @@ img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
     font: 14px/36px Anodina, sans-serif;
 }
 
-#pg-app > #pg-app-notification:last-child, #pg-app #pg-admin-review:last-child, #pg-app #pg-admin-userCtrl:last-child {
+#pg-app > #pg-app-notification:last-child, #pg-app #pg-admin-review:last-child, #pg-app #pg-admin-userCtrl:last-child, #pg-app > #pg-admin-postCtrl:last-child {
     margin-top: 72px;
     margin-bottom: 96px !important;
 }
@@ -1048,33 +1048,57 @@ div#fwin_mods {
     border-radius: 10px;
 }
 
-.pg-userCtrl-urname, .pg-userCtrl-urid, .pg-userCtrl-ursubmit, .pg-userCtrl-duration, .pg-userCtrl-operationDescription {
+.pg-userCtrl-urname, .pg-userCtrl-urid, .pg-userCtrl-ursubmit, .pg-userCtrl-duration, .pg-userCtrl-operationDescription, .pg-postCtrl-postAuthor, .pg-postCtrl-postTime, .pg-postCtrl-postTitleKeyword, .pg-postCtrl-viewTimes, .pg-postCtrl-noview, .pg-postCtrl-replyTimes, .pg-postCtrl-forum, .pg-postCtrl-type, .pg-postCtrl-submit {
     padding: 10px;
     border: 2px solid var(--black);
     margin-bottom: 10px;
 }
 
+.pg-userCtrl-urname:before, .pg-userCtrl-urid:before, .pg-userCtrl-ursubmit:before, .pg-userCtrl-duration:before, .pg-userCtrl-operationDescription:before, .pg-postCtrl-postAuthor:before, .pg-postCtrl-postTime:before, .pg-postCtrl-postTitleKeyword:before, .pg-postCtrl-viewTimes:before, .pg-postCtrl-noview:before, .pg-postCtrl-forum:before, .pg-postCtrl-replyTimes:before, .pg-postCtrl-type:before, .pg-postCtrl-submit:before {
+    padding-right: 10px;
+}
+
 .pg-userCtrl-urname:before {
     content: "用户名";
-    padding-right: 10px;
 }
 
 .pg-userCtrl-urid:before {
     content: "UID";
-    padding-right: 10px;
 }
 
 .pg-userCtrl-duration:before {
     content: "控制时长";
-    padding-right: 10px;
 }
 
-.pg-userCtrl-operationDescription:before{
-    content:"理由";
-    padding-right: 10px;
+.pg-userCtrl-operationDescription:before {
+    content: "理由";
 }
 
-.pg-userCtrl-ursubmit {
+.pg-postCtrl-postAuthor:before {
+    content: "作者";
+}
+
+.pg-postCtrl-postTime:before {
+    content: "发表时间";
+}
+
+.pg-postCtrl-postTitleKeyword:before {
+    content: "标题关键词";
+}
+
+.pg-postCtrl-viewTimes:before {
+    content: "查看次数";
+}
+
+.pg-postCtrl-noview:before {
+    content: "无人回复时长";
+}
+
+.pg-postCtrl-replyTimes:before {
+    content: "回复次数";
+}
+
+.pg-userCtrl-ursubmit, .pg-postCtrl-forum, .pg-postCtrl-type, .pg-postCtrl-submit {
     text-align: center;
     margin-bottom: 40px;
 }
@@ -1093,4 +1117,61 @@ div#fwin_mods {
 #pg-admin-userCtrl p > span {
     display: block;
     margin-left: 20px;
+}
+
+#pg-admin-postCtrl {
+    margin: 0 auto;
+    width: calc(100vw - 80px);
+}
+
+div#pg-select-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1003;
+    background: var(--white);
+}
+
+.pg-select-info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 48px;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    font: 16px/48px Anodina, sans-serif;
+}
+
+.pg-select-input {
+    margin: 72px auto 0 auto;
+    width: calc(100vw - 80px);
+    height: calc(100vh - 112px);
+    overflow: scroll;
+}
+
+.pg-select-tips {
+    text-align: center;
+    font: 18px/1 Anodina, sans-serif;
+    color: var(--grey);
+    margin-bottom: 40px;
+}
+
+.pg-select-input > div:not(.pg-select-tips) {
+    text-align: center;
+    margin: 20px;
+    font: 14px/1 Anodina, sans-serif;
+}
+
+.pg-select-input > .theme-color:before {
+    content: "<";
+    padding-right: 10px;
+}
+
+.pg-select-input > .theme-color:after {
+    content: ">";
+    padding-left: 10px;
 }

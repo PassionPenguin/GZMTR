@@ -4,15 +4,15 @@ window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
     },
-    prompt: (title, placeholder, callback, inf) => {
+    prompt: (title, placeholder, callback, tips) => {
         let promptWrap = cE({type: "div", attr: [["id", "pg-prompt-wrap"]]});
-        let promptInfo = cE({type: "span", attr: [["class", "pg-prompt-info"]], innerText: title});
+        let promptInfo = cE({type: "span", attr: [["class", "pg-prompt-tipso"]], innerText: title});
         let promptInput = cE({
             type: "div",
             attr: [["contenteditable", "true"], ["class", "pg-prompt-input"]],
             innerText: placeholder
         });
-        let promptTips = cE({type: "div", attr: [["class", "pg-prompt-promptInfo"]], innerText: inf});
+        let promptTips = cE({type: "div", attr: [["class", "pg-prompt-promptInfo"]], innerText: tips});
         let ctrlGroup = cE({type: "div", attr: [["class", "pg-prompt-ctrl"]]});
         let submitPrompt = cE({
             type: "span",
@@ -45,7 +45,37 @@ window.pg = {
         promptWrap.append(promptTips);
         promptWrap.append(ctrlGroup);
         document.body.append(promptWrap);
-    }
+    },
+    select: (title, inf, active, callback, tips) => {
+        let selectWrap = cE({type: "div", attr: [["id", "pg-select-wrap"], ["class", "active"]]});
+        let selectInfo = cE({type: "div", attr: [["class", "pg-select-info"]], innerText: title});
+        let selectTips = cE({
+            type: "div",
+            attr: [["class", "pg-select-tips"]],
+            innerText: tips
+        });
+        let selectInput = cE({
+            type: "div",
+            attr: [["class", "pg-select-input"]],
+        });
+        selectInput.append(selectTips);
+        inf.forEach(e => {
+            let select = cE({type: "div", innerText: e});
+            if (e === active)
+                select.classList.add("theme-color");
+            selectInput.append(select);
+            select.onclick = () => {
+                selectWrap.classList.remove("active");
+                setTimeout(() => {
+                    document.body.removeChild(selectWrap)
+                }, 500);
+                callback(e);
+            }
+        });
+        selectWrap.append(selectInfo);
+        selectWrap.append(selectInput);
+        document.body.append(selectWrap);
+    },
 };
 window.cE = (data) => {
     let e = document.createElement(data.type);
@@ -1221,17 +1251,22 @@ window.threadCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>post_add</span>用户管理</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>forum</span>主题管理</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-postCtrl"]]});
-    let forum = cE({type: "div", attr: [["class", "pg-postCtrl-forum"]]});
+    let forum = cE({type: "div", attr: [["class", "pg-postCtrl-forum"]], innerText: pg.$("#fid_ctrl")[0].innerText});
     forum.onclick = () => {
-        // pg.select()
+        pg.$("#fid_ctrl")[0].click();
+        let forums = [...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText);
+        pg.select("请选择您要查询的板块", forums, forum.innerText, (e) => {
+            forum.innerText = e;
+            pg.$("#fid_ctrl_menu")[0].children[0].children[[...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
+        }, "从下方点击您的板块");
         return false;
     };
-    let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(可选)"});
+    let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(可选)帖子类型"});
     type.onclick = () => {
         // pg.select()
         return false;
@@ -1328,11 +1363,11 @@ window.threadCtrlDisplay = () => {
         }
     };
     replyTimes.oninput = () => {
-        pg.$("td>input.px:not(.vm)")[7].value = viewTime.innerText.split("===")[0];
+        pg.$("td>input.px:not(.vm)")[7].value = replyTimes.innerText.split("===")[0];
         if (postTime.innerText.split("===").length > 1)
-            pg.$("td>input.px:not(.vm)")[8].value = viewTime.innerText.split("===")[1];
+            pg.$("td>input.px:not(.vm)")[8].value = replyTimes.innerText.split("===")[1];
     };
-    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-postSubmit"]], innerText: "搜索"});
+    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "搜索"});
     postSubmit.onclick = () => {
         pg.$("#searchsubmit")[0].click();
     };
@@ -1344,6 +1379,7 @@ window.threadCtrlDisplay = () => {
     reviewWrap.append(viewTimes);
     reviewWrap.append(noview);
     reviewWrap.append(replyTimes);
+    reviewWrap.append(postSubmit);
     app.append(reviewWrap);
     document.body.append(app);
 };
