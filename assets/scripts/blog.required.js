@@ -1,4 +1,5 @@
 /* Made by Penguin */
+window.dev = true;
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
@@ -403,7 +404,7 @@ window.threadDisplay = () => {
     let threadSubject = pg.$("#thread_subject")[0].innerText;
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>" + threadSubject + "</span>",
+        innerHTML: "<span onclick=\"loadURL('http://www.ditiezu.com\forum.php?mod=forumdisplay&fid=" + fid + "')\" class='mi theme-color ic-back'>chevron_left</span><span>" + threadSubject + "</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -999,6 +1000,7 @@ window.basicComp = () => {
     }
 
     window.cT = ["", "-1"].indexOf(system.get("theme")) !== -1 || isNaN(Int(system.get("theme"))) ? 0 : Int(system.get("theme"));
+    window.themeName = ["Simple", "Darker", "Watermelon", "Summer", "Rain", "Tea"];
     document.documentElement.classList.add(themeName[cT] + "Theme");
     window.overrideDarkMode = ["", "0"].indexOf(system.get("overrideDarkMode")) === -1;
     if (overrideDarkMode)
@@ -1088,5 +1090,260 @@ window.notificationDisplay = () => {
         wrap.append(notification);
     });
     app.append(wrap);
+    document.body.append(app);
+};
+
+window.reviewDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>explicit</span>审核管理</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let bottomSelector = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=threads\")'>主题</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=replies\")'>回复</span>",
+        attr: [["id", "bottomSelector"]]
+    });
+    app.append(bottomSelector);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-review"]]});
+    [...pg.$(".um[id^='pid_']")].map(i => i.children).forEach(e => {
+        let review = cE({type: "div", attr: [["class", "review"]]});
+        review.append(cE({
+            type: "div",
+            innerText: e[0].children[2].innerText + " > " + e[0].children[3].innerText,
+            attr: [["class", "pg-review-belong"]]
+        })); // 所属板块 > 标题
+        review.append(cE({type: "div", innerHTML: e[1].innerHTML, attr: [["class", "pg-review-author"]]})); // 帖子作者 - 发布时间
+        review.append(cE({type: "div", innerHTML: e[2].innerHTML, attr: [["class", "pg-review-content"]]})); // 发帖内容
+        let reviewCtrl = cE({type: "div", attr: [["class", "pg-review-ctrl"]]});
+        let submit = cE({type: "span", innerHTML: "通过", attr: [["class", "pg-review-submit"]]});
+        submit.onclick = () => {
+            e[0].children[0].children[0].click();
+        };
+        reviewCtrl.append(submit);
+        let deletePost = cE({type: "span", innerHTML: "删除", attr: [["class", "pg-review-delete"]]});
+        deletePost.onclick = () => {
+            e[0].children[0].children[2].click();
+        };
+        reviewCtrl.append(deletePost);
+        let ignore = cE({type: "span", innerHTML: "忽略", attr: [["class", "pg-review-ignore"]]});
+        ignore.onclick = () => {
+            e[0].children[0].children[4].click();
+        };
+        reviewCtrl.append(ignore);
+        let expand = cE({type: "span", innerHTML: "通过", attr: [["class", "pg-review-expand"]]});
+        expand.onclick = () => {
+            e[0].children[0].children[6].click();
+        };
+        reviewCtrl.append(expand);
+        review.append(reviewCtrl); // 发帖内容
+        reviewWrap.append(review);
+    });
+    app.append(reviewWrap);
+    document.body.append(app);
+};
+
+window.userCtrlDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>supervisor_account</span>帖子管理</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-userCtrl"]]});
+    let urname = cE({type: "div", attr: [["contenteditable", "true"], ["class", "pg-userCtrl-urname"]]});
+    let urid = cE({type: "div", attr: [["contenteditable", "true"], ["class", "pg-userCtrl-urid"]], innerText: "(可选)"});
+    urid.onclick = () => {
+        if (urid.innerText === "(可选)") {
+            urid.innerText = "";
+            urid.onclick = () => {
+            }
+        }
+    };
+    let ursubmit = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "搜索"});
+    ursubmit.onclick = () => {
+        pg.$("td>input")[1].value = urname.innerText;
+        pg.$("td>input")[2].value = urid.innerText;
+        pg.$("#searchsubmit")[0].click();
+    };
+    reviewWrap.append(urname);
+    reviewWrap.append(urid);
+    reviewWrap.append(ursubmit);
+    if (pg.$(".schresult").length !== 0) {
+        reviewWrap.append();
+        let usrInfo = cE({type: "div"});
+        let e = [...document.querySelectorAll(".schresult>table>tbody")].map(i => [i.children[0].children[1].children[0].children[0].children[0], i.children[1].children[1].children[0].innerText, i.children[2].children[1].children[0].children[1], i.children[3].children[1].children[0], i.children[4].children[1].children[0]])[0];
+        usrInfo.append(cE({type: "img", attr: [["src", e[0].children[0].children[0].src]]}));
+        usrInfo.append(cE({
+            type: "p",
+            innerHTML: "<span>" + e[0].children[1].children[0].innerText + " - " + e[0].children[1].children[1].innerText + "</span><span>" + e[0].children[1].children[2].innerText + "</span>"
+        }));
+        let usrStatusChange = cE({type: "div", innerText: "变更为：\t" + e[1], attr: [["class", "usrStatusChange"]]});
+        let duration = cE({
+            type: "div",
+            attr: [["contenteditable", "true"], ["class", "pg-userCtrl-duration"]],
+            innerText: "(数字)"
+        });
+        duration.onclick = () => {
+            if (duration.innerText === "(数字)") {
+                duration.innerText = "";
+                duration.onclick = () => {
+                }
+            }
+        };
+        let operationDescription = cE({
+            type: "div",
+            attr: [["contenteditable", "true"], ["class", "pg-userCtrl-operationDescription"]]
+        });
+        let submitOperation = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "确认以上操作"});
+        reviewWrap.append(usrInfo);
+        reviewWrap.append(usrStatusChange);
+        reviewWrap.append(duration);
+        reviewWrap.append(operationDescription);
+        reviewWrap.append(submitOperation);
+        duration.onkeypress = (function (e) {
+            if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
+        });
+        submitOperation.onclick = () => {
+            e[2].value = duration.innerText;
+            e[3].value = operationDescription.innerHTML;
+            e[4].click();
+        }
+    }
+    app.append(reviewWrap);
+    document.body.append(app);
+};
+
+window.threadCtrlDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>post_add</span>用户管理</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-postCtrl"]]});
+    let forum = cE({type: "div", attr: [["class", "pg-postCtrl-forum"]]});
+    forum.onclick = () => {
+        // pg.select()
+        return false;
+    };
+    let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(可选)"});
+    type.onclick = () => {
+        // pg.select()
+        return false;
+    };
+    let postAuthor = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postAuthor"]],
+        innerText: "(可选)"
+    });
+    postAuthor.onclick = () => {
+        if (postAuthor.innerText === "(可选)") {
+            postAuthor.innerText = "";
+            postAuthor.onclick = () => {
+            }
+        }
+    };
+    postAuthor.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[0].value = postAuthor.innerText;
+    };
+    let postTime = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTime"]],
+        innerText: "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD"
+    });
+    postTime.onclick = () => {
+        if (postTime.innerText === "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD") {
+            postTime.innerText = "";
+            postTime.onclick = () => {
+            }
+        }
+    };
+    postTime.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[1].value = postTime.innerText.split("===")[0];
+        if (postTime.innerText.split("===").length > 1)
+            pg.$("td>input.px:not(.vm)")[2].value = postTime.innerText.split("===")[1];
+    };
+    let postTitleKeyword = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTitleKeyword"]],
+        innerText: "(可选)"
+    });
+    postTitleKeyword.onclick = () => {
+        if (postTitleKeyword.innerText === "(可选)") {
+            postTitleKeyword.innerText = "";
+            postTitleKeyword.onclick = () => {
+            }
+        }
+    };
+    postTitleKeyword.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[3].value = postTitleKeyword.innerText;
+    };
+    let viewTimes = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-viewTimes"]],
+        innerText: "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD"
+    });
+    viewTimes.onclick = () => {
+        if (viewTimes.innerText === "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD") {
+            viewTimes.innerText = "";
+            viewTimes.onclick = () => {
+            }
+        }
+    };
+    viewTimes.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[4].value = viewTimes.innerText.split("===")[0];
+        if (postTime.innerText.split("===").length > 1)
+            pg.$("td>input.px:not(.vm)")[5].value = viewTimes.innerText.split("===")[1];
+    };
+    let noview = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-noview"]],
+        innerText: "(可选) "
+    });
+    noview.onclick = () => {
+        if (noview.innerText === "(可选) ") {
+            noview.innerText = "";
+            noview.onclick = () => {
+            }
+        }
+    };
+    noview.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[6].value = noview.innerText;
+    };
+    let replyTimes = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-replyTimes"]],
+        innerText: "(可选) 格式：数值1-数值2"
+    });
+    replyTimes.onclick = () => {
+        if (replyTimes.innerText === "(可选) 格式：数值1-数值2") {
+            replyTimes.innerText = "";
+            replyTimes.onclick = () => {
+            }
+        }
+    };
+    replyTimes.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[7].value = viewTime.innerText.split("===")[0];
+        if (postTime.innerText.split("===").length > 1)
+            pg.$("td>input.px:not(.vm)")[8].value = viewTime.innerText.split("===")[1];
+    };
+    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-postSubmit"]], innerText: "搜索"});
+    postSubmit.onclick = () => {
+        pg.$("#searchsubmit")[0].click();
+    };
+    reviewWrap.append(forum);
+    reviewWrap.append(type);
+    reviewWrap.append(postAuthor);
+    reviewWrap.append(postTime);
+    reviewWrap.append(postTitleKeyword);
+    reviewWrap.append(viewTimes);
+    reviewWrap.append(noview);
+    reviewWrap.append(replyTimes);
+    app.append(reviewWrap);
     document.body.append(app);
 };

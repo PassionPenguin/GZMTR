@@ -52,6 +52,7 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     /* Support for IE. */
     font-feature-settings: 'liga';
+    vertical-align: middle;
 }
 
 
@@ -74,7 +75,7 @@ html, body {
     width: 100vw;
     min-height: 100vh;
     overflow: scroll;
-    background: var(--theme100);
+    background: var(--white);
     z-index: 1000;
 }
 
@@ -167,7 +168,6 @@ body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):
 }
 
 .pg-backgroundFilter {
-    background: var(--white200);
     width: 100%;
     height: 250px;
     position: fixed;
@@ -984,7 +984,113 @@ img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
     font: 14px/36px Anodina, sans-serif;
 }
 
-#pg-app > #pg-app-notification:last-child {
+#pg-app > #pg-app-notification:last-child, #pg-app #pg-admin-review:last-child, #pg-app #pg-admin-userCtrl:last-child {
     margin-top: 72px;
     margin-bottom: 96px !important;
+}
+
+#pg-admin-review, #pg-admin-userCtrl {
+    width: calc(100vw - 80px);
+    margin: 0 auto;
+}
+
+.pg-review-belong {
+    color: var(--grey);
+}
+
+.pg-review-content {
+    padding: 10px 0;
+}
+
+.pg-review-ctrl {
+    padding-bottom: 10px;
+}
+
+.pg-review-ctrl > * {
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 0;
+}
+
+.pg-review-submit:before, .pg-review-delete:before, .pg-review-ignore:before, .pg-review-expand:before {
+    display: inline-block;
+    font: 16px/1 "Material Icons";
+    vertical-align: middle;
+}
+
+.pg-review-submit:before {
+    content: "check";
+}
+
+.pg-review-delete:before {
+    content: "delete";
+}
+
+.pg-review-ignore:before {
+    content: "close";
+}
+
+.pg-review-expand:before {
+    content: "expand_more";
+}
+
+.m_c, .m_c .o {
+    background: var(--white);
+}
+
+.pt, .px, .ps, .select {
+    background: var(--white);
+}
+
+div#fwin_mods {
+    border: 2px solid var(--black);
+    border-radius: 10px;
+}
+
+.pg-userCtrl-urname, .pg-userCtrl-urid, .pg-userCtrl-ursubmit, .pg-userCtrl-duration, .pg-userCtrl-operationDescription {
+    padding: 10px;
+    border: 2px solid var(--black);
+    margin-bottom: 10px;
+}
+
+.pg-userCtrl-urname:before {
+    content: "用户名";
+    padding-right: 10px;
+}
+
+.pg-userCtrl-urid:before {
+    content: "UID";
+    padding-right: 10px;
+}
+
+.pg-userCtrl-duration:before {
+    content: "控制时长";
+    padding-right: 10px;
+}
+
+.pg-userCtrl-operationDescription:before{
+    content:"理由";
+    padding-right: 10px;
+}
+
+.pg-userCtrl-ursubmit {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#pg-admin-userCtrl img, #pg-admin-userCtrl p {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.usrStatusChange {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#pg-admin-userCtrl p > span {
+    display: block;
+    margin-left: 20px;
 }
