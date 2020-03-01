@@ -1,4 +1,9 @@
 /* Made by Penguin */
+window.loadLocalUrl = (typeof loadLocaUrl === "undefined") ? (url) => {
+    window.location.href = "http://127.0.0.1/" + url
+} : (url) => {
+    loadLocalUrl(url)
+};
 window.dev = true;
 window.pg = {
     $: (a) => {
@@ -24,7 +29,7 @@ window.pg = {
             setTimeout(() => {
                 document.body.removeChild(promptWrap)
             }, 500);
-            callback(promptInput.innerHTML);
+            callback(promptInput.innerText);
         };
         let closePrompt = cE({
             type: "span",
@@ -158,7 +163,6 @@ window.insert = (content) => {
         editBox.value = editBox.value.substring(0, cur[0]) + content + editBox.value.substring(cur[1], editBox.value.length);
     }
 };
-
 window.blog = [
     {name: "北京区", fid: 7, iconid: "BJ", enName: "Beijing"}, {
         name: "天津区",
@@ -1179,7 +1183,7 @@ window.userCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>supervisor_account</span>帖子管理</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>supervisor_account</span>用户操作</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1255,6 +1259,15 @@ window.threadCtrlDisplay = () => {
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
+    let bottomSelector = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=thread\")'>板块主题</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebin\")'>主题回收站</span>",
+        attr: [["id", "bottomSelector"]]
+    });
+    if (document.body.innerHTML.includes("恢复"))
+        bottomSelector.children[1].classList.add("theme-color");
+    else bottomSelector.children[0].classList.add("theme-color");
+    app.append(bottomSelector);
     let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-postCtrl"]]});
     let forum = cE({type: "div", attr: [["class", "pg-postCtrl-forum"]], innerText: pg.$("#fid_ctrl")[0].innerText});
     forum.onclick = () => {
@@ -1263,12 +1276,17 @@ window.threadCtrlDisplay = () => {
         pg.select("请选择您要查询的板块", forums, forum.innerText, (e) => {
             forum.innerText = e;
             pg.$("#fid_ctrl_menu")[0].children[0].children[[...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
-        }, "从下方点击您的板块");
+        }, "在下方点击您的板块");
         return false;
     };
     let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(可选)帖子类型"});
     type.onclick = () => {
-        // pg.select()
+        pg.$("#threadoption_ctrl")[0].click();
+        let types = [...pg.$("#threadoption_ctrl_menu")[0].children[0].children].map(i => i.innerText);
+        pg.select("请选择您要查询的帖子类型", types, forum.innerText, (e) => {
+            type.innerText = e;
+            pg.$("#threadoption_ctrl_menu")[0].children[0].children[[...pg.$("#threadoption_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
+        }, "在下方点击查询的类型");
         return false;
     };
     let postAuthor = cE({
@@ -1380,6 +1398,311 @@ window.threadCtrlDisplay = () => {
     reviewWrap.append(noview);
     reviewWrap.append(replyTimes);
     reviewWrap.append(postSubmit);
+    if (document.body.innerText.includes("请选择板块进行管理"))
+        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "请选择板块"}));
+    else if (pg.$("#moderate").length !== 0) {
+        let threadSelectHistory = null;
+        let threadList = cE({type: "div", attr: [["class", "pg-postCtrl-threadList"]]});
+        [...pg.$("#moderate table>tbody:not(:first-child):not(:last-child)>tr")].map(i => i.children).forEach(e => {
+            let thread = cE({type: "div", attr: [["class", "pg-postCtrl-threadList-thread"]]});
+            let postName = cE({
+                type: "p",
+                attr: [["class", "pg-postCtrl-threadList-postName"]],
+                innerText: e[2].innerText
+            });
+            thread.append(postName);
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-authorName"]],
+                innerText: e[3].children[0].innerText
+            }));
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-postTime"]],
+                innerText: e[3].children[1].innerText
+            }));
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-replyTimes"]],
+                innerText: e[4].children[0].innerText + "回复 - "
+            }));
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-viewTimes"]],
+                innerText: e[4].children[1].innerText + "查看"
+            }));
+            thread.append(cE({
+                type: "br"
+            }));
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-lastAuthor"]],
+                innerText: "最后由" + e[5].children[0].innerText + " 发表于 "
+            }));
+            thread.append(cE({
+                type: "span", attr: [["class", "pg-postCtrl-threadList-lastTime"]],
+                innerText: e[5].children[1].innerText
+            }));
+            threadList.append(thread);
+            if (document.body.innerHTML.includes("恢复")) {
+                thread.onclick = () => {
+                    if (threadSelectHistory !== null)
+                        threadSelectHistory.click();
+                    e[1].children[0].click();
+                    threadSelectHistory = e[1].children[0];
+                    pg.select("请选择您对帖子的操作", ["取消选择，关闭窗口", "恢复"], "取消选择，关闭窗口", (val) => {
+                        if (val !== "取消选择，关闭窗口") {
+                            pg.$("#moderate table>tbody:last-child>tr button")[0].click()
+                        }
+                    }, "当前选中：" + postName.innerText);
+                };
+            } else
+                thread.onclick = () => {
+                    if (threadSelectHistory !== null)
+                        threadSelectHistory.click();
+                    e[1].children[0].click();
+                    threadSelectHistory = e[1].children[0];
+                    pg.select("请选择您对帖子的操作", ["取消选择，关闭窗口", "删除", "移动", "分类", "置顶", "精华", "高亮", "提升下沉", "关闭打开"], "取消选择，关闭窗口", (val) => {
+                        if (val !== "取消选择，关闭窗口") {
+                            pg.$("#mdly :not(:first-child) a")[["删除", "移动", "分类", "置顶", "精华", "高亮", "提升下沉", "关闭打开"].indexOf(val)].click();
+                        }
+                    }, "当前选中：" + postName.innerText);
+                };
+        });
+        reviewWrap.append(threadList);
+    }
+
+    app.append(reviewWrap);
+    document.body.append(app);
+};
+
+window.postCtrlDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>comment</span>回复管理</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let bottomSelector = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=post\")'>回复管理</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebinpost\")'>回帖回收站</span>",
+        attr: [["id", "bottomSelector"]]
+    });
+    if (document.body.innerHTML.includes("恢复"))
+        bottomSelector.children[1].classList.add("theme-color");
+    else bottomSelector.children[0].classList.add("theme-color");
+    app.append(bottomSelector);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-postCtrl"]]});
+    let forum = cE({type: "div", attr: [["class", "pg-postCtrl-forum"]], innerText: pg.$("#fid_ctrl")[0].innerText});
+    forum.onclick = () => {
+        pg.$("#fid_ctrl")[0].click();
+        let forums = [...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText);
+        pg.select("请选择您要查询的板块", forums, forum.innerText, (e) => {
+            forum.innerText = e;
+            pg.$("#fid_ctrl_menu")[0].children[0].children[[...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
+        }, "在下方点击您的板块");
+        return false;
+    };
+    let postAuthor = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postAuthor"]],
+        innerText: "(可选)"
+    });
+    postAuthor.onclick = () => {
+        if (postAuthor.innerText === "(可选)") {
+            postAuthor.innerText = "";
+            postAuthor.onclick = () => {
+            }
+        }
+    };
+    postAuthor.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[0].value = postAuthor.innerText;
+    };
+    let postTime = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTime"]],
+        innerText: "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD"
+    });
+    postTime.onclick = () => {
+        if (postTime.innerText === "(可选) 格式：YYYY-MM-DD===YYYY-MM-DD") {
+            postTime.innerText = "";
+            postTime.onclick = () => {
+            }
+        }
+    };
+    postTime.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[1].value = postTime.innerText.split("===")[0];
+        if (postTime.innerText.split("===").length > 1)
+            pg.$("td>input.px:not(.vm)")[2].value = postTime.innerText.split("===")[1];
+    };
+    let postKeyword = cE({
+        type: "div",
+        attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postKeyword"]],
+        innerText: "(可选)"
+    });
+    postKeyword.onclick = () => {
+        if (postKeyword.innerText === "(可选)") {
+            postKeyword.innerText = "";
+            postKeyword.onclick = () => {
+            }
+        }
+    };
+    postKeyword.oninput = () => {
+        pg.$("td>input.px:not(.vm)")[3].value = postKeyword.innerText;
+    };
+    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "搜索"});
+    postSubmit.onclick = () => {
+        pg.$("#searchsubmit")[0].click();
+    };
+    reviewWrap.append(forum);
+    reviewWrap.append(postAuthor);
+    reviewWrap.append(postTime);
+    reviewWrap.append(postSubmit);
+    if (document.body.innerText.includes("搜索条件不足"))
+        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "搜索条件不足"}));
+    else if (pg.$("#moderate>tr:not(:first-child):not(:last-child)").length !== 0) {
+        let threadSelectHistory = null;
+        let postList = cE({type: "div", attr: [["class", "pg-postCtrl-postList"]]});
+        [...pg.$("#moderate table>tbody>tr:not(:first-child):not(:last-child)")].map(i => i.children).forEach((e, index) => {
+            let post = cE({type: "div", attr: [["class", "pg-postCtrl-postList-post"]]});
+            let postName = cE({
+                type: "p",
+                attr: [["class", "pg-postCtrl-postList-postName"]],
+                innerText: e[0].innerText.replace(/\n/, " - (回帖内容: ") + " )"
+            });
+            post.append(postName);
+            let authorName = cE({
+                type: "span",
+                attr: [["class", "pg-postCtrl-postList-authorName"]],
+                innerText: e[2].children[0].innerText
+            });
+            post.append(authorName);
+            let postTime = cE({
+                type: "span",
+                attr: [["class", "pg-postCtrl-postList-postTime"]],
+                innerText: e[2].children[1].innerText
+            });
+            post.append(postTime);
+            postList.append(post);
+            if (document.body.innerHTML.includes("恢复")) {
+                post.onclick = () => {
+                    if (threadSelectHistory !== null)
+                        threadSelectHistory.click();
+                    pg.$("tbody:not(:last-child):not(:first-child) .o input")[index].click();
+                    threadSelectHistory = e[1].children[0];
+                    pg.select("请选择您对回复的操作", ["取消选择，关闭窗口", "恢复"], "取消选择，关闭窗口", (val) => {
+                        if (val !== "取消选择，关闭窗口") {
+                            pg.$("#moderate table>tbody:last-child>tr button")[0].click()
+                        }
+                    }, "当前选中：" + postName.innerText);
+                };
+            } else
+                post.onclick = () => {
+                    loadURL(e[0].children[0].href);
+                };
+        });
+        reviewWrap.append(postList);
+    } else if (pg.$("#moderate table>tbody:not(:first-child):not(:last-child)").length !== 0) {
+        let threadSelectHistory = null;
+        let postList = cE({type: "div", attr: [["class", "pg-postCtrl-postList"]]});
+        [...pg.$("#moderate table>tbody:not(:first-child):not(:last-child) tr")].map(i => i.children).forEach((e, index) => {
+            let post = cE({type: "div", attr: [["class", "pg-postCtrl-postList-post"]]});
+            let postName = cE({
+                type: "p",
+                attr: [["class", "pg-postCtrl-postList-postName"]],
+                innerText: e[1].innerText
+            });
+            post.append(postName);
+            let authorName = cE({
+                type: "span",
+                attr: [["class", "pg-postCtrl-postList-authorName"]],
+                innerText: e[2].children[0].innerText
+            });
+            post.append(authorName);
+            let postTime = cE({
+                type: "span",
+                attr: [["class", "pg-postCtrl-postList-postTime"]],
+                innerText: e[5].innerText
+            });
+            post.append(postTime);
+            postList.append(post);
+            if (document.body.innerHTML.includes("恢复")) {
+                post.onclick = () => {
+                    if (threadSelectHistory !== null)
+                        threadSelectHistory.click();
+                    e[0].click();
+                    threadSelectHistory = e[0];
+                    pg.select("请选择您对回复的操作", ["取消选择，关闭窗口", "恢复"], "取消选择，关闭窗口", (val) => {
+                        if (val !== "取消选择，关闭窗口") {
+                            pg.$("#moderate table>tbody:last-child>tr button")[0].click()
+                        }
+                    }, "当前选中：" + postName.innerText);
+                };
+            } else
+                post.onclick = () => {
+                    loadURL(e[0].children[0].href);
+                };
+        });
+        reviewWrap.append(postList);
+    }
+
+    app.append(reviewWrap);
+    document.body.append(app);
+};
+
+window.reportCtrlDisplay = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>report</span>举报管理</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-reportCtrl"]]});
+    let forum = cE({
+        type: "div",
+        attr: [["class", "pg-reportCtrl-forum"]],
+        innerText: pg.$("#fid")[0][pg.$("#fid")[0].options.selectedIndex].innerText
+    });
+    forum.onclick = () => {
+        let forums = [...pg.$("#fid option")].map(i => i.innerText);
+        pg.select("请选择您要查询的板块", forums, forum.innerText, (e) => {
+            forum.innerText = e;
+            pg.$("#fid option")[[...pg.$("#fid option")].map(i => i.innerText).indexOf(e)].click()
+        }, "在下方点击您的板块");
+        return false;
+    };
+    let reportSubmit = cE({type: "div", attr: [["class", "pg-reportCtrl-submit"]], innerText: "搜索"});
+    reportSubmit.onclick = () => {
+        pg.$("#searchsubmit")[0].click();
+    };
+    reviewWrap.append(forum);
+    reviewWrap.append(reportSubmit);
+    if (document.body.innerText.includes("没有新的举报或没有选择板块"))
+        reviewWrap.append(cE({type: "div", attr: "pg-reportCtrl-selectForumAlert", innerText: "没有新的举报或没有选择板块"}));
+    else if (pg.$("#list_modcp_logs tbody tr:not(:last-child)").length !== 0) {
+        let threadSelectHistory = null;
+        let reportList = cE({type: "div", attr: [["class", "pg-reportCtrl-reportList"]]});
+        [...pg.$("#list_modcp_logs tbody tr:not(:last-child)")].map(i => i.children).forEach(e => {
+            let report = cE({type: "div", attr: [["class", "pg-reportCtrl-reportList-report"]]});
+            let reportName = cE({
+                type: "p",
+                attr: [["class", "pg-reportCtrl-reportList-reportName"]],
+                innerHTML: e[1].innerText.replace("forum.php?mod=redirect&goto=findpost&ptid=0&pid=", " PID ")
+            });
+            report.append(reportName);
+            reportList.append(report);
+            report.onclick = () => {
+                if (threadSelectHistory !== null)
+                    threadSelectHistory.click();
+                e[0].click();
+                threadSelectHistory = e[1].children[0];
+                pg.select("请选择您对举报的操作", ["取消选择，关闭窗口", "处理"], "取消选择，关闭窗口", (val) => {
+                    if (val !== "取消选择，关闭窗口") {
+                        pg.$("#reportsubmit")[0].click()
+                    }
+                }, "当前选中：" + reportName.innerText);
+            };
+        });
+        reviewWrap.append(reportList);
+    }
+
     app.append(reviewWrap);
     document.body.append(app);
 };
