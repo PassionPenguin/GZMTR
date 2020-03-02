@@ -175,7 +175,7 @@
         }));
         let trigger = cE({type: "button", innerText: "ver 7.1.0 (beta, rebuild)"});
         if (system.get("shouldOverrideAds") !== "")
-            trigger.innerText += (" - 免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
+            trigger.innerText += ("\n\n免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
         trigger.onclick = () => {
             lasttime = new Date().getTime();
             trigger.onclick = () => {
@@ -183,14 +183,15 @@
                     lasttime = new Date().getTime();
                     trigger.onclick = () => {
                         if (new Date().getTime() - lasttime < 2000) {
-                            pg.prompt("请输入邀请码", "0000-0000-0000-0000-0000", (val) => {
+                            pg.prompt("请输入邀请码", "0000-0000-0000-0000-0000(不含'-')", (val) => {
                                 if (val !== false) {
                                     let xhr = new XMLHttpRequest();
                                     xhr.onreadystatechange = function () {
                                         if (xhr.readyState === XMLHttpRequest.DONE) {
                                             if (xhr.responseText.length > 32) {
                                                 system.set("shouldOverrideAds", xhr.responseText.substr(32));
-                                                trigger.innerText += (" - 免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"))
+                                                trigger.innerText += ("\n免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
+                                                window.location.reload();
                                             }
                                         }
                                     };
@@ -205,5 +206,8 @@
         };
         inner.appendChild(trigger);
     }
+    window.onload = ()=>{
+        android.onready();
+    };
 </script>
 </html>

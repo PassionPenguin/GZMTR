@@ -1,8 +1,8 @@
 /* Made by Penguin */
-window.loadLocalUrl = (typeof loadLocaUrl === "undefined") ? (url) => {
+window.loadLocalUrl = (typeof android === "undefined") ? (url) => {
     window.location.href = "http://127.0.0.1/" + url
 } : (url) => {
-    loadLocalUrl(url)
+    window.location.href = "file:///android_asset/webRes/" + url
 };
 window.dev = true;
 window.pg = {
@@ -22,7 +22,7 @@ window.pg = {
         let submitPrompt = cE({
             type: "span",
             attr: [["class", "pg-prompt-ctrl"]],
-            innerHTML: "<span class='mi'>check</span><span>ç¡®è®¤ä¿¡æ¯</span>"
+            innerHTML: "<span class='mi'>check</span><span>È·ÈÏĞÅÏ¢</span>"
         });
         submitPrompt.onclick = () => {
             promptWrap.classList.remove("active");
@@ -34,7 +34,7 @@ window.pg = {
         let closePrompt = cE({
             type: "span",
             attr: [["class", "pg-prompt-ctrl"]],
-            innerHTML: "<span class='mi'>close</span><span>å…³é—­çª—å£</span>"
+            innerHTML: "<span class='mi'>close</span><span>¹Ø±Õ´°¿Ú</span>"
         });
         closePrompt.onclick = () => {
             promptWrap.classList.remove("active");
@@ -164,128 +164,128 @@ window.insert = (content) => {
     }
 };
 window.blog = [
-    {name: "åŒ—äº¬åŒº", fid: 7, iconid: "BJ", enName: "Beijing"}, {
-        name: "å¤©æ´¥åŒº",
+    {name: "±±¾©Çø", fid: 7, iconid: "BJ", enName: "Beijing"}, {
+        name: "Ìì½òÇø",
         fid: 6,
         iconid: "TJ",
         enName: "Tianjin"
-    }, {name: "ä¸Šæµ·åŒº", fid: 8, iconid: "SH", enName: "Shanghai"}, {
-        name: "å¹¿å·åŒº",
+    }, {name: "ÉÏº£Çø", fid: 8, iconid: "SH", enName: "Shanghai"}, {
+        name: "¹ãÖİÇø",
         fid: 23,
         iconid: "GZ",
         enName: "Guangzhou"
-    }, {name: "é•¿æ˜¥åŒº", fid: 40, iconid: "CCH", enName: "Changchun"}, {
-        name: "å¤§è¿åŒº",
+    }, {name: "³¤´ºÇø", fid: 40, iconid: "CCH", enName: "Changchun"}, {
+        name: "´óÁ¬Çø",
         fid: 41,
         iconid: "DL",
         enName: "Dalian"
-    }, {name: "æ­¦æ±‰åŒº", fid: 39, iconid: "WH", enName: "Wuhan"}, {
-        name: "é‡åº†åŒº",
+    }, {name: "ÎäººÇø", fid: 39, iconid: "WH", enName: "Wuhan"}, {
+        name: "ÖØÇìÇø",
         fid: 38,
         iconid: "CQ",
         enName: "Chongqing"
-    }, {name: "æ·±åœ³åŒº", fid: 24, iconid: "SZ", enName: "Shenzhen"}, {
-        name: "å—äº¬åŒº",
+    }, {name: "ÉîÛÚÇø", fid: 24, iconid: "SZ", enName: "Shenzhen"}, {
+        name: "ÄÏ¾©Çø",
         fid: 22,
         iconid: "NJ",
         enName: "Nanjing"
-    }, {name: "æˆéƒ½åŒº", fid: 53, iconid: "CD", enName: "Chengdu"}, {
-        name: "æ²ˆé˜³åŒº",
+    }, {name: "³É¶¼Çø", fid: 53, iconid: "CD", enName: "Chengdu"}, {
+        name: "ÉòÑôÇø",
         fid: 50,
         iconid: "SY",
         enName: "Shenyang"
-    }, {name: "ä½›å±±åŒº", fid: 56, iconid: "FS", enName: "Foshan"}, {
-        name: "è¥¿å®‰åŒº",
+    }, {name: "·ğÉ½Çø", fid: 56, iconid: "FS", enName: "Foshan"}, {
+        name: "Î÷°²Çø",
         fid: 54,
         iconid: "XA",
         enName: "Xi'an"
-    }, {name: "è‹å·åŒº", fid: 51, iconid: "SUZ", enName: "Suzhou"}, {
-        name: "æ˜†æ˜åŒº",
+    }, {name: "ËÕÖİÇø", fid: 51, iconid: "SUZ", enName: "Suzhou"}, {
+        name: "À¥Ã÷Çø",
         fid: 70,
         iconid: "KM",
         enName: "Kunming"
-    }, {name: "æ­å·åŒº", fid: 52, iconid: "HZ", enName: "Hangzhou"}, {
-        name: "å“ˆå°”æ»¨åŒº",
+    }, {name: "º¼ÖİÇø", fid: 52, iconid: "HZ", enName: "Hangzhou"}, {
+        name: "¹ş¶û±õÇø",
         fid: 55,
         iconid: "HAB",
         enName: "Harbin"
-    }, {name: "éƒ‘å·åŒº", fid: 64, iconid: "ZZ", enName: "Zhengzhou"}, {
-        name: "é•¿æ²™åŒº",
+    }, {name: "Ö£ÖİÇø", fid: 64, iconid: "ZZ", enName: "Zhengzhou"}, {
+        name: "³¤É³Çø",
         fid: 67,
         iconid: "CS",
         enName: "Changsha"
-    }, {name: "å®æ³¢åŒº", fid: 65, iconid: "NB", enName: "Ningbo"}, {
-        name: "æ— é”¡åŒº",
+    }, {name: "Äş²¨Çø", fid: 65, iconid: "NB", enName: "Ningbo"}, {
+        name: "ÎŞÎıÇø",
         fid: 68,
         iconid: "WX",
         enName: "Wuxi"
-    }, {name: "é’å²›åŒº", fid: 66, iconid: "QD", enName: "Qingdao"}, {
-        name: "å—æ˜ŒåŒº",
+    }, {name: "ÇàµºÇø", fid: 66, iconid: "QD", enName: "Qingdao"}, {
+        name: "ÄÏ²ıÇø",
         fid: 71,
         iconid: "NC",
         enName: "Nanchang"
-    }, {name: "ç¦å·åŒº", fid: 72, iconid: "FZ", enName: "Fuzhou"}, {
-        name: "ä¸œèåŒº",
+    }, {name: "¸£ÖİÇø", fid: 72, iconid: "FZ", enName: "Fuzhou"}, {
+        name: "¶«İ¸Çø",
         fid: 75,
         iconid: "DG",
         enName: "Dongguan"
-    }, {name: "å—å®åŒº", fid: 73, iconid: "NN", enName: "Nanning"}, {
-        name: "åˆè‚¥åŒº",
+    }, {name: "ÄÏÄşÇø", fid: 73, iconid: "NN", enName: "Nanning"}, {
+        name: "ºÏ·ÊÇø",
         fid: 74,
         iconid: "HF",
         enName: "Hefei"
-    }, {name: "çŸ³å®¶åº„åŒº", fid: 140, iconid: "SJZ", enName: "Shijiazhuang"}, {
-        name: "è´µé˜³åŒº",
+    }, {name: "Ê¯¼Ò×¯Çø", fid: 140, iconid: "SJZ", enName: "Shijiazhuang"}, {
+        name: "¹óÑôÇø",
         fid: 76,
         iconid: "GY",
         enName: "Guiyang"
-    }, {name: "å¦é—¨åŒº", fid: 77, iconid: "XM", enName: "Xiamen"}, {
-        name: "ä¹Œé²æœ¨é½åŒº",
+    }, {name: "ÏÃÃÅÇø", fid: 77, iconid: "XM", enName: "Xiamen"}, {
+        name: "ÎÚÂ³Ä¾ÆëÇø",
         fid: 143,
         iconid: "UM",
         enName: "Urumqi"
-    }, {name: "æ¸©å·åŒº", fid: 142, iconid: "WZ", enName: "Wenzhou"}, {
-        name: "æµå—åŒº",
+    }, {name: "ÎÂÖİÇø", fid: 142, iconid: "WZ", enName: "Wenzhou"}, {
+        name: "¼ÃÄÏÇø",
         fid: 148,
         iconid: "JN",
         enName: "Jinan"
-    }, {name: "å…°å·åŒº", fid: 78, iconid: "LZ", enName: "Lanzhou"}, {
-        name: "å¸¸å·åŒº",
+    }, {name: "À¼ÖİÇø", fid: 78, iconid: "LZ", enName: "Lanzhou"}, {
+        name: "³£ÖİÇø",
         fid: 48,
         iconid: "CZ",
         enName: "Changzhou"
-    }, {name: "å¾å·åŒº", fid: 144, iconid: "XZ", enName: "Xuzhou"}, {
-        name: "å‘¼å’Œæµ©ç‰¹åŒº",
+    }, {name: "ĞìÖİÇø", fid: 144, iconid: "XZ", enName: "Xuzhou"}, {
+        name: "ºôºÍºÆÌØÇø",
         fid: 151,
         iconid: "HH",
         enName: "Huhhot"
-    }, {name: "é¦™æ¸¯åŒº", fid: 28, iconid: "HK", enName: "Hongkong"}, {
-        name: "æ¾³é—¨åŒº",
+    }, {name: "Ïã¸ÛÇø", fid: 28, iconid: "HK", enName: "Hongkong"}, {
+        name: "°ÄÃÅÇø",
         fid: 79,
         iconid: "MO",
         enName: "Macau"
-    }, {name: "å°æ¹¾åŒº", fid: 36, iconid: "TW", enName: "Taiwan"}, {
-        name: "æµ·å¤–åŒº",
+    }, {name: "Ì¨ÍåÇø", fid: 36, iconid: "TW", enName: "Taiwan"}, {
+        name: "º£ÍâÇø",
         fid: 47,
         iconid: "HW",
         enName: "Oversea"
-    }, {name: "ç»¼åˆåŒº", fid: 37, iconid: "ZOH", enName: "Comprehensive"}, {
-        name: "è½¨é“æ”¶è—",
+    }, {name: "×ÛºÏÇø", fid: 37, iconid: "ZOH", enName: "Comprehensive"}, {
+        name: "¹ìµÀÊÕ²Ø",
         fid: 33,
         iconid: "COL",
         enName: "Collections"
-    }, {name: "éƒ½å¸‚é£æƒ…", fid: 16, iconid: "SCN", enName: "City Style"}, {
-        name: "åœ°é“ç¾é£Ÿ",
+    }, {name: "¶¼ÊĞ·çÇé", fid: 16, iconid: "SCN", enName: "City Style"}, {
+        name: "µØÌúÃÀÊ³",
         fid: 15,
         iconid: "FOOD",
         enName: "Food"
-    }, {name: "è½¨äº¤æ¸¸æˆ", fid: 145, iconid: "GAME", enName: "Games"}, {
-        name: "ç«™å‰å¹¿åœº",
+    }, {name: "¹ì½»ÓÎÏ·", fid: 145, iconid: "GAME", enName: "Games"}, {
+        name: "Õ¾Ç°¹ã³¡",
         fid: 21,
         iconid: "CHAT",
         enName: "H2O Plaza"
-    }, {name: "åŸé™…é«˜é“", fid: 46, iconid: "Railway", "enName": "Railway"}, {
-        name: "ç«™åŠ¡å…¬å‘Š",
+    }, {name: "³Ç¼Ê¸ßÌú", fid: 46, iconid: "Railway", "enName": "Railway"}, {
+        name: "Õ¾Îñ¹«¸æ",
         fid: 17,
         iconid: "MA",
         enName: "Announcement"
@@ -423,6 +423,7 @@ window.forumDisplay = () => {
         innerText: "add"
     }));
     document.body.append(app);
+    system.onready();
 };
 
 window.threadDisplay = () => {
@@ -477,9 +478,9 @@ window.threadDisplay = () => {
         let threadContent = [...
             c][0].children[1].children;
         let threadFloor = (curPage - 1) * 15 + id + 1;
-        let threadPostTime = threadContent[0].innerText.split("å‘è¡¨äº ")[1].split("|")[0];
-        postInfo.append(cE({type: "span", innerText: "ç¬¬" + threadFloor + "æ¥¼"}));
-        postInfo.append(cE({type: "span", innerText: "å‘è¡¨äº" + threadPostTime}));
+        let threadPostTime = threadContent[0].innerText.split("·¢±íÓÚ ")[1].split("|")[0];
+        postInfo.append(cE({type: "span", innerText: "µÚ" + threadFloor + "Â¥"}));
+        postInfo.append(cE({type: "span", innerText: "·¢±íÓÚ" + threadPostTime}));
         ThreadPostInfo.append(postInfo);
         thread.append(ThreadPostInfo);
         let pid = [...pg.$("#ct.wp>#postlist>div[id^='post_']")][id].id;
@@ -495,17 +496,17 @@ window.threadDisplay = () => {
         let replyBTN = cE({
             type: "span",
             attr: [["class", "replyToThis"], ["rid", pid.substr(5)]],
-            innerText: "å›å¤"
+            innerText: "»Ø¸´"
         });
         replyBTN.onclick = () => {
             loadURL(id !== "0" ? ("http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid + "&repquote=" + replyBTN.getAttribute("rid")) : "http://www.ditiezu.com/forum.php?mod=post&action=reply&tid=" + tid)
         };
         threadUtil.append(replyBTN);
-        if (document.body.innerHTML.includes("è¯„åˆ†")) {
+        if (document.body.innerHTML.includes("ÆÀ·Ö")) {
             let rateBTN = cE({
                 type: "span",
                 attr: [["class", "makeRate"], ["rid", pid.substr(5)]],
-                innerText: "è¯„åˆ†"
+                innerText: "ÆÀ·Ö"
             });
             rateBTN.onclick = () => {
                 showWindow('rate', 'forum.php?mod=misc&action=rate&tid=' + tid + '&pid=' + rateBTN.getAttribute("rid") + '', 'get', -1);
@@ -517,7 +518,7 @@ window.threadDisplay = () => {
             let star = cE({
                 type: "span",
                 attr: [["class", "star"], ["rid", pid.substr(5)]],
-                innerText: "æ”¶è—"
+                innerText: "ÊÕ²Ø"
             });
             star.onclick = () => {
                 pg.$("#k_favorite")[0].click();
@@ -528,7 +529,7 @@ window.threadDisplay = () => {
             let appreciate = cE({
                 type: "span",
                 attr: [["class", "appreciate"], ["rid", pid.substr(5)]],
-                innerText: "èµ"
+                innerText: "ÔŞ"
             });
             appreciate.onclick = () => {
                 pg.$("#recommend_add")[0].click();
@@ -539,7 +540,7 @@ window.threadDisplay = () => {
             let dislike = cE({
                 type: "span",
                 attr: [["class", "dislike"], ["rid", pid.substr(5)]],
-                innerText: "è¸©"
+                innerText: "²È"
             });
             dislike.onclick = () => {
                 pg.$("#recommend_subtract")[0].click();
@@ -606,13 +607,14 @@ window.threadDisplay = () => {
         attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
         innerText: "designed and coded by @PassionPenguin"
     }));
+    system.onready();
 };
 
 window.loginDisplay = () => {
     pg.$("#main_hnav a.xi2")[0].click();
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>ç™»å½•åœ°é“æ—</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>µÇÂ¼µØÌú×å</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
@@ -623,12 +625,13 @@ window.loginDisplay = () => {
         attr: [["style", "text-align:center;margin:10px 0;"], ["id", "pg-copyInfo"]],
         innerText: "designed and coded by @PassionPenguin"
     }));
+    system.onready();
 };
 
 window.indexDisplay = () => {
     let list = [...pg.$("#portal_block_55_content ul li")].map((i, index) => [index, i.children[0].innerText, i.children[1], i.children[2]]);
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
-    app.append(cE({type: "p", innerText: "çƒ­é—¨æ¿å—", attr: [["class", "pg-hotForumDescription"]]}));
+    app.append(cE({type: "p", innerText: "ÈÈÃÅ°å¿é", attr: [["class", "pg-hotForumDescription"]]}));
     {
         let hotForum = cE({type: "div", attr: [["id", "pg-hotForum"]]});
         let recList = [23, 7, 21, 46, 39, 16];
@@ -644,7 +647,7 @@ window.indexDisplay = () => {
         app.append(hotForum);
     }//topped fid
 
-    app.append(cE({type: "p", innerText: "ä»Šæ—¥èšç„¦", attr: [["class", "pg-hotThreadDescription"]]}));
+    app.append(cE({type: "p", innerText: "½ñÈÕ¾Û½¹", attr: [["class", "pg-hotThreadDescription"]]}));
     {
         let recommendPosts = cE({type: "div", attr: [["id", "pg-recommendPosts"]]});
         list.forEach(e => {
@@ -665,7 +668,7 @@ window.indexDisplay = () => {
         app.append(recommendPosts);
     }//recommend slideshow
 
-    app.append(cE({type: "p", innerText: "ä¸»è¦æ¿å—", attr: [["class", "pg-mainForumDescription"]]}));
+    app.append(cE({type: "p", innerText: "Ö÷Òª°å¿é", attr: [["class", "pg-mainForumDescription"]]}));
     {
         let ForumList = cE({type: "div", attr: [["id", "pg-hotForum"]]});
         blog.forEach(e => {
@@ -691,6 +694,7 @@ window.indexDisplay = () => {
         innerText: "designed and coded by @PassionPenguin"
     }));
     document.body.append(app);
+    system.onready();
 };
 
 window.postDisplay = () => {
@@ -857,7 +861,7 @@ window.postDisplay = () => {
         makeSpecialWrap.append(back);
         let link = cE({type: "span", attr: [["class", "mi"]], innerText: "insert_link"});
         link.onclick = () => {
-            pg.prompt("è¯·è¾“å…¥æ‚¨æƒ³è¦æ’å…¥çš„é“¾æ¥å†…å®¹", "https://passionpenguin.github.io/GZMTR", (res) => {
+            pg.prompt("ÇëÊäÈëÄúÏëÒª²åÈëµÄÁ´½ÓÄÚÈİ", "https://passionpenguin.github.io/GZMTR", (res) => {
                 if (res !== false) styled("url", res);
             });
             return false;
@@ -879,7 +883,7 @@ window.postDisplay = () => {
     let sendUtilToolBox = cE({type: "div", attr: [["id", "sendUtilToolBox"]]});
     let back = cE({type: "span", attr: [["class", "mi"]], innerText: "close"});
     back.onclick = window.onpopstate = () => {
-        !confirm("ç¡®è®¤è¦ç¦»å¼€ï¼Ÿç¦»å¼€å°†å¤±å»å½“å‰å†…å®¹") ? void (0) : history.back();
+        !confirm("È·ÈÏÒªÀë¿ª£¿Àë¿ª½«Ê§È¥µ±Ç°ÄÚÈİ") ? void (0) : history.back();
     };
     let subjectHeader = cE({type: "div", attr: [["id", "sendTitle"], ["contenteditable", "true"]]});
     sendUtilToolBox.append(back);
@@ -904,9 +908,9 @@ window.postDisplay = () => {
     prefrences.append(mainPrefrences);
     prefrences.append(emotions);
     let withFootNote = true;
-    let withFootNotes = cE({type: "div", attr: [["id", "FootNote"]], innerText: "æ˜¯å¦å¸¦ä¸Šappæ ‡ç­¾"});
+    let withFootNotes = cE({type: "div", attr: [["id", "FootNote"]], innerText: "ÊÇ·ñ´øÉÏapp±êÇ©"});
     withFootNotes.onclick = () => {
-        pg.select("è¯·é€‰æ‹©æ˜¯å¦ä½¿ç”¨appæ ‡ç­¾", "é€‰æ‹©åå°†ä¼šåŠ ä¸Šappå‘å¸–çš„å›¾æ ‡ã€‚", "selectNotes", (res) => {
+        pg.select("ÇëÑ¡ÔñÊÇ·ñÊ¹ÓÃapp±êÇ©", "Ñ¡Ôñºó½«»á¼ÓÉÏapp·¢ÌûµÄÍ¼±ê¡£", "selectNotes", (res) => {
             if (res !== false) {
                 withFootNote = res === "set";
             }
@@ -915,9 +919,9 @@ window.postDisplay = () => {
     mainPrefrences.append(withFootNotes);
     switch (postType) {
         case "new":
-            let readPerm = cE({type: "div", attr: [["id", "ReadPerm"]], innerText: "é˜…è¯»æƒé™"});
+            let readPerm = cE({type: "div", attr: [["id", "ReadPerm"]], innerText: "ÔÄ¶ÁÈ¨ÏŞ"});
             readPerm.onclick = () => {
-                pg.select("è¯·é€‰æ‹©æ‚¨çš„å¸–å­çš„é˜…è¯»æƒé™", "æƒé™å¤§äºç­‰äºæ‚¨æ‰€è®¾å®šçš„å€¼æ—¶å€™å¯¹æ–¹æ‰å¯è§ã€‚", "selectPerm", (res) => {
+                pg.select("ÇëÑ¡ÔñÄúµÄÌû×ÓµÄÔÄ¶ÁÈ¨ÏŞ", "È¨ÏŞ´óÓÚµÈÓÚÄúËùÉè¶¨µÄÖµÊ±ºò¶Ô·½²Å¿É¼û¡£", "selectPerm", (res) => {
                     if (res !== false) {
                         pg.$("#readperm")[0].children[res].click();
                     }
@@ -925,8 +929,8 @@ window.postDisplay = () => {
             };
             mainPrefrences.append(readPerm);
 
-            sendUtilToolBox.append(cE({type: "div", innerText: "å‘è¡¨æ–°å¸–å­"}));
-            pg.prompt("è¯·è¾“å…¥æ‚¨çš„æ ‡é¢˜", "ä¾‹å¦‚ï¼šéœ‡æƒŠï¼Œä¼é¹…ç«Ÿç„¶æ˜¯æ¯çš„", (res) => {
+            sendUtilToolBox.append(cE({type: "div", innerText: "·¢±íĞÂÌû×Ó"}));
+            pg.prompt("ÇëÊäÈëÄúµÄ±êÌâ", "ÀıÈç£ºÕğ¾ª£¬Æó¶ì¾¹È»ÊÇÄ¸µÄ", (res) => {
                 if (res !== false) {
                     subjectHeader.innerHTML = res;
                     pg.$("#subject")[0].value = res;
@@ -935,22 +939,22 @@ window.postDisplay = () => {
             });
             post.onclick = () => {
                 let typeid = [...pg.$("#typeid_ctrl_menu li")].map((i, index) => [i.innerText, i, index]);
-                pg.prompt("è¯·è¾“å…¥æ‚¨çš„ä¸»é¢˜åˆ†ç±»", typeid[0][0], (res) => {
+                pg.prompt("ÇëÊäÈëÄúµÄÖ÷Ìâ·ÖÀà", typeid[0][0], (res) => {
                     if (res !== false) {
                         if ([-1, 0].indexOf(typeid.map(i => i[0]).indexOf(res)) !== -1) {
-                            showWarning("è¯·é‡æ–°è¾“å…¥");
+                            showWarning("ÇëÖØĞÂÊäÈë");
                         } else {
                             typeid[typeid.map(i => i[0]).indexOf(res)][1].click();
                             if (subjectHeader.innerText === "") {
-                                showWarning("è¯·è¾“å…¥æ‚¨çš„æ ‡é¢˜");
+                                showWarning("ÇëÊäÈëÄúµÄ±êÌâ");
                             } else {
                                 if (editBox.value === "" || editBox.value.length < 10) {
-                                    showWarning("å­—æ•°ä¸å¤Ÿ10");
+                                    showWarning("×ÖÊı²»¹»10");
                                 } else {
                                     pg.$("#subject")[0].value = subjectHeader.innerText;
                                     pg.$("#e_textarea")[0].value = editBox.value;
                                     if (withFootNote)
-                                        pg.$("#e_textarea")[0].value += "ç”±appå‘å¸–";
+                                        pg.$("#e_textarea")[0].value += "ÓÉapp·¢Ìû";
                                     pg.$("#postsubmit")[0].click();
                                 }
                             }
@@ -960,13 +964,13 @@ window.postDisplay = () => {
             };
             break;
         case "reply":
-            sendUtilToolBox.append(cE({type: "div", innerText: "å›å¤å¸–å­"}));
+            sendUtilToolBox.append(cE({type: "div", innerText: "»Ø¸´Ìû×Ó"}));
             let subject = pg.$("#subjecthide")[0].innerText.substring(0, pg.$("#subjecthide")[0].innerText.length - 5);
             subjectHeader.innerText = subject;
             post.onclick = () => {
                 pg.$("#e_textarea")[0].value = editBox.value;
                 if (withFootNote)
-                    pg.$("#e_textarea")[0].value += "ç”±appå‘è´´";
+                    pg.$("#e_textarea")[0].value += "ÓÉapp·¢Ìù";
                 pg.$("#postsubmit")[0].click();
             };
             break;
@@ -977,11 +981,12 @@ window.postDisplay = () => {
     app.append(textEditBoxWrap);
     document.body.append(prefrences);
     document.body.append(app);
+    system.onready();
 };
 
 window.showWarning = (inf, time, callback) => {
     time = time || 2000;
-    inf = inf || "åŠ è½½ä¸­...";
+    inf = inf || "¼ÓÔØÖĞ...";
     let wrap = pg.$("#bg-animation")[0];
     wrap.children[0].innerHTML = inf;
     wrap.classList.add("loading");
@@ -1003,6 +1008,9 @@ window.basicComp = () => {
         };
         system.removeAll = () => {
             android.sharedPreferencesRemove()
+        };
+        system.onready = () => {
+            android.onready()
         };
     } else {
         system.get = (cname) => {
@@ -1030,6 +1038,9 @@ window.basicComp = () => {
             document.cookie.split(";").forEach(function (c) {
                 document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
             });
+        };
+        system.onready = () => {
+            console.log("W:\tReady!")
         }
     }
 
@@ -1044,7 +1055,7 @@ window.basicComp = () => {
 
     } else {
         if (!document.body.classList.contains("pg_register")) {
-            showWarning("è¯·å…ˆç™»å½•è®ºå›ï¼Œæˆ–è€…å°†æ— æ³•ä½¿ç”¨ã€‚", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
+            showWarning("ÇëÏÈµÇÂ¼ÂÛÌ³£¬»òÕß½«ÎŞ·¨Ê¹ÓÃ¡£", 1000, loadURL("http://www.ditiezu.com/member.php?mod=regditiezu.php"));
         }
     }
     {
@@ -1064,21 +1075,21 @@ window.basicComp = () => {
         let mainPage = cE({
             type: "div",
             attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/forum.php\")"]],
-            innerHTML: "<span class='mi'>home</span><span>ä¸»é¡µ</span>"
+            innerHTML: "<span class='mi'>home</span><span>Ö÷Ò³</span>"
         });
         let messagePage = cE({
             type: "div",
             attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")"]],
-            innerHTML: "<span class='mi'>message</span><span>æ¶ˆæ¯</span>"
+            innerHTML: "<span class='mi'>message</span><span>ÏûÏ¢</span>"
         });
         let accountPage = cE({
             type: "div",
             attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=spacecp&ac=credit\")"]],
-            innerHTML: "<span class='mi'>person</span><span>ä¸ªäºº</span>"
+            innerHTML: "<span class='mi'>person</span><span>¸öÈË</span>"
         });
         if (document.body.classList.contains("pg_register"))
             accountPage.classList.add("theme-color");
-        else if (document.body.innerHTML.includes("æœªè¯»æé†’"))
+        else if (document.body.innerHTML.includes("Î´¶ÁÌáĞÑ"))
             messagePage.classList.add("theme-color");
         else
             mainPage.classList.add("theme-color");
@@ -1093,18 +1104,18 @@ window.notificationDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>æé†’æ¶ˆæ¯</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com\")' class='mi theme-color ic-back'>chevron_left</span><span>ÌáĞÑÏûÏ¢</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let bottomSelector = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")'>æœªè¯»æ¶ˆæ¯</span><span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice&isread=1\")'>å·²è¯»æ¶ˆæ¯</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")'>Î´¶ÁÏûÏ¢</span><span onclick='loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice&isread=1\")'>ÒÑ¶ÁÏûÏ¢</span>",
         attr: [["id", "bottomSelector"]]
     });
     app.append(bottomSelector);
-    if (document.body.innerHTML.includes("æš‚æ—¶æ²¡æœ‰æ–°æé†’"))
-        app.append(cE({type: "div", attr: [["class", "pg-app-noNewNotification"]], innerText: "æš‚æ—¶æ²¡æœ‰æ–°æé†’"}));
+    if (document.body.innerHTML.includes("ÔİÊ±Ã»ÓĞĞÂÌáĞÑ"))
+        app.append(cE({type: "div", attr: [["class", "pg-app-noNewNotification"]], innerText: "ÔİÊ±Ã»ÓĞĞÂÌáĞÑ"}));
     let wrap = cE({type: "div", attr: [["id", "pg-app-notification"]]});
     [...pg.$(".nts>dl.cl")].map(i => [i.children[0].children[0].src === undefined ? i.children[0].children[0].children[0].src : i.children[0].children[0].src, i.children[1].children[1].innerText, i.children[2].innerHTML.trim().replace(/\n/, "").replace(/&nbsp;/, ""), i]).forEach(e => {
         let originalURL = "";
@@ -1125,19 +1136,20 @@ window.notificationDisplay = () => {
     });
     app.append(wrap);
     document.body.append(app);
+    system.onready();
 };
 
 window.reviewDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>ç‰ˆä¸»ç®¡ç† - <span class='mi'>explicit</span>å®¡æ ¸ç®¡ç†</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>°æÖ÷¹ÜÀí - <span class='mi'>explicit</span>ÉóºË¹ÜÀí</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let bottomSelector = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=threads\")'>ä¸»é¢˜</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=replies\")'>å›å¤</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=threads\")'>Ö÷Ìâ</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=replies\")'>»Ø¸´</span>",
         attr: [["id", "bottomSelector"]]
     });
     app.append(bottomSelector);
@@ -1148,56 +1160,57 @@ window.reviewDisplay = () => {
             type: "div",
             innerText: e[0].children[2].innerText + " > " + e[0].children[3].innerText,
             attr: [["class", "pg-review-belong"]]
-        })); // æ‰€å±æ¿å— > æ ‡é¢˜
-        review.append(cE({type: "div", innerHTML: e[1].innerHTML, attr: [["class", "pg-review-author"]]})); // å¸–å­ä½œè€… - å‘å¸ƒæ—¶é—´
-        review.append(cE({type: "div", innerHTML: e[2].innerHTML, attr: [["class", "pg-review-content"]]})); // å‘å¸–å†…å®¹
+        })); // ËùÊô°å¿é > ±êÌâ
+        review.append(cE({type: "div", innerHTML: e[1].innerHTML, attr: [["class", "pg-review-author"]]})); // Ìû×Ó×÷Õß - ·¢²¼Ê±¼ä
+        review.append(cE({type: "div", innerHTML: e[2].innerHTML, attr: [["class", "pg-review-content"]]})); // ·¢ÌûÄÚÈİ
         let reviewCtrl = cE({type: "div", attr: [["class", "pg-review-ctrl"]]});
-        let submit = cE({type: "span", innerHTML: "é€šè¿‡", attr: [["class", "pg-review-submit"]]});
+        let submit = cE({type: "span", innerHTML: "Í¨¹ı", attr: [["class", "pg-review-submit"]]});
         submit.onclick = () => {
             e[0].children[0].children[0].click();
         };
         reviewCtrl.append(submit);
-        let deletePost = cE({type: "span", innerHTML: "åˆ é™¤", attr: [["class", "pg-review-delete"]]});
+        let deletePost = cE({type: "span", innerHTML: "É¾³ı", attr: [["class", "pg-review-delete"]]});
         deletePost.onclick = () => {
             e[0].children[0].children[2].click();
         };
         reviewCtrl.append(deletePost);
-        let ignore = cE({type: "span", innerHTML: "å¿½ç•¥", attr: [["class", "pg-review-ignore"]]});
+        let ignore = cE({type: "span", innerHTML: "ºöÂÔ", attr: [["class", "pg-review-ignore"]]});
         ignore.onclick = () => {
             e[0].children[0].children[4].click();
         };
         reviewCtrl.append(ignore);
-        let expand = cE({type: "span", innerHTML: "é€šè¿‡", attr: [["class", "pg-review-expand"]]});
+        let expand = cE({type: "span", innerHTML: "Í¨¹ı", attr: [["class", "pg-review-expand"]]});
         expand.onclick = () => {
             e[0].children[0].children[6].click();
         };
         reviewCtrl.append(expand);
-        review.append(reviewCtrl); // å‘å¸–å†…å®¹
+        review.append(reviewCtrl); // ·¢ÌûÄÚÈİ
         reviewWrap.append(review);
     });
     app.append(reviewWrap);
     document.body.append(app);
+    system.onready();
 };
 
 window.userCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>ç‰ˆä¸»ç®¡ç† - <span class='mi'>supervisor_account</span>ç”¨æˆ·æ“ä½œ</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>°æÖ÷¹ÜÀí - <span class='mi'>supervisor_account</span>ÓÃ»§²Ù×÷</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-userCtrl"]]});
     let urname = cE({type: "div", attr: [["contenteditable", "true"], ["class", "pg-userCtrl-urname"]]});
-    let urid = cE({type: "div", attr: [["contenteditable", "true"], ["class", "pg-userCtrl-urid"]], innerText: "(å¯é€‰)"});
+    let urid = cE({type: "div", attr: [["contenteditable", "true"], ["class", "pg-userCtrl-urid"]], innerText: "(¿ÉÑ¡)"});
     urid.onclick = () => {
-        if (urid.innerText === "(å¯é€‰)") {
+        if (urid.innerText === "(¿ÉÑ¡)") {
             urid.innerText = "";
             urid.onclick = () => {
             }
         }
     };
-    let ursubmit = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "æœç´¢"});
+    let ursubmit = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "ËÑË÷"});
     ursubmit.onclick = () => {
         pg.$("td>input")[1].value = urname.innerText;
         pg.$("td>input")[2].value = urid.innerText;
@@ -1215,14 +1228,14 @@ window.userCtrlDisplay = () => {
             type: "p",
             innerHTML: "<span>" + e[0].children[1].children[0].innerText + " - " + e[0].children[1].children[1].innerText + "</span><span>" + e[0].children[1].children[2].innerText + "</span>"
         }));
-        let usrStatusChange = cE({type: "div", innerText: "å˜æ›´ä¸ºï¼š\t" + e[1], attr: [["class", "usrStatusChange"]]});
+        let usrStatusChange = cE({type: "div", innerText: "±ä¸üÎª£º\t" + e[1], attr: [["class", "usrStatusChange"]]});
         let duration = cE({
             type: "div",
             attr: [["contenteditable", "true"], ["class", "pg-userCtrl-duration"]],
-            innerText: "(æ•°å­—)"
+            innerText: "(Êı×Ö)"
         });
         duration.onclick = () => {
-            if (duration.innerText === "(æ•°å­—)") {
+            if (duration.innerText === "(Êı×Ö)") {
                 duration.innerText = "";
                 duration.onclick = () => {
                 }
@@ -1232,7 +1245,7 @@ window.userCtrlDisplay = () => {
             type: "div",
             attr: [["contenteditable", "true"], ["class", "pg-userCtrl-operationDescription"]]
         });
-        let submitOperation = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "ç¡®è®¤ä»¥ä¸Šæ“ä½œ"});
+        let submitOperation = cE({type: "div", attr: [["class", "pg-userCtrl-ursubmit"]], innerText: "È·ÈÏÒÔÉÏ²Ù×÷"});
         reviewWrap.append(usrInfo);
         reviewWrap.append(usrStatusChange);
         reviewWrap.append(duration);
@@ -1249,22 +1262,23 @@ window.userCtrlDisplay = () => {
     }
     app.append(reviewWrap);
     document.body.append(app);
+    system.onready();
 };
 
 window.threadCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>ç‰ˆä¸»ç®¡ç† - <span class='mi'>forum</span>ä¸»é¢˜ç®¡ç†</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>°æÖ÷¹ÜÀí - <span class='mi'>forum</span>Ö÷Ìâ¹ÜÀí</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let bottomSelector = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=thread\")'>æ¿å—ä¸»é¢˜</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebin\")'>ä¸»é¢˜å›æ”¶ç«™</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=thread\")'>°å¿éÖ÷Ìâ</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebin\")'>Ö÷Ìâ»ØÊÕÕ¾</span>",
         attr: [["id", "bottomSelector"]]
     });
-    if (document.body.innerHTML.includes("æ¢å¤"))
+    if (document.body.innerHTML.includes("»Ö¸´"))
         bottomSelector.children[1].classList.add("theme-color");
     else bottomSelector.children[0].classList.add("theme-color");
     app.append(bottomSelector);
@@ -1273,29 +1287,29 @@ window.threadCtrlDisplay = () => {
     forum.onclick = () => {
         pg.$("#fid_ctrl")[0].click();
         let forums = [...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText);
-        pg.select("è¯·é€‰æ‹©æ‚¨è¦æŸ¥è¯¢çš„æ¿å—", forums, forum.innerText, (e) => {
+        pg.select("ÇëÑ¡ÔñÄúÒª²éÑ¯µÄ°å¿é", forums, forum.innerText, (e) => {
             forum.innerText = e;
             pg.$("#fid_ctrl_menu")[0].children[0].children[[...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
-        }, "åœ¨ä¸‹æ–¹ç‚¹å‡»æ‚¨çš„æ¿å—");
+        }, "ÔÚÏÂ·½µã»÷ÄúµÄ°å¿é");
         return false;
     };
-    let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(å¯é€‰)å¸–å­ç±»å‹"});
+    let type = cE({type: "div", attr: [["class", "pg-postCtrl-type"]], innerText: "(¿ÉÑ¡)Ìû×ÓÀàĞÍ"});
     type.onclick = () => {
         pg.$("#threadoption_ctrl")[0].click();
         let types = [...pg.$("#threadoption_ctrl_menu")[0].children[0].children].map(i => i.innerText);
-        pg.select("è¯·é€‰æ‹©æ‚¨è¦æŸ¥è¯¢çš„å¸–å­ç±»å‹", types, forum.innerText, (e) => {
+        pg.select("ÇëÑ¡ÔñÄúÒª²éÑ¯µÄÌû×ÓÀàĞÍ", types, forum.innerText, (e) => {
             type.innerText = e;
             pg.$("#threadoption_ctrl_menu")[0].children[0].children[[...pg.$("#threadoption_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
-        }, "åœ¨ä¸‹æ–¹ç‚¹å‡»æŸ¥è¯¢çš„ç±»å‹");
+        }, "ÔÚÏÂ·½µã»÷²éÑ¯µÄÀàĞÍ");
         return false;
     };
     let postAuthor = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postAuthor"]],
-        innerText: "(å¯é€‰)"
+        innerText: "(¿ÉÑ¡)"
     });
     postAuthor.onclick = () => {
-        if (postAuthor.innerText === "(å¯é€‰)") {
+        if (postAuthor.innerText === "(¿ÉÑ¡)") {
             postAuthor.innerText = "";
             postAuthor.onclick = () => {
             }
@@ -1307,10 +1321,10 @@ window.threadCtrlDisplay = () => {
     let postTime = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTime"]],
-        innerText: "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD"
+        innerText: "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD"
     });
     postTime.onclick = () => {
-        if (postTime.innerText === "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD") {
+        if (postTime.innerText === "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD") {
             postTime.innerText = "";
             postTime.onclick = () => {
             }
@@ -1324,10 +1338,10 @@ window.threadCtrlDisplay = () => {
     let postTitleKeyword = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTitleKeyword"]],
-        innerText: "(å¯é€‰)"
+        innerText: "(¿ÉÑ¡)"
     });
     postTitleKeyword.onclick = () => {
-        if (postTitleKeyword.innerText === "(å¯é€‰)") {
+        if (postTitleKeyword.innerText === "(¿ÉÑ¡)") {
             postTitleKeyword.innerText = "";
             postTitleKeyword.onclick = () => {
             }
@@ -1339,10 +1353,10 @@ window.threadCtrlDisplay = () => {
     let viewTimes = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-viewTimes"]],
-        innerText: "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD"
+        innerText: "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD"
     });
     viewTimes.onclick = () => {
-        if (viewTimes.innerText === "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD") {
+        if (viewTimes.innerText === "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD") {
             viewTimes.innerText = "";
             viewTimes.onclick = () => {
             }
@@ -1356,10 +1370,10 @@ window.threadCtrlDisplay = () => {
     let noview = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-noview"]],
-        innerText: "(å¯é€‰) "
+        innerText: "(¿ÉÑ¡) "
     });
     noview.onclick = () => {
-        if (noview.innerText === "(å¯é€‰) ") {
+        if (noview.innerText === "(¿ÉÑ¡) ") {
             noview.innerText = "";
             noview.onclick = () => {
             }
@@ -1371,10 +1385,10 @@ window.threadCtrlDisplay = () => {
     let replyTimes = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-replyTimes"]],
-        innerText: "(å¯é€‰) æ ¼å¼ï¼šæ•°å€¼1-æ•°å€¼2"
+        innerText: "(¿ÉÑ¡) ¸ñÊ½£ºÊıÖµ1-ÊıÖµ2"
     });
     replyTimes.onclick = () => {
-        if (replyTimes.innerText === "(å¯é€‰) æ ¼å¼ï¼šæ•°å€¼1-æ•°å€¼2") {
+        if (replyTimes.innerText === "(¿ÉÑ¡) ¸ñÊ½£ºÊıÖµ1-ÊıÖµ2") {
             replyTimes.innerText = "";
             replyTimes.onclick = () => {
             }
@@ -1385,7 +1399,7 @@ window.threadCtrlDisplay = () => {
         if (postTime.innerText.split("===").length > 1)
             pg.$("td>input.px:not(.vm)")[8].value = replyTimes.innerText.split("===")[1];
     };
-    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "æœç´¢"});
+    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "ËÑË÷"});
     postSubmit.onclick = () => {
         pg.$("#searchsubmit")[0].click();
     };
@@ -1398,8 +1412,8 @@ window.threadCtrlDisplay = () => {
     reviewWrap.append(noview);
     reviewWrap.append(replyTimes);
     reviewWrap.append(postSubmit);
-    if (document.body.innerText.includes("è¯·é€‰æ‹©æ¿å—è¿›è¡Œç®¡ç†"))
-        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "è¯·é€‰æ‹©æ¿å—"}));
+    if (document.body.innerText.includes("ÇëÑ¡Ôñ°å¿é½øĞĞ¹ÜÀí"))
+        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "ÇëÑ¡Ôñ°å¿é"}));
     else if (pg.$("#moderate").length !== 0) {
         let threadSelectHistory = null;
         let threadList = cE({type: "div", attr: [["class", "pg-postCtrl-threadList"]]});
@@ -1421,35 +1435,35 @@ window.threadCtrlDisplay = () => {
             }));
             thread.append(cE({
                 type: "span", attr: [["class", "pg-postCtrl-threadList-replyTimes"]],
-                innerText: e[4].children[0].innerText + "å›å¤ - "
+                innerText: e[4].children[0].innerText + "»Ø¸´ - "
             }));
             thread.append(cE({
                 type: "span", attr: [["class", "pg-postCtrl-threadList-viewTimes"]],
-                innerText: e[4].children[1].innerText + "æŸ¥çœ‹"
+                innerText: e[4].children[1].innerText + "²é¿´"
             }));
             thread.append(cE({
                 type: "br"
             }));
             thread.append(cE({
                 type: "span", attr: [["class", "pg-postCtrl-threadList-lastAuthor"]],
-                innerText: "æœ€åç”±" + e[5].children[0].innerText + " å‘è¡¨äº "
+                innerText: "×îºóÓÉ" + e[5].children[0].innerText + " ·¢±íÓÚ "
             }));
             thread.append(cE({
                 type: "span", attr: [["class", "pg-postCtrl-threadList-lastTime"]],
                 innerText: e[5].children[1].innerText
             }));
             threadList.append(thread);
-            if (document.body.innerHTML.includes("æ¢å¤")) {
+            if (document.body.innerHTML.includes("»Ö¸´")) {
                 thread.onclick = () => {
                     if (threadSelectHistory !== null)
                         threadSelectHistory.click();
                     e[1].children[0].click();
                     threadSelectHistory = e[1].children[0];
-                    pg.select("è¯·é€‰æ‹©æ‚¨å¯¹å¸–å­çš„æ“ä½œ", ["å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", "æ¢å¤"], "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", (val) => {
-                        if (val !== "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£") {
+                    pg.select("ÇëÑ¡ÔñÄú¶ÔÌû×ÓµÄ²Ù×÷", ["È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", "»Ö¸´"], "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", (val) => {
+                        if (val !== "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú") {
                             pg.$("#moderate table>tbody:last-child>tr button")[0].click()
                         }
-                    }, "å½“å‰é€‰ä¸­ï¼š" + postName.innerText);
+                    }, "µ±Ç°Ñ¡ÖĞ£º" + postName.innerText);
                 };
             } else
                 thread.onclick = () => {
@@ -1457,34 +1471,34 @@ window.threadCtrlDisplay = () => {
                         threadSelectHistory.click();
                     e[1].children[0].click();
                     threadSelectHistory = e[1].children[0];
-                    pg.select("è¯·é€‰æ‹©æ‚¨å¯¹å¸–å­çš„æ“ä½œ", ["å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", "åˆ é™¤", "ç§»åŠ¨", "åˆ†ç±»", "ç½®é¡¶", "ç²¾å", "é«˜äº®", "æå‡ä¸‹æ²‰", "å…³é—­æ‰“å¼€"], "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", (val) => {
-                        if (val !== "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£") {
-                            pg.$("#mdly :not(:first-child) a")[["åˆ é™¤", "ç§»åŠ¨", "åˆ†ç±»", "ç½®é¡¶", "ç²¾å", "é«˜äº®", "æå‡ä¸‹æ²‰", "å…³é—­æ‰“å¼€"].indexOf(val)].click();
+                    pg.select("ÇëÑ¡ÔñÄú¶ÔÌû×ÓµÄ²Ù×÷", ["È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", "É¾³ı", "ÒÆ¶¯", "·ÖÀà", "ÖÃ¶¥", "¾«»ª", "¸ßÁÁ", "ÌáÉıÏÂ³Á", "¹Ø±Õ´ò¿ª"], "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", (val) => {
+                        if (val !== "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú") {
+                            pg.$("#mdly :not(:first-child) a")[["É¾³ı", "ÒÆ¶¯", "·ÖÀà", "ÖÃ¶¥", "¾«»ª", "¸ßÁÁ", "ÌáÉıÏÂ³Á", "¹Ø±Õ´ò¿ª"].indexOf(val)].click();
                         }
-                    }, "å½“å‰é€‰ä¸­ï¼š" + postName.innerText);
+                    }, "µ±Ç°Ñ¡ÖĞ£º" + postName.innerText);
                 };
         });
         reviewWrap.append(threadList);
     }
-
     app.append(reviewWrap);
     document.body.append(app);
+    system.onready();
 };
 
 window.postCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>ç‰ˆä¸»ç®¡ç† - <span class='mi'>comment</span>å›å¤ç®¡ç†</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>°æÖ÷¹ÜÀí - <span class='mi'>comment</span>»Ø¸´¹ÜÀí</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
     let bottomSelector = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=post\")'>å›å¤ç®¡ç†</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebinpost\")'>å›å¸–å›æ”¶ç«™</span>",
+        innerHTML: "<span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=post\")'>»Ø¸´¹ÜÀí</span><span onclick='loadURL(\"http://www.ditiezu.com/forum.php?mod=modcp&action=recyclebinpost\")'>»ØÌû»ØÊÕÕ¾</span>",
         attr: [["id", "bottomSelector"]]
     });
-    if (document.body.innerHTML.includes("æ¢å¤"))
+    if (document.body.innerHTML.includes("»Ö¸´"))
         bottomSelector.children[1].classList.add("theme-color");
     else bottomSelector.children[0].classList.add("theme-color");
     app.append(bottomSelector);
@@ -1493,19 +1507,19 @@ window.postCtrlDisplay = () => {
     forum.onclick = () => {
         pg.$("#fid_ctrl")[0].click();
         let forums = [...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText);
-        pg.select("è¯·é€‰æ‹©æ‚¨è¦æŸ¥è¯¢çš„æ¿å—", forums, forum.innerText, (e) => {
+        pg.select("ÇëÑ¡ÔñÄúÒª²éÑ¯µÄ°å¿é", forums, forum.innerText, (e) => {
             forum.innerText = e;
             pg.$("#fid_ctrl_menu")[0].children[0].children[[...pg.$("#fid_ctrl_menu")[0].children[0].children].map(i => i.innerText).indexOf(e)].click()
-        }, "åœ¨ä¸‹æ–¹ç‚¹å‡»æ‚¨çš„æ¿å—");
+        }, "ÔÚÏÂ·½µã»÷ÄúµÄ°å¿é");
         return false;
     };
     let postAuthor = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postAuthor"]],
-        innerText: "(å¯é€‰)"
+        innerText: "(¿ÉÑ¡)"
     });
     postAuthor.onclick = () => {
-        if (postAuthor.innerText === "(å¯é€‰)") {
+        if (postAuthor.innerText === "(¿ÉÑ¡)") {
             postAuthor.innerText = "";
             postAuthor.onclick = () => {
             }
@@ -1517,10 +1531,10 @@ window.postCtrlDisplay = () => {
     let postTime = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postTime"]],
-        innerText: "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD"
+        innerText: "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD"
     });
     postTime.onclick = () => {
-        if (postTime.innerText === "(å¯é€‰) æ ¼å¼ï¼šYYYY-MM-DD===YYYY-MM-DD") {
+        if (postTime.innerText === "(¿ÉÑ¡) ¸ñÊ½£ºYYYY-MM-DD===YYYY-MM-DD") {
             postTime.innerText = "";
             postTime.onclick = () => {
             }
@@ -1534,10 +1548,10 @@ window.postCtrlDisplay = () => {
     let postKeyword = cE({
         type: "div",
         attr: [["contenteditable", "true"], ["class", "pg-postCtrl-postKeyword"]],
-        innerText: "(å¯é€‰)"
+        innerText: "(¿ÉÑ¡)"
     });
     postKeyword.onclick = () => {
-        if (postKeyword.innerText === "(å¯é€‰)") {
+        if (postKeyword.innerText === "(¿ÉÑ¡)") {
             postKeyword.innerText = "";
             postKeyword.onclick = () => {
             }
@@ -1546,7 +1560,7 @@ window.postCtrlDisplay = () => {
     postKeyword.oninput = () => {
         pg.$("td>input.px:not(.vm)")[3].value = postKeyword.innerText;
     };
-    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "æœç´¢"});
+    let postSubmit = cE({type: "div", attr: [["class", "pg-postCtrl-submit"]], innerText: "ËÑË÷"});
     postSubmit.onclick = () => {
         pg.$("#searchsubmit")[0].click();
     };
@@ -1554,8 +1568,8 @@ window.postCtrlDisplay = () => {
     reviewWrap.append(postAuthor);
     reviewWrap.append(postTime);
     reviewWrap.append(postSubmit);
-    if (document.body.innerText.includes("æœç´¢æ¡ä»¶ä¸è¶³"))
-        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "æœç´¢æ¡ä»¶ä¸è¶³"}));
+    if (document.body.innerText.includes("ËÑË÷Ìõ¼ş²»×ã"))
+        reviewWrap.append(cE({type: "div", attr: "pg-postCtrl-selectForumAlert", innerText: "ËÑË÷Ìõ¼ş²»×ã"}));
     else if (pg.$("#moderate>tr:not(:first-child):not(:last-child)").length !== 0) {
         let threadSelectHistory = null;
         let postList = cE({type: "div", attr: [["class", "pg-postCtrl-postList"]]});
@@ -1564,7 +1578,7 @@ window.postCtrlDisplay = () => {
             let postName = cE({
                 type: "p",
                 attr: [["class", "pg-postCtrl-postList-postName"]],
-                innerText: e[0].innerText.replace(/\n/, " - (å›å¸–å†…å®¹: ") + " )"
+                innerText: e[0].innerText.replace(/\n/, " - (»ØÌûÄÚÈİ: ") + " )"
             });
             post.append(postName);
             let authorName = cE({
@@ -1580,17 +1594,17 @@ window.postCtrlDisplay = () => {
             });
             post.append(postTime);
             postList.append(post);
-            if (document.body.innerHTML.includes("æ¢å¤")) {
+            if (document.body.innerHTML.includes("»Ö¸´")) {
                 post.onclick = () => {
                     if (threadSelectHistory !== null)
                         threadSelectHistory.click();
                     pg.$("tbody:not(:last-child):not(:first-child) .o input")[index].click();
                     threadSelectHistory = e[1].children[0];
-                    pg.select("è¯·é€‰æ‹©æ‚¨å¯¹å›å¤çš„æ“ä½œ", ["å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", "æ¢å¤"], "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", (val) => {
-                        if (val !== "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£") {
+                    pg.select("ÇëÑ¡ÔñÄú¶Ô»Ø¸´µÄ²Ù×÷", ["È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", "»Ö¸´"], "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", (val) => {
+                        if (val !== "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú") {
                             pg.$("#moderate table>tbody:last-child>tr button")[0].click()
                         }
-                    }, "å½“å‰é€‰ä¸­ï¼š" + postName.innerText);
+                    }, "µ±Ç°Ñ¡ÖĞ£º" + postName.innerText);
                 };
             } else
                 post.onclick = () => {
@@ -1622,17 +1636,17 @@ window.postCtrlDisplay = () => {
             });
             post.append(postTime);
             postList.append(post);
-            if (document.body.innerHTML.includes("æ¢å¤")) {
+            if (document.body.innerHTML.includes("»Ö¸´")) {
                 post.onclick = () => {
                     if (threadSelectHistory !== null)
                         threadSelectHistory.click();
                     e[0].click();
                     threadSelectHistory = e[0];
-                    pg.select("è¯·é€‰æ‹©æ‚¨å¯¹å›å¤çš„æ“ä½œ", ["å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", "æ¢å¤"], "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", (val) => {
-                        if (val !== "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£") {
+                    pg.select("ÇëÑ¡ÔñÄú¶Ô»Ø¸´µÄ²Ù×÷", ["È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", "»Ö¸´"], "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", (val) => {
+                        if (val !== "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú") {
                             pg.$("#moderate table>tbody:last-child>tr button")[0].click()
                         }
-                    }, "å½“å‰é€‰ä¸­ï¼š" + postName.innerText);
+                    }, "µ±Ç°Ñ¡ÖĞ£º" + postName.innerText);
                 };
             } else
                 post.onclick = () => {
@@ -1644,13 +1658,14 @@ window.postCtrlDisplay = () => {
 
     app.append(reviewWrap);
     document.body.append(app);
+    system.onready();
 };
 
 window.reportCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>ç‰ˆä¸»ç®¡ç† - <span class='mi'>report</span>ä¸¾æŠ¥ç®¡ç†</span>",
+        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>°æÖ÷¹ÜÀí - <span class='mi'>report</span>¾Ù±¨¹ÜÀí</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1662,20 +1677,20 @@ window.reportCtrlDisplay = () => {
     });
     forum.onclick = () => {
         let forums = [...pg.$("#fid option")].map(i => i.innerText);
-        pg.select("è¯·é€‰æ‹©æ‚¨è¦æŸ¥è¯¢çš„æ¿å—", forums, forum.innerText, (e) => {
+        pg.select("ÇëÑ¡ÔñÄúÒª²éÑ¯µÄ°å¿é", forums, forum.innerText, (e) => {
             forum.innerText = e;
             pg.$("#fid option")[[...pg.$("#fid option")].map(i => i.innerText).indexOf(e)].click()
-        }, "åœ¨ä¸‹æ–¹ç‚¹å‡»æ‚¨çš„æ¿å—");
+        }, "ÔÚÏÂ·½µã»÷ÄúµÄ°å¿é");
         return false;
     };
-    let reportSubmit = cE({type: "div", attr: [["class", "pg-reportCtrl-submit"]], innerText: "æœç´¢"});
+    let reportSubmit = cE({type: "div", attr: [["class", "pg-reportCtrl-submit"]], innerText: "ËÑË÷"});
     reportSubmit.onclick = () => {
         pg.$("#searchsubmit")[0].click();
     };
     reviewWrap.append(forum);
     reviewWrap.append(reportSubmit);
-    if (document.body.innerText.includes("æ²¡æœ‰æ–°çš„ä¸¾æŠ¥æˆ–æ²¡æœ‰é€‰æ‹©æ¿å—"))
-        reviewWrap.append(cE({type: "div", attr: "pg-reportCtrl-selectForumAlert", innerText: "æ²¡æœ‰æ–°çš„ä¸¾æŠ¥æˆ–æ²¡æœ‰é€‰æ‹©æ¿å—"}));
+    if (document.body.innerText.includes("Ã»ÓĞĞÂµÄ¾Ù±¨»òÃ»ÓĞÑ¡Ôñ°å¿é"))
+        reviewWrap.append(cE({type: "div", attr: "pg-reportCtrl-selectForumAlert", innerText: "Ã»ÓĞĞÂµÄ¾Ù±¨»òÃ»ÓĞÑ¡Ôñ°å¿é"}));
     else if (pg.$("#list_modcp_logs tbody tr:not(:last-child)").length !== 0) {
         let threadSelectHistory = null;
         let reportList = cE({type: "div", attr: [["class", "pg-reportCtrl-reportList"]]});
@@ -1693,16 +1708,16 @@ window.reportCtrlDisplay = () => {
                     threadSelectHistory.click();
                 e[0].click();
                 threadSelectHistory = e[1].children[0];
-                pg.select("è¯·é€‰æ‹©æ‚¨å¯¹ä¸¾æŠ¥çš„æ“ä½œ", ["å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", "å¤„ç†"], "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£", (val) => {
-                    if (val !== "å–æ¶ˆé€‰æ‹©ï¼Œå…³é—­çª—å£") {
+                pg.select("ÇëÑ¡ÔñÄú¶Ô¾Ù±¨µÄ²Ù×÷", ["È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", "´¦Àí"], "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú", (val) => {
+                    if (val !== "È¡ÏûÑ¡Ôñ£¬¹Ø±Õ´°¿Ú") {
                         pg.$("#reportsubmit")[0].click()
                     }
-                }, "å½“å‰é€‰ä¸­ï¼š" + reportName.innerText);
+                }, "µ±Ç°Ñ¡ÖĞ£º" + reportName.innerText);
             };
         });
         reviewWrap.append(reportList);
     }
-
     app.append(reviewWrap);
     document.body.append(app);
+    system.onready();
 };
