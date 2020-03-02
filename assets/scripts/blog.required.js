@@ -81,6 +81,7 @@ window.pg = {
         document.body.append(selectWrap);
     },
 };
+window.dev = false;
 window.cE = (data) => {
     let e = document.createElement(data.type);
     if (typeof data.attr !== "undefined")
