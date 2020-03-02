@@ -174,7 +174,7 @@
             innerText: "版本信息"
         }));
         let trigger = cE({type: "button", innerText: "ver 7.1.0 (beta, rebuild)"});
-        if (system.get("shouldOverrideAds") !== "")
+        if (android.isAdsBlocked() && system.get("shouldOverrideAds") !== "")
             trigger.innerText += ("\n\n免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
         trigger.onclick = () => {
             lasttime = new Date().getTime();

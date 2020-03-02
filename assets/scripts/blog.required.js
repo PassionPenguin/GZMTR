@@ -1133,6 +1133,10 @@ window.basicComp = () => {
         });
         document.body.append(nav);
     }
+    if (android.isAdsBlocked())
+        pg.$(".a_pt").forEach(e => {
+            e.parentElement.removeChild(e)
+        });
 };
 
 window.notificationDisplay = () => {
