@@ -95,7 +95,7 @@
         });
         inner.appendChild(ChoserWrap);
         ChoserWrap.children[0].children[cT].classList.add("active");
-        let trigger = cE({type: "button", innerText: theme[cT]});
+        let trigger = cE({type: "button", innerText: theme[cT][1]});
         trigger.onclick = () => {
             if (!ChoserWrap.classList.contains("show"))
                 ChoserWrap.classList.add("show")

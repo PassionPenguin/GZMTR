@@ -48,54 +48,54 @@
 }
 
 .SummerTheme:root {
-    --light: #fff771;
-    --theme: #d2963f;
+    --light: #fff771!important;
+    --theme: #d2963f!important;
 }
 
 .RainTheme:root {
-    --light: #8ddcff;
-    --theme: #46a8c5;
+    --light: #8ddcff!important;
+    --theme: #46a8c5!important;
 }
 
 .TeaTheme:root {
-    --light: #e4ffce;
-    --theme: #8bc34a;
+    --light: #e4ffce!important;
+    --theme: #8bc34a!important;
 }
 
 .WatermelonTheme:root {
-    --light: #ffe0d7;
-    --theme: #e15d61;
+    --light: #ffe0d7!important;
+    --theme: #e15d61!important;
 }
 
 .DarkerTheme {
-    --dark: #fff;
-    --light: #222;
-    --lightgrey: #555;
-    --lightdark: #ccc;
-    --black: #fff;
-    --white: #000;
-    --white500: #00000088;
-    --theme: #57c4d2;
+    --dark: #fff!important;
+    --light: #222!important;
+    --lightgrey: #555!important;
+    --lightdark: #ccc!important;
+    --black: #fff!important;
+    --white: #000!important;
+    --white500: #00000088!important;
+    --theme: #57c4d2!important;
 }
 
 .DarkerTheme * {
-    color: #fff;
+    color: #fff!important;
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not(.custom-theme) {
-        --dark: #fff;
-        --light: #222;
-        --lightgrey: #555;
-        --lightdark: #ccc;
-        --black: #fff;
-        --white: #000;
-        --white500: #00000088;
-        --theme: #57c4d2;
+        --dark: #fff!important;
+        --light: #222!important;
+        --lightgrey: #555!important;
+        --lightdark: #ccc!important;
+        --black: #fff!important;
+        --white: #000!important;
+        --white500: #00000088!important;
+        --theme: #57c4d2!important;
     }
 
     :root:not(.custom-theme) * {
-        color: #aaa;
+        color: #aaa!important;
     }
 }
 
