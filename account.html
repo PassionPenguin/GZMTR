@@ -192,7 +192,7 @@
                                                 system.set("shouldOverrideAds", xhr.responseText.substr(32));
                                                 trigger.innerText += ("\n免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
                                                 window.location.reload();
-                                            }
+                                            } else showWarning("不是合法的邀请码");
                                         }
                                     };
                                     xhr.open('GET', 'http://passionpenguin.000webhostapp.com/searchInvite.php?inviteCode=' + val.replace(/-/ig, ""), true);
@@ -206,7 +206,7 @@
         };
         inner.appendChild(trigger);
     }
-    window.onload = ()=>{
+    window.onload = () => {
         android.onready();
     };
 </script>

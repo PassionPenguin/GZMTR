@@ -1,4 +1,5 @@
 /* Made by Penguin */
+window.dev = false;
 window.loadLocalUrl = (typeof android === "undefined") ? (url) => {
     window.location.href = "http://127.0.0.1/" + url
 } : (url) => {
@@ -81,16 +82,15 @@ window.pg = {
         document.body.append(selectWrap);
     },
 };
-window.dev = false;
 window.cE = (data) => {
     let e = document.createElement(data.type);
     if (typeof data.attr !== "undefined")
         for (let i = 0; i < data.attr.length; i++)
             e.setAttribute(data.attr[i][0], data.attr[i][1]);
     if (typeof data.innerText !== "undefined")
-        e.innerText = typeof (data.innerText) === "object" ? data.innerText[cL] : data.innerText;
+        e.innerText = typeof (data.innerText) === "object" ? data.innerText : data.innerText;
     if (typeof data.innerHTML !== "undefined")
-        e.innerHTML = typeof (data.innerHTML) === "object" ? data.innerHTML[cL] : data.innerHTML;
+        e.innerHTML = typeof (data.innerHTML) === "object" ? data.innerHTML : data.innerHTML;
     return e;
 };
 window.Int = parseInt;
@@ -289,6 +289,11 @@ window.blog = [
         fid: 17,
         iconid: "MA",
         enName: "Announcement"
+    }, {
+        name: "地铁的真相",
+        fid: 150,
+        iconid: "TR",
+        enName: "Metro's Truth"
     }];
 
 window.forumDisplay = () => {
@@ -334,7 +339,7 @@ window.forumDisplay = () => {
             a.append(cE({
                 type: "div",
                 attr: [["class", "threadListName"], ["onclick", "loadThread('" + e[1].substr(12) + "')"]],
-                innerHTML: e[0][1].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText
+                innerHTML: document.body.innerHTML.includes("论坛管理") && document.body.innerHTML.includes("管理面板") ? e[0][2].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText : e[0][1].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText
             }));
             resultStickThread.append(a);
         });
@@ -356,7 +361,7 @@ window.forumDisplay = () => {
             a.append(cE({
                 type: "div",
                 attr: [["class", "threadListName" + str], ["onclick", "loadThread('" + e[1].substr(13) + "')"]],
-                innerHTML: e[0][1].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText
+                innerHTML: document.body.innerHTML.includes("论坛管理") && document.body.innerHTML.includes("管理面板") ? e[0][2].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText : e[0][1].children[e[0][1].children[0].tagName === ("EM") ? 1 : 0].innerText
             }));
             resultNomalThread.append(a);
         });
@@ -910,24 +915,65 @@ window.postDisplay = () => {
     let withFootNote = true;
     let withFootNotes = cE({type: "div", attr: [["id", "FootNote"]], innerText: "是否带上app标签"});
     withFootNotes.onclick = () => {
-        pg.select("请选择是否使用app标签", "选择后将会加上app发帖的图标。", "selectNotes", (res) => {
-            if (res !== false) {
-                withFootNote = res === "set";
+        pg.select("请选择是否使用app标签", ["是（默认）", "否"], "是（默认）", (val) => {
+            if (val === "否") {
+                withFootNote = false
             }
-        });
+        }, "");
     };
     mainPrefrences.append(withFootNotes);
     switch (postType) {
         case "new":
-            let readPerm = cE({type: "div", attr: [["id", "ReadPerm"]], innerText: "阅读权限"});
-            readPerm.onclick = () => {
-                pg.select("请选择您的帖子的阅读权限", "权限大于等于您所设定的值时候对方才可见。", "selectPerm", (res) => {
-                    if (res !== false) {
-                        pg.$("#readperm")[0].children[res].click();
-                    }
-                });
-            };
-            mainPrefrences.append(readPerm);
+            if (document.body.innerHTML.includes("阅读权限")) {
+                let readPerm = [...pg.$("#readperm option")].map(i => i.innerText);
+                let toggleReadPerm = cE({type: "div", innerText: "阅读权限"});
+                toggleReadPerm.onclick = () => {
+                    pg.select("请选择您的帖子阅读权限", readPerm, pg.$("#readperm")[0].innerText, (e) => {
+                        toggleReadPerm.innerText = e;
+                        pg.$("#readperm")[0].selectedIndex = [...pg.$("#readperm option")].map(i => i.innerText).indexOf(e);
+                        pg.$("#readperm")[0].dispatchEvent(new Event("change"));
+                    }, "请选择您的帖子阅读权限");
+                };
+                mainPrefrences.append(toggleReadPerm);
+            }
+            if (document.body.innerHTML.includes("回帖奖励")) {
+                let togglereplyCredit = cE({type: "div", innerText: "回帖奖励"});
+                togglereplyCredit.onclick = () => {
+                    pg.select("请选择您的帖子的获奖概率", [...pg.$("#replycredit_random option")].map(i => i.innerText), pg.$("#replycredit_random")[0].value, (e) => {
+                        togglereplyCredit.innerText = e;
+                        pg.$("#replycredit_random")[0].selectedIndex = [...pg.$("#replycredit_random option")].map(i => i.innerText).indexOf(e);
+                        pg.$("#replycredit_random")[0].dispatchEvent(new Event("change"));
+                    }, "请选择您的帖子的获奖概率");
+
+                    pg.select("请选择您的帖子的最高获奖次数", [...pg.$("#replycredit_membertimes option")].map(i => i.innerText), pg.$("#replycredit_membertimes")[0].innerText, (e) => {
+                        togglereplyCredit.innerText = e;
+                        pg.$("#replycredit_membertimes")[0].selectedIndex = [...pg.$("#replycredit_membertimes option")].map(i => i.innerText).indexOf(e);
+                        pg.$("#replycredit_membertimes")[0].dispatchEvent(new Event("change"));
+                    }, "请选择您的帖子的最高获奖次数");
+                    pg.prompt("每次回帖奖励", "1", (res) => {
+                        if (res !== false) {
+                            pg.$("#replycredit_extcredits")[0].value = res;
+                        } else pg.$("#replycredit_extcredits")[0].value = 1;
+                    });
+                    pg.prompt("奖励次数", "1", (res) => {
+                        if (res !== false) {
+                            pg.$("#replycredit_times")[0].value = res;
+                        } else pg.$("#replycredit_times")[0].value = 1;
+                    });
+                };
+                mainPrefrences.append(togglereplyCredit);
+            }
+            if (document.body.innerHTML.includes("售价")) {
+                let toggleprice = cE({type: "div", innerText: "售价"});
+                toggleprice.onclick = () => {
+                    pg.prompt("售价", "0-10", (res) => {
+                        if (res !== false) {
+                            pg.$("#price")[0].value = res;
+                        } else pg.$("#price")[0].value = 1;
+                    }, "0-10金币，最高10");
+                };
+                mainPrefrences.append(toggleprice);
+            }
 
             sendUtilToolBox.append(cE({type: "div", innerText: "发表新帖子"}));
             pg.prompt("请输入您的标题", "例如：震惊，企鹅竟然是母的", (res) => {
@@ -938,29 +984,25 @@ window.postDisplay = () => {
                 subjectHeader.classList.add("show");
             });
             post.onclick = () => {
-                let typeid = [...pg.$("#typeid_ctrl_menu li")].map((i, index) => [i.innerText, i, index]);
-                pg.prompt("请输入您的主题分类", typeid[0][0], (res) => {
-                    if (res !== false) {
-                        if ([-1, 0].indexOf(typeid.map(i => i[0]).indexOf(res)) !== -1) {
-                            showWarning("请重新输入");
+                pg.$("#typeid_ctrl")[0].click();
+                pg.select("请输入您的主题分类", [...pg.$("#typeid_ctrl_menu li")].map(i => i.innerText), pg.$("#typeid_ctrl_menu li.current")[0].innerText, (e) => {
+                    pg.$("#typeid_ctrl")[0].click();
+                    console.log([...pg.$("#typeid_ctrl_menu li")].map(i => i.innerText).indexOf(e), pg.$("#typeid_ctrl_menu li")[[...pg.$("#typeid_ctrl_menu li")].map(i => i.innerText).indexOf(e)]);
+                    pg.$("#typeid_ctrl_menu li")[[...pg.$("#typeid_ctrl_menu li")].map(i => i.innerText).indexOf(e)].click();
+                    if (subjectHeader.innerText === "") {
+                        showWarning("请输入您的标题");
+                    } else {
+                        if (editBox.value === "" || editBox.value.length < 10) {
+                            showWarning("字数不够10");
                         } else {
-                            typeid[typeid.map(i => i[0]).indexOf(res)][1].click();
-                            if (subjectHeader.innerText === "") {
-                                showWarning("请输入您的标题");
-                            } else {
-                                if (editBox.value === "" || editBox.value.length < 10) {
-                                    showWarning("字数不够10");
-                                } else {
-                                    pg.$("#subject")[0].value = subjectHeader.innerText;
-                                    pg.$("#e_textarea")[0].value = editBox.value;
-                                    if (withFootNote)
-                                        pg.$("#e_textarea")[0].value += "由app发帖";
-                                    pg.$("#postsubmit")[0].click();
-                                }
-                            }
+                            pg.$("#subject")[0].value = subjectHeader.innerText.replace(/习/, "xi");
+                            pg.$("#e_textarea")[0].value = editBox.value;
+                            if (withFootNote)
+                                pg.$("#e_textarea")[0].value += "\n\n--由app发帖";
+                            pg.$("#postsubmit")[0].click();
                         }
                     }
-                });
+                }, "请输入您的主题分类");
             };
             break;
         case "reply":
@@ -968,9 +1010,9 @@ window.postDisplay = () => {
             let subject = pg.$("#subjecthide")[0].innerText.substring(0, pg.$("#subjecthide")[0].innerText.length - 5);
             subjectHeader.innerText = subject;
             post.onclick = () => {
-                pg.$("#e_textarea")[0].value = editBox.value;
+                pg.$("#e_textarea")[0].value = editBox.value.replace(/习/, "xi");
                 if (withFootNote)
-                    pg.$("#e_textarea")[0].value += "由app发贴";
+                    pg.$("#e_textarea")[0].value += "\n\n[color=gery]--由app发贴[/color]";
                 pg.$("#postsubmit")[0].click();
             };
             break;
@@ -1071,32 +1113,25 @@ window.basicComp = () => {
             showWarning("NOT NEWEST VER.\n\nStop Supporting.");
             throw("S:\tStop Evaluating because no release-parameters found in url.");
         }
-        let bottomBar = cE({type: "div", attr: [["id", "pg-navBottom"]]});
-        let mainPage = cE({
-            type: "div",
-            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/forum.php\")"]],
-            innerHTML: "<span class='mi'>home</span><span>主页</span>"
+        let nav = cE({
+            type: "nav",
+            attr: [["class", "nav-bottom"], ["id", "pg-app-bottom"]],
+            innerHTML: "<nav class=\"nav-bottom\" id=\"pg-app-bottom\">\n" +
+                "    <ul>\n" +
+                "        <li pg-target=\"home\" onclick=\"loadLocalUrl('index.html')\"><span>home</span><span\n" +
+                "                class=\"description\">主页</span>\n" +
+                "        </li>\n" +
+                "        <li pg-target=\"info\" onclick=\"window.location.href='http://www.ditiezu.com/forum.php'\"><span>forum</span><span\n" +
+                "                class=\"description\">帖子</span>\n" +
+                "        </li>\n" +
+                "        <li pg-target=\"map\" onclick=\"window.location.href='http://www.ditiezu.com/home.php?mod=space&do=notice'\"><span>message</span><span\n" +
+                "                class=\"description\">提醒</span>\n" +
+                "        </li>\n" +
+                "        <li pg-target=\"settings\" onclick=\"loadLocalUrl('account.html')\"><span>settings</span><span class=\"description\">个人</span>\n" +
+                "        </li>\n" +
+                "    </ul>"
         });
-        let messagePage = cE({
-            type: "div",
-            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=space&do=notice\")"]],
-            innerHTML: "<span class='mi'>message</span><span>消息</span>"
-        });
-        let accountPage = cE({
-            type: "div",
-            attr: [["class", "pg-navBottomNaviItem"], ["onclick", "loadURL(\"http://www.ditiezu.com/home.php?mod=spacecp&ac=credit\")"]],
-            innerHTML: "<span class='mi'>person</span><span>个人</span>"
-        });
-        if (document.body.classList.contains("pg_register"))
-            accountPage.classList.add("theme-color");
-        else if (document.body.innerHTML.includes("未读提醒"))
-            messagePage.classList.add("theme-color");
-        else
-            mainPage.classList.add("theme-color");
-        bottomBar.append(mainPage);
-        bottomBar.append(messagePage);
-        bottomBar.append(accountPage);
-        document.body.append(bottomBar);
+        document.body.append(nav);
     }
 };
 
@@ -1143,7 +1178,7 @@ window.reviewDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>explicit</span>审核管理</span>",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>explicit</span>审核管理</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1187,6 +1222,8 @@ window.reviewDisplay = () => {
         review.append(reviewCtrl); // 发帖内容
         reviewWrap.append(review);
     });
+    if ([...pg.$(".um[id^='pid_']")].map(i => i.children).length === 0)
+        app.append(cE({type: "div", attr: [["class", "pg-app-noNewNotification"]], innerText: "暂时没有需要审核的"}));
     app.append(reviewWrap);
     document.body.append(app);
     system.onready();
@@ -1196,7 +1233,7 @@ window.userCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>supervisor_account</span>用户操作</span>",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>supervisor_account</span>用户操作</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1269,7 +1306,7 @@ window.threadCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>forum</span>主题管理</span>",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>forum</span>主题管理</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1489,7 +1526,7 @@ window.postCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>comment</span>回复管理</span>",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>comment</span>回复管理</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1665,7 +1702,7 @@ window.reportCtrlDisplay = () => {
     let app = cE({type: "div", attr: [["id", "pg-app"]]});
     let topName = cE({
         type: "div",
-        innerHTML: "<span onclick='loadURL(\"files:\\\android_assets\admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>report</span>举报管理</span>",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>report</span>举报管理</span>",
         attr: [["id", "topName"], ["class", "scrolled"]]
     });
     app.append(topName);
@@ -1679,7 +1716,8 @@ window.reportCtrlDisplay = () => {
         let forums = [...pg.$("#fid option")].map(i => i.innerText);
         pg.select("请选择您要查询的板块", forums, forum.innerText, (e) => {
             forum.innerText = e;
-            pg.$("#fid option")[[...pg.$("#fid option")].map(i => i.innerText).indexOf(e)].click()
+            pg.$("#fid")[0].selectedIndex = [...pg.$("#fid option")].map(i => i.innerText).indexOf(e);
+            pg.$("#fid")[0].dispatchEvent(new Event("change"));
         }, "在下方点击您的板块");
         return false;
     };
@@ -1717,6 +1755,31 @@ window.reportCtrlDisplay = () => {
         });
         reviewWrap.append(reportList);
     }
+    app.append(reviewWrap);
+    document.body.append(app);
+    system.onready();
+};
+
+window.loginModCP = () => {
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        innerHTML: "<span onclick='loadLocalUrl(\"admin.html\")' class='mi theme-color ic-back'>chevron_left</span><span>版主管理 - <span class='mi'>exit_to_app</span>登录</span>",
+        attr: [["id", "topName"], ["class", "scrolled"]]
+    });
+    app.append(topName);
+    let reviewWrap = cE({type: "div", attr: [["id", "pg-admin-loginCtrl"]]});
+    let forum = cE({
+        type: "div",
+        attr: [["class", "pg-loginCtrl-wrap"], ["contenteditable", "true"]],
+    });
+    let reportSubmit = cE({type: "div", attr: [["class", "pg-reportCtrl-submit"]], innerText: "登入"});
+    reportSubmit.onclick = () => {
+        pg.$("#cppwd")[0].value = forum.innerText;
+        pg.$("#submit")[0].click();
+    };
+    reviewWrap.append(forum);
+    reviewWrap.append(reportSubmit);
     app.append(reviewWrap);
     document.body.append(app);
     system.onready();

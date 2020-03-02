@@ -6,25 +6,64 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>Index Page</title>
+    <link rel="stylesheet" href="./assets/styles/blog.required.css">
+    <style>.btn_admin:first-child {
+        margin-top: 72px;
+    }
+
+    div.btn_admin {
+        width: calc(100vw - 80px);
+        margin: 10px auto;
+        text-align: center;
+        padding: 10px;
+        border: 2px solid var(--dark);
+    }
+    </style>
 </head>
-<body>
-<div id="pg-app-wrap"></div>
+<body class="pg-app withoutHeader">
+<div id="pg-app">
+    <div id="topName" class="scrolled"><span onclick="loadLocalUrl('admin.html')" class="mi theme-color ic-back">chevron_left</span><span>版主管理</span>
+    </div>
+    <div class="pg-app-wrap" id="pg-app-wrap">
+        <div class="btn_admin"
+             onclick="window.location.href='http://www.ditiezu.com/forum.php?mod=modcp&action=moderate&op=threads'">审核
+        </div>
+        <div class="btn_admin"
+             onclick="window.location.href='http://www.ditiezu.com/forum.php?mod=modcp&action=report'">
+            举报
+        </div>
+        <div class="btn_admin"
+             onclick="window.location.href='http://www.ditiezu.com/forum.php?mod=modcp&action=member&op=ban'">操作用户
+        </div>
+        <div class="btn_admin"
+             onclick="window.location.href='http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=thread'">主题管理
+        </div>
+        <div class="btn_admin"
+             onclick="window.location.href='http://www.ditiezu.com/forum.php?mod=modcp&action=thread&op=post'">回复管理
+        </div>
+    </div>
+
+</div>
 <nav class="nav-bottom" id="pg-app-bottom">
     <ul>
-        <li pg-target="home" onclick="loadLocalUrl('index.html')"><span>home</span><span
+        <li pg-target="home" onclick="loadLocalUrl('index.html')"><span class="active">home</span><span
                 class="description">主页</span>
         </li>
-        <li pg-target="info" onclick="window.location.href='http://www.ditiezu.com/forum.php'"><span>forum</span><span
+        <li pg-target="info" onclick="window.location.href='http://www.ditiezu.com/forum.php'">
+            <span>forum</span><span
                 class="description">帖子</span>
         </li>
-        <li pg-target="map" onclick="window.location.href='http://www.ditiezu.com/home.php?mod=space&do=notice'"><span>message</span><span
+        <li pg-target="map" onclick="window.location.href='http://www.ditiezu.com/home.php?mod=space&do=notice'">
+            <span>message</span><span
                 class="description">提醒</span>
         </li>
-        <li pg-target="settings" onclick="loadLocalUrl('account.html')"><span class="active">settings</span><span
+        <li pg-target="settings" onclick="loadLocalUrl('account.html')"><span>settings</span><span
                 class="description">个人</span>
         </li>
     </ul>
 </nav>
 </body>
+<script src="./assets/strings/string.js"></script>
+<script src="./assets/scripts/blog.required.js"></script>
 </html>

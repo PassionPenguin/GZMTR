@@ -79,7 +79,7 @@ html, body {
     z-index: 1000;
 }
 
-body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap):not(#prefrences):not(#pg-select-wrap):not(#pg-app-wrap):not(#pg-app-bottom) * {
+body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):not(#pg-copyInfo):not(#pg-prompt-wrap):not(#prefrences):not(#pg-select-wrap):not(#pg-app-wrap):not(#pg-app-bottom) *:not(#typeid):not(#typeid-ctrl) {
     overflow: hidden !important;
     opacity: 0 !important;
     width: 0 !important;
@@ -152,7 +152,8 @@ body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):
 
 #pg-app {
     height: 100vh;
-    overflow: scroll;
+    overflow: hidden scroll;
+    width: 100vw;
 }
 
 .pg-backgroundImage {
@@ -640,7 +641,7 @@ p.pg-recommendPostInfo {
 }
 
 #pg-app > :last-child {
-    margin-bottom: 48px !important;
+    margin-bottom: 72px !important;
 }
 
 div#pg-postEditBoxUtilBoxWrap {
@@ -719,7 +720,7 @@ textarea#pg-postEditBox {
 
 #pg-postEditBoxUtilBox {
     position: fixed;
-    bottom: 36px;
+    bottom: 48px;
     left: 0;
     width: 100%;
     height: 36px;
@@ -904,19 +905,11 @@ div#pg-postEditBoxUtilBox.shouldUp {
     padding: 20px;
 }
 
-#emotions {
-    position: fixed;
-    right: -125vw;
-    width: calc(100vw - 40px);
-    height: 216px;
-    padding: 20px;
-}
-
 #main_prefrences.show {
     left: 0 !important;
 }
 
-#emotions.show {
+#emotionsWrap.show {
     right: 0 !important;
 }
 
@@ -924,6 +917,15 @@ div#emotionsWrap {
     height: 256px;
     overflow: hidden scroll;
     width: 100%;
+    position: fixed;
+    right: -125vw;
+}
+
+#main_prefrences div {
+    text-align: center;
+    font: 14px/1 Anodina, sans-serif;
+    border: 1px solid var(--black);
+    padding: 10px;
 }
 
 img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
@@ -933,7 +935,8 @@ img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
 
 .emotion, [smilieid] {
     width: auto !important;
-    height: 24px !important;
+    height: 28px !important;
+    padding: 6px;
 }
 
 .pg-notification {
@@ -972,7 +975,7 @@ img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
 
 #bottomSelector {
     position: fixed;
-    bottom: 40px;
+    bottom: 48px;
     left: 0;
     width: 100vw;
     height: 36px;
@@ -986,7 +989,7 @@ img.emotions_Onion, img.emotions_Xiaobai, img.emotions_Q {
     font: 14px/36px Anodina, sans-serif;
 }
 
-#pg-app > #pg-app-notification:last-child, #pg-app #pg-admin-review:last-child, #pg-app #pg-admin-userCtrl:last-child, #pg-app > #pg-admin-postCtrl:last-child, #pg-app > #pg-admin-reportCtrl:last-child {
+#pg-app > #pg-app-notification:last-child, #pg-app #pg-admin-review:last-child, #pg-app #pg-admin-userCtrl:last-child, #pg-app > #pg-admin-postCtrl:last-child, #pg-app > #pg-admin-reportCtrl:last-child, #pg-app > #pg-admin-loginCtrl:last-child {
     width: calc(100vw - 80px);
     margin: 72px auto 96px auto !important;
 }
@@ -1045,13 +1048,13 @@ div#fwin_mods {
     border-radius: 10px;
 }
 
-.pg-userCtrl-urname, .pg-userCtrl-urid, .pg-userCtrl-ursubmit, .pg-userCtrl-duration, .pg-userCtrl-operationDescription, .pg-postCtrl-postAuthor, .pg-postCtrl-postTime, .pg-postCtrl-postTitleKeyword, .pg-postCtrl-viewTimes, .pg-postCtrl-noview, .pg-postCtrl-replyTimes, .pg-postCtrl-forum, .pg-postCtrl-type, .pg-postCtrl-submit, .pg-reportCtrl-forum, .pg-reportCtrl-submit {
+.pg-userCtrl-urname, .pg-userCtrl-urid, .pg-userCtrl-ursubmit, .pg-userCtrl-duration, .pg-userCtrl-operationDescription, .pg-postCtrl-postAuthor, .pg-postCtrl-postTime, .pg-postCtrl-postTitleKeyword, .pg-postCtrl-viewTimes, .pg-postCtrl-noview, .pg-postCtrl-replyTimes, .pg-postCtrl-forum, .pg-postCtrl-type, .pg-postCtrl-submit, .pg-reportCtrl-forum, .pg-reportCtrl-submit, .pg-loginCtrl-wrap {
     padding: 10px;
     border: 2px solid var(--black);
     margin-bottom: 10px;
 }
 
-.pg-userCtrl-urname:before, .pg-userCtrl-urid:before, .pg-userCtrl-ursubmit:before, .pg-userCtrl-duration:before, .pg-userCtrl-operationDescription:before, .pg-postCtrl-postAuthor:before, .pg-postCtrl-postTime:before, .pg-postCtrl-postTitleKeyword:before, .pg-postCtrl-viewTimes:before, .pg-postCtrl-noview:before, .pg-postCtrl-forum:before, .pg-postCtrl-replyTimes:before, .pg-postCtrl-type:before, .pg-postCtrl-submit:before {
+.pg-userCtrl-urname:before, .pg-userCtrl-urid:before, .pg-userCtrl-ursubmit:before, .pg-userCtrl-duration:before, .pg-userCtrl-operationDescription:before, .pg-postCtrl-postAuthor:before, .pg-postCtrl-postTime:before, .pg-postCtrl-postTitleKeyword:before, .pg-postCtrl-viewTimes:before, .pg-postCtrl-noview:before, .pg-postCtrl-forum:before, .pg-postCtrl-replyTimes:before, .pg-postCtrl-type:before, .pg-postCtrl-submit:before, .pg-loginCtrl-wrap:before {
     padding-right: 10px;
 }
 
@@ -1095,6 +1098,10 @@ div#fwin_mods {
     content: "回复次数";
 }
 
+.pg-loginCtrl-wrap:before {
+    content: "密码"
+}
+
 .pg-userCtrl-ursubmit, .pg-postCtrl-forum, .pg-postCtrl-type, .pg-postCtrl-submit, .pg-reportCtrl-forum, .pg-reportCtrl-submit {
     text-align: center;
     margin-bottom: 40px;
@@ -1127,7 +1134,7 @@ div#pg-select-wrap {
     top: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1003;
+    z-index: 1005;
     background: var(--white);
 }
 
@@ -1202,55 +1209,6 @@ div#pg-select-wrap {
 .pg-reportCtrl-reportList-reportName {
     white-space: pre;
 }
-
-@charset "UTF-8";
-@import "../colors/colors.css";
-/* Made by Penguin */
-
-/* Font Face */
-@font-face {
-    font-family: Anodina;
-    src: url("../media/font/Anodina-Regular.otf");
-}
-
-@font-face {
-    font-family: Anodina;
-    font-weight: 600;
-    src: url("../media/font/Anodina-Bold.otf");
-}
-
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url("../media/font/MaterialIcons-Regular.woff2") format('woff2')
-}
-
-.mi {
-    font-family: 'Material Icons', sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-    /* Support for IE. */
-    font-feature-settings: 'liga';
-}
-
-/* Main */
 
 * {
     transition: 500ms;
@@ -1376,7 +1334,7 @@ nav.nav-bottom {
     left: 0;
     width: 100%;
     height: 54px;
-    z-index: 1000;
+    z-index: 1001;
     background: var(--white);
 }
 
