@@ -4,7 +4,6 @@ window.loadLocalUrl = (typeof android === "undefined") ? (url) => {
 } : (url) => {
     window.location.href = "file:///android_asset/webRes/" + url
 };
-window.dev = true;
 window.pg = {
     $: (a) => {
         return document.querySelectorAll(a);
