@@ -14,13 +14,13 @@ html, body {
 
 @font-face {
     font-family: Anodina;
-    src: url("https://passionpenguin.github.io/GZMTR/assets/media/font/Anodina-Regular.otf");
+    src: url("http://www.ditiezu.com/android_asset/webRes//assets/media/font/Anodina-Regular.otf");
 }
 
 @font-face {
     font-family: Anodina;
     font-weight: 600;
-    src: url("https://passionpenguin.github.io/GZMTR/assets/media/font/Anodina-Bold.otf");
+    src: url("http://www.ditiezu.com/android_asset/webRes//assets/media/font/Anodina-Bold.otf");
 }
 
 @font-face {
@@ -61,6 +61,9 @@ html, body {
     --theme200: #03b6cd88;
     --theme100: #f9fdff;
     --black: #000;
+    --black200: #00000022;
+    --black100: #00000011;
+    --text: #333;
     --box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .1);
     --white: #fff;
     --white200: #ffffff22;
@@ -162,7 +165,7 @@ body > *:not(#pg-app):not(#append_parent):not(#pg-navBottom):not(#bg-animation):
     width: 125%;
     height: 250px;
     position: fixed;
-    background: url(https://passionpenguin.github.io/GZMTR/assets/media/images/banner.png) #03b6cd88;
+    background: url(http://www.ditiezu.com/android_asset/webRes//assets/media/images/Banner.png) #03b6cd88;
     background-size: 125%;
     background-position-y: 37.5%;
     filter: blur(5px);
@@ -308,6 +311,21 @@ p.pg-threadAuthorName {
 }
 
 .replyToThis:before {
+    /* Preferred icon size */
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
     display: inline-block;
     content: "reply";
     font: 24px/1 "Material Icons";
@@ -332,10 +350,28 @@ p.pg-threadAuthorName {
 }
 
 .appreciate:before, .dislike:before, .makeRate:before, .star:before {
+    /* Preferred icon size */
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
     display: inline-block;
     font: 18px/1 "Material Icons";
     vertical-align: middle;
     margin: -3px 6px 0 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
 }
 
 #append_parent #fwin_rate.fwinmask {
@@ -392,7 +428,64 @@ p.pg-threadAuthorName {
 }
 
 .pg_register .rfm th {
-    width: 75px;
+    width: 60px;
+    font: 14px/20px Anodina, sans-serif;
+    text-align: left;
+}
+
+.pg_register input:not([type="checkbox"]), .pg_register select {
+    max-width: 200px !important;
+    width: calc(100% - 60px);
+    padding: 5px;
+    box-shadow: none;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+}
+
+button.pn.pnc {
+    width: 100%;
+    padding: 3px;
+    background: var(--white);
+    height: 36px;
+    width: 100%;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+}
+
+form#loginform_LN957 {
+    width: 100vw;
+    position: fixed;
+}
+
+.pg_register div.rfm {
+    width: calc(100vw - 80px);
+    margin: 0 auto
+}
+
+.pg_register td:nth-child(2) {
+    width: 100%
+}
+
+.pg_register .tipcol {
+    display: none;
+}
+
+.pg_register table {
+    width: 100%
+}
+
+.pg_register select {
+    width: 100%;
+}
+
+th {
+    max-width: 64px;
+    padding: 0;
+    display: inline-block;
+}
+
+.pg_register .rfm.mbw.bw0 th {
+    display: none;
 }
 
 .pg_register a.flbc {
@@ -495,11 +588,12 @@ p.pg-recommendPostInfo {
 }
 
 .normalForumList {
-    display: block;
-    padding: 20px;
+    display: inline-block;
+    padding: 5px 25px;
     border-radius: 0;
     background: var(--white);
     margin-bottom: 4px;
+    width: calc(50% - 50px);
 }
 
 .normalForumList img {
@@ -551,7 +645,7 @@ p.pg-recommendPostInfo {
     content: " ";
     display: block;
     z-index: 1002;
-    background: url("https://passionpenguin.github.io/GZMTR/assets/media/vectors/Train.svg") no-repeat;
+    background: url("http://www.ditiezu.com/android_asset/webRes//assets/media/vectors/Train.svg") no-repeat;
     background-size: 100% 48px;
     position: fixed;
     bottom: 42px;
@@ -863,7 +957,7 @@ div#fwin_viewratings *, #imgzoom *:not(img) {
     height: 100%;
 }
 
-#newPostToggle {
+#newPostToggle, #newReplyToggle {
     position: fixed;
     bottom: 48px;
     right: 6px;
@@ -1352,6 +1446,7 @@ nav.nav-bottom li {
     margin: -2px;
     text-align: center;
     padding: 8px 0;
+    vertical-align: middle;
 }
 
 nav.nav-bottom li > span {
@@ -2566,7 +2661,7 @@ html.noMap #MapContainer {
 
 #routeInformation {
     overflow: scroll;
-    height: calc(100vh - 106px);
+    height: calc(100vh - 110px);
 }
 
 img#DitiezuAds {
@@ -2584,4 +2679,215 @@ img#DitiezuAds {
 p.ads {
     width: calc(100vw - 40px);
     margin: 0 auto;
+}
+
+#pg-app .a_pt ins.adsbygoogle {
+    display: none !important;
+}
+
+.pg_register input {
+    max-width: 50vw !important
+}
+
+#pg-indexFeeds {
+    background: #00000011;
+    margin-top: 96px;
+    position: absolute;
+    left: -200vw;
+    width: 100%;
+    height: calc(100% - 48px);
+    overflow-y: scroll;
+    margin-bottom: 72px;
+}
+#pg-ForumFeeds {
+    background: #00000011;
+    margin-top: 48px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 48px);
+    overflow-y: scroll;
+    margin-bottom: 72px;
+}
+
+#pg-indexFeeds.active {
+    left: 0;
+}
+
+.pg-feed {
+    padding: 10px;
+    margin: 10px 0;
+    background: var(--white);
+}
+
+.pg-feed-title {
+    margin: 5px 0 0 0;
+    font: 500 17px/1.5 Anodina, sans-serif;
+}
+
+.pg-feed-metaInfo {
+    font: 600 13px/21px Anodina, sans-serif;
+    margin: 5px 0;
+    color: var(--grey)
+}
+
+.pg-feed-description {
+    max-height: 81px;
+    height: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: 15px/21px Anodina, sans-serif;
+    color: #333;
+}
+
+.pg-feedContent {
+    display: inline-block;
+    width: calc(100% - 150px);
+    margin-right: 20px;
+    max-height: 100px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.pg-feedContent.no-image {
+    width: 100%;
+}
+
+.pg-feed-enclosure {
+    width: 120px;
+    display: inline-block;
+    height: 90px;
+    vertical-align: text-bottom;
+    background-size: 100%;
+    background-position: 50%;
+    margin-top: 10px
+}
+
+#pg-app-topSelector {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--white);
+    overflow: hidden;
+}
+
+#pg-app-topSelector.scrolled {
+    height: 42px;
+}
+
+#pg-app-topSelector > :first-child > :first-child {
+    text-align: center;
+    margin: 10px 0 0 -10px;
+    font: 16px/1 Anodina, sans-serif;
+    display: inline-block;
+}
+
+
+#pg-app-topSelector p > small {
+    display: block;
+    font: 12px/1 Anodina, sans-serif;
+    text-align: center;
+    margin: 0;
+    transform: scale(0.6);
+}
+
+
+#pg-app-topSelector > :first-child {
+    width: fit-content;
+    height: 40px;
+    margin: 0 auto 20px auto;
+}
+
+#pg-app-topSelector.scrolled > :first-child {
+    margin-top: -60px;
+}
+
+#pg-app-topSelector > :nth-child(2) > span {
+    width: 50%;
+    display: inline-block;
+    height: 40px;
+    font: 900 13px/40px Anodina, sans-serif;
+    text-align: center;
+    position: relative;
+    margin-top: -2px;
+    padding-bottom: 2px;
+}
+
+#pg-app-topSelector > :first-child:before {
+    content: " ";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(http://www.ditiezu.com/touch-icon-iphone-114.png);
+    background-size: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+    vertical-align: top;
+}
+
+#pg-app-topSelector > :first-child > :nth-child(2) {
+    display: inline-block;
+    margin: 10px 0 0 -10px;
+    padding-left: 20px;
+    text-align: center;
+    border-left: 1px solid var(--grey);
+}
+
+#pg-app-topSelector > :nth-child(2) > span:first-child:not(.theme-color):not(:focus):not(:hover):after {
+    left: -200vw !important;
+}
+
+#pg-app-topSelector > :nth-child(2) > span:nth-child(2):not(.theme-color):not(:focus):not(:hover):after {
+    right: -200vw !important;
+}
+
+#pg-app-topSelector > :nth-child(2) > span:after {
+    content: " ";
+    width: 100%;
+    height: 2px;
+    display: block;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    background: transparent;
+    transition: 1s ease-in-out;
+}
+
+#pg-app-topSelector > :nth-child(2) > span.theme-color:after, #pg-app-topSelector > :nth-child(2) > span:focus:after, #pg-app-topSelector > :nth-child(2) > span:hover:after {
+    background: var(--theme);
+}
+
+#pg-app-topSelector > :nth-child(2) > span:focus, #pg-app-topSelector > :nth-child(2) > span:hover {
+    color: var(--theme);
+}
+
+#pg-app-topSelector > :nth-child(2) > span:nth-child(2):after {
+    right: 0;
+}
+
+#pg-app-topSelector > :nth-child(2) > :nth-child(2):after {
+    left: unset !important;
+}
+
+#pg-app #pg-indexBlogPage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#pg-indexForums {
+    position: absolute;
+    right: -200vw;
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100% - 96px);
+    margin-bottom: 72px;
+    margin-top: 96px;
+}
+
+#pg-indexForums.active {
+    right: 0;
 }

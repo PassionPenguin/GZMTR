@@ -1,0 +1,89 @@
+<!-- Made by Penguin -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/styles/blog.required.css">
+    <title>RSS Feed Catcher</title>
+</head>
+<body>
+
+<nav class="nav-bottom" id="pg-app-bottom">
+    <ul>
+        <li pg-target="home" onclick="loadLocalUrl('indexRssParser.html')"><span>home</span><span
+                class="description">主页</span>
+        </li>
+        <li pg-target="info" onclick="loadLocalUrl('ForumData.html')"><span class="active">forum</span><span
+                class="description">帖子</span>
+        </li>
+        <li pg-target="map" onclick="window.location.href='http://www.ditiezu.com/home.php?mod=space&do=notice'"><span>message</span><span
+                class="description">提醒</span>
+        </li>
+        <li pg-target="settings" onclick="loadLocalUrl('account.html')"><span>settings</span><span class="description">个人</span>
+        </li>
+    </ul>
+</nav>
+</body>
+<script src="./assets/scripts/blog.required.js"></script>
+<script>
+    let app = cE({type: "div", attr: [["id", "pg-app"]]});
+    let topName = cE({
+        type: "div",
+        attr: [["id", "pg-app-topSelector"]],
+        innerHTML: "<div><p>地铁族论坛<small>The forum of the metros.</small></p><p>PassionPenguin<small>With love and passion.</small></p></div><div><span>最近帖文</span><span>详细分区</span></div>"
+    });
+    app.append(topName);
+    let request = new XMLHttpRequest();
+    request.open("GET", "http://www.ditiezu.com/forum.php?mod=rss");
+    topName.children[1].children[0].classList.add("theme-color");
+    request.send();
+    let wrap = cE({type: "div", attr: [["id", "pg-indexBlogPage"]]});
+    request.onreadystatechange = () => {
+        let feeds = cE({type: "div", attr: [["id", "pg-indexFeeds"], ["class", "active"]]});
+        if (request.readyState === 4) {
+            XMLParser(feeds);
+            wrap.append(feeds);
+            let forums = cE({type: "div", attr: [["id", "pg-indexForums"]]});
+            blog.forEach(e => {
+                let Forum = cE({
+                    type: "div",
+                    attr: [["class", "normalForumList"]]
+                });
+                Forum.onclick = () => {
+                    window.location.href = "ForumData.html?fid=" + e.fid;
+                };
+                Forum.append(cE({
+                    type: "img",
+                    attr: [["src", "http://www.ditiezu.com/android_asset/webRes//assets/media/images/city-icon/compressed/" + e.iconid + ".svg"]]
+                }));
+                Forum.append(cE({
+                    type: "p",
+                    innerHTML: "<span class=\"cnName\">" + e.name + "</span>" + "<span class=\"enName\">" + e.enName + "</span>"
+                }));
+                forums.append(Forum)
+            });
+            wrap.append(forums);
+        }
+    };
+    document.body.append(app);
+    app.onscroll = () => {
+        if (app.scrollTop > 100)
+            topName.classList.add("scrolled");
+        else
+            topName.classList.remove("scrolled");
+    };
+    let topSelector = topName.children[1].children;
+    [...topSelector].forEach((e, index) => {
+        e.onclick = () => {
+            wrap.children[index === 1 ? 0 : 1].classList.remove("active");
+            wrap.children[index].classList.add("active");
+            e.classList.add("theme-color");
+            topSelector[index === 1 ? 0 : 1].classList.remove("theme-color");
+        };
+    });
+    app.append(wrap);
+</script>
+</html>

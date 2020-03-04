@@ -13,17 +13,16 @@
 <div id="pg-app-wrap"></div>
 <nav class="nav-bottom" id="pg-app-bottom">
     <ul>
-        <li pg-target="home" onclick="loadLocalUrl('index.html')"><span>home</span><span
+        <li pg-target="home" onclick="loadLocalUrl('indexRssParser.html')"><span>home</span><span
                 class="description">主页</span>
         </li>
-        <li pg-target="info" onclick="window.location.href='http://www.ditiezu.com/forum.php'"><span>forum</span><span
+        <li pg-target="info" onclick="loadLocalUrl('ForumData.html')"><span>forum</span><span
                 class="description">帖子</span>
         </li>
         <li pg-target="map" onclick="window.location.href='http://www.ditiezu.com/home.php?mod=space&do=notice'"><span>message</span><span
                 class="description">提醒</span>
         </li>
-        <li pg-target="settings" onclick="loadLocalUrl('account.html')"><span class="active">settings</span><span
-                class="description">个人</span>
+        <li pg-target="settings" onclick="loadLocalUrl('account.html')"><span class="active">settings</span><span class="description">个人</span>
         </li>
     </ul>
 </nav>
@@ -174,7 +173,7 @@
             innerText: "版本信息"
         }));
         let trigger = cE({type: "button", innerText: "ver 7.1.0 (beta, rebuild)"});
-        if (android.isAdsBlocked() && system.get("shouldOverrideAds") !== "")
+        if (system.isAdsBlocked() && system.get("shouldOverrideAds") !== "")
             trigger.innerText += ("\n\n免广告生效：" + (system.get("shouldOverrideAds") === "0" ? "永久" : system.get("shouldOverrideAds") + "天"));
         trigger.onclick = () => {
             lasttime = new Date().getTime();
@@ -199,6 +198,29 @@
                                     xhr.send(null);
                                 }
                             }, "输入获取的邀请码");
+                        }
+                    }
+                }
+            };
+        };
+        inner.appendChild(trigger);
+    }
+    {
+        let l_time = 0;
+        inner.appendChild(cE({
+            type: "p",
+            attr: [["class", "prefName"]],
+            innerText: "版权"
+        }));
+        let trigger = cE({type: "button", innerText: "@PassionPenguin, @HumanbeingXenon, @wongchito"});
+        trigger.onclick = () => {
+            l_time = new Date().getTime();
+            trigger.onclick = () => {
+                if (new Date().getTime() - l_time < 2000) {
+                    l_time = new Date().getTime();
+                    trigger.onclick = () => {
+                        if (new Date().getTime() - l_time < 2000) {
+                            window.location.href = "http://www.ditiezu.com/forum.php?mod=modcp";
                         }
                     }
                 }
