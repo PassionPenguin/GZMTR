@@ -49,6 +49,8 @@
         if (request.readyState === 4) {
             XMLParser(feeds);
             wrap.append(feeds);
+            basicComp();
+            system.onready();
         }
     };
     app.append(wrap);

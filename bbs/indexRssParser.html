@@ -57,7 +57,7 @@
                 };
                 Forum.append(cE({
                     type: "img",
-                    attr: [["src", "http://www.ditiezu.com/android_asset/webRes//assets/media/images/city-icon/compressed/" + e.iconid + ".svg"]]
+                    attr: [["src", "http://www.ditiezu.com/android_asset/webRes/assets/media/images/city-icon/compressed/" + e.iconid + ".svg"]]
                 }));
                 Forum.append(cE({
                     type: "p",
@@ -66,6 +66,8 @@
                 forums.append(Forum)
             });
             wrap.append(forums);
+            basicComp();
+            system.onready();
         }
     };
     document.body.append(app);
