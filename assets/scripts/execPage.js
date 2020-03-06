@@ -159,6 +159,7 @@ pg.stationinfo = {
             return 0;
         }
         if (isMap && isAMap) {
+            import("https://html2canvas.hertzen.com/dist/html2canvas.min.js");
             importScripts("https://webapi.amap.com/maps?v=1.4.15&key=243038e05906027e08d538bb3b076eef", () => {
                     let a = cE({
                         type: "script",
@@ -259,7 +260,7 @@ pg.stationinfo = {
                                     }));
                                     wrap.appendChild(cE({
                                         type: "span",
-                                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[0])].indexOf(Int(num)) + 1, globallist[linedata.indexOf(via[i])])
+                                        innerHTML: processPill(via[i], s_num[linedata.indexOf(s_inf_tmp.via[i])].indexOf(Int(num)) + 1, globallist[linedata.indexOf(via[i])])
                                     }));
                                     wrap.appendChild(cE({
                                         type: "span",
