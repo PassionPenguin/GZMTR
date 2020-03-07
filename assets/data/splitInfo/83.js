@@ -7,7 +7,7 @@ let s_inf_83 = {
     via: ["4", "7"],
     "shortDesc": "大学城南站是广州地铁4号线和7号线的一座换乘车站，也是7号线的东端终点站。该站位于广州大学城中心大街南、中环东路、中环西路口，于2005年12月26日随4号线大学城专线开通而启用。",
     "structureType": [0, 0],
-    "platformType": [0, 0],
+    "platformType": [3, 0],
     "hallType": [0, 0],
     "transferType": [2],
     "exitNum": [4],
