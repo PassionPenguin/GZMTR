@@ -1,1 +1,0 @@
-let s_inf_227={"name":["沙涌","沙涌","沙涌-さちゅう","사충","Shachong"],"inf":[{"platform":1,"facilities":[[2,[1],"A"],[6,[1,2],"B C"],[16,[3],"",true]]},{"platform":2,"facilities":[[2,[1],"A"],[6,[1,2],"B C"],[16,[3],"",true]]}],"location":[113.246772,23.083128],"via":["GF"],"platformBelong":[["1","GF"],["2","GF"]]};
