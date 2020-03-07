@@ -1,13 +1,24 @@
-let s_inf_241 = { 
-    "name": ["會展西", "会展西", "會展西-かいてんにし", "", "Canton Fair Complex West"], 
-    "inf": [{ 
-        "platform": 1, 
-        "facilities": [] 
-    }, { 
-        "platform": 2, 
-        "facilities": [] 
-    }], 
-    "location": [113.356457,23.104723], 
-    "via": ["THZ1"], 
-    "platformBelong": [["2", "THZ1"], ["1", "THZ1"]] 
+let s_inf_241 = {
+    "name": ["會展西", "会展西", "會展西-かいてんにし", "", "Canton Fair Complex West"],
+    "inf": [{
+        "platform": 1,
+        "facilities": []
+    }, {
+        "platform": 2,
+        "facilities": []
+    }],
+    "location": [113.356457, 23.104723],
+    "via": ["THZ1"],
+    "shortDesc": "会展西站是海珠有轨电车的一个车站，车站位于阅江中路会展西路路口北侧之地面。车站于2014年12月31日随线路开通试乘而启用。\n",
+    "structureType": [0],
+    "platformType": [3],
+    "hallType": [1],
+    "exitNum": [1],
+    "openTime": ["2014-12=31_"],
+    "serviceTime": "无封闭",
+    "firstTrain": [[[0, "07:39"], [1, "07:39"]]],
+    "lastTrain": [[[0, "22:51"], [1, "22:13"]]],
+    "structureDesc": [["会展西站是一个地面车站，位于阅江中路与会展西路交会处，邻近广交会展馆A区以及会展公园。\n\n另外，车站设有自动售票机以及多个喷雾风扇。\n" +
+    "\n"], ["月台", "本站设有两个侧式月台，位于阅江中路会展西路路口北侧。在月台东侧设有一条单渡线，当会展西站至广州塔站区间有故障及突发状况时，往广州塔站的列车将会通过此单渡线折返，以本站为临时总站。\n\n此外，市民若需要如厕，可在车站附近的会展公园借用卫生间。\n"]],
+    "platformBelong": [["2", "THZ1"], ["1", "THZ1"]]
 };

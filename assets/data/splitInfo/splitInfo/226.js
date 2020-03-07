@@ -1,0 +1,1 @@
+let s_inf_226={"name":["鶴洞","鹤洞","鶴洞-かくだう","허둥","Hedong"],"inf":[{"platform":1,"facilities":[[3,[1],"C"],[10,[3],"C"],[15,[1,2],"B"]]},{"platform":2,"facilities":[[3,[1],"C"],[10,[3],"C"],[15,[1,2],"B"]]}],"location":[113.240153,23.072495],"via":["GF"],"platformBelong":[["1","GF"],["2","GF"]]};
