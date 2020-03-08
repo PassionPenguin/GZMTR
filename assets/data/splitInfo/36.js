@@ -11,7 +11,7 @@ let s_inf_36 = {
     "via": ["2"],
     "shortDesc": "江夏站是广州地铁二号线的车站，位于白云区广云路黄石北路口的地底。该站在2010年9月25日启用。",
     "structureType": [0],
-    "platformType": [4],
+    "platformType": [3],
     "hallType": [0],
     "exitNum": [4],
     "openTime": ["2010-9=25_"],

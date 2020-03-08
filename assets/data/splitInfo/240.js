@@ -1,13 +1,13 @@
-let s_inf_241 = { 
+let s_inf_240 = {
     "name": ["南风", "南风", "", "", "Nanfeng"],
-    "inf": [{ 
-        "platform": 1, 
-        "facilities": [] 
-    }, { 
-        "platform": 2, 
-        "facilities": [] 
-    }], 
-    "location": [113.348647,23.105679], 
+    "inf": [{
+        "platform": 1,
+        "facilities": []
+    }, {
+        "platform": 2,
+        "facilities": []
+    }],
+    "location": [113.348647, 23.105679],
     "via": ["THZ1"],
     "shortDesc": "南风站是海珠有轨电车的一个车站，车站位于阅江西路，华南大桥南侧西端之地面。车站于2014年12月31日随线路开通试乘而启用。\n\n本站在规划期间称为华南大桥站以及南风西路站。",
     "structureType": [0],

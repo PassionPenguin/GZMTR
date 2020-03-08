@@ -732,12 +732,12 @@ window.postDisplay = () => {
     mainFeatureWrap.append(makeSpecial);
     mainFeatureWrap.append(cE({
         type: "span",
-        attr: [["class", "mi pg-saveTrigger"], ["onclick", "pg.$('#e_textarea')[0].value=pg.$('#pg-postEditBox')[0].value;discuzcode('svd');return false;"]],
+        attr: [["class", "mi pg-saveTrigger"], ["onclick", "pg.$('#e_textarea').value=pg.$('#pg-postEditBox').value;discuzcode('svd');return false;"]],
         innerText: "save"
     }));
     mainFeatureWrap.append(cE({
         type: "span",
-        attr: [["class", "mi pg-loadTrigger"], ["onclick", "discuzcode('rst');pg.$('#pg-postEditBox')[0].value=pg.$('#e_textarea')[0].value;return false;"]],
+        attr: [["class", "mi pg-loadTrigger"], ["onclick", "discuzcode('rst');pg.$('#pg-postEditBox').value=pg.$('#e_textarea').value;return false;"]],
         innerText: "unarchive"
     }));
     let prefSettings = cE({

@@ -64,6 +64,271 @@ pg.stationList = {
         });
         $("#" + name)[0].classList.add("show");
     }, loadStationList: () => {
+        window.bbsStr = "";
+        let urls = [
+            "pid11348307",
+            "pid11348312",
+            "pid11348314",
+            "pid11348318",
+            "pid11348328",
+            "pid11348332",
+            "pid11348335",
+            "pid11348337",
+            "pid11348339",
+            "pid11348341",
+            "pid11348344",
+            "pid11348345",
+
+            "pid11348350",
+            "pid11348353",
+            "pid11348374",
+            "pid11348377",
+            "pid11348379",
+            "pid11348382",
+            "pid11348385",
+            "pid11348388",
+            "pid11348393",
+            "pid11348394",
+            "pid11348396",
+            "pid11348397",
+            "pid11348400",
+            "pid11348401",
+            "pid11348404",
+
+            "pid11348406",
+            "pid11348407",
+            "pid11348414",
+            "pid11348415",
+            "pid11348417",
+            "pid11348418",
+            "pid11348419",
+            "pid11348423",
+            "pid11348426",
+            "pid11348430",
+            "pid11348433",
+            "pid11348435",
+            "pid11348436",
+            "pid11348437",
+            "pid11348438",
+
+            "pid11348439",
+            "pid11348440",
+            "pid11348442",
+            "pid11348443",
+            "pid11348445",
+            "pid11348446",
+            "pid11349221",
+            "pid11348451",
+            "pid11348452",
+            "pid11348454",
+            "pid11348461",
+            "pid11348463",
+            "pid11348464",
+            "pid11348466",
+            "pid11348467",
+            "pid11348469",
+
+            "pid11348471",
+            "pid11348472",
+            "pid11348473",
+            "pid11348475",
+            "pid11348476",
+            "pid11348477",
+            "pid11348479",
+            "pid11348482",
+            "pid11348484",
+            "pid11348485",
+            "pid11348486",
+            "pid11348488",
+            "pid11349230",
+            "pid11348492",
+            "pid11348493",
+            "pid11348495",
+
+            "pid11348496",
+            "pid11348497",
+            "pid11348498",
+            "pid11348500",
+            "pid11348502",
+            "pid11348503",
+            "pid11348506",
+            "pid11348507",
+            "pid11348508",
+            "pid11348509",
+            "pid11348512",
+            "pid11348514",
+            "pid11348516",
+            "pid11348518",
+            "pid11348519",
+
+            "pid11348520",
+            "pid11348522",
+            "pid11348526",
+            "pid11348531",
+            "pid11348532",
+            "pid11348533",
+            "pid11348534",
+            "pid11348535",
+            "pid11348536",
+            "pid11348537",
+            "pid11348539",
+            "pid11348540",
+            "pid11348543",
+            "pid11348545",
+            "pid11348549",
+
+            "pid11348550",
+            "pid11348552",
+            "pid11348553",
+            "pid11348555",
+            "pid11348556",
+            "pid11348558",
+            "pid11348559",
+            "pid11348561",
+            "pid11348562",
+            "pid11348565",
+            "pid11348567",
+            "pid11348568",
+            "pid11348569",
+            "pid11348571",
+            "pid11348572",
+
+            "pid11348573",
+            "pid11348574",
+            "pid11348577",
+            "pid11348590",
+            "pid11348592",
+            "pid11348593",
+            "pid11348595",
+            "pid11348597",
+            "pid11348600",
+            "pid11348602",
+            "pid11348604",
+            "pid11348608",
+            "pid11348609",
+            "pid11348610",
+            "pid11348611",
+
+            "pid11348612",
+            "pid11348614",
+            "pid11348615",
+            "pid11348627",
+            "pid11348629",
+            "pid11348631",
+            "pid11348632",
+            "pid11348635",
+            "pid11348636",
+            "pid11348637",
+            "pid11348639",
+            "pid11348640",
+            "pid11348642",
+            "pid11348643",
+            "pid11348644",
+
+            "pid11348645",
+            "pid11348646",
+            "pid11348648",
+            "pid11348650",
+            "pid11348651",
+            "pid11348652",
+            "pid11348653",
+            "pid11348654",
+            "pid11348656",
+            "pid11348658",
+            "pid11348659",
+            "pid11348661",
+            "pid11348665",
+            "pid11348666",
+            "pid11348668",
+
+            "pid11348669",
+            "pid11348671",
+            "pid11348673",
+            "pid11348674",
+            "pid11348676",
+            "pid11348677",
+            "pid11348686",
+            "pid11348688",
+            "pid11348689",
+            "pid11348691",
+            "pid11348692",
+            "pid11348695",
+            "pid11348697",
+            "pid11348698",
+            "pid11348699",
+
+            "pid11348700",
+            "pid11348702",
+            "pid11348703",
+            "pid11348704",
+            "pid11348706",
+            "pid11348710",
+            "pid11348711",
+            "pid11348713",
+            "pid11348715",
+            "pid11348716",
+            "pid11348717",
+            "pid11348718",
+            "pid11348719",
+            "pid11348721",
+            "pid11348722",
+
+            "pid11348723",
+            "pid11348725",
+            "pid11348727",
+            "pid11348728",
+            "pid11348729",
+            "pid11348730",
+            "pid11348733",
+            "pid11348734",
+            "pid11348735",
+            "pid11348736",
+            "pid11348737",
+            "pid11348743",
+            "pid11348747",
+            "pid11348748",
+            "pid11348749",
+
+            "pid11348750",
+            "pid11348904",
+            "pid11348906",
+            "pid11348907",
+            "pid11348909",
+            "pid11348910",
+            "pid11348913",
+            "pid11348914",
+            "pid11348915",
+            "pid11348916",
+            "pid11348917",
+            "pid11348918",
+            "pid11348921",
+            "pid11348922",
+            "pid11348923",
+
+            "pid11348925",
+            "pid11348926",
+            "pid11348927",
+            "pid11348929",
+            "pid11348931",
+            "pid11348933",
+            "pid11348935",
+            "pid11348937",
+            "pid11348938",
+            "pid11348939",
+            "pid11348940",
+            "pid11348941",
+            "pid11348943",
+            "pid11348945",
+            "pid11348946",
+
+            "pid11348947",
+            "pid11348948",
+            "pid11348949",
+            "pid11348951",
+            "pid11348953",
+            "pid11348955",
+            "pid11348956"
+        ];
         let container = $("#selectLine")[0];
         for (let i = 0; i < linebelong.length; i++) {
             let subContainer = cE({type: "div"});
@@ -112,11 +377,20 @@ pg.stationList = {
                     }
                     let station = cE({type: "p"});
                     station.innerHTML = processPill(linedata[i], d + 1, globallist[i]) + "<span>" + s_list[i].station[j][k][cL].split(cL === 2 ? "-" : "undefined")[0] + "</span>";
+                    let ga;
+                    if (i === 7) ga = d + 13;
+                    else ga = d;
+                    try {
+                        bbsStr += "[url=http://www.ditiezu.com/forum.php?mod=redirect&goto=findpost&pid=" + urls[s_num[i][ga]].substr(3) + "]" + s_list[i].station[j][k][1] + "[/url]\t";
+                    } catch (e) {
+
+                    }
                     station.onclick = function () {
                         pg.stationList.loadStationInf(i, d)
                     };
                     subContainer.appendChild(station);
                 }
+                bbsStr += "\n\n";
             }
             container.appendChild(subContainer);
         }
@@ -465,15 +739,19 @@ pg.stationinfo = {
                                 }
                                 d.appendChild(a);
                             } // StationStructureDesc
-                            let a = cE({type: "div"});
-                            let b = cE({type: "div"});
-                            a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
-                            a.appendChild(cE({type: "p", innerText: s_inf_tmp.exitDesc})); // Exit Desc
-                            b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
-                            b.appendChild(cE({type: "p", innerText: s_inf_tmp.usageDesc})); // Usage Desc
-                            d.appendChild(a);
-                            d.appendChild(b);
-                            {
+                            if (typeof s_inf_tmp.exitDesc !== "undefined") {
+                                let a = cE({type: "div"});
+                                a.appendChild(cE({type: "h4", innerText: string.exitName[cL]}));
+                                a.appendChild(cE({type: "p", innerText: s_inf_tmp.exitDesc})); // Exit Desc
+                                d.appendChild(a);
+                            }
+                            if (typeof s_inf_tmp.usageDesc !== "undefined") {
+                                let b = cE({type: "div"});
+                                b.appendChild(cE({type: "h4", innerText: string.usageName[cL]}));
+                                b.appendChild(cE({type: "p", innerText: s_inf_tmp.usageDesc})); // Usage Desc
+                                d.appendChild(b);
+                            }
+                            if (typeof s_inf_tmp.history !== "undefined") {
                                 let a = cE({type: "div"});
                                 a.appendChild(cE({type: "h4", innerText: string.historyName[cL]}));
                                 for (let i = 0; i < s_inf_tmp.history.length; i++) {
